@@ -1,0 +1,939 @@
+---
+swagger: '2.0'
+info:
+  title: API Testvoorziening
+  description: API test platform
+  version: v1
+host: vng-test.maykin.nl
+schemes:
+- https
+basePath: "/api"
+consumes:
+- application/json
+produces:
+- application/json
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+- Basic: []
+paths:
+  "/auth/login/":
+    post:
+      operationId: auth_login_create
+      description: |-
+        Check the credentials and return the REST Token
+        if the credentials are valid and authenticated.
+        Calls Django Auth login method to register User ID
+        in Django session framework
+
+        Accept the following POST parameters: username, password
+        Return the REST Framework Token Object's key.
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          "$ref": "#/definitions/Login"
+      responses:
+        '201':
+          description: ''
+          schema:
+            "$ref": "#/definitions/Login"
+      tags:
+      - auth
+    parameters: []
+  "/auth/logout/":
+    get:
+      operationId: auth_logout_list
+      summary: |-
+        Calls Django logout method and delete the Token object
+        assigned to the current User object.
+      description: Accepts/Returns nothing.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - auth
+    post:
+      operationId: auth_logout_create
+      summary: |-
+        Calls Django logout method and delete the Token object
+        assigned to the current User object.
+      description: Accepts/Returns nothing.
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+      - auth
+    parameters: []
+  "/auth/password/change/":
+    post:
+      operationId: auth_password_change_create
+      summary: Calls Django Auth SetPasswordForm save method.
+      description: |-
+        Accepts the following POST parameters: new_password1, new_password2
+        Returns the success/fail message.
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          "$ref": "#/definitions/PasswordChange"
+      responses:
+        '201':
+          description: ''
+          schema:
+            "$ref": "#/definitions/PasswordChange"
+      tags:
+      - auth
+    parameters: []
+  "/auth/password/reset/":
+    post:
+      operationId: auth_password_reset_create
+      summary: Calls Django Auth PasswordResetForm save method.
+      description: |-
+        Accepts the following POST parameters: email
+        Returns the success/fail message.
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          "$ref": "#/definitions/PasswordReset"
+      responses:
+        '201':
+          description: ''
+          schema:
+            "$ref": "#/definitions/PasswordReset"
+      tags:
+      - auth
+    parameters: []
+  "/auth/password/reset/confirm/":
+    post:
+      operationId: auth_password_reset_confirm_create
+      summary: |-
+        Password reset e-mail link is confirmed, therefore
+        this resets the user's password.
+      description: |-
+        Accepts the following POST parameters: token, uid,
+            new_password1, new_password2
+        Returns the success/fail message.
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          "$ref": "#/definitions/PasswordResetConfirm"
+      responses:
+        '201':
+          description: ''
+          schema:
+            "$ref": "#/definitions/PasswordResetConfirm"
+      tags:
+      - auth
+    parameters: []
+  "/auth/user/":
+    get:
+      operationId: auth_user_read
+      summary: |-
+        Reads and updates UserModel fields
+        Accepts GET, PUT, PATCH methods.
+      description: |-
+        Default accepted fields: username, first_name, last_name
+        Default display fields: pk, username, email, first_name, last_name
+        Read-only fields: pk, email
+
+        Returns UserModel fields.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            "$ref": "#/definitions/UserDetails"
+      tags:
+      - auth
+    put:
+      operationId: auth_user_update
+      summary: |-
+        Reads and updates UserModel fields
+        Accepts GET, PUT, PATCH methods.
+      description: |-
+        Default accepted fields: username, first_name, last_name
+        Default display fields: pk, username, email, first_name, last_name
+        Read-only fields: pk, email
+
+        Returns UserModel fields.
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          "$ref": "#/definitions/UserDetails"
+      responses:
+        '200':
+          description: ''
+          schema:
+            "$ref": "#/definitions/UserDetails"
+      tags:
+      - auth
+    patch:
+      operationId: auth_user_partial_update
+      summary: |-
+        Reads and updates UserModel fields
+        Accepts GET, PUT, PATCH methods.
+      description: |-
+        Default accepted fields: username, first_name, last_name
+        Default display fields: pk, username, email, first_name, last_name
+        Read-only fields: pk, email
+
+        Returns UserModel fields.
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          "$ref": "#/definitions/UserDetails"
+      responses:
+        '200':
+          description: ''
+          schema:
+            "$ref": "#/definitions/UserDetails"
+      tags:
+      - auth
+    parameters: []
+  "/v1/exposed_url/":
+    get:
+      operationId: v1_exposed_url_list
+      summary: Exposed url
+      description: Return a list of all the exposed url of a certain session.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ExposedUrl"
+      tags:
+      - exposed_url
+    parameters: []
+  "/v1/openAPIinspector":
+    post:
+      operationId: v1_openAPIinspector_create
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          "$ref": "#/definitions/OpenApiInspection"
+      responses:
+        '200':
+          description: ''
+          schema:
+            "$ref": "#/definitions/OpenApiInspectionResponse"
+      tags:
+      - openAPIinspector
+    parameters: []
+  "/v1/provider-run-shield/{id}/":
+    get:
+      operationId: v1_provider-run-shield_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            "$ref": "#/definitions/ServerRunResultShield"
+      tags:
+      - provider-run-shield
+    parameters:
+    - name: id
+      in: path
+      required: true
+      type: string
+  "/v1/provider-run/":
+    get:
+      operationId: v1_provider-run_list
+      summary: Provider-run list.
+      description: Return a list of all the existing provider-run.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ServerRun"
+      tags:
+      - provider-run
+    post:
+      operationId: v1_provider-run_create
+      summary: Create a provider-run.
+      description: Create a new provider-run instance.
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          "$ref": "#/definitions/ServerRunPayloadExample"
+      responses:
+        '201':
+          description: ''
+          schema:
+            "$ref": "#/definitions/ServerRunPayloadExample"
+      tags:
+      - provider-run
+    parameters: []
+  "/v1/provider-run/{id}/":
+    get:
+      operationId: v1_provider-run_read
+      summary: Provider-run detail.
+      description: Return the given provider-run.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            "$ref": "#/definitions/ServerRun"
+      tags:
+      - provider-run
+    parameters:
+    - name: id
+      in: path
+      required: true
+      type: string
+  "/v1/provider-run/{id}/result":
+    get:
+      operationId: v1_provider-run_result_list
+      summary: Result of a Session
+      description: Return for each scenario case related to the session, if that call
+        has been performed and the global outcome.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - provider-run > actions
+    parameters:
+    - name: id
+      in: path
+      required: true
+      type: string
+  "/v1/provider-run/{id}/trigger":
+    put:
+      operationId: v1_provider-run_trigger_update
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - provider-run > trigger
+    parameters:
+    - name: id
+      in: path
+      required: true
+      type: string
+  "/v1/sessiontypes/":
+    get:
+      operationId: v1_sessiontypes_list
+      summary: Session types
+      description: Return all the session types
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/SessionTypes"
+      tags:
+      - sessiontypes
+    parameters: []
+  "/v1/status/{id}/":
+    get:
+      operationId: v1_status_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            "$ref": "#/definitions/SessionStatus"
+      tags:
+      - status
+    parameters:
+    - name: id
+      in: path
+      description: A unique integer value identifying this Sessie.
+      required: true
+      type: integer
+  "/v1/testsessions/":
+    get:
+      operationId: v1_testsessions_list
+      summary: Session list
+      description: Return the list of all the sessions created by the user.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Session"
+      tags:
+      - testsessions
+    post:
+      operationId: v1_testsessions_create
+      summary: Session create.
+      description: Create a new session instance.
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          "$ref": "#/definitions/Session"
+      responses:
+        '201':
+          description: ''
+          schema:
+            "$ref": "#/definitions/Session"
+      tags:
+      - testsessions
+    parameters: []
+  "/v1/testsessions/{id}/":
+    get:
+      operationId: v1_testsessions_read
+      summary: Session detail.
+      description: Return the given session's detail.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            "$ref": "#/definitions/Session"
+      tags:
+      - testsessions
+    parameters:
+    - name: id
+      in: path
+      required: true
+      type: string
+  "/v1/testsessions/{id}/result":
+    get:
+      operationId: v1_testsessions_result_list
+      summary: Result of a Session
+      description: Return for each scenario case related to the session, if that call
+        has been performed and the global outcome.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - testsessions > actions
+    parameters:
+    - name: id
+      in: path
+      required: true
+      type: string
+  "/v1/testsessions/{id}/stop":
+    get:
+      operationId: v1_testsessions_stop_list
+      summary: Stop Session
+      description: Stop the session and retrieve all the scenario cases related to
+        it.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ScenarioCase"
+      tags:
+      - testsessions > actions
+    parameters:
+    - name: id
+      in: path
+      required: true
+      type: string
+definitions:
+  Login:
+    required:
+    - password
+    type: object
+    properties:
+      username:
+        title: Username
+        type: string
+      email:
+        title: Email
+        type: string
+        format: email
+      password:
+        title: Password
+        type: string
+        minLength: 1
+  PasswordChange:
+    required:
+    - new_password1
+    - new_password2
+    type: object
+    properties:
+      new_password1:
+        title: New password1
+        type: string
+        maxLength: 128
+        minLength: 1
+      new_password2:
+        title: New password2
+        type: string
+        maxLength: 128
+        minLength: 1
+  PasswordReset:
+    required:
+    - email
+    type: object
+    properties:
+      email:
+        title: Email
+        type: string
+        format: email
+        minLength: 1
+  PasswordResetConfirm:
+    required:
+    - new_password1
+    - new_password2
+    - uid
+    - token
+    type: object
+    properties:
+      new_password1:
+        title: New password1
+        type: string
+        maxLength: 128
+        minLength: 1
+      new_password2:
+        title: New password2
+        type: string
+        maxLength: 128
+        minLength: 1
+      uid:
+        title: Uid
+        type: string
+        minLength: 1
+      token:
+        title: Token
+        type: string
+        minLength: 1
+  UserDetails:
+    required:
+    - username
+    type: object
+    properties:
+      pk:
+        title: ID
+        type: integer
+        readOnly: true
+      username:
+        title: Gebruikersnaam
+        description: Verplicht. Maximaal 150 tekens.
+        type: string
+        maxLength: 150
+        minLength: 1
+      email:
+        title: E-mailadres
+        type: string
+        format: email
+        readOnly: true
+        minLength: 1
+      first_name:
+        title: Voornaam
+        type: string
+        maxLength: 255
+      last_name:
+        title: Achternaam
+        type: string
+        maxLength: 255
+  ExposedUrl:
+    required:
+    - session
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      subdomain:
+        title: Subdomain
+        type: string
+        maxLength: 200
+        minLength: 1
+        x-nullable: true
+      session:
+        title: Session
+        type: integer
+      vng_endpoint:
+        title: Vng endpoint
+        type: string
+        pattern: "^[^ ]*$"
+        readOnly: true
+  OpenApiInspection:
+    required:
+    - url
+    type: object
+    properties:
+      url:
+        title: Url
+        type: string
+        format: uri
+        minLength: 1
+  OpenApiInspectionResponse:
+    required:
+    - version
+    - satisfied
+    type: object
+    properties:
+      version:
+        title: Version
+        type: integer
+      satisfied:
+        title: Satisfied
+        type: boolean
+  ServerRunResultShield:
+    required:
+    - label
+    - message
+    - color
+    type: object
+    properties:
+      schemaVersion:
+        title: Schemaversion
+        type: integer
+        default: 1
+      label:
+        title: Label
+        type: string
+        maxLength: 200
+        minLength: 1
+      message:
+        title: Message
+        type: string
+        maxLength: 200
+        minLength: 1
+      color:
+        title: Color
+        type: string
+        maxLength: 200
+        minLength: 1
+  TestScenarioUrl:
+    title: Test scenario url
+    required:
+    - name
+    type: object
+    properties:
+      name:
+        title: Naam
+        type: string
+        maxLength: 200
+        minLength: 1
+  Endpoint:
+    required:
+    - url
+    - test_scenario_url
+    type: object
+    properties:
+      url:
+        title: Url
+        type: string
+        minLength: 1
+      test_scenario_url:
+        "$ref": "#/definitions/TestScenarioUrl"
+  ServerRun:
+    required:
+    - test_scenario
+    - endpoints
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      test_scenario:
+        title: Test scenario
+        type: string
+      started:
+        title: Gestart op
+        type: string
+        format: date-time
+        readOnly: true
+      stopped:
+        title: Gestopt op
+        type: string
+        format: date-time
+        readOnly: true
+      client_id:
+        title: Client id
+        type: string
+        x-nullable: true
+      secret:
+        title: Secret
+        type: string
+        x-nullable: true
+      endpoints:
+        type: array
+        items:
+          "$ref": "#/definitions/Endpoint"
+      status:
+        title: Status
+        type: string
+        enum:
+        - starting
+        - running
+        - shutting down
+        - stopped
+        - Error deployment
+        - Scheduled
+        readOnly: true
+      percentage_exec:
+        title: Percentage exec
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      status_exec:
+        title: Status exec
+        type: string
+        x-nullable: true
+  ServerRunPayloadExample:
+    required:
+    - test_scenario
+    - endpoints
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      test_scenario:
+        title: Test scenario
+        type: string
+      started:
+        title: Gestart op
+        type: string
+        format: date-time
+        readOnly: true
+      stopped:
+        title: Gestopt op
+        type: string
+        format: date-time
+        readOnly: true
+      client_id:
+        title: Client id
+        type: string
+        x-nullable: true
+      secret:
+        title: Secret
+        type: string
+        x-nullable: true
+      endpoints:
+        type: array
+        items:
+          "$ref": "#/definitions/Endpoint"
+      status:
+        title: Status
+        type: string
+        enum:
+        - starting
+        - running
+        - shutting down
+        - stopped
+        - Error deployment
+        - Scheduled
+        readOnly: true
+      percentage_exec:
+        title: Percentage exec
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      status_exec:
+        title: Status exec
+        type: string
+        x-nullable: true
+    example:
+      client_id: test-api-s694H3mpvZpd
+      endpoints:
+      - test_scenario_url:
+          name: DRC
+        url: https://ref.tst.vng.cloud/drc/
+      - test_scenario_url:
+          name: ZTC
+        url: https://ref.tst.vng.cloud/ztc/
+      - test_scenario_url:
+          name: ZRC
+        url: https://ref.tst.vng.cloud/zrc/
+      secret: JKzXwzfQvQlYpcnvMwIbdLsmymzzpFvC
+      test_scenario: ZDS 2.0 verification test
+    response:
+      trt: 1
+  SessionTypes:
+    required:
+    - name
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Naam
+        type: string
+        maxLength: 200
+        minLength: 1
+      standard:
+        title: Standaard
+        type: string
+        maxLength: 200
+        minLength: 1
+        x-nullable: true
+      role:
+        title: Rol
+        type: string
+        maxLength: 200
+        minLength: 1
+        x-nullable: true
+      application:
+        title: Applicatie
+        type: string
+        maxLength: 200
+        minLength: 1
+        x-nullable: true
+      version:
+        title: Versie
+        type: string
+        maxLength: 200
+        minLength: 1
+        x-nullable: true
+      authentication:
+        title: Authentication
+        type: string
+        enum:
+        - JWT
+        - Authorization header
+        - No Authorization
+  SessionStatus:
+    required:
+    - session_type
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      session_type:
+        title: Sessie type
+        type: integer
+      started:
+        title: Gestart op
+        type: string
+        format: date-time
+      stopped:
+        title: Gestopt op
+        type: string
+        format: date-time
+        x-nullable: true
+      status:
+        title: Status
+        type: string
+        enum:
+        - starting
+        - running
+        - shutting down
+        - stopped
+        - Error deployment
+      deploy_status:
+        title: Deploy status
+        type: string
+        x-nullable: true
+      deploy_percentage:
+        title: Deploy percentage
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+  Session:
+    required:
+    - session_type
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      session_type:
+        title: Session type
+        type: string
+      started:
+        title: Gestart op
+        type: string
+        format: date-time
+        readOnly: true
+      stopped:
+        title: Gestopt op
+        type: string
+        format: date-time
+        readOnly: true
+      status:
+        title: Status
+        type: string
+        enum:
+        - starting
+        - running
+        - shutting down
+        - stopped
+        - Error deployment
+        readOnly: true
+      exposedurl_set:
+        type: array
+        items:
+          "$ref": "#/definitions/ExposedUrl"
+        readOnly: true
+      build_version:
+        title: Build version
+        type: string
+        minLength: 1
+      sandbox:
+        title: Sandbox
+        type: boolean
+  ScenarioCase:
+    required:
+    - url
+    - vng_endpoint
+    type: object
+    properties:
+      url:
+        title: Url
+        description: "\n    URL pattern that will be compared\n    with the request
+          and eventually matched.\n    Wildcards can be added, e.g. '/test/{uuid}/stop'\n
+          \   will match the URL '/test/c5429dcc-6955-4e22-9832-08d52205f633/stop'.\n
+          \   "
+        type: string
+        maxLength: 200
+        minLength: 1
+      http_method:
+        title: Http method
+        type: string
+        enum:
+        - POST
+        - GET
+        - PUT
+        - DELETE
+        - PATCH
+      vng_endpoint:
+        title: Vng endpoint
+        type: integer

@@ -1,0 +1,810 @@
+openapi: 3.0.1
+info:
+  description: |
+    This is a action like events a capacitations server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Actions
+  version: 1.0.0
+servers:
+  - url: /smw/Actions/1.0.0
+tags:
+  - description: Access to actions, events and capacitations
+    name: action
+  - description: Access to site secctions config
+    name: section
+  - description: Operations about user
+    name: user
+
+security:
+  - bearerAuth: []
+
+paths:
+  /action:
+    post:
+      operationId: addAction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Action'
+        description: Action object that needs to be added to the site
+        required: true
+      responses:
+        '405':
+          content: {}
+          description: Invalid input
+      summary: Add a new action to the events
+      tags:
+        - action
+      x-codegen-request-body-name: body
+      x-eov-operation-handler: controllers/ActionController
+  /action/findByStatus:
+    get:
+      description: Just one status value to get the list of actions
+      operationId: findActionsByStatus
+      parameters:
+        - description: Status values that need to be considered for filter
+          in: query
+          name: status
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Action'
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Action'
+                type: array
+          description: successful operation
+        '400':
+          content: {}
+          description: Invalid status value
+      summary: Finds Action by status
+      tags:
+        - action
+      x-eov-operation-handler: controllers/ActionController
+  /action/{actionId}:
+    delete:
+      operationId: deleteAction
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+        - description: Action id to delete
+          in: path
+          name: actionId
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          content: {}
+          description: Invalid ID supplied
+        '404':
+          content: {}
+          description: Action not found
+      summary: Deletes a action
+      tags:
+        - action
+      x-eov-operation-handler: controllers/ActionController
+    get:
+      description: Returns a single action
+      operationId: getActionById
+      parameters:
+        - description: ID of action to return
+          in: path
+          name: actionId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Action'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Action'
+          description: successful operation
+        '400':
+          content: {}
+          description: Invalid ID supplied
+        '404':
+          content: {}
+          description: Action not found
+
+      summary: Find action by ID
+      tags:
+        - action
+      x-eov-operation-handler: controllers/ActionController
+    put:
+      operationId: updateAction
+      parameters:
+        - description: name that need to be updated
+          in: path
+          name: actionId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Action'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Action'
+        description: Updated action object
+        required: true
+      responses:
+        '400':
+          content: {}
+          description: Invalid ID supplied
+        '404':
+          content: {}
+          description: Action not found
+        '405':
+          content: {}
+          description: Validation exception
+      summary: Update an existing actions
+      tags:
+        - action
+      x-codegen-request-body-name: body
+      x-eov-operation-handler: controllers/ActionController
+  /action/{actionId}/uploadImage:
+    post:
+      operationId: uploadFile
+      parameters:
+        - description: ID of action to update
+          in: path
+          name: actionId
+          required: true
+          schema:
+            format: int64
+            type: integer
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                additionalMetadata:
+                  description: Additional data to pass to server
+                  type: string
+                file:
+                  description: file to upload
+                  format: binary
+                  type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: successful operation
+      summary: uploads an image
+      tags:
+        - action
+      x-eov-operation-handler: controllers/ActionController
+  /action/{actionId}/register:
+    post:
+      operationId: registerAction
+      parameters:
+        - description: ID of action to register
+          in: path
+          name: actionId
+          required: true
+          schema:
+            format: int64
+            type: integer
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                additionalMetadata:
+                  description: Additional data to pass to server
+                  type: string
+                file:
+                  description: file to upload
+                  format: binary
+                  type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: successful operation
+      summary: register to an action
+      tags:
+        - action
+      x-eov-operation-handler: controllers/ActionController
+  /action/{actionId}/attend:
+    post:
+      operationId: attendAction
+      parameters:
+        - description: ID of action to register
+          in: path
+          name: actionId
+          required: true
+          schema:
+            format: int64
+            type: integer
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                additionalMetadata:
+                  description: Additional data to pass to server
+                  type: string
+                file:
+                  description: file to upload
+                  format: binary
+                  type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: successful operation
+      summary: attend to an action
+      tags:
+        - action
+      x-eov-operation-handler: controllers/ActionController
+  /section:
+    post:
+      description: This can only be done by the logged in section.
+      operationId: createSection
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Section'
+        description: Created section object
+        required: true
+      responses:
+        default:
+          content: {}
+          description: successful operation
+      summary: Create section
+      tags:
+        - section
+      x-codegen-request-body-name: body
+      x-eov-operation-handler: controllers/SectionController
+  /section/createWithArray:
+    post:
+      operationId: createSectionsWithArrayInput
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              items:
+                $ref: '#/components/schemas/Section'
+              type: array
+        description: List of section object
+        required: true
+      responses:
+        default:
+          content: {}
+          description: successful operation
+      summary: Creates list of sections with given input array
+      tags:
+        - section
+      x-codegen-request-body-name: body
+      x-eov-operation-handler: controllers/SectionController
+  /section/createWithList:
+    post:
+      operationId: createSectionsWithListInput
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              items:
+                $ref: '#/components/schemas/Section'
+              type: array
+        description: List of section object
+        required: true
+      responses:
+        default:
+          content: {}
+          description: successful operation
+      summary: Creates list of sections with given input array
+      tags:
+        - section
+      x-codegen-request-body-name: body
+      x-eov-operation-handler: controllers/SectionController
+  /section/{sectionName}:
+    delete:
+      description: This can only be done by the logged in section.
+      operationId: deleteSection
+      parameters:
+        - description: The name that needs to be deleted
+          in: path
+          name: sectionName
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          content: {}
+          description: Invalid sectionname supplied
+        '404':
+          content: {}
+          description: Section not found
+      summary: Delete section
+      tags:
+        - section
+      x-eov-operation-handler: controllers/SectionController
+    get:
+      operationId: getSectionByName
+      parameters:
+        - description: The name that needs to be fetched. Use section1 for testing.
+          in: path
+          name: sectionName
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Section'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Section'
+          description: successful operation
+        '400':
+          content: {}
+          description: Invalid sectionname supplied
+        '404':
+          content: {}
+          description: Section not found
+      summary: Get section by section name
+      tags:
+        - section
+      x-eov-operation-handler: controllers/SectionController
+    put:
+      description: This can only be done by the logged in section.
+      operationId: updateSection
+      parameters:
+        - description: name that need to be updated
+          in: path
+          name: sectionName
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Section'
+        description: Updated section object
+        required: true
+      responses:
+        '400':
+          content: {}
+          description: Invalid section supplied
+        '404':
+          content: {}
+          description: Section not found
+      summary: Updated section
+      tags:
+        - section
+      x-codegen-request-body-name: body
+      x-eov-operation-handler: controllers/SectionController
+  /section/{sectionId}/uploadImage:
+    post:
+      operationId: uploadImageSection
+      parameters:
+        - description: ID of section to update
+          in: path
+          name: sectionId
+          required: true
+          schema:
+            format: int64
+            type: integer
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                additionalMetadata:
+                  description: Additional data to pass to server
+                  type: string
+                file:
+                  description: file to upload
+                  format: binary
+                  type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: successful operation
+      summary: uploads an image
+      tags:
+        - section
+      x-eov-operation-handler: controllers/SectionController
+  /user:
+    post:
+      description: This can only be done by any user.
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        description: Created user object
+        required: true
+      responses:
+        default:
+          content: {}
+          description: successful operation
+      summary: Create user
+      tags:
+        - user
+      x-codegen-request-body-name: body
+      x-eov-operation-handler: controllers/UserController
+  /user/createWithArray:
+    post:
+      operationId: createUsersWithArrayInput
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              items:
+                $ref: '#/components/schemas/User'
+              type: array
+        description: List of user object
+        required: true
+      responses:
+        default:
+          content: {}
+          description: successful operation
+      summary: Creates list of users with given input array
+      tags:
+        - user
+      x-codegen-request-body-name: body
+      x-eov-operation-handler: controllers/UserController
+  /user/createWithList:
+    post:
+      operationId: createUsersWithListInput
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              items:
+                $ref: '#/components/schemas/User'
+              type: array
+        description: List of user object
+        required: true
+      responses:
+        default:
+          content: {}
+          description: successful operation
+      summary: Creates list of users with given input array
+      tags:
+        - user
+      x-codegen-request-body-name: body
+      x-eov-operation-handler: controllers/UserController
+  /user/login:
+    post:
+      operationId: loginUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
+          description: successful operation
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                format: int32
+                type: integer
+            X-Expires-After:
+              description: date in UTC when token expires
+              schema:
+                format: date-time
+                type: string
+        '400':
+          content: {}
+          description: Invalid username/password supplied
+      summary: Logs user into the system
+      tags:
+        - user
+      security: []   # No security             
+      x-eov-operation-handler: controllers/UserController
+  /user/logout:
+    get:
+      operationId: logoutUser
+      responses:
+        default:
+          content: {}
+          description: successful operation
+      summary: Logs out current logged in user session
+      tags:
+        - user
+      x-eov-operation-handler: controllers/UserController
+  /user/{username}:
+    delete:
+      description: This can only be done by the logged in user.
+      operationId: deleteUser
+      parameters:
+        - description: The name that needs to be deleted
+          in: path
+          name: username
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          content: {}
+          description: Invalid username supplied
+        '404':
+          content: {}
+          description: User not found
+      summary: Delete user
+      tags:
+        - user
+      x-eov-operation-handler: controllers/UserController
+    get:
+      operationId: getUserByName
+      parameters:
+        - description: The name that needs to be fetched. Use user1 for testing.
+          in: path
+          name: username
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: successful operation
+        '400':
+          content: {}
+          description: Invalid username supplied
+        '404':
+          content: {}
+          description: User not found
+      summary: Get user by user name
+      tags:
+        - user
+      x-eov-operation-handler: controllers/UserController
+    put:
+      description: This can only be done by the logged in user.
+      operationId: updateUser
+      parameters:
+        - description: name that need to be updated
+          in: path
+          name: username
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        description: Updated user object
+        required: true
+      responses:
+        '400':
+          content: {}
+          description: Invalid user supplied
+        '404':
+          content: {}
+          description: User not found
+      summary: Updated user
+      tags:
+        - user
+      x-codegen-request-body-name: body
+      x-eov-operation-handler: controllers/UserController
+components:
+  schemas:
+    Section:
+      example:
+        file: file
+        name: name
+        liknk: liknk
+        id: 0
+        content: content
+        status: enabled
+      properties:
+        id:
+          format: int64
+          type: integer
+        status:
+          description: content Status
+          enum:
+            - enabled
+            - disabled
+          type: string
+        name:
+          type: string
+        content:
+          type: string
+        file:
+          type: string
+        liknk:
+          type: string
+      type: object
+      xml:
+        name: Order
+    Category:
+      example:
+        name: name
+        id: 6
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+      type: object
+      xml:
+        name: Category
+    User:
+      example:
+        firstName: firstName
+        lastName: lastName
+        password: password
+        userStatus: 6
+        phone: phone
+        id: 0
+        email: email
+        username: username
+      properties:
+        id:
+          format: int64
+          type: integer
+        username:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        phone:
+          type: string
+        userStatus:
+          description: User Status
+          format: int32
+          type: integer
+      type: object
+      xml:
+        name: User
+    Tag:
+      example:
+        name: name
+        id: 1
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+      type: object
+      xml:
+        name: Tag
+    Login:
+      example:
+        user: name
+        password: pass
+      properties:
+        user:
+          type: string
+        password:
+          type: string
+      type: object
+      xml:
+        name: Login
+    Action:
+      example:
+        photoUrls:
+          - photoUrls
+          - photoUrls
+        name: metting
+        id: 0
+        category:
+          name: name
+          id: 6
+        tags:
+          - name: name
+            id: 1
+          - name: name
+            id: 1
+        status: available
+      properties:
+        id:
+          format: int64
+          type: integer
+        category:
+          $ref: '#/components/schemas/Category'
+        name:
+          example: metting
+          type: string
+        photoUrls:
+          items:
+            type: string
+          type: array
+          xml:
+            name: photoUrl
+            wrapped: true
+        tags:
+          items:
+            $ref: '#/components/schemas/Tag'
+          type: array
+          xml:
+            name: tag
+            wrapped: true
+        status:
+          description: action status in the store
+          enum:
+            - available
+            - pending
+            - sold
+          type: string
+      required:
+        - name
+        - photoUrls
+      type: object
+      xml:
+        name: Pet
+    ApiResponse:
+      example:
+        code: 0
+        type: type
+        message: message
+      properties:
+        code:
+          format: int32
+          type: integer
+        type:
+          type: string
+        message:
+          type: string
+      type: object
+  securitySchemes:
+    api_key:
+      in: header
+      name: api_key
+      type: apiKey
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+x-original-swagger-version: '2.0'

@@ -1,0 +1,204 @@
+openapi: 3.0.0
+info:
+  description: Scality Utilization Monitoring API
+  title: UTAPI
+  version: 0.0.1
+
+components:
+  schemas:
+    utapi-metric-v1:
+      type: array
+      items:
+        type: object
+        properties:
+          operationId:
+            type: string
+          uuid:
+            type: string
+          timestamp:
+            type: integer
+          bucket:
+            type: string
+          object:
+            type: string
+          versionId:
+            type: string
+          account:
+            type: string
+          user:
+            type: string
+          location:
+            type: string
+          objectDelta:
+            type: integer
+          sizeDelta:
+            type: integer
+          incomingBytes:
+            type: integer
+          outgoingBytes:
+            type: integer
+    utapi-request-v1:
+      type: object
+      required:
+        - timeRange
+      properties:
+        timeRange:
+          type: array
+          items:
+            type: integer
+        buckets:
+          type: array
+          items:
+            type: string
+        accounts:
+          type: array
+          items:
+            type: string
+        users:
+          type: array
+          items:
+            type: string
+        locations:
+          type: array
+          items:
+            type: string
+
+  responses:
+    not-implemented:
+      description: This operation has yet to be implemented.
+      content:
+        text/plain:
+            schema:
+                type: string
+    json-error:
+      description: Error containing code and message
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+    utapi-get-storage-v1:
+      description: storageUtilized for a single resource
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - storageUtilized
+              - resource
+              - level
+            properties:
+              storageUtilized:
+                type: integer
+              resource:
+                type: string
+              level:
+                type: string
+    utapi-get-prometheus-metrics:
+      description: metrics to be ingested by prometheus 
+      content:
+        text/plain:
+          schema:
+            type: string
+  parameters:
+    level:
+      in: path
+      name: level
+      required: true
+      schema:
+        type: string
+        enum: [ 'accounts', 'buckets', 'users' ]
+    resource:
+        in: path
+        name: resource
+        required: True
+        schema:
+          type: string
+    action:
+      in: query
+      name: Action
+      required: True
+      schema:
+        type: string
+        enum: [ ListMetrics ]
+paths:
+  /_/healthcheck:
+    get:
+      x-router-controller: internal
+      x-iplimit: true
+      operationId: healthcheck
+      responses:
+        default:
+          $ref: '#/components/responses/json-error'
+        200:
+          description: Service is healthy
+  /_/metrics:
+    get:
+      x-router-controller: internal
+      x-iplimit: true
+      operationId: prometheusMetrics
+      responses:
+        default:
+          $ref: '#/components/responses/json-error'
+        200:
+          $ref: '#/components/responses/utapi-get-prometheus-metrics'
+  /v2/ingest:
+    post:
+      x-router-controller: metrics
+      description: Ingest UTAPI metric
+      operationId: ingestMetric
+      responses:
+        default:
+          $ref: '#/components/responses/json-error'
+        200:
+          description: Successfully ingested metric
+      requestBody:
+        x-name: body
+        required: True
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/utapi-metric-v1'
+  /v2/storage/{level}/{resource}:
+    parameters:
+      - $ref: '#/components/parameters/resource'
+      - $ref: '#/components/parameters/level'
+    get:
+      x-router-controller: metrics
+      x-iplimit: true
+      description: Get current storage utilized
+      operationId: getStorage
+      responses:
+        default:
+          $ref: '#/components/responses/json-error'
+        200:
+          $ref: '#/components/responses/utapi-get-storage-v1'
+  /{level}:
+    parameters:
+      - $ref: '#/components/parameters/level'
+      - $ref: '#/components/parameters/action'
+    post:
+      x-router-controller: metrics
+      x-authv4: true
+      description: List UTAPI metrics
+      operationId: listMetrics
+      responses:
+        default:
+          $ref: '#/components/responses/json-error'
+        200:
+          description: Success
+      requestBody:
+        x-name: body
+        required: True
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/utapi-request-v1'
+
