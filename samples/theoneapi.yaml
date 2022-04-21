@@ -9,6 +9,9 @@ info:
     name: The One API
     url: https://the-one-api.dev/
 
+security:
+  - bearerAuth: []
+
 servers:
   - url: https://the-one-api.dev/v2
 

@@ -1,10 +1,10 @@
-openapi: "3.0.0"
+openapi: '3.0.0'
 
 info:
   version: 2.0.0
   title: The One API
   description:
-  termsOfService: "https://openweathermap.org/terms"
+  termsOfService: 'https://openweathermap.org/terms'
   contact:
     name: The One API
     url: https://the-one-api.dev/
@@ -12,24 +12,27 @@ info:
 servers:
   - url: https://the-one-api.dev/v2
 
+security:
+  - bearerAuth: []
+
 paths:
   /book:
     get:
       operationId: listBooks
       summary: List of all "The Lord of the Rings" books
       responses:
-        "200":
+        '200':
           description: Expected response to a valid request
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PagedBooks"
+                $ref: '#/components/schemas/PagedBooks'
         default:
           description: Unexpected error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: '#/components/schemas/Error'
 
   /book/{id}:
     get:
@@ -43,18 +46,18 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: Expected response to a valid request
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PagedBooks"
+                $ref: '#/components/schemas/PagedBooks'
         default:
           description: Unexpected error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: '#/components/schemas/Error'
 
 components:
   schemas:
@@ -64,7 +67,7 @@ components:
         doc:
           type: array
           items:
-            $ref: "#/components/schemas/Book"
+            $ref: '#/components/schemas/Book'
         total:
           type: integer
         limit:
