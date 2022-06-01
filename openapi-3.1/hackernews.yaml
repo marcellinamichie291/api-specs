@@ -1,0 +1,234 @@
+openapi: "3.1.0"
+
+info:
+  version: "0.0"
+  title: Hacker News API
+  description: Hacker News API using Firebase
+  contact:
+    name: HackerNews/API
+    url: https://github.com/HackerNews/API
+    email: api@ycombinator.com
+  license:
+    name: MIT License
+    identifier: MIT
+
+servers:
+  - url: https://hacker-news.firebaseio.com/v0
+
+paths:
+  /item/{id}.json:
+    get:
+      operationId: item
+      summary: Get data on one item
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the item
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Item"
+  /user/{username}.json:
+    get:
+      operationId: user
+      summary: Get data on one public user
+      parameters:
+        - name: username
+          in: path
+          required: true
+          description: The username
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /maxitem.json:
+    get:
+      operationId: maxitem
+      summary: Get the ID of the latest item
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                type: integer
+  /topstories.json:
+    get:
+      operationId: topstories
+      summary: Get the IDs of the 500 top stories
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IDList"
+  /newstories.json:
+    get:
+      operationId: newstories
+      summary: Get the IDs of the 500 newest stories
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IDList"
+  /beststories.json:
+    get:
+      operationId: beststories
+      summary: Get the IDs of the 500 best stories
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IDList"
+  /askstories.json:
+    get:
+      operationId: askstories
+      summary: Get the IDs of the 200 newest Ask stories
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IDList"
+  /showstories.json:
+    get:
+      operationId: showstories
+      summary: Get the IDs of the 200 newest Show stories
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IDList"
+  /jobstories.json:
+    get:
+      operationId: jobstories
+      summary: Get the IDs of the 200 newest Job stories
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IDList"
+  /updates.json:
+    get:
+      operationId: updates
+      summary: Get updates to IDs and profiles
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: integer
+                  profiles:
+                    type: array
+                    items:
+                      type: string
+
+components:
+  schemas:
+    Item:
+      type: object
+      required: ["id"]
+      properties:
+        id:
+          description: The item's unique id.
+          type: integer
+        deleted:
+          description: true if the item is deleted.
+          type: boolean
+        type:
+          description: The type of item. One of "job", "story", "comment", "poll", or "pollopt".
+          type: string
+        by:
+          description: The username of the item's author.
+          type: string
+        time:
+          description: Creation date of the item, in Unix Time.
+          type: string
+        text:
+          description: The comment, story or poll text. HTML.
+          type: string
+        dead:
+          description: true if the item is dead.
+          type: boolean
+        parent:
+          description: "The comment's parent: either another comment or the relevant story."
+          type: integer
+        poll:
+          description: The pollopt's associated poll.
+          type: string
+        kids:
+          description: The ids of the item's comments, in ranked display order.
+          type: array
+          items:
+            type: integer
+        url:
+          description: The URL of the story.
+          type: string
+        score:
+          description: The story's score, or the votes for a pollopt.
+          type: integer
+        title:
+          description: The title of the story, poll or job. HTML.
+          type: string
+        parts:
+          description: A list of related pollopts, in display order.
+          type: array
+          items:
+            type: integer
+        descendants:
+          description: In the case of stories or polls, the total comment count.
+          type: integer
+
+    User:
+      type: object
+      required: ["id", "created", "karma"]
+      properties:
+        id:
+          description: The user's unique username. Case-sensitive.
+          type: string
+        created:
+          description: Creation date of the user, in Unix Time.
+          type: integer
+        karma:
+          description: The user's karma.
+          type: integer
+        about:
+          description: The user's optional self-description. HTML.
+          type: string
+        submitted:
+          description: List of the user's stories, polls and comments.
+          type: array
+          items:
+            type: integer
+
+    IDList:
+      type: array
+      items:
+        type: integer

@@ -3,8 +3,7 @@ openapi: '3.0.0'
 info:
   version: 2.0.0
   title: The One API
-  description:
-  termsOfService: 'https://openweathermap.org/terms'
+  description: The One API to rule them all.
   contact:
     name: The One API
     url: https://the-one-api.dev/
