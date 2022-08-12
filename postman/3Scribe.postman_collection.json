@@ -1,0 +1,275 @@
+{
+	"info": {
+		"_postman_id": "6a010248-6028-4364-9870-b4278b0a6f65",
+		"name": "3Scribe",
+		"description": "# 3Scribe Postman Collection\r\n\r\nUse this collection to communicate with [3Scribe](https://3scri.be), the worlds most accurate automated speech transcription service.  Sign up [here](https://3scri.be/register) to get an API key along with 30 minutes free credit to test us out.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Request a list of transcription jobs",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://api.3scri.be/jobs/",
+					"protocol": "https",
+					"host": [
+						"api",
+						"3scri",
+						"be"
+					],
+					"path": [
+						"jobs",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": null,
+							"description": "Integer value to specify which page of data to return.",
+							"disabled": true
+						},
+						{
+							"key": "perpage",
+							"value": null,
+							"description": "Integer value to specify how many transcription jobs to list per page of data.",
+							"disabled": true
+						},
+						{
+							"key": "direction",
+							"value": null,
+							"description": "Integer value to specify the sort order of data. Acceptable values: 1 = Ascending; 2 = Descending. ",
+							"disabled": true
+						},
+						{
+							"key": "order",
+							"value": null,
+							"description": "Integer value to specify which field to sort data on.  Acceptable values: 1 = Job Name; 2 = Duration; 3 = Job Status; 4 = Date Created.",
+							"disabled": true
+						}
+					]
+				},
+				"description": "# /jobs\r\n\r\n## ***GET*** \r\n\r\nYou can use this endpoint to retrieve a list of transcription jobs in your account.  For a basic call, the servers will return a 'page' of 10 records sorted by the transcription job name in ascending order.  However, you can add parameters to selection different amounts of data, a different page of data, sorted and ordered by different fields.\r\n\r\nThe following parameters can be passed as part of the request:\r\n\r\n|Parameter Name|Allowed Values|Description|\r\n|--------------|--------------|-----------|\r\n|page|Any positive integer value|This will request a page of up to the number of records specified in the 'perpage' parameter or 10 by default.  If the page number specified exceeds the number of potential pages of data contained in your account, an empty data set will be returned.|\r\n|perpage|10, 25, 50 or 100|This specifies the number of records to be returned in each request|  \r\n|order|1, 2, 3 or 4|The field to order the data by:<br>1. Job Name<br>2. Duration<br>3. Job Status<br>4. Date Created|\r\n|direction|1 or 2|The direction to organize the retrieved data<br>1. Ascending<br>2. Descending|\r\n\r\n\r\n**Response**\r\n\r\n> A successful request will return an array of data formatted like the example below.\r\n\r\n```json\r\n[{\r\n  \"jobid\": \"JobA\",\r\n  \"jobname\": \"sample-A.mp3\",\r\n  \"creationdate\": \"2020-04-07T01:03:20Z\",\r\n  \"jobstatus\": \"Completed\",\r\n  \"duration\": 60\r\n},\r\n{\r\n  \"jobid\": \"JobB\",\r\n  \"jobname\": \"sample-B.flac\",\r\n  \"creationdate\": \"2020-04-07T01:03:20Z\",\r\n  \"jobstatus\": \"Completed\",\r\n  \"duration\": 60\r\n},{\r\n  \"jobid\": \"JobC\",\r\n  \"jobname\": \"sample-C.ogg\",\r\n  \"creationdate\": \"2020-04-07T01:03:20Z\",\r\n  \"jobstatus\": \"Completed\",\r\n  \"duration\": 60\r\n},{\r\n  \"jobid\": \"JobD\",\r\n  \"jobname\": \"sample-D.wav\",\r\n  \"creationdate\": \"2020-04-07T01:03:20Z\",\r\n  \"jobstatus\": \"Completed\",\r\n  \"duration\": 60\r\n}]\r\n```\r\n\r\nIf successful the servers will respond with a 200 http code and an array of JSON objects containing the following fields:\r\n\r\n|Parameter Name|Data Type|Description|\r\n|--------------|---------|-----------|\r\n|jobid|string|The unique, identifying code for this transcription job|\r\n|jobname|string|The name the user provided to identify the job|\r\n|creationdate|date time|The UTC time and date the transcription job was created, stored in ISO-8601 format|\r\n|jobstatus|string|The current status of the transcription job.  Possible status's are: Completed, Inactive, Requested, Processing,  Error|\r\n|duration|integer|The length of the uploaed audio or video file in seconds|"
+			},
+			"response": []
+		},
+		{
+			"name": "Request a specific jobs transcript",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://api.3scri.be/jobs/:jobid",
+					"protocol": "https",
+					"host": [
+						"api",
+						"3scri",
+						"be"
+					],
+					"path": [
+						"jobs",
+						":jobid"
+					],
+					"variable": [
+						{
+							"key": "jobid",
+							"value": "",
+							"description": "ID code of the transcription job to retrieve."
+						}
+					]
+				},
+				"description": "# /jobs/{jobid}\r\nBy attaching a job ID code as part of the endpoint request two actions can be carried out on a specific transcription job: retrieving details about the job or deleting the job from the 3Scribe system.\r\n## ***GET*** \r\n\r\nThis action will retrieve details about the job or deleting the job from the 3Scribe system.\r\n\r\n**Response**\r\n\r\n> A successful request will return a JSON object of data formatted like the example below.\r\n\r\n```json\r\n{\r\n    \"jobid\": \"JobA\",\r\n    \"jobname\": \"sample-A.mp3\",\r\n    \"url\": null,\r\n    \"jobstatus\": \"Completed\",\r\n    \"creationdate\": \"2019-10-16T22:55:11Z\",\r\n    \"duration\": 7,\r\n    \"errormessage\": null,\r\n    \"transcription\": {\r\n        \"text\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n        \"words\": [\r\n            {\r\n                \"word\": \"Lorem\",\r\n                \"confidence\": 1.0,\r\n                \"timing\": 412\r\n            },\r\n            {\r\n                \"word\": \"ipsum\",\r\n                \"confidence\": 1.0,\r\n                \"timing\": 745\r\n            },\r\n            {\r\n                \"word\": \"dolor\",\r\n                \"confidence\": 1.0,\r\n                \"timing\": 1010\r\n            }\r\n        ]\r\n    }\r\n}\r\n```\r\nIf successful the servers will respond with a 200 http code and a JSON object containing the following fields:\r\n\r\n|Parameter Name|Data Type|Description|\r\n|--------------|---------|-----------|\r\n|jobid|string|The unique, identifying code for this transcription job|\r\n|jobname|string|The name the user provided to identify the job|\r\n|url|string|The URL of the file provided during a transcription request API call|\r\n|jobstatus|string|The current status of the transcription job.  Possible status's are: Completed, Inactive, Requested, Processing,  Error|\r\n|creationdate|date time|The UTC time and date the transcription job was created, stored in ISO-8601 format|\r\n|duration|integer|The length of the uploaed audio or video file in seconds|\r\n|errormessage|string|If the system was unable to retrieve the requested data this field will contain an explaination.|\r\n|transcription|object|The transcription object contains information about the transcript.  Currently this just contains the text of the transcription but will be exanded to include timings, word confidence, sentiment etc.  See below for details on the transcription object|\r\n\r\n**Transcription Object**\r\n\r\n|Parameter Name|Data Type|Description|\r\n|--------------|---------|-----------|\r\n|text|string|The raw text transcript|\r\n|words|array|An array of each word of the transcript along with additional metadata as detailed below|\r\n\r\n**Words**\r\n\r\n|Parameter Name|Data Type|Description|\r\n|--------------|---------|-----------|\r\n|word|string|The individual word along with any associated punctuation|\r\n|confidence|number|A decimal value containing the percentage confidence that the word presented was the word uttered.  1.0 = 100% confidence|\r\n|timing|number|An integer value representing the number of milliseconds elapsed from the beginning of the audio to the beginning of the word|"
+			},
+			"response": []
+		},
+		{
+			"name": "Submit a transcription job by requesting a pre-signed URL",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "multipart/form-data"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "",
+							"description": "*Required.  Descriptive name of the transcription job.",
+							"type": "text"
+						},
+						{
+							"key": "requesturl",
+							"value": "",
+							"description": "File name of the media file to be transcribed.",
+							"type": "text"
+						},
+						{
+							"key": "language",
+							"value": "",
+							"description": "One of the following language codes: en-US,en-GB,bg-BG,hr-HR,cs-CZ,da-dk,nl-NL,fi-FI,fr-FR,de-DE,el-GR,hu-HU,it-IT,nb-NO,pl-PL,pt-PT,ro-RO,sk-SK,sl-SI,es-US,es-ES,sv-SE,tr-TR",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.3scri.be/transcribe",
+					"protocol": "https",
+					"host": [
+						"api",
+						"3scri",
+						"be"
+					],
+					"path": [
+						"transcribe"
+					]
+				},
+				"description": "# /transcribe\r\n## ***POST*** \r\n\r\n> For a request requiring a pre-signed URL\r\n\r\nThis endpoint will request the 3Scribe system to process a file.  Parameters for this type of request must be formatted as JSON.  The file can be passed to us in a number of differnt ways depending on the fields passed in the request.  A user can: \r\n\r\n1. Request a pre-signed URL granting them permission to upload a file to a secure AWS S3 bucket using a suqsequent PUT request.  Once uploaded files are instantly moved from this public facing location to our secure storage and the transcription processing begins.\r\n\r\n2. Provide a publically accessable URL to 3Scribe.  If provided, the processing will begin and the file will be downloaded to our secure storage as part of the process.  \r\n\r\n|Parameter Name|Allowed Values|Description|\r\n|--------------|--------------|-----------|\r\n|name (required)|string|A descriptive title for the transcription job that will allow the user to identify the job in the 3Scribe portal.|\r\n|url|valid URL to a single file|Either this parameter or __*requesturl*__ must be provided|  \r\n|requesturl|filename of the file to upload|Either this parameter or the __*url*__ must be provided|\r\n\r\n**Responses**\r\n> A successful request will return a JSON object of data formatted like the example below.\r\n\r\n```json\r\n{\r\n    \"jobid\": \"JobE\",\r\n    \"jobname\": \"testjob\",\r\n    \"url\": \"A pre-signed URL\",\r\n    \"jobstatus\": \"loading\",\r\n    \"creationdate\": \"0001-01-01T00:00:00\",\r\n    \"duration\": 0,\r\n    \"errormessage\": \"\",\r\n    \"transcription\": null\r\n}\r\n```\r\nIf successful the servers will respond with a 200 http code and a JSON object containing the following fields:\r\n\r\n|Parameter Name|Data Type|Description|\r\n|--------------|---------|-----------|\r\n|jobid|string|The unique, identifying code for this transcription job|\r\n|jobname|string|The name the user provided to identify the job|\r\n|url|string|The pre-signed URL you may use to upload the file itself using a PUT request|\r\n|jobstatus|string|The current status of the transcription job.  This will be set to 'loading'|\r\n|creationdate|date time|The time and date the transcription job was created|\r\n|duration|integer|The length of the uploaed audio or video file in seconds.  This will be zero as the file has not yet been examined.|\r\n|errormessage|string|If the system was unable to retrieve the requested data this field will contain an explaination.|\r\n|transcription|object|The transcription object contains information about the transcript.  This will be null as the file is not yet loaded.|"
+			},
+			"response": []
+		},
+		{
+			"name": "Submit a transcription job by submitting a publically available URI",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "multipart/form-data"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "",
+							"description": "*Required.  Descriptive name of the transcription job.",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "",
+							"description": "A valid URL to a single file to be transcribed.  The file must be publically accessible.",
+							"type": "text"
+						},
+						{
+							"key": "language",
+							"value": "",
+							"description": "One of the following language codes: en-US,en-GB,bg-BG,hr-HR,cs-CZ,da-dk,nl-NL,fi-FI,fr-FR,de-DE,el-GR,hu-HU,it-IT,nb-NO,pl-PL,pt-PT,ro-RO,sk-SK,sl-SI,es-US,es-ES,sv-SE,tr-TR",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.3scri.be/transcribe",
+					"protocol": "https",
+					"host": [
+						"api",
+						"3scri",
+						"be"
+					],
+					"path": [
+						"transcribe"
+					]
+				},
+				"description": "# /transcribe\r\n## ***POST*** \r\n\r\n> For a request requiring a pre-signed URL\r\n\r\nThis endpoint will request the 3Scribe system to process a file.  Parameters for this type of request must be formatted as JSON.  The file can be passed to us in a number of differnt ways depending on the fields passed in the request.  A user can: \r\n\r\n1. Request a pre-signed URL granting them permission to upload a file to a secure AWS S3 bucket using a suqsequent PUT request.  Once uploaded files are instantly moved from this public facing location to our secure storage and the transcription processing begins.\r\n\r\n2. Provide a publically accessable URL to 3Scribe.  If provided, the processing will begin and the file will be downloaded to our secure storage as part of the process.  \r\n\r\n|Parameter Name|Allowed Values|Description|\r\n|--------------|--------------|-----------|\r\n|name (required)|string|A descriptive title for the transcription job that will allow the user to identify the job in the 3Scribe portal.|\r\n|url|valid URL to a single file|Either this parameter or __*requesturl*__ must be provided|  \r\n|requesturl|filename of the file to upload|Either this parameter or the __*url*__ must be provided|\r\n\r\n**Responses**\r\n> A successful request will return a JSON object of data formatted like the example below.\r\n\r\n```json\r\n{\r\n    \"jobid\": \"JobE\",\r\n    \"jobname\": \"testjob\",\r\n    \"url\": \"A pre-signed URL\",\r\n    \"jobstatus\": \"loading\",\r\n    \"creationdate\": \"0001-01-01T00:00:00\",\r\n    \"duration\": 0,\r\n    \"errormessage\": \"\",\r\n    \"transcription\": null\r\n}\r\n```\r\nIf successful the servers will respond with a 200 http code and a JSON object containing the following fields:\r\n\r\n|Parameter Name|Data Type|Description|\r\n|--------------|---------|-----------|\r\n|jobid|string|The unique, identifying code for this transcription job|\r\n|jobname|string|The name the user provided to identify the job|\r\n|url|string|The pre-signed URL you may use to upload the file itself using a PUT request|\r\n|jobstatus|string|The current status of the transcription job.  This will be set to 'loading'|\r\n|creationdate|date time|The time and date the transcription job was created|\r\n|duration|integer|The length of the uploaed audio or video file in seconds.  This will be zero as the file has not yet been examined.|\r\n|errormessage|string|If the system was unable to retrieve the requested data this field will contain an explaination.|\r\n|transcription|object|The transcription object contains information about the transcript.  This will be null as the file is not yet loaded.|"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a transcription job",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://api.3scri.be/jobs/:jobid",
+					"protocol": "https",
+					"host": [
+						"api",
+						"3scri",
+						"be"
+					],
+					"path": [
+						"jobs",
+						":jobid"
+					],
+					"variable": [
+						{
+							"key": "jobid",
+							"value": "",
+							"description": "ID code of the transcription job to retrieve."
+						}
+					]
+				},
+				"description": "# /jobs/{jobid}\r\nBy attaching a job ID code as part of the endpoint request two actions can be carried out on a specific transcription job: retrieving details about the job or deleting the job from the 3Scribe system.\r\n\r\n## ***DELETE*** \r\n\r\nThis action will delete the job from the 3Scribe system.  All files and texts are completly removed and cannot be restored.\r\n\r\nIf successful the servers will respond with a 200 http code."
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{APIKey}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "APIKey",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "APIKey",
+			"value": "your_3Scribe_API_Key"
+		}
+	]
+}
