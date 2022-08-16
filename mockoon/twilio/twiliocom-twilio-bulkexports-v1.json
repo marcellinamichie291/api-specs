@@ -1,0 +1,307 @@
+{
+  "uuid": "315ae742-b897-40b3-b484-fefa7640d711",
+  "lastMigration": 19,
+  "name": "Twilio - Bulkexports",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "c663b8dd-8ed7-438c-84b7-31ede3d69be5",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v1/Exports/Jobs/:JobSid",
+      "responses": [
+        {
+          "uuid": "fbe8bf2c-68d1-474b-8ad2-b0d96193906e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "eaf3e4f3-8c56-4878-802e-7d4c2f0cdba4",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Exports/Jobs/:JobSid",
+      "responses": [
+        {
+          "uuid": "a30bc730-f8aa-4b90-9b73-0e15c400837a",
+          "body": "{\n  \"details\": \"\",\n  \"email\": \"\",\n  \"end_day\": \"\",\n  \"estimated_completion_time\": \"\",\n  \"friendly_name\": \"\",\n  \"job_queue_position\": \"\",\n  \"job_sid\": \"\",\n  \"resource_type\": \"\",\n  \"start_day\": \"\",\n  \"url\": \"\",\n  \"webhook_method\": \"\",\n  \"webhook_url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "300b2c78-d2f6-46b4-ae8b-3392a6584fd1",
+      "documentation": "Fetch a specific Export.",
+      "method": "get",
+      "endpoint": "v1/Exports/:ResourceType",
+      "responses": [
+        {
+          "uuid": "6c8f91b0-646c-4a6a-97d8-f4533bb2e063",
+          "body": "{\n  \"links\": {},\n  \"resource_type\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ffc78b3c-54c5-47a2-96ed-e92e6e352012",
+      "documentation": "Fetch a specific Export Configuration.",
+      "method": "get",
+      "endpoint": "v1/Exports/:ResourceType/Configuration",
+      "responses": [
+        {
+          "uuid": "d5a6b1df-69c7-4ded-8664-8a9c7594951c",
+          "body": "{\n  \"enabled\": {{faker 'random.boolean'}},\n  \"resource_type\": \"\",\n  \"url\": \"\",\n  \"webhook_method\": \"\",\n  \"webhook_url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "4abd8217-1015-4c0d-8365-3e5b5ca6a01c",
+      "documentation": "Update a specific Export Configuration.",
+      "method": "post",
+      "endpoint": "v1/Exports/:ResourceType/Configuration",
+      "responses": [
+        {
+          "uuid": "cda3d273-1b8c-4751-941e-a150842a6cd5",
+          "body": "{\n  \"enabled\": {{faker 'random.boolean'}},\n  \"resource_type\": \"\",\n  \"url\": \"\",\n  \"webhook_method\": \"\",\n  \"webhook_url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "8782410d-448d-4a98-8f28-f15f1f63dcf6",
+      "documentation": "Retrieve a list of all Days for a resource.",
+      "method": "get",
+      "endpoint": "v1/Exports/:ResourceType/Days",
+      "responses": [
+        {
+          "uuid": "9a05d5f0-d43d-40e9-9c2b-50c48e28ac3a",
+          "body": "{\n  \"days\": [\n    {\n      \"create_date\": \"\",\n      \"day\": \"\",\n      \"friendly_name\": \"\",\n      \"resource_type\": \"\",\n      \"size\": {{faker 'random.number'}}\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "d27b6478-a37b-4d88-a8af-aa563089038e",
+      "documentation": "Fetch a specific Day.",
+      "method": "get",
+      "endpoint": "v1/Exports/:ResourceType/Days/:Day",
+      "responses": [
+        {
+          "uuid": "cadee1eb-b2fe-404e-8099-f566ad4bd1bd",
+          "body": "{\n  \"redirect_to\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 307,
+          "label": "Temporary Redirect",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "e9053962-866a-4cb4-8b80-edc9e5fe20ab",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Exports/:ResourceType/Jobs",
+      "responses": [
+        {
+          "uuid": "4aa9048a-5015-4751-8283-92ae737497fc",
+          "body": "{\n  \"jobs\": [\n    {\n      \"details\": \"\",\n      \"email\": \"\",\n      \"end_day\": \"\",\n      \"estimated_completion_time\": \"\",\n      \"friendly_name\": \"\",\n      \"job_queue_position\": \"\",\n      \"job_sid\": \"\",\n      \"resource_type\": \"\",\n      \"start_day\": \"\",\n      \"webhook_method\": \"\",\n      \"webhook_url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "249374a0-6a31-4029-9cde-fa58b7e9c9f6",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Exports/:ResourceType/Jobs",
+      "responses": [
+        {
+          "uuid": "b13a5982-f9b7-47ed-8d79-3522105a6d8d",
+          "body": "{\n  \"details\": \"\",\n  \"email\": \"\",\n  \"end_day\": \"\",\n  \"estimated_completion_time\": \"\",\n  \"friendly_name\": \"\",\n  \"job_queue_position\": \"\",\n  \"job_sid\": \"\",\n  \"resource_type\": \"\",\n  \"start_day\": \"\",\n  \"webhook_method\": \"\",\n  \"webhook_url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}

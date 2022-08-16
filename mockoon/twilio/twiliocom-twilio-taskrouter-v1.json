@@ -1,0 +1,1837 @@
+{
+  "uuid": "96be1151-4435-4b4f-8cd9-9d1b3f7cc0c8",
+  "lastMigration": 19,
+  "name": "Twilio - Taskrouter",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "ca9917b9-0107-48e1-9fa5-167a8e3b7e9a",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces",
+      "responses": [
+        {
+          "uuid": "2ae711ab-4059-4fcf-8c8f-bb1469e52d81",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"workspaces\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"default_activity_name\": \"\",\n      \"default_activity_sid\": \"\",\n      \"event_callback_url\": \"\",\n      \"events_filter\": \"\",\n      \"friendly_name\": \"\",\n      \"links\": {},\n      \"multi_task_enabled\": {{faker 'random.boolean'}},\n      \"prioritize_queue_order\": \"{{oneOf (array 'FIFO' 'LIFO')}}\",\n      \"sid\": \"\",\n      \"timeout_activity_name\": \"\",\n      \"timeout_activity_sid\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "0689699f-f9bb-43c9-bd17-9aff453ed3ba",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Workspaces",
+      "responses": [
+        {
+          "uuid": "0515aa3b-733c-4870-b73c-9d75950d663d",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"default_activity_name\": \"\",\n  \"default_activity_sid\": \"\",\n  \"event_callback_url\": \"\",\n  \"events_filter\": \"\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"multi_task_enabled\": {{faker 'random.boolean'}},\n  \"prioritize_queue_order\": \"{{oneOf (array 'FIFO' 'LIFO')}}\",\n  \"sid\": \"\",\n  \"timeout_activity_name\": \"\",\n  \"timeout_activity_sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "410bff36-e5b8-4028-b82a-f4a655207143",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v1/Workspaces/:Sid",
+      "responses": [
+        {
+          "uuid": "265c0867-8bc1-4fc2-823c-aa4204b6b2dd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "c5905ba3-6b05-4756-8869-3530755d47b0",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:Sid",
+      "responses": [
+        {
+          "uuid": "b41bd195-74b7-4c6c-b82c-0382d84b09a3",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"default_activity_name\": \"\",\n  \"default_activity_sid\": \"\",\n  \"event_callback_url\": \"\",\n  \"events_filter\": \"\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"multi_task_enabled\": {{faker 'random.boolean'}},\n  \"prioritize_queue_order\": \"{{oneOf (array 'FIFO' 'LIFO')}}\",\n  \"sid\": \"\",\n  \"timeout_activity_name\": \"\",\n  \"timeout_activity_sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "a6fbdafd-a073-4ad9-b7f1-06e2d09769d3",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Workspaces/:Sid",
+      "responses": [
+        {
+          "uuid": "c6fe0598-ecbe-4e89-ac2e-21bd3f509dab",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"default_activity_name\": \"\",\n  \"default_activity_sid\": \"\",\n  \"event_callback_url\": \"\",\n  \"events_filter\": \"\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"multi_task_enabled\": {{faker 'random.boolean'}},\n  \"prioritize_queue_order\": \"{{oneOf (array 'FIFO' 'LIFO')}}\",\n  \"sid\": \"\",\n  \"timeout_activity_name\": \"\",\n  \"timeout_activity_sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "4b82b5b3-8cca-4961-9587-b1059f85fc9b",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Activities",
+      "responses": [
+        {
+          "uuid": "54e63122-305f-418b-bcdd-bc33c258fdcd",
+          "body": "{\n  \"activities\": [\n    {\n      \"account_sid\": \"\",\n      \"available\": {{faker 'random.boolean'}},\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"links\": {},\n      \"sid\": \"\",\n      \"url\": \"\",\n      \"workspace_sid\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "bd4434e4-c35d-4fb7-8bed-b3c226488c70",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Activities",
+      "responses": [
+        {
+          "uuid": "a4a68f8c-7f53-49d8-9844-553583514c87",
+          "body": "{\n  \"account_sid\": \"\",\n  \"available\": {{faker 'random.boolean'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "fba10e48-ced1-449a-b074-6329c7c4ce8c",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Activities/:Sid",
+      "responses": [
+        {
+          "uuid": "ae60b817-5b32-456b-975f-0f30efab0471",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "0c1d4eea-901d-4f0a-aa1e-1c46cffd9baf",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Activities/:Sid",
+      "responses": [
+        {
+          "uuid": "90500ec5-a8e5-4887-809d-9f6090fb663f",
+          "body": "{\n  \"account_sid\": \"\",\n  \"available\": {{faker 'random.boolean'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "2d703ce8-cef2-4ea7-8bfc-d0e1e2005413",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Activities/:Sid",
+      "responses": [
+        {
+          "uuid": "6188e8eb-feb5-4343-af82-d490809b9230",
+          "body": "{\n  \"account_sid\": \"\",\n  \"available\": {{faker 'random.boolean'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "0b54451d-9b52-4d4f-b49a-a1392ca1b2d9",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/CumulativeStatistics",
+      "responses": [
+        {
+          "uuid": "3d505ac3-7ff4-4e4f-8496-9300518b3f65",
+          "body": "{\n  \"account_sid\": \"\",\n  \"avg_task_acceptance_time\": {{faker 'random.number'}},\n  \"end_time\": \"{{faker 'date.recent' 365}}\",\n  \"reservations_accepted\": {{faker 'random.number'}},\n  \"reservations_canceled\": {{faker 'random.number'}},\n  \"reservations_created\": {{faker 'random.number'}},\n  \"reservations_rejected\": {{faker 'random.number'}},\n  \"reservations_rescinded\": {{faker 'random.number'}},\n  \"reservations_timed_out\": {{faker 'random.number'}},\n  \"split_by_wait_time\": \"\",\n  \"start_time\": \"{{faker 'date.recent' 365}}\",\n  \"tasks_canceled\": {{faker 'random.number'}},\n  \"tasks_completed\": {{faker 'random.number'}},\n  \"tasks_created\": {{faker 'random.number'}},\n  \"tasks_deleted\": {{faker 'random.number'}},\n  \"tasks_moved\": {{faker 'random.number'}},\n  \"tasks_timed_out_in_workflow\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"wait_duration_until_accepted\": \"\",\n  \"wait_duration_until_canceled\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "c0ba520f-5099-4d72-8542-7674c1be3fab",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Events",
+      "responses": [
+        {
+          "uuid": "114898eb-0cfb-439f-b20b-3ba9d1bb4d9a",
+          "body": "{\n  \"events\": [\n    {\n      \"account_sid\": \"\",\n      \"actor_sid\": \"\",\n      \"actor_type\": \"\",\n      \"actor_url\": \"\",\n      \"description\": \"\",\n      \"event_data\": \"\",\n      \"event_date\": \"{{faker 'date.recent' 365}}\",\n      \"event_date_ms\": {{faker 'random.number'}},\n      \"event_type\": \"\",\n      \"resource_sid\": \"\",\n      \"resource_type\": \"\",\n      \"resource_url\": \"\",\n      \"sid\": \"\",\n      \"source\": \"\",\n      \"source_ip_address\": \"\",\n      \"url\": \"\",\n      \"workspace_sid\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "f6bcbc47-2b1a-441d-850d-c6383c356023",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Events/:Sid",
+      "responses": [
+        {
+          "uuid": "5361d4d7-ce71-4a20-8d4e-c50d89ed457b",
+          "body": "{\n  \"account_sid\": \"\",\n  \"actor_sid\": \"\",\n  \"actor_type\": \"\",\n  \"actor_url\": \"\",\n  \"description\": \"\",\n  \"event_data\": \"\",\n  \"event_date\": \"{{faker 'date.recent' 365}}\",\n  \"event_date_ms\": {{faker 'random.number'}},\n  \"event_type\": \"\",\n  \"resource_sid\": \"\",\n  \"resource_type\": \"\",\n  \"resource_url\": \"\",\n  \"sid\": \"\",\n  \"source\": \"\",\n  \"source_ip_address\": \"\",\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "30feeb93-e00f-4962-aee1-e7ced09348d6",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/RealTimeStatistics",
+      "responses": [
+        {
+          "uuid": "2832b61b-7968-4599-91fa-2b5a1391db6b",
+          "body": "{\n  \"account_sid\": \"\",\n  \"activity_statistics\": [\n    \"\"\n  ],\n  \"longest_task_waiting_age\": {{faker 'random.number'}},\n  \"longest_task_waiting_sid\": \"\",\n  \"tasks_by_priority\": \"\",\n  \"tasks_by_status\": \"\",\n  \"total_tasks\": {{faker 'random.number'}},\n  \"total_workers\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "88ffa5b5-f92e-41f4-822e-7c83fcca26c3",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Statistics",
+      "responses": [
+        {
+          "uuid": "eec94737-d330-424a-9596-1ac52568f572",
+          "body": "{\n  \"account_sid\": \"\",\n  \"cumulative\": \"\",\n  \"realtime\": \"\",\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "8e886ea9-2b12-4734-84d2-c0d0eb0490f6",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/TaskChannels",
+      "responses": [
+        {
+          "uuid": "f0073139-6fc0-497c-971d-f6ed2f356157",
+          "body": "{\n  \"channels\": [\n    {\n      \"account_sid\": \"\",\n      \"channel_optimized_routing\": {{faker 'random.boolean'}},\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"links\": {},\n      \"sid\": \"\",\n      \"unique_name\": \"\",\n      \"url\": \"\",\n      \"workspace_sid\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "e38d1f80-a647-4dca-87a2-707b354f6d3f",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/TaskChannels",
+      "responses": [
+        {
+          "uuid": "32f5f0a8-b315-4cdb-a99f-bf0bbcf1e1f6",
+          "body": "{\n  \"account_sid\": \"\",\n  \"channel_optimized_routing\": {{faker 'random.boolean'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "9b966793-f206-4ed0-8194-aeeadb0f6265",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/TaskChannels/:Sid",
+      "responses": [
+        {
+          "uuid": "b6e751f3-8a8a-4e5b-8cf6-d329062431bc",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "dab6fa1c-1c7c-416c-ac2a-64e2b3f2bb57",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/TaskChannels/:Sid",
+      "responses": [
+        {
+          "uuid": "ad5b2329-4d42-43d2-9f7d-e7df34bfd26e",
+          "body": "{\n  \"account_sid\": \"\",\n  \"channel_optimized_routing\": {{faker 'random.boolean'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "bb7aeb89-4efb-435a-b176-0948412be5de",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/TaskChannels/:Sid",
+      "responses": [
+        {
+          "uuid": "99a5fd03-d4f8-4406-975f-718c1d60d9dc",
+          "body": "{\n  \"account_sid\": \"\",\n  \"channel_optimized_routing\": {{faker 'random.boolean'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ac2a834d-9d85-41ef-9cab-14bfba14f8c9",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/TaskQueues",
+      "responses": [
+        {
+          "uuid": "64cdcc80-e82d-4a89-99e1-9ab87ce18042",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"task_queues\": [\n    {\n      \"account_sid\": \"\",\n      \"assignment_activity_name\": \"\",\n      \"assignment_activity_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"links\": {},\n      \"max_reserved_workers\": {{faker 'random.number'}},\n      \"reservation_activity_name\": \"\",\n      \"reservation_activity_sid\": \"\",\n      \"sid\": \"\",\n      \"target_workers\": \"\",\n      \"task_order\": \"{{oneOf (array 'FIFO' 'LIFO')}}\",\n      \"url\": \"\",\n      \"workspace_sid\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "7ef0547b-6a17-40a5-9eff-2f2b4cee7cd7",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/TaskQueues",
+      "responses": [
+        {
+          "uuid": "7ad142fb-ac06-433b-9a7d-f389750bb728",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assignment_activity_name\": \"\",\n  \"assignment_activity_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"max_reserved_workers\": {{faker 'random.number'}},\n  \"reservation_activity_name\": \"\",\n  \"reservation_activity_sid\": \"\",\n  \"sid\": \"\",\n  \"target_workers\": \"\",\n  \"task_order\": \"{{oneOf (array 'FIFO' 'LIFO')}}\",\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "094171bf-7a18-4f66-be9a-c4797ef7d045",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/TaskQueues/Statistics",
+      "responses": [
+        {
+          "uuid": "d7988fd6-725b-47de-8163-567b57148275",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"task_queues_statistics\": [\n    {\n      \"account_sid\": \"\",\n      \"cumulative\": \"\",\n      \"realtime\": \"\",\n      \"task_queue_sid\": \"\",\n      \"workspace_sid\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "e208ca2d-6324-4795-9951-94c63c393145",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/TaskQueues/:Sid",
+      "responses": [
+        {
+          "uuid": "db098cb4-0d6e-4a5b-bbe3-0adf5c768517",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "bbaabf20-280b-4954-a140-e05c6ed7e249",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/TaskQueues/:Sid",
+      "responses": [
+        {
+          "uuid": "f7581969-bc05-4d94-abac-43bdd1434501",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assignment_activity_name\": \"\",\n  \"assignment_activity_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"max_reserved_workers\": {{faker 'random.number'}},\n  \"reservation_activity_name\": \"\",\n  \"reservation_activity_sid\": \"\",\n  \"sid\": \"\",\n  \"target_workers\": \"\",\n  \"task_order\": \"{{oneOf (array 'FIFO' 'LIFO')}}\",\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "524c1bd2-7eea-45af-be74-8f7f92118b17",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/TaskQueues/:Sid",
+      "responses": [
+        {
+          "uuid": "6b315343-fbc9-4848-b9ff-1137f9c087cc",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assignment_activity_name\": \"\",\n  \"assignment_activity_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"max_reserved_workers\": {{faker 'random.number'}},\n  \"reservation_activity_name\": \"\",\n  \"reservation_activity_sid\": \"\",\n  \"sid\": \"\",\n  \"target_workers\": \"\",\n  \"task_order\": \"{{oneOf (array 'FIFO' 'LIFO')}}\",\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "081af2cb-7877-41c2-ba5a-74ede94c7590",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/TaskQueues/:TaskQueueSid/CumulativeStatistics",
+      "responses": [
+        {
+          "uuid": "136b83e7-034b-4be4-b421-550541df66aa",
+          "body": "{\n  \"account_sid\": \"\",\n  \"avg_task_acceptance_time\": {{faker 'random.number'}},\n  \"end_time\": \"{{faker 'date.recent' 365}}\",\n  \"reservations_accepted\": {{faker 'random.number'}},\n  \"reservations_canceled\": {{faker 'random.number'}},\n  \"reservations_created\": {{faker 'random.number'}},\n  \"reservations_rejected\": {{faker 'random.number'}},\n  \"reservations_rescinded\": {{faker 'random.number'}},\n  \"reservations_timed_out\": {{faker 'random.number'}},\n  \"split_by_wait_time\": \"\",\n  \"start_time\": \"{{faker 'date.recent' 365}}\",\n  \"task_queue_sid\": \"\",\n  \"tasks_canceled\": {{faker 'random.number'}},\n  \"tasks_completed\": {{faker 'random.number'}},\n  \"tasks_deleted\": {{faker 'random.number'}},\n  \"tasks_entered\": {{faker 'random.number'}},\n  \"tasks_moved\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"wait_duration_in_queue_until_accepted\": \"\",\n  \"wait_duration_until_accepted\": \"\",\n  \"wait_duration_until_canceled\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "a8cf81cc-5c4b-434d-b2ae-85c82cbfc277",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/TaskQueues/:TaskQueueSid/RealTimeStatistics",
+      "responses": [
+        {
+          "uuid": "32eb7b2f-bdd0-4a07-9e4d-fa341446203a",
+          "body": "{\n  \"account_sid\": \"\",\n  \"activity_statistics\": [\n    \"\"\n  ],\n  \"longest_relative_task_age_in_queue\": {{faker 'random.number'}},\n  \"longest_relative_task_sid_in_queue\": \"\",\n  \"longest_task_waiting_age\": {{faker 'random.number'}},\n  \"longest_task_waiting_sid\": \"\",\n  \"task_queue_sid\": \"\",\n  \"tasks_by_priority\": \"\",\n  \"tasks_by_status\": \"\",\n  \"total_available_workers\": {{faker 'random.number'}},\n  \"total_eligible_workers\": {{faker 'random.number'}},\n  \"total_tasks\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "5b23724f-ee74-42e9-b6e4-6259f9e0a894",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/TaskQueues/:TaskQueueSid/Statistics",
+      "responses": [
+        {
+          "uuid": "5293036d-0def-436e-82ef-569a6d45f66e",
+          "body": "{\n  \"account_sid\": \"\",\n  \"cumulative\": \"\",\n  \"realtime\": \"\",\n  \"task_queue_sid\": \"\",\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "de475104-9f94-49fa-ab0f-1242e06b3813",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Tasks",
+      "responses": [
+        {
+          "uuid": "df38bb0f-f113-4f3a-86a5-d8512fdd8609",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"tasks\": [\n    {\n      \"account_sid\": \"\",\n      \"addons\": \"\",\n      \"age\": {{faker 'random.number'}},\n      \"assignment_status\": \"{{oneOf (array 'pending' 'reserved' 'assigned' 'canceled' 'completed' 'wrapping')}}\",\n      \"attributes\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"links\": {},\n      \"priority\": {{faker 'random.number'}},\n      \"reason\": \"\",\n      \"sid\": \"\",\n      \"task_channel_sid\": \"\",\n      \"task_channel_unique_name\": \"\",\n      \"task_queue_entered_date\": \"{{faker 'date.recent' 365}}\",\n      \"task_queue_friendly_name\": \"\",\n      \"task_queue_sid\": \"\",\n      \"timeout\": {{faker 'random.number'}},\n      \"url\": \"\",\n      \"workflow_friendly_name\": \"\",\n      \"workflow_sid\": \"\",\n      \"workspace_sid\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "f565dc2e-2649-4a0f-92cb-f0871666ad1b",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Tasks",
+      "responses": [
+        {
+          "uuid": "5ec23de9-ed6c-4ffc-a3dc-2edcc5864339",
+          "body": "{\n  \"account_sid\": \"\",\n  \"addons\": \"\",\n  \"age\": {{faker 'random.number'}},\n  \"assignment_status\": \"{{oneOf (array 'pending' 'reserved' 'assigned' 'canceled' 'completed' 'wrapping')}}\",\n  \"attributes\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"links\": {},\n  \"priority\": {{faker 'random.number'}},\n  \"reason\": \"\",\n  \"sid\": \"\",\n  \"task_channel_sid\": \"\",\n  \"task_channel_unique_name\": \"\",\n  \"task_queue_entered_date\": \"{{faker 'date.recent' 365}}\",\n  \"task_queue_friendly_name\": \"\",\n  \"task_queue_sid\": \"\",\n  \"timeout\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"workflow_friendly_name\": \"\",\n  \"workflow_sid\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "26b27810-8ec9-488a-aeb9-d6c23d8e4e6c",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Tasks/:Sid",
+      "responses": [
+        {
+          "uuid": "7dfd8113-849b-4206-9de9-c6c2f494189d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "543da8de-20db-459a-a999-cce85eaaca4c",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Tasks/:Sid",
+      "responses": [
+        {
+          "uuid": "661dfb0c-92c7-415b-9959-638eaf802315",
+          "body": "{\n  \"account_sid\": \"\",\n  \"addons\": \"\",\n  \"age\": {{faker 'random.number'}},\n  \"assignment_status\": \"{{oneOf (array 'pending' 'reserved' 'assigned' 'canceled' 'completed' 'wrapping')}}\",\n  \"attributes\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"links\": {},\n  \"priority\": {{faker 'random.number'}},\n  \"reason\": \"\",\n  \"sid\": \"\",\n  \"task_channel_sid\": \"\",\n  \"task_channel_unique_name\": \"\",\n  \"task_queue_entered_date\": \"{{faker 'date.recent' 365}}\",\n  \"task_queue_friendly_name\": \"\",\n  \"task_queue_sid\": \"\",\n  \"timeout\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"workflow_friendly_name\": \"\",\n  \"workflow_sid\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "5bf02c63-e304-4aa3-b9a4-99be593db9cb",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Tasks/:Sid",
+      "responses": [
+        {
+          "uuid": "a90403f7-01c5-4f16-8706-56ba5dc233c4",
+          "body": "{\n  \"account_sid\": \"\",\n  \"addons\": \"\",\n  \"age\": {{faker 'random.number'}},\n  \"assignment_status\": \"{{oneOf (array 'pending' 'reserved' 'assigned' 'canceled' 'completed' 'wrapping')}}\",\n  \"attributes\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"links\": {},\n  \"priority\": {{faker 'random.number'}},\n  \"reason\": \"\",\n  \"sid\": \"\",\n  \"task_channel_sid\": \"\",\n  \"task_channel_unique_name\": \"\",\n  \"task_queue_entered_date\": \"{{faker 'date.recent' 365}}\",\n  \"task_queue_friendly_name\": \"\",\n  \"task_queue_sid\": \"\",\n  \"timeout\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"workflow_friendly_name\": \"\",\n  \"workflow_sid\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "04fe8f6f-a57a-4906-b79b-cfb19b4f0adf",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Tasks/:TaskSid/Reservations",
+      "responses": [
+        {
+          "uuid": "8557edec-35b9-479c-8f6c-b6f834e20b6c",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"reservations\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"links\": {},\n      \"reservation_status\": \"{{oneOf (array 'pending' 'accepted' 'rejected' 'timeout' 'canceled' 'rescinded' 'wrapping' 'completed')}}\",\n      \"sid\": \"\",\n      \"task_sid\": \"\",\n      \"url\": \"\",\n      \"worker_name\": \"\",\n      \"worker_sid\": \"\",\n      \"workspace_sid\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "6aea1553-cac3-47a3-9e01-717809754195",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Tasks/:TaskSid/Reservations/:Sid",
+      "responses": [
+        {
+          "uuid": "50993d0a-7cae-486b-b4c2-3f459b2da27b",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"links\": {},\n  \"reservation_status\": \"{{oneOf (array 'pending' 'accepted' 'rejected' 'timeout' 'canceled' 'rescinded' 'wrapping' 'completed')}}\",\n  \"sid\": \"\",\n  \"task_sid\": \"\",\n  \"url\": \"\",\n  \"worker_name\": \"\",\n  \"worker_sid\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "f07847a7-041e-454f-badc-411d6da5e158",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Tasks/:TaskSid/Reservations/:Sid",
+      "responses": [
+        {
+          "uuid": "5a68f8c8-890e-4823-9dd7-7faa1e2a0b9e",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"links\": {},\n  \"reservation_status\": \"{{oneOf (array 'pending' 'accepted' 'rejected' 'timeout' 'canceled' 'rescinded' 'wrapping' 'completed')}}\",\n  \"sid\": \"\",\n  \"task_sid\": \"\",\n  \"url\": \"\",\n  \"worker_name\": \"\",\n  \"worker_sid\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "1f10a9dd-c0c2-4bc8-b415-c23d57273fee",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workers",
+      "responses": [
+        {
+          "uuid": "fc2ac480-3d83-45ed-ba01-47d5656ec0d1",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"workers\": [\n    {\n      \"account_sid\": \"\",\n      \"activity_name\": \"\",\n      \"activity_sid\": \"\",\n      \"attributes\": \"\",\n      \"available\": {{faker 'random.boolean'}},\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_status_changed\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"links\": {},\n      \"sid\": \"\",\n      \"url\": \"\",\n      \"workspace_sid\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "d02b47e7-1918-4f0e-8ea3-60da7cce0a4b",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workers",
+      "responses": [
+        {
+          "uuid": "2b9da290-a739-425a-a3f9-e664413887eb",
+          "body": "{\n  \"account_sid\": \"\",\n  \"activity_name\": \"\",\n  \"activity_sid\": \"\",\n  \"attributes\": \"\",\n  \"available\": {{faker 'random.boolean'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_status_changed\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "6ad8363d-0ab3-440e-be53-7106d63a609d",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workers/CumulativeStatistics",
+      "responses": [
+        {
+          "uuid": "6a164521-1156-4d8c-bc8d-54f0f7e02086",
+          "body": "{\n  \"account_sid\": \"\",\n  \"activity_durations\": [\n    \"\"\n  ],\n  \"end_time\": \"{{faker 'date.recent' 365}}\",\n  \"reservations_accepted\": {{faker 'random.number'}},\n  \"reservations_canceled\": {{faker 'random.number'}},\n  \"reservations_created\": {{faker 'random.number'}},\n  \"reservations_rejected\": {{faker 'random.number'}},\n  \"reservations_rescinded\": {{faker 'random.number'}},\n  \"reservations_timed_out\": {{faker 'random.number'}},\n  \"start_time\": \"{{faker 'date.recent' 365}}\",\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "5efba187-8a83-4fb8-94fc-7ee9ae5c5fca",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workers/RealTimeStatistics",
+      "responses": [
+        {
+          "uuid": "7eeacbc5-4104-4aa0-9a62-7b4e25677ebb",
+          "body": "{\n  \"account_sid\": \"\",\n  \"activity_statistics\": [\n    \"\"\n  ],\n  \"total_workers\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "a85f9007-ff6e-4b03-aef6-2a42bc6a7b0c",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workers/Statistics",
+      "responses": [
+        {
+          "uuid": "1614df1b-79cf-44db-9bd6-d948070d3a5d",
+          "body": "{\n  \"account_sid\": \"\",\n  \"cumulative\": \"\",\n  \"realtime\": \"\",\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "a3f76a80-a04b-490f-80be-4cf5fd51543a",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workers/:Sid",
+      "responses": [
+        {
+          "uuid": "dd433491-5483-4d39-9f6c-40fa4de05012",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "c604c854-212b-4de1-a89c-63199610da6a",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workers/:Sid",
+      "responses": [
+        {
+          "uuid": "06f2d6fc-4235-408e-87c4-4d20de755444",
+          "body": "{\n  \"account_sid\": \"\",\n  \"activity_name\": \"\",\n  \"activity_sid\": \"\",\n  \"attributes\": \"\",\n  \"available\": {{faker 'random.boolean'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_status_changed\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ebaf3926-622a-4a33-9e2f-c51bc4408429",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workers/:Sid",
+      "responses": [
+        {
+          "uuid": "42813f7a-6bbd-44f6-8461-a2748d5bd31e",
+          "body": "{\n  \"account_sid\": \"\",\n  \"activity_name\": \"\",\n  \"activity_sid\": \"\",\n  \"attributes\": \"\",\n  \"available\": {{faker 'random.boolean'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_status_changed\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "8c4c70ce-2a0c-45bc-8daa-08faf93c1e66",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workers/:WorkerSid/Channels",
+      "responses": [
+        {
+          "uuid": "418325e3-082f-4b97-80c0-b58f9fd97342",
+          "body": "{\n  \"channels\": [\n    {\n      \"account_sid\": \"\",\n      \"assigned_tasks\": {{faker 'random.number'}},\n      \"available\": {{faker 'random.boolean'}},\n      \"available_capacity_percentage\": {{faker 'random.number'}},\n      \"configured_capacity\": {{faker 'random.number'}},\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"sid\": \"\",\n      \"task_channel_sid\": \"\",\n      \"task_channel_unique_name\": \"\",\n      \"url\": \"\",\n      \"worker_sid\": \"\",\n      \"workspace_sid\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "4681572d-cda4-4c2f-b831-656f4749a66d",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workers/:WorkerSid/Channels/:Sid",
+      "responses": [
+        {
+          "uuid": "d0b07701-9476-481a-850a-da74aa7853aa",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assigned_tasks\": {{faker 'random.number'}},\n  \"available\": {{faker 'random.boolean'}},\n  \"available_capacity_percentage\": {{faker 'random.number'}},\n  \"configured_capacity\": {{faker 'random.number'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"sid\": \"\",\n  \"task_channel_sid\": \"\",\n  \"task_channel_unique_name\": \"\",\n  \"url\": \"\",\n  \"worker_sid\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "f1caafeb-9c81-4c6a-b6e3-0579ce2defcf",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workers/:WorkerSid/Channels/:Sid",
+      "responses": [
+        {
+          "uuid": "930a09a7-0f8c-4beb-a427-6c858e97b44b",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assigned_tasks\": {{faker 'random.number'}},\n  \"available\": {{faker 'random.boolean'}},\n  \"available_capacity_percentage\": {{faker 'random.number'}},\n  \"configured_capacity\": {{faker 'random.number'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"sid\": \"\",\n  \"task_channel_sid\": \"\",\n  \"task_channel_unique_name\": \"\",\n  \"url\": \"\",\n  \"worker_sid\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "2bc72ab4-94c7-4530-96f4-512c5f342653",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workers/:WorkerSid/Reservations",
+      "responses": [
+        {
+          "uuid": "79ef58fb-e65e-41b5-be89-76a8e4849238",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"reservations\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"links\": {},\n      \"reservation_status\": \"{{oneOf (array 'pending' 'accepted' 'rejected' 'timeout' 'canceled' 'rescinded' 'wrapping' 'completed')}}\",\n      \"sid\": \"\",\n      \"task_sid\": \"\",\n      \"url\": \"\",\n      \"worker_name\": \"\",\n      \"worker_sid\": \"\",\n      \"workspace_sid\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "eea6eb62-1227-4baa-82bc-6f0d6ee32eba",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workers/:WorkerSid/Reservations/:Sid",
+      "responses": [
+        {
+          "uuid": "deba6fdb-2103-4334-bf88-d6e37564c42f",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"links\": {},\n  \"reservation_status\": \"{{oneOf (array 'pending' 'accepted' 'rejected' 'timeout' 'canceled' 'rescinded' 'wrapping' 'completed')}}\",\n  \"sid\": \"\",\n  \"task_sid\": \"\",\n  \"url\": \"\",\n  \"worker_name\": \"\",\n  \"worker_sid\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "1303a68a-ccd2-4903-8201-6edde6fdadd3",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workers/:WorkerSid/Reservations/:Sid",
+      "responses": [
+        {
+          "uuid": "c7a8eac3-eb21-4c18-90d6-52f401e37337",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"links\": {},\n  \"reservation_status\": \"{{oneOf (array 'pending' 'accepted' 'rejected' 'timeout' 'canceled' 'rescinded' 'wrapping' 'completed')}}\",\n  \"sid\": \"\",\n  \"task_sid\": \"\",\n  \"url\": \"\",\n  \"worker_name\": \"\",\n  \"worker_sid\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "147fcafb-adb0-45a7-9e72-a7b512ff07db",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workers/:WorkerSid/Statistics",
+      "responses": [
+        {
+          "uuid": "c56c5f7d-c0c7-4cf1-aa36-4215a8a79aed",
+          "body": "{\n  \"account_sid\": \"\",\n  \"cumulative\": \"\",\n  \"url\": \"\",\n  \"worker_sid\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "7ea7e638-f5ea-4768-aaf3-12e46ae334d6",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workflows",
+      "responses": [
+        {
+          "uuid": "a0310b0b-43fd-4b0a-b5fc-a9f4cf3adef0",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"workflows\": [\n    {\n      \"account_sid\": \"\",\n      \"assignment_callback_url\": \"\",\n      \"configuration\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"document_content_type\": \"\",\n      \"fallback_assignment_callback_url\": \"\",\n      \"friendly_name\": \"\",\n      \"links\": {},\n      \"sid\": \"\",\n      \"task_reservation_timeout\": {{faker 'random.number'}},\n      \"url\": \"\",\n      \"workspace_sid\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "520b3e2d-4ba1-4cc4-9ef4-ebabaa3b6ff8",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workflows",
+      "responses": [
+        {
+          "uuid": "852a3813-7e8a-4b83-bcf8-f341d04b6901",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assignment_callback_url\": \"\",\n  \"configuration\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"document_content_type\": \"\",\n  \"fallback_assignment_callback_url\": \"\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"task_reservation_timeout\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "c4fba329-ca6f-493e-916a-bdb07e796519",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workflows/:Sid",
+      "responses": [
+        {
+          "uuid": "8c86fc01-3dd8-4aab-b719-56f6216974a6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "dbbf1a75-b15d-4e17-8c80-bb2c90f28640",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workflows/:Sid",
+      "responses": [
+        {
+          "uuid": "8fc67c36-a4cd-4374-a393-3992c994c111",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assignment_callback_url\": \"\",\n  \"configuration\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"document_content_type\": \"\",\n  \"fallback_assignment_callback_url\": \"\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"task_reservation_timeout\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "fe974eed-21dc-4965-b1bf-f1f6bc5bbeed",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workflows/:Sid",
+      "responses": [
+        {
+          "uuid": "c77b31e5-686c-41fd-80b9-9cf89bafa03b",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assignment_callback_url\": \"\",\n  \"configuration\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"document_content_type\": \"\",\n  \"fallback_assignment_callback_url\": \"\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"task_reservation_timeout\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "e062f40a-7f7a-411e-ae39-f15719bf7cc4",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workflows/:WorkflowSid/CumulativeStatistics",
+      "responses": [
+        {
+          "uuid": "17c97945-10fb-4b7e-9b59-ac166ed431bf",
+          "body": "{\n  \"account_sid\": \"\",\n  \"avg_task_acceptance_time\": {{faker 'random.number'}},\n  \"end_time\": \"{{faker 'date.recent' 365}}\",\n  \"reservations_accepted\": {{faker 'random.number'}},\n  \"reservations_canceled\": {{faker 'random.number'}},\n  \"reservations_created\": {{faker 'random.number'}},\n  \"reservations_rejected\": {{faker 'random.number'}},\n  \"reservations_rescinded\": {{faker 'random.number'}},\n  \"reservations_timed_out\": {{faker 'random.number'}},\n  \"split_by_wait_time\": \"\",\n  \"start_time\": \"{{faker 'date.recent' 365}}\",\n  \"tasks_canceled\": {{faker 'random.number'}},\n  \"tasks_completed\": {{faker 'random.number'}},\n  \"tasks_deleted\": {{faker 'random.number'}},\n  \"tasks_entered\": {{faker 'random.number'}},\n  \"tasks_moved\": {{faker 'random.number'}},\n  \"tasks_timed_out_in_workflow\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"wait_duration_until_accepted\": \"\",\n  \"wait_duration_until_canceled\": \"\",\n  \"workflow_sid\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "997e0af0-a6cc-4433-9826-63dd74005ebc",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workflows/:WorkflowSid/RealTimeStatistics",
+      "responses": [
+        {
+          "uuid": "a829595d-11b9-4317-beee-ef358154c4fc",
+          "body": "{\n  \"account_sid\": \"\",\n  \"longest_task_waiting_age\": {{faker 'random.number'}},\n  \"longest_task_waiting_sid\": \"\",\n  \"tasks_by_priority\": \"\",\n  \"tasks_by_status\": \"\",\n  \"total_tasks\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"workflow_sid\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "a580edc3-dc46-48ab-95f7-346fef6a352c",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Workspaces/:WorkspaceSid/Workflows/:WorkflowSid/Statistics",
+      "responses": [
+        {
+          "uuid": "2a2c0d31-467e-49a8-bdd6-4c6064e6b64f",
+          "body": "{\n  \"account_sid\": \"\",\n  \"cumulative\": \"\",\n  \"realtime\": \"\",\n  \"url\": \"\",\n  \"workflow_sid\": \"\",\n  \"workspace_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}

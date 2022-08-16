@@ -1,0 +1,1057 @@
+{
+  "uuid": "6fe1ad2b-c2d9-4cf3-befd-4307e874e29e",
+  "lastMigration": 19,
+  "name": "Twilio - Video",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "747b701c-6c18-48a8-b5f9-6fa84cceca96",
+      "documentation": "List of all Recording CompositionHook resources.",
+      "method": "get",
+      "endpoint": "v1/CompositionHooks",
+      "responses": [
+        {
+          "uuid": "bd103618-3b77-42e1-bc15-9ee5b22d2f70",
+          "body": "{\n  \"composition_hooks\": [\n    {\n      \"account_sid\": \"\",\n      \"audio_sources\": [\n        \"\"\n      ],\n      \"audio_sources_excluded\": [\n        \"\"\n      ],\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"enabled\": {{faker 'random.boolean'}},\n      \"format\": \"{{oneOf (array 'mp4' 'webm')}}\",\n      \"friendly_name\": \"\",\n      \"resolution\": \"\",\n      \"sid\": \"\",\n      \"status_callback\": \"\",\n      \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n      \"trim\": {{faker 'random.boolean'}},\n      \"url\": \"\",\n      \"video_layout\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "707a5b44-8596-4dd9-a869-c716b0a1075b",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/CompositionHooks",
+      "responses": [
+        {
+          "uuid": "f9e9c19b-dd9a-4a6f-bdda-614c87878b0e",
+          "body": "{\n  \"account_sid\": \"\",\n  \"audio_sources\": [\n    \"\"\n  ],\n  \"audio_sources_excluded\": [\n    \"\"\n  ],\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"enabled\": {{faker 'random.boolean'}},\n  \"format\": \"{{oneOf (array 'mp4' 'webm')}}\",\n  \"friendly_name\": \"\",\n  \"resolution\": \"\",\n  \"sid\": \"\",\n  \"status_callback\": \"\",\n  \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"trim\": {{faker 'random.boolean'}},\n  \"url\": \"\",\n  \"video_layout\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "84d66b1d-3660-470c-8feb-d46cced53139",
+      "documentation": "Delete a Recording CompositionHook resource identified by a `CompositionHook SID`.",
+      "method": "delete",
+      "endpoint": "v1/CompositionHooks/:Sid",
+      "responses": [
+        {
+          "uuid": "8b16626f-791b-4441-9bea-e72a40e1e45e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "019c4f12-7eac-4ad9-a74e-6ea9e442e2df",
+      "documentation": "Returns a single CompositionHook resource identified by a CompositionHook SID.",
+      "method": "get",
+      "endpoint": "v1/CompositionHooks/:Sid",
+      "responses": [
+        {
+          "uuid": "fee1b164-3c19-4aad-ba33-bc2e29f5a695",
+          "body": "{\n  \"account_sid\": \"\",\n  \"audio_sources\": [\n    \"\"\n  ],\n  \"audio_sources_excluded\": [\n    \"\"\n  ],\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"enabled\": {{faker 'random.boolean'}},\n  \"format\": \"{{oneOf (array 'mp4' 'webm')}}\",\n  \"friendly_name\": \"\",\n  \"resolution\": \"\",\n  \"sid\": \"\",\n  \"status_callback\": \"\",\n  \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"trim\": {{faker 'random.boolean'}},\n  \"url\": \"\",\n  \"video_layout\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "36fbdd19-ab26-49d5-bdfb-2c99334a6c8a",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/CompositionHooks/:Sid",
+      "responses": [
+        {
+          "uuid": "1dcb0c9b-9f50-43ff-9641-ef21c7fbe19a",
+          "body": "{\n  \"account_sid\": \"\",\n  \"audio_sources\": [\n    \"\"\n  ],\n  \"audio_sources_excluded\": [\n    \"\"\n  ],\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"enabled\": {{faker 'random.boolean'}},\n  \"format\": \"{{oneOf (array 'mp4' 'webm')}}\",\n  \"friendly_name\": \"\",\n  \"resolution\": \"\",\n  \"sid\": \"\",\n  \"status_callback\": \"\",\n  \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"trim\": {{faker 'random.boolean'}},\n  \"url\": \"\",\n  \"video_layout\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "e43b002a-9fe3-454c-895c-362063d8f953",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/CompositionSettings/Default",
+      "responses": [
+        {
+          "uuid": "04742fc3-0b74-46be-b374-f8aeccba5292",
+          "body": "{\n  \"account_sid\": \"\",\n  \"aws_credentials_sid\": \"\",\n  \"aws_s3_url\": \"\",\n  \"aws_storage_enabled\": {{faker 'random.boolean'}},\n  \"encryption_enabled\": {{faker 'random.boolean'}},\n  \"encryption_key_sid\": \"\",\n  \"friendly_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ec52ebb2-3553-4f22-8d0b-f0d0623c6a61",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/CompositionSettings/Default",
+      "responses": [
+        {
+          "uuid": "f309442d-520d-4047-ad73-cac77ff3cd2a",
+          "body": "{\n  \"account_sid\": \"\",\n  \"aws_credentials_sid\": \"\",\n  \"aws_s3_url\": \"\",\n  \"aws_storage_enabled\": {{faker 'random.boolean'}},\n  \"encryption_enabled\": {{faker 'random.boolean'}},\n  \"encryption_key_sid\": \"\",\n  \"friendly_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "c9c0b145-93c9-4a9d-ba22-9ae9da737108",
+      "documentation": "List of all Recording compositions.",
+      "method": "get",
+      "endpoint": "v1/Compositions",
+      "responses": [
+        {
+          "uuid": "5f2e6777-abf7-4e97-937e-ef3dacc99699",
+          "body": "{\n  \"compositions\": [\n    {\n      \"account_sid\": \"\",\n      \"audio_sources\": [\n        \"\"\n      ],\n      \"audio_sources_excluded\": [\n        \"\"\n      ],\n      \"bitrate\": {{faker 'random.number'}},\n      \"date_completed\": \"{{faker 'date.recent' 365}}\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_deleted\": \"{{faker 'date.recent' 365}}\",\n      \"duration\": {{faker 'random.number'}},\n      \"format\": \"{{oneOf (array 'mp4' 'webm')}}\",\n      \"links\": {},\n      \"media_external_location\": \"\",\n      \"resolution\": \"\",\n      \"room_sid\": \"\",\n      \"sid\": \"\",\n      \"size\": {{faker 'random.number'}},\n      \"status\": \"{{oneOf (array 'enqueued' 'processing' 'completed' 'deleted' 'failed')}}\",\n      \"status_callback\": \"\",\n      \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n      \"trim\": {{faker 'random.boolean'}},\n      \"url\": \"\",\n      \"video_layout\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "8051ee4f-3519-4bd0-bcb9-5bb66a0f73d6",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Compositions",
+      "responses": [
+        {
+          "uuid": "db7b741e-9d52-4b52-817f-f377efd2fac3",
+          "body": "{\n  \"account_sid\": \"\",\n  \"audio_sources\": [\n    \"\"\n  ],\n  \"audio_sources_excluded\": [\n    \"\"\n  ],\n  \"bitrate\": {{faker 'random.number'}},\n  \"date_completed\": \"{{faker 'date.recent' 365}}\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_deleted\": \"{{faker 'date.recent' 365}}\",\n  \"duration\": {{faker 'random.number'}},\n  \"format\": \"{{oneOf (array 'mp4' 'webm')}}\",\n  \"links\": {},\n  \"media_external_location\": \"\",\n  \"resolution\": \"\",\n  \"room_sid\": \"\",\n  \"sid\": \"\",\n  \"size\": {{faker 'random.number'}},\n  \"status\": \"{{oneOf (array 'enqueued' 'processing' 'completed' 'deleted' 'failed')}}\",\n  \"status_callback\": \"\",\n  \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"trim\": {{faker 'random.boolean'}},\n  \"url\": \"\",\n  \"video_layout\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "72ff5bdc-0c5d-4bb5-be1c-034c6b320db7",
+      "documentation": "Delete a Recording Composition resource identified by a Composition SID.",
+      "method": "delete",
+      "endpoint": "v1/Compositions/:Sid",
+      "responses": [
+        {
+          "uuid": "02ef5203-c077-4e30-8fca-eafed12f3388",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "cad5248a-668b-4bcc-a53b-df271f3d4452",
+      "documentation": "Returns a single Composition resource identified by a Composition SID.",
+      "method": "get",
+      "endpoint": "v1/Compositions/:Sid",
+      "responses": [
+        {
+          "uuid": "f7b0e0a1-1657-4c31-9bb8-b858b32cb21b",
+          "body": "{\n  \"account_sid\": \"\",\n  \"audio_sources\": [\n    \"\"\n  ],\n  \"audio_sources_excluded\": [\n    \"\"\n  ],\n  \"bitrate\": {{faker 'random.number'}},\n  \"date_completed\": \"{{faker 'date.recent' 365}}\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_deleted\": \"{{faker 'date.recent' 365}}\",\n  \"duration\": {{faker 'random.number'}},\n  \"format\": \"{{oneOf (array 'mp4' 'webm')}}\",\n  \"links\": {},\n  \"media_external_location\": \"\",\n  \"resolution\": \"\",\n  \"room_sid\": \"\",\n  \"sid\": \"\",\n  \"size\": {{faker 'random.number'}},\n  \"status\": \"{{oneOf (array 'enqueued' 'processing' 'completed' 'deleted' 'failed')}}\",\n  \"status_callback\": \"\",\n  \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"trim\": {{faker 'random.boolean'}},\n  \"url\": \"\",\n  \"video_layout\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b2c4254f-d53a-4d6d-b6ba-9584187eb2c6",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/RecordingSettings/Default",
+      "responses": [
+        {
+          "uuid": "79cc17be-83b9-401e-80ca-beb7872aa4b9",
+          "body": "{\n  \"account_sid\": \"\",\n  \"aws_credentials_sid\": \"\",\n  \"aws_s3_url\": \"\",\n  \"aws_storage_enabled\": {{faker 'random.boolean'}},\n  \"encryption_enabled\": {{faker 'random.boolean'}},\n  \"encryption_key_sid\": \"\",\n  \"friendly_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "80eb0c74-bc07-46ec-9b0b-61876c02d1a9",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/RecordingSettings/Default",
+      "responses": [
+        {
+          "uuid": "66984a4f-fc91-4ef6-9bf1-0f850e9f64c1",
+          "body": "{\n  \"account_sid\": \"\",\n  \"aws_credentials_sid\": \"\",\n  \"aws_s3_url\": \"\",\n  \"aws_storage_enabled\": {{faker 'random.boolean'}},\n  \"encryption_enabled\": {{faker 'random.boolean'}},\n  \"encryption_key_sid\": \"\",\n  \"friendly_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ff4ab8d4-4754-4bd6-bd2f-60041524ef5a",
+      "documentation": "List of all Track recordings.",
+      "method": "get",
+      "endpoint": "v1/Recordings",
+      "responses": [
+        {
+          "uuid": "5a3b03e1-d69b-4787-8f2d-ad584a5222ab",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"recordings\": [\n    {\n      \"account_sid\": \"\",\n      \"codec\": \"{{oneOf (array 'VP8' 'H264' 'OPUS' 'PCMU')}}\",\n      \"container_format\": \"{{oneOf (array 'mka' 'mkv')}}\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"duration\": {{faker 'random.number'}},\n      \"grouping_sids\": \"\",\n      \"links\": {},\n      \"media_external_location\": \"\",\n      \"offset\": {{faker 'random.number'}},\n      \"sid\": \"\",\n      \"size\": {{faker 'random.number'}},\n      \"source_sid\": \"\",\n      \"status\": \"{{oneOf (array 'processing' 'completed' 'deleted' 'failed')}}\",\n      \"status_callback\": \"\",\n      \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n      \"track_name\": \"\",\n      \"type\": \"{{oneOf (array 'audio' 'video' 'data')}}\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "86041485-2479-4360-8c9d-a0a2192e8e16",
+      "documentation": "Delete a Recording resource identified by a Recording SID.",
+      "method": "delete",
+      "endpoint": "v1/Recordings/:Sid",
+      "responses": [
+        {
+          "uuid": "fbcf568b-3b70-4423-a212-bada8ba06ebb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "1ce08940-f761-4001-8d74-a63b5448fcb2",
+      "documentation": "Returns a single Recording resource identified by a Recording SID.",
+      "method": "get",
+      "endpoint": "v1/Recordings/:Sid",
+      "responses": [
+        {
+          "uuid": "ebdebed3-baaa-4cb5-b7c8-1b586a12151f",
+          "body": "{\n  \"account_sid\": \"\",\n  \"codec\": \"{{oneOf (array 'VP8' 'H264' 'OPUS' 'PCMU')}}\",\n  \"container_format\": \"{{oneOf (array 'mka' 'mkv')}}\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"duration\": {{faker 'random.number'}},\n  \"grouping_sids\": \"\",\n  \"links\": {},\n  \"media_external_location\": \"\",\n  \"offset\": {{faker 'random.number'}},\n  \"sid\": \"\",\n  \"size\": {{faker 'random.number'}},\n  \"source_sid\": \"\",\n  \"status\": \"{{oneOf (array 'processing' 'completed' 'deleted' 'failed')}}\",\n  \"status_callback\": \"\",\n  \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"track_name\": \"\",\n  \"type\": \"{{oneOf (array 'audio' 'video' 'data')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3f43591e-4d8d-4296-b24a-0921432f90e0",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Rooms",
+      "responses": [
+        {
+          "uuid": "4d6863ff-b6eb-48de-aa32-1e012722732d",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"rooms\": [\n    {\n      \"account_sid\": \"\",\n      \"audio_only\": {{faker 'random.boolean'}},\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"duration\": {{faker 'random.number'}},\n      \"empty_room_timeout\": {{faker 'random.number'}},\n      \"enable_turn\": {{faker 'random.boolean'}},\n      \"end_time\": \"{{faker 'date.recent' 365}}\",\n      \"links\": {},\n      \"max_concurrent_published_tracks\": {{faker 'random.number'}},\n      \"max_participant_duration\": {{faker 'random.number'}},\n      \"max_participants\": {{faker 'random.number'}},\n      \"media_region\": \"\",\n      \"record_participants_on_connect\": {{faker 'random.boolean'}},\n      \"sid\": \"\",\n      \"status\": \"{{oneOf (array 'in-progress' 'completed' 'failed')}}\",\n      \"status_callback\": \"\",\n      \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n      \"type\": \"{{oneOf (array 'go' 'peer-to-peer' 'group' 'group-small')}}\",\n      \"unique_name\": \"\",\n      \"unused_room_timeout\": {{faker 'random.number'}},\n      \"url\": \"\",\n      \"video_codecs\": [\n        \"{{oneOf (array 'VP8' 'H264')}}\"\n      ]\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "02ad73a4-171a-40b0-949d-95df30d69ec5",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Rooms",
+      "responses": [
+        {
+          "uuid": "46b23406-0e31-4dfc-9c66-7e76af8cfb29",
+          "body": "{\n  \"account_sid\": \"\",\n  \"audio_only\": {{faker 'random.boolean'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"duration\": {{faker 'random.number'}},\n  \"empty_room_timeout\": {{faker 'random.number'}},\n  \"enable_turn\": {{faker 'random.boolean'}},\n  \"end_time\": \"{{faker 'date.recent' 365}}\",\n  \"links\": {},\n  \"max_concurrent_published_tracks\": {{faker 'random.number'}},\n  \"max_participant_duration\": {{faker 'random.number'}},\n  \"max_participants\": {{faker 'random.number'}},\n  \"media_region\": \"\",\n  \"record_participants_on_connect\": {{faker 'random.boolean'}},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'in-progress' 'completed' 'failed')}}\",\n  \"status_callback\": \"\",\n  \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"type\": \"{{oneOf (array 'go' 'peer-to-peer' 'group' 'group-small')}}\",\n  \"unique_name\": \"\",\n  \"unused_room_timeout\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"video_codecs\": [\n    \"{{oneOf (array 'VP8' 'H264')}}\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "f6d38058-1d4e-47c9-99bf-0f4fff1deeab",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Rooms/:RoomSid/Participants",
+      "responses": [
+        {
+          "uuid": "cac99626-0bf8-4150-92da-02276ee08da6",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"participants\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"duration\": {{faker 'random.number'}},\n      \"end_time\": \"{{faker 'date.recent' 365}}\",\n      \"identity\": \"\",\n      \"links\": {},\n      \"room_sid\": \"\",\n      \"sid\": \"\",\n      \"start_time\": \"{{faker 'date.recent' 365}}\",\n      \"status\": \"{{oneOf (array 'connected' 'disconnected')}}\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "81a81845-f9a8-4667-b3d4-c75410a58f88",
+      "documentation": "Returns a list of tracks associated with a given Participant. Only `currently` Published Tracks are in the list resource.",
+      "method": "get",
+      "endpoint": "v1/Rooms/:RoomSid/Participants/:ParticipantSid/PublishedTracks",
+      "responses": [
+        {
+          "uuid": "071230d7-e67e-4059-893c-c354e27feef9",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"published_tracks\": [\n    {\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"enabled\": {{faker 'random.boolean'}},\n      \"kind\": \"{{oneOf (array 'audio' 'video' 'data')}}\",\n      \"name\": \"\",\n      \"participant_sid\": \"\",\n      \"room_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "c42467d5-cd00-40a3-96e1-c448b629f39e",
+      "documentation": "Returns a single Track resource represented by TrackName or SID.",
+      "method": "get",
+      "endpoint": "v1/Rooms/:RoomSid/Participants/:ParticipantSid/PublishedTracks/:Sid",
+      "responses": [
+        {
+          "uuid": "a3030106-2dd8-4056-b93e-dca0922aef48",
+          "body": "{\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"enabled\": {{faker 'random.boolean'}},\n  \"kind\": \"{{oneOf (array 'audio' 'video' 'data')}}\",\n  \"name\": \"\",\n  \"participant_sid\": \"\",\n  \"room_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "cd0d3ce2-c870-46ee-b644-3da4c9b781cb",
+      "documentation": "Returns a list of Subscribe Rules for the Participant.",
+      "method": "get",
+      "endpoint": "v1/Rooms/:RoomSid/Participants/:ParticipantSid/SubscribeRules",
+      "responses": [
+        {
+          "uuid": "8eda76c4-c9fd-4022-9ad5-b2ea14083aaa",
+          "body": "{\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"participant_sid\": \"\",\n  \"room_sid\": \"\",\n  \"rules\": [\n    {}\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "48fd4ab3-ff42-404e-bde3-af7bd68cc5eb",
+      "documentation": "Update the Subscribe Rules for the Participant",
+      "method": "post",
+      "endpoint": "v1/Rooms/:RoomSid/Participants/:ParticipantSid/SubscribeRules",
+      "responses": [
+        {
+          "uuid": "6d738491-ba99-4f9b-87b1-d94be3a22730",
+          "body": "{\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"participant_sid\": \"\",\n  \"room_sid\": \"\",\n  \"rules\": [\n    {}\n  ]\n}",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Accepted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "df941910-e678-410c-bed2-36a1b9bcc741",
+      "documentation": "Returns a list of tracks that are subscribed for the participant.",
+      "method": "get",
+      "endpoint": "v1/Rooms/:RoomSid/Participants/:ParticipantSid/SubscribedTracks",
+      "responses": [
+        {
+          "uuid": "c2ae1fac-826f-4cec-ad37-5019e09c3f94",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"subscribed_tracks\": [\n    {\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"enabled\": {{faker 'random.boolean'}},\n      \"kind\": \"{{oneOf (array 'audio' 'video' 'data')}}\",\n      \"name\": \"\",\n      \"participant_sid\": \"\",\n      \"publisher_sid\": \"\",\n      \"room_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ffb61ea3-d093-497d-8b7d-d0de3cdd5d6e",
+      "documentation": "Returns a single Track resource represented by `track_sid`.  Note: This is one resource with the Video API that requires a SID, be Track Name on the subscriber side is not guaranteed to be unique.",
+      "method": "get",
+      "endpoint": "v1/Rooms/:RoomSid/Participants/:ParticipantSid/SubscribedTracks/:Sid",
+      "responses": [
+        {
+          "uuid": "6383ef82-93c0-487f-a56d-dd5cd67b8729",
+          "body": "{\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"enabled\": {{faker 'random.boolean'}},\n  \"kind\": \"{{oneOf (array 'audio' 'video' 'data')}}\",\n  \"name\": \"\",\n  \"participant_sid\": \"\",\n  \"publisher_sid\": \"\",\n  \"room_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "5695c162-0e8e-4038-b03a-1bfb9f2bb662",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Rooms/:RoomSid/Participants/:Sid",
+      "responses": [
+        {
+          "uuid": "bafe00c8-da75-4403-9527-767eeda86817",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"duration\": {{faker 'random.number'}},\n  \"end_time\": \"{{faker 'date.recent' 365}}\",\n  \"identity\": \"\",\n  \"links\": {},\n  \"room_sid\": \"\",\n  \"sid\": \"\",\n  \"start_time\": \"{{faker 'date.recent' 365}}\",\n  \"status\": \"{{oneOf (array 'connected' 'disconnected')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "bd1e4a2c-fbce-4278-934e-f37610c750de",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Rooms/:RoomSid/Participants/:Sid",
+      "responses": [
+        {
+          "uuid": "5eae5172-8d02-4913-84b3-d7d9980f3a5f",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"duration\": {{faker 'random.number'}},\n  \"end_time\": \"{{faker 'date.recent' 365}}\",\n  \"identity\": \"\",\n  \"links\": {},\n  \"room_sid\": \"\",\n  \"sid\": \"\",\n  \"start_time\": \"{{faker 'date.recent' 365}}\",\n  \"status\": \"{{oneOf (array 'connected' 'disconnected')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ffceea0f-18d9-41d3-957c-b08058de44ea",
+      "documentation": "Returns a list of Recording Rules for the Room.",
+      "method": "get",
+      "endpoint": "v1/Rooms/:RoomSid/RecordingRules",
+      "responses": [
+        {
+          "uuid": "12a6a817-025c-46cc-8c4d-5ca90d0c75d4",
+          "body": "{\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"room_sid\": \"\",\n  \"rules\": [\n    {\n      \"all\": {{faker 'random.boolean'}},\n      \"kind\": \"\",\n      \"publisher\": \"\",\n      \"track\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "de4957a2-b9f5-4f73-94a1-a9814c2f87a8",
+      "documentation": "Update the Recording Rules for the Room",
+      "method": "post",
+      "endpoint": "v1/Rooms/:RoomSid/RecordingRules",
+      "responses": [
+        {
+          "uuid": "6a4daea6-156f-4bd9-9e00-2ae0da483cdd",
+          "body": "{\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"room_sid\": \"\",\n  \"rules\": [\n    {\n      \"all\": {{faker 'random.boolean'}},\n      \"kind\": \"\",\n      \"publisher\": \"\",\n      \"track\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Accepted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "d0d25023-3810-49d0-89ac-aa79b9bde88b",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Rooms/:RoomSid/Recordings",
+      "responses": [
+        {
+          "uuid": "c269f81f-1bfb-40d0-834e-e979748637ce",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"recordings\": [\n    {\n      \"account_sid\": \"\",\n      \"codec\": \"{{oneOf (array 'VP8' 'H264' 'OPUS' 'PCMU')}}\",\n      \"container_format\": \"{{oneOf (array 'mka' 'mkv')}}\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"duration\": {{faker 'random.number'}},\n      \"grouping_sids\": \"\",\n      \"links\": {},\n      \"media_external_location\": \"\",\n      \"offset\": {{faker 'random.number'}},\n      \"room_sid\": \"\",\n      \"sid\": \"\",\n      \"size\": {{faker 'random.number'}},\n      \"source_sid\": \"\",\n      \"status\": \"{{oneOf (array 'processing' 'completed' 'deleted' 'failed')}}\",\n      \"track_name\": \"\",\n      \"type\": \"{{oneOf (array 'audio' 'video' 'data')}}\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3951109c-7868-4ae4-9040-7b752bdb2710",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v1/Rooms/:RoomSid/Recordings/:Sid",
+      "responses": [
+        {
+          "uuid": "1a0d3429-540c-40c4-bc31-ff8705761231",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "e4a432c6-f87b-4b20-be99-cd3695e51516",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Rooms/:RoomSid/Recordings/:Sid",
+      "responses": [
+        {
+          "uuid": "83802166-1480-493c-9ada-6541dbb53ec7",
+          "body": "{\n  \"account_sid\": \"\",\n  \"codec\": \"{{oneOf (array 'VP8' 'H264' 'OPUS' 'PCMU')}}\",\n  \"container_format\": \"{{oneOf (array 'mka' 'mkv')}}\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"duration\": {{faker 'random.number'}},\n  \"grouping_sids\": \"\",\n  \"links\": {},\n  \"media_external_location\": \"\",\n  \"offset\": {{faker 'random.number'}},\n  \"room_sid\": \"\",\n  \"sid\": \"\",\n  \"size\": {{faker 'random.number'}},\n  \"source_sid\": \"\",\n  \"status\": \"{{oneOf (array 'processing' 'completed' 'deleted' 'failed')}}\",\n  \"track_name\": \"\",\n  \"type\": \"{{oneOf (array 'audio' 'video' 'data')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "a58f6eb3-6bfe-4c42-8d93-30e02487c977",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Rooms/:Sid",
+      "responses": [
+        {
+          "uuid": "3d52e63e-7765-4436-ba70-fd5a414875ac",
+          "body": "{\n  \"account_sid\": \"\",\n  \"audio_only\": {{faker 'random.boolean'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"duration\": {{faker 'random.number'}},\n  \"empty_room_timeout\": {{faker 'random.number'}},\n  \"enable_turn\": {{faker 'random.boolean'}},\n  \"end_time\": \"{{faker 'date.recent' 365}}\",\n  \"links\": {},\n  \"max_concurrent_published_tracks\": {{faker 'random.number'}},\n  \"max_participant_duration\": {{faker 'random.number'}},\n  \"max_participants\": {{faker 'random.number'}},\n  \"media_region\": \"\",\n  \"record_participants_on_connect\": {{faker 'random.boolean'}},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'in-progress' 'completed' 'failed')}}\",\n  \"status_callback\": \"\",\n  \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"type\": \"{{oneOf (array 'go' 'peer-to-peer' 'group' 'group-small')}}\",\n  \"unique_name\": \"\",\n  \"unused_room_timeout\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"video_codecs\": [\n    \"{{oneOf (array 'VP8' 'H264')}}\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "eba62400-5211-48ec-916c-615b9d4042b4",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Rooms/:Sid",
+      "responses": [
+        {
+          "uuid": "d8c311a2-8a1e-411f-b76b-257656d57bbb",
+          "body": "{\n  \"account_sid\": \"\",\n  \"audio_only\": {{faker 'random.boolean'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"duration\": {{faker 'random.number'}},\n  \"empty_room_timeout\": {{faker 'random.number'}},\n  \"enable_turn\": {{faker 'random.boolean'}},\n  \"end_time\": \"{{faker 'date.recent' 365}}\",\n  \"links\": {},\n  \"max_concurrent_published_tracks\": {{faker 'random.number'}},\n  \"max_participant_duration\": {{faker 'random.number'}},\n  \"max_participants\": {{faker 'random.number'}},\n  \"media_region\": \"\",\n  \"record_participants_on_connect\": {{faker 'random.boolean'}},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'in-progress' 'completed' 'failed')}}\",\n  \"status_callback\": \"\",\n  \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"type\": \"{{oneOf (array 'go' 'peer-to-peer' 'group' 'group-small')}}\",\n  \"unique_name\": \"\",\n  \"unused_room_timeout\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"video_codecs\": [\n    \"{{oneOf (array 'VP8' 'H264')}}\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}

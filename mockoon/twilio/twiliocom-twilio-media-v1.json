@@ -1,0 +1,427 @@
+{
+  "uuid": "ceaf88dd-477c-46c2-94db-d1198ddfe6c1",
+  "lastMigration": 19,
+  "name": "Twilio - Media",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "89d2109d-ad25-42f8-b02e-646e3bc10785",
+      "documentation": "Returns a list of MediaProcessors.",
+      "method": "get",
+      "endpoint": "v1/MediaProcessors",
+      "responses": [
+        {
+          "uuid": "c60b2040-044b-4d7a-8b84-0ca50830e270",
+          "body": "{\n  \"media_processors\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"ended_reason\": \"\",\n      \"extension\": \"\",\n      \"extension_context\": \"\",\n      \"max_duration\": {{faker 'random.number'}},\n      \"sid\": \"\",\n      \"status\": \"{{oneOf (array 'failed' 'started' 'ended')}}\",\n      \"status_callback\": \"\",\n      \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "6322ac95-b940-4e66-b15e-617b5a8a04d0",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/MediaProcessors",
+      "responses": [
+        {
+          "uuid": "1dec6060-b1c4-4143-a29b-34542ddd77f5",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"ended_reason\": \"\",\n  \"extension\": \"\",\n  \"extension_context\": \"\",\n  \"max_duration\": {{faker 'random.number'}},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'failed' 'started' 'ended')}}\",\n  \"status_callback\": \"\",\n  \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b25fb782-591d-4a2b-876a-3e780ac54cd4",
+      "documentation": "Returns a single MediaProcessor resource identified by a SID.",
+      "method": "get",
+      "endpoint": "v1/MediaProcessors/:Sid",
+      "responses": [
+        {
+          "uuid": "4b874154-dd65-46f2-a4d9-1c128b47738f",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"ended_reason\": \"\",\n  \"extension\": \"\",\n  \"extension_context\": \"\",\n  \"max_duration\": {{faker 'random.number'}},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'failed' 'started' 'ended')}}\",\n  \"status_callback\": \"\",\n  \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "a6d2742c-5ab1-4630-8c3a-5ad796d614d5",
+      "documentation": "Updates a MediaProcessor resource identified by a SID.",
+      "method": "post",
+      "endpoint": "v1/MediaProcessors/:Sid",
+      "responses": [
+        {
+          "uuid": "1c2aba68-8a1a-4a50-a70b-e95abebe267d",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"ended_reason\": \"\",\n  \"extension\": \"\",\n  \"extension_context\": \"\",\n  \"max_duration\": {{faker 'random.number'}},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'failed' 'started' 'ended')}}\",\n  \"status_callback\": \"\",\n  \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "690c1cd0-bdb0-4e79-b0b6-57a853ceeb74",
+      "documentation": "Returns a list of MediaRecordings.",
+      "method": "get",
+      "endpoint": "v1/MediaRecordings",
+      "responses": [
+        {
+          "uuid": "55aea125-53b4-4e4c-a2d5-9676adcbb868",
+          "body": "{\n  \"media_recordings\": [\n    {\n      \"account_sid\": \"\",\n      \"bitrate\": {{faker 'random.number'}},\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"duration\": {{faker 'random.number'}},\n      \"format\": \"{{oneOf (array 'mp4' 'webm')}}\",\n      \"links\": {},\n      \"processor_sid\": \"\",\n      \"resolution\": \"\",\n      \"sid\": \"\",\n      \"size\": {{faker 'random.number'}},\n      \"source_sid\": \"\",\n      \"status\": \"{{oneOf (array 'processing' 'completed' 'deleted' 'failed')}}\",\n      \"status_callback\": \"\",\n      \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "271e4a52-3b13-4aec-901d-f0ad860800b0",
+      "documentation": "Deletes a MediaRecording resource identified by a SID.",
+      "method": "delete",
+      "endpoint": "v1/MediaRecordings/:Sid",
+      "responses": [
+        {
+          "uuid": "fa34caa3-1678-4e8b-be9b-b3839efb3c6f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "5bfeeb42-51b2-4644-bf56-e66a2f1ccfc3",
+      "documentation": "Returns a single MediaRecording resource identified by a SID.",
+      "method": "get",
+      "endpoint": "v1/MediaRecordings/:Sid",
+      "responses": [
+        {
+          "uuid": "e3fbcdd1-c70c-4d50-aed3-71f995d93456",
+          "body": "{\n  \"account_sid\": \"\",\n  \"bitrate\": {{faker 'random.number'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"duration\": {{faker 'random.number'}},\n  \"format\": \"{{oneOf (array 'mp4' 'webm')}}\",\n  \"links\": {},\n  \"processor_sid\": \"\",\n  \"resolution\": \"\",\n  \"sid\": \"\",\n  \"size\": {{faker 'random.number'}},\n  \"source_sid\": \"\",\n  \"status\": \"{{oneOf (array 'processing' 'completed' 'deleted' 'failed')}}\",\n  \"status_callback\": \"\",\n  \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "42bfa53b-d1b5-4303-8fa0-9f5d82c71ef1",
+      "documentation": "Returns a list of PlayerStreamers.",
+      "method": "get",
+      "endpoint": "v1/PlayerStreamers",
+      "responses": [
+        {
+          "uuid": "e5b71989-0f7f-4314-9898-b750e091b05e",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"player_streamers\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"ended_reason\": \"{{oneOf (array 'ended-via-api' 'max-duration-exceeded' 'stream-disconnected-by-source' 'unexpected-failure')}}\",\n      \"links\": {},\n      \"max_duration\": {{faker 'random.number'}},\n      \"sid\": \"\",\n      \"status\": \"{{oneOf (array 'created' 'started' 'ended' 'failed')}}\",\n      \"status_callback\": \"\",\n      \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n      \"url\": \"\",\n      \"video\": {{faker 'random.boolean'}}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "8d7852f0-6c1d-4a1c-b36c-408cdb3d78e2",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/PlayerStreamers",
+      "responses": [
+        {
+          "uuid": "076da8db-7ca2-4b87-8617-81d888f07378",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"ended_reason\": \"{{oneOf (array 'ended-via-api' 'max-duration-exceeded' 'stream-disconnected-by-source' 'unexpected-failure')}}\",\n  \"links\": {},\n  \"max_duration\": {{faker 'random.number'}},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'created' 'started' 'ended' 'failed')}}\",\n  \"status_callback\": \"\",\n  \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"url\": \"\",\n  \"video\": {{faker 'random.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "184f70a8-531f-4494-9652-42f52ad5129c",
+      "documentation": "Returns a single PlayerStreamer resource identified by a SID.",
+      "method": "get",
+      "endpoint": "v1/PlayerStreamers/:Sid",
+      "responses": [
+        {
+          "uuid": "e49cbe86-997f-4172-a04e-6fa3450fbf0a",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"ended_reason\": \"{{oneOf (array 'ended-via-api' 'max-duration-exceeded' 'stream-disconnected-by-source' 'unexpected-failure')}}\",\n  \"links\": {},\n  \"max_duration\": {{faker 'random.number'}},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'created' 'started' 'ended' 'failed')}}\",\n  \"status_callback\": \"\",\n  \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"url\": \"\",\n  \"video\": {{faker 'random.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "09b32fc3-64f7-4e33-aeb8-00ca73e35a3b",
+      "documentation": "Updates a PlayerStreamer resource identified by a SID.",
+      "method": "post",
+      "endpoint": "v1/PlayerStreamers/:Sid",
+      "responses": [
+        {
+          "uuid": "7d695f5e-3679-4951-9d1f-c6dcce8bfb90",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"ended_reason\": \"{{oneOf (array 'ended-via-api' 'max-duration-exceeded' 'stream-disconnected-by-source' 'unexpected-failure')}}\",\n  \"links\": {},\n  \"max_duration\": {{faker 'random.number'}},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'created' 'started' 'ended' 'failed')}}\",\n  \"status_callback\": \"\",\n  \"status_callback_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"url\": \"\",\n  \"video\": {{faker 'random.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "9c8c289e-9a14-4379-a42f-ca4a5280faf5",
+      "documentation": "**This method is not enabled.** Returns a single PlaybackGrant resource identified by a SID.",
+      "method": "get",
+      "endpoint": "v1/PlayerStreamers/:Sid/PlaybackGrant",
+      "responses": [
+        {
+          "uuid": "a8fbb4d3-cdf3-4639-a4d8-8326988c2866",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"grant\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "70b617e6-d5b1-4daf-8259-5dc4b961ca13",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/PlayerStreamers/:Sid/PlaybackGrant",
+      "responses": [
+        {
+          "uuid": "4f7d1faf-2859-4be2-9d6e-1e58f2c240bf",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"grant\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}

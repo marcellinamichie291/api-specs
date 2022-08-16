@@ -1,0 +1,1657 @@
+{
+  "uuid": "e1aff033-fa73-4bdc-acd1-7cd0b88c27d8",
+  "lastMigration": 19,
+  "name": "Twilio - Chat",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "7a378db1-c31c-42d2-9102-0fe17332b7d7",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Credentials",
+      "responses": [
+        {
+          "uuid": "cf6fab90-6ba5-42ee-a926-b9019f601eb7",
+          "body": "{\n  \"credentials\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"sandbox\": \"\",\n      \"sid\": \"\",\n      \"type\": \"{{oneOf (array 'gcm' 'apn' 'fcm')}}\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "a237fc4e-8596-4796-aa23-9c16c0266a9e",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v2/Credentials",
+      "responses": [
+        {
+          "uuid": "97912197-8514-44fb-bae3-3de1af04e81e",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"sandbox\": \"\",\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'gcm' 'apn' 'fcm')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "c8d664ac-c39e-4753-9411-50bcc22239dd",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v2/Credentials/:Sid",
+      "responses": [
+        {
+          "uuid": "427d9244-c36b-49c6-a8b8-3789a2593a5c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "1deda6b5-47a7-4c15-84ab-cfed58f8d350",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Credentials/:Sid",
+      "responses": [
+        {
+          "uuid": "d952dc1e-f5be-4ea0-906b-0bbae132516c",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"sandbox\": \"\",\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'gcm' 'apn' 'fcm')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "c0614920-b8db-4da7-aff6-43b790dc1ee6",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v2/Credentials/:Sid",
+      "responses": [
+        {
+          "uuid": "5b5155c7-0bed-430f-ac32-2fd6ab23adf1",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"sandbox\": \"\",\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'gcm' 'apn' 'fcm')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "d3d3d24d-491a-4cc3-9247-1ef32f052c0f",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services",
+      "responses": [
+        {
+          "uuid": "b91887f5-1c8b-4cfe-adba-d3dca8fe361a",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"services\": [\n    {\n      \"account_sid\": \"\",\n      \"consumption_report_interval\": {{faker 'random.number'}},\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"default_channel_creator_role_sid\": \"\",\n      \"default_channel_role_sid\": \"\",\n      \"default_service_role_sid\": \"\",\n      \"friendly_name\": \"\",\n      \"limits\": \"\",\n      \"links\": {},\n      \"media\": \"\",\n      \"notifications\": \"\",\n      \"post_webhook_retry_count\": {{faker 'random.number'}},\n      \"post_webhook_url\": \"\",\n      \"pre_webhook_retry_count\": {{faker 'random.number'}},\n      \"pre_webhook_url\": \"\",\n      \"reachability_enabled\": {{faker 'random.boolean'}},\n      \"read_status_enabled\": {{faker 'random.boolean'}},\n      \"sid\": \"\",\n      \"typing_indicator_timeout\": {{faker 'random.number'}},\n      \"url\": \"\",\n      \"webhook_filters\": [\n        \"\"\n      ],\n      \"webhook_method\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "61b2366b-710c-40ca-b713-49ba020af435",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v2/Services",
+      "responses": [
+        {
+          "uuid": "63bcba5d-b5e8-44b3-9c76-c88592ea4a47",
+          "body": "{\n  \"account_sid\": \"\",\n  \"consumption_report_interval\": {{faker 'random.number'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"default_channel_creator_role_sid\": \"\",\n  \"default_channel_role_sid\": \"\",\n  \"default_service_role_sid\": \"\",\n  \"friendly_name\": \"\",\n  \"limits\": \"\",\n  \"links\": {},\n  \"media\": \"\",\n  \"notifications\": \"\",\n  \"post_webhook_retry_count\": {{faker 'random.number'}},\n  \"post_webhook_url\": \"\",\n  \"pre_webhook_retry_count\": {{faker 'random.number'}},\n  \"pre_webhook_url\": \"\",\n  \"reachability_enabled\": {{faker 'random.boolean'}},\n  \"read_status_enabled\": {{faker 'random.boolean'}},\n  \"sid\": \"\",\n  \"typing_indicator_timeout\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"webhook_filters\": [\n    \"\"\n  ],\n  \"webhook_method\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "efe6f950-fd37-4f17-b468-8c845037b734",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Bindings",
+      "responses": [
+        {
+          "uuid": "73908e66-a1e2-45d7-bc2b-11b0b2392855",
+          "body": "{\n  \"bindings\": [\n    {\n      \"account_sid\": \"\",\n      \"binding_type\": \"{{oneOf (array 'gcm' 'apn' 'fcm')}}\",\n      \"credential_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"endpoint\": \"\",\n      \"identity\": \"\",\n      \"links\": {},\n      \"message_types\": [\n        \"\"\n      ],\n      \"service_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "2b95ff46-70a9-486e-9ae8-20708fc935e0",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v2/Services/:ServiceSid/Bindings/:Sid",
+      "responses": [
+        {
+          "uuid": "e1d8bd6d-fc10-4ce4-b9ae-1eaac0fbe16a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "38b77f9f-9e1b-402d-baae-d41b72322728",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Bindings/:Sid",
+      "responses": [
+        {
+          "uuid": "57e020dd-af7c-4da0-98ff-aa124478823e",
+          "body": "{\n  \"account_sid\": \"\",\n  \"binding_type\": \"{{oneOf (array 'gcm' 'apn' 'fcm')}}\",\n  \"credential_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"endpoint\": \"\",\n  \"identity\": \"\",\n  \"links\": {},\n  \"message_types\": [\n    \"\"\n  ],\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "92818a68-1059-41c4-8d98-3931f7ab9292",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Channels",
+      "responses": [
+        {
+          "uuid": "6e187e62-18bf-4946-8be5-c2bbf5e93b19",
+          "body": "{\n  \"channels\": [\n    {\n      \"account_sid\": \"\",\n      \"attributes\": \"\",\n      \"created_by\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"links\": {},\n      \"members_count\": {{faker 'random.number'}},\n      \"messages_count\": {{faker 'random.number'}},\n      \"service_sid\": \"\",\n      \"sid\": \"\",\n      \"type\": \"{{oneOf (array 'public' 'private')}}\",\n      \"unique_name\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "d5447752-6666-4906-89a7-897033286c8d",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v2/Services/:ServiceSid/Channels",
+      "responses": [
+        {
+          "uuid": "29b30fa2-3619-4c28-ae52-f2265855c240",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"created_by\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"members_count\": {{faker 'random.number'}},\n  \"messages_count\": {{faker 'random.number'}},\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'public' 'private')}}\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "5f9201a5-e4be-430f-9ae1-f7579e952152",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:ChannelSid/Invites",
+      "responses": [
+        {
+          "uuid": "1364d4b9-8275-4b48-a500-758e7eed36f4",
+          "body": "{\n  \"invites\": [\n    {\n      \"account_sid\": \"\",\n      \"channel_sid\": \"\",\n      \"created_by\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"identity\": \"\",\n      \"role_sid\": \"\",\n      \"service_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "66b89134-bd54-4a3e-81dd-1d6f9c8bfc21",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:ChannelSid/Invites",
+      "responses": [
+        {
+          "uuid": "6056dfde-2f4f-4d1e-a99f-77ffcbf0acd4",
+          "body": "{\n  \"account_sid\": \"\",\n  \"channel_sid\": \"\",\n  \"created_by\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"identity\": \"\",\n  \"role_sid\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "cd984854-b766-4445-b060-7bf2cb340ae7",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:ChannelSid/Invites/:Sid",
+      "responses": [
+        {
+          "uuid": "42a3232e-a425-4b5c-a475-781a896713ef",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "4b5d8f1a-b718-49fd-a865-8270b324e47a",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:ChannelSid/Invites/:Sid",
+      "responses": [
+        {
+          "uuid": "82f0b3d3-0ae7-4764-be46-3d6db07f7cfa",
+          "body": "{\n  \"account_sid\": \"\",\n  \"channel_sid\": \"\",\n  \"created_by\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"identity\": \"\",\n  \"role_sid\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "1a182f43-8239-4e44-9685-f97e36504e24",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:ChannelSid/Members",
+      "responses": [
+        {
+          "uuid": "1dcc87b3-0dba-4893-955d-a051650f42fc",
+          "body": "{\n  \"members\": [\n    {\n      \"account_sid\": \"\",\n      \"attributes\": \"\",\n      \"channel_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"identity\": \"\",\n      \"last_consumed_message_index\": {{faker 'random.number'}},\n      \"last_consumption_timestamp\": \"{{faker 'date.recent' 365}}\",\n      \"role_sid\": \"\",\n      \"service_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "c8ce87a1-72a7-48e4-8a90-397a6da7e2e7",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:ChannelSid/Members",
+      "responses": [
+        {
+          "uuid": "b3f3eda3-e023-4d08-a4a5-bc088b6998da",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"channel_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"identity\": \"\",\n  \"last_consumed_message_index\": {{faker 'random.number'}},\n  \"last_consumption_timestamp\": \"{{faker 'date.recent' 365}}\",\n  \"role_sid\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "bcc044c9-a970-4026-921f-0065db934122",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:ChannelSid/Members/:Sid",
+      "responses": [
+        {
+          "uuid": "2cc9e2df-4ae3-463e-8471-4fd2e61cea68",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "e90e446e-ef75-4b93-a871-049c8bcf5e7a",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:ChannelSid/Members/:Sid",
+      "responses": [
+        {
+          "uuid": "d3396faa-24b3-4d03-9e10-aa7c6f7994ea",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"channel_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"identity\": \"\",\n  \"last_consumed_message_index\": {{faker 'random.number'}},\n  \"last_consumption_timestamp\": \"{{faker 'date.recent' 365}}\",\n  \"role_sid\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "2b9b2b3f-6969-4f2b-b6c5-3bf9b6f21972",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:ChannelSid/Members/:Sid",
+      "responses": [
+        {
+          "uuid": "f340bc7e-543d-4b8a-ad38-bc2644f07494",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"channel_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"identity\": \"\",\n  \"last_consumed_message_index\": {{faker 'random.number'}},\n  \"last_consumption_timestamp\": \"{{faker 'date.recent' 365}}\",\n  \"role_sid\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "0da6ed55-56f2-42c5-86a5-95b75066da53",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:ChannelSid/Messages",
+      "responses": [
+        {
+          "uuid": "facb2453-f269-4ce0-8eed-7d4ba77eb316",
+          "body": "{\n  \"messages\": [\n    {\n      \"account_sid\": \"\",\n      \"attributes\": \"\",\n      \"body\": \"\",\n      \"channel_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"from\": \"\",\n      \"index\": {{faker 'random.number'}},\n      \"last_updated_by\": \"\",\n      \"media\": \"\",\n      \"service_sid\": \"\",\n      \"sid\": \"\",\n      \"to\": \"\",\n      \"type\": \"\",\n      \"url\": \"\",\n      \"was_edited\": {{faker 'random.boolean'}}\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "8b393c88-bc9a-4dc0-93c8-2b37390ed8dc",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:ChannelSid/Messages",
+      "responses": [
+        {
+          "uuid": "e7529161-69dd-43fd-9d5a-97e3331465ea",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"body\": \"\",\n  \"channel_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"from\": \"\",\n  \"index\": {{faker 'random.number'}},\n  \"last_updated_by\": \"\",\n  \"media\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"to\": \"\",\n  \"type\": \"\",\n  \"url\": \"\",\n  \"was_edited\": {{faker 'random.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "63bc9a86-3e10-486a-a687-d160721fc363",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:ChannelSid/Messages/:Sid",
+      "responses": [
+        {
+          "uuid": "15baef0b-1e65-4665-be9d-ba1ae3e91dab",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "53d11900-1eb2-49bd-9999-55f0e244ee23",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:ChannelSid/Messages/:Sid",
+      "responses": [
+        {
+          "uuid": "ed186d20-267f-4c7c-8f03-3df49a72e291",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"body\": \"\",\n  \"channel_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"from\": \"\",\n  \"index\": {{faker 'random.number'}},\n  \"last_updated_by\": \"\",\n  \"media\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"to\": \"\",\n  \"type\": \"\",\n  \"url\": \"\",\n  \"was_edited\": {{faker 'random.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3c08c9e4-c423-4fb7-9511-b9f079acdc64",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:ChannelSid/Messages/:Sid",
+      "responses": [
+        {
+          "uuid": "d04e18ef-d04d-489c-8795-1a7053799b21",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"body\": \"\",\n  \"channel_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"from\": \"\",\n  \"index\": {{faker 'random.number'}},\n  \"last_updated_by\": \"\",\n  \"media\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"to\": \"\",\n  \"type\": \"\",\n  \"url\": \"\",\n  \"was_edited\": {{faker 'random.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "d3b2a843-5cae-4c72-b8e8-9a247d087bb3",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:ChannelSid/Webhooks",
+      "responses": [
+        {
+          "uuid": "5ce44583-72d5-4d1d-88ed-bdee55cbedc4",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"webhooks\": [\n    {\n      \"account_sid\": \"\",\n      \"channel_sid\": \"\",\n      \"configuration\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"service_sid\": \"\",\n      \"sid\": \"\",\n      \"type\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "a1d4f01f-6f6c-4c9e-8ae3-5ddf84a1dbf0",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:ChannelSid/Webhooks",
+      "responses": [
+        {
+          "uuid": "eeb3ea64-6791-45a4-8398-bccac1630fe3",
+          "body": "{\n  \"account_sid\": \"\",\n  \"channel_sid\": \"\",\n  \"configuration\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"type\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "48cf06d9-e7c5-4701-8aac-f495b5ddddc9",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:ChannelSid/Webhooks/:Sid",
+      "responses": [
+        {
+          "uuid": "c662709d-51f1-4ac5-a513-91429d16f5b3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3839aa77-28f1-4a85-9576-b1e5ac83e7c7",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:ChannelSid/Webhooks/:Sid",
+      "responses": [
+        {
+          "uuid": "a9232403-d708-4dfe-b202-2a2d09363bf7",
+          "body": "{\n  \"account_sid\": \"\",\n  \"channel_sid\": \"\",\n  \"configuration\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"type\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "0f0b54fb-2fb2-48a4-ab5b-71332ccab011",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:ChannelSid/Webhooks/:Sid",
+      "responses": [
+        {
+          "uuid": "4f98e283-fc06-4189-ad11-3764ec232323",
+          "body": "{\n  \"account_sid\": \"\",\n  \"channel_sid\": \"\",\n  \"configuration\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"type\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "1233ca37-7731-4e8f-b7b3-e6a7eea09e41",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:Sid",
+      "responses": [
+        {
+          "uuid": "525a78e0-1d74-4c40-a66c-3aea94b97078",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b89dafd7-f8fa-458b-8a7a-0547ff5098cd",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:Sid",
+      "responses": [
+        {
+          "uuid": "fb7765a0-92ef-4a57-a0c6-a48d8fedeb37",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"created_by\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"members_count\": {{faker 'random.number'}},\n  \"messages_count\": {{faker 'random.number'}},\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'public' 'private')}}\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "36851220-c3d8-4ca1-a134-4d9aaebcdd21",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v2/Services/:ServiceSid/Channels/:Sid",
+      "responses": [
+        {
+          "uuid": "ce06d895-a40e-43a3-bd36-685f868134fe",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"created_by\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"members_count\": {{faker 'random.number'}},\n  \"messages_count\": {{faker 'random.number'}},\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'public' 'private')}}\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "aeea2365-8ee0-458b-9951-f2cc0402c40a",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Roles",
+      "responses": [
+        {
+          "uuid": "a39db234-7223-4013-995c-dcd80fcfecb0",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"roles\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"permissions\": [\n        \"\"\n      ],\n      \"service_sid\": \"\",\n      \"sid\": \"\",\n      \"type\": \"{{oneOf (array 'channel' 'deployment')}}\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "8b2a0a66-9619-44c9-8fce-4425d3615d79",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v2/Services/:ServiceSid/Roles",
+      "responses": [
+        {
+          "uuid": "e0374827-087b-4f27-ad37-7a4c6d15279d",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"permissions\": [\n    \"\"\n  ],\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'channel' 'deployment')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "150282a5-aa26-44cf-a3b7-7da13194d2cd",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v2/Services/:ServiceSid/Roles/:Sid",
+      "responses": [
+        {
+          "uuid": "caae2fb9-8f27-4c1e-8688-84d984c7d143",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "60aa8d0e-f3c4-45c3-9ab4-91b92906cc73",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Roles/:Sid",
+      "responses": [
+        {
+          "uuid": "4a5a5da1-a25a-441e-9045-14f7f7ee0038",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"permissions\": [\n    \"\"\n  ],\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'channel' 'deployment')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b368e3d7-3deb-4d9f-a1dd-fd5df59ded6e",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v2/Services/:ServiceSid/Roles/:Sid",
+      "responses": [
+        {
+          "uuid": "e5c37199-fc77-4222-908a-49b8b5c5a1f9",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"permissions\": [\n    \"\"\n  ],\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'channel' 'deployment')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b37e7b8e-73fb-46b6-a425-27979a95d318",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Users",
+      "responses": [
+        {
+          "uuid": "d5624591-5a32-47d6-a9bf-8787ea40810d",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"users\": [\n    {\n      \"account_sid\": \"\",\n      \"attributes\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"identity\": \"\",\n      \"is_notifiable\": {{faker 'random.boolean'}},\n      \"is_online\": {{faker 'random.boolean'}},\n      \"joined_channels_count\": {{faker 'random.number'}},\n      \"links\": {},\n      \"role_sid\": \"\",\n      \"service_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "f59b1ea3-cabe-4d87-9bfa-2aa9860c1ceb",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v2/Services/:ServiceSid/Users",
+      "responses": [
+        {
+          "uuid": "e92e2a31-34ec-4c7d-bcf2-256e76822255",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"identity\": \"\",\n  \"is_notifiable\": {{faker 'random.boolean'}},\n  \"is_online\": {{faker 'random.boolean'}},\n  \"joined_channels_count\": {{faker 'random.number'}},\n  \"links\": {},\n  \"role_sid\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "5630d428-bf0b-472f-97fe-300be09fc8de",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v2/Services/:ServiceSid/Users/:Sid",
+      "responses": [
+        {
+          "uuid": "16dc356b-2aeb-44d3-b2b7-ff65c5c02b56",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ea064492-b7e9-4f7b-a6e2-5864d639e0dd",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Users/:Sid",
+      "responses": [
+        {
+          "uuid": "aceb64ab-99a2-4660-8ca1-0755d3bc8889",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"identity\": \"\",\n  \"is_notifiable\": {{faker 'random.boolean'}},\n  \"is_online\": {{faker 'random.boolean'}},\n  \"joined_channels_count\": {{faker 'random.number'}},\n  \"links\": {},\n  \"role_sid\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "d51bceca-229f-460e-a6de-2cab2dc31254",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v2/Services/:ServiceSid/Users/:Sid",
+      "responses": [
+        {
+          "uuid": "434dadbe-eb62-43b3-8639-15f1756b0f08",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"identity\": \"\",\n  \"is_notifiable\": {{faker 'random.boolean'}},\n  \"is_online\": {{faker 'random.boolean'}},\n  \"joined_channels_count\": {{faker 'random.number'}},\n  \"links\": {},\n  \"role_sid\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "a25a886c-024b-4f52-92f0-6612c8d6eb25",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Users/:UserSid/Bindings",
+      "responses": [
+        {
+          "uuid": "8568cec8-3c92-4136-8b17-bf0a4d858f89",
+          "body": "{\n  \"bindings\": [\n    {\n      \"account_sid\": \"\",\n      \"binding_type\": \"{{oneOf (array 'gcm' 'apn' 'fcm')}}\",\n      \"credential_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"endpoint\": \"\",\n      \"identity\": \"\",\n      \"message_types\": [\n        \"\"\n      ],\n      \"service_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\",\n      \"user_sid\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "cba72b38-56b7-4de0-887a-efcd7cda8f10",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v2/Services/:ServiceSid/Users/:UserSid/Bindings/:Sid",
+      "responses": [
+        {
+          "uuid": "e1d7f6db-fefd-44cf-b39a-b8a061a40828",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "6bfd5a6b-b04c-488d-b815-62aa0d4a67a9",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Users/:UserSid/Bindings/:Sid",
+      "responses": [
+        {
+          "uuid": "7678592a-fd20-4262-a6e2-871f2b0a17cb",
+          "body": "{\n  \"account_sid\": \"\",\n  \"binding_type\": \"{{oneOf (array 'gcm' 'apn' 'fcm')}}\",\n  \"credential_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"endpoint\": \"\",\n  \"identity\": \"\",\n  \"message_types\": [\n    \"\"\n  ],\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\",\n  \"user_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "abb310a7-ed3f-49cd-8571-2f4c659743ed",
+      "documentation": "List all Channels for a given User.",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Users/:UserSid/Channels",
+      "responses": [
+        {
+          "uuid": "936a22df-2cca-4fe2-8a89-6141abf0d1af",
+          "body": "{\n  \"channels\": [\n    {\n      \"account_sid\": \"\",\n      \"channel_sid\": \"\",\n      \"last_consumed_message_index\": {{faker 'random.number'}},\n      \"links\": {},\n      \"member_sid\": \"\",\n      \"notification_level\": \"{{oneOf (array 'default' 'muted')}}\",\n      \"service_sid\": \"\",\n      \"status\": \"{{oneOf (array 'joined' 'invited' 'not_participating')}}\",\n      \"unread_messages_count\": {{faker 'random.number'}},\n      \"url\": \"\",\n      \"user_sid\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "8870b3cc-d641-4ab1-9ce7-b3f52438e31e",
+      "documentation": "Removes User from selected Channel.",
+      "method": "delete",
+      "endpoint": "v2/Services/:ServiceSid/Users/:UserSid/Channels/:ChannelSid",
+      "responses": [
+        {
+          "uuid": "fa7fc1c4-4e76-4a8a-9ae7-2e2b5260c8b2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b8f29068-5d2b-4e19-a5a1-48d1db6f5115",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:ServiceSid/Users/:UserSid/Channels/:ChannelSid",
+      "responses": [
+        {
+          "uuid": "47e1a488-31f7-4f47-a36c-94f0c66b1ecc",
+          "body": "{\n  \"account_sid\": \"\",\n  \"channel_sid\": \"\",\n  \"last_consumed_message_index\": {{faker 'random.number'}},\n  \"links\": {},\n  \"member_sid\": \"\",\n  \"notification_level\": \"{{oneOf (array 'default' 'muted')}}\",\n  \"service_sid\": \"\",\n  \"status\": \"{{oneOf (array 'joined' 'invited' 'not_participating')}}\",\n  \"unread_messages_count\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"user_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "532887b2-9c8a-499b-9796-36126785e8f2",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v2/Services/:ServiceSid/Users/:UserSid/Channels/:ChannelSid",
+      "responses": [
+        {
+          "uuid": "2e06c6bc-ec4c-49a3-aaec-0bb203b6bff8",
+          "body": "{\n  \"account_sid\": \"\",\n  \"channel_sid\": \"\",\n  \"last_consumed_message_index\": {{faker 'random.number'}},\n  \"links\": {},\n  \"member_sid\": \"\",\n  \"notification_level\": \"{{oneOf (array 'default' 'muted')}}\",\n  \"service_sid\": \"\",\n  \"status\": \"{{oneOf (array 'joined' 'invited' 'not_participating')}}\",\n  \"unread_messages_count\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"user_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ddc1be33-9a59-4b60-935c-5ed5f0939178",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v2/Services/:Sid",
+      "responses": [
+        {
+          "uuid": "d499dc37-1e67-43b8-9fa8-e252631dc207",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "f8073835-89a6-40dc-b407-a9a4fe87f394",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v2/Services/:Sid",
+      "responses": [
+        {
+          "uuid": "650ea42f-ed64-4663-9c79-232f04797a23",
+          "body": "{\n  \"account_sid\": \"\",\n  \"consumption_report_interval\": {{faker 'random.number'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"default_channel_creator_role_sid\": \"\",\n  \"default_channel_role_sid\": \"\",\n  \"default_service_role_sid\": \"\",\n  \"friendly_name\": \"\",\n  \"limits\": \"\",\n  \"links\": {},\n  \"media\": \"\",\n  \"notifications\": \"\",\n  \"post_webhook_retry_count\": {{faker 'random.number'}},\n  \"post_webhook_url\": \"\",\n  \"pre_webhook_retry_count\": {{faker 'random.number'}},\n  \"pre_webhook_url\": \"\",\n  \"reachability_enabled\": {{faker 'random.boolean'}},\n  \"read_status_enabled\": {{faker 'random.boolean'}},\n  \"sid\": \"\",\n  \"typing_indicator_timeout\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"webhook_filters\": [\n    \"\"\n  ],\n  \"webhook_method\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "401334e7-82a6-4769-acb8-eb301c69c816",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v2/Services/:Sid",
+      "responses": [
+        {
+          "uuid": "9d24ab29-fb19-421d-be00-ba0330dc8e54",
+          "body": "{\n  \"account_sid\": \"\",\n  \"consumption_report_interval\": {{faker 'random.number'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"default_channel_creator_role_sid\": \"\",\n  \"default_channel_role_sid\": \"\",\n  \"default_service_role_sid\": \"\",\n  \"friendly_name\": \"\",\n  \"limits\": \"\",\n  \"links\": {},\n  \"media\": \"\",\n  \"notifications\": \"\",\n  \"post_webhook_retry_count\": {{faker 'random.number'}},\n  \"post_webhook_url\": \"\",\n  \"pre_webhook_retry_count\": {{faker 'random.number'}},\n  \"pre_webhook_url\": \"\",\n  \"reachability_enabled\": {{faker 'random.boolean'}},\n  \"read_status_enabled\": {{faker 'random.boolean'}},\n  \"sid\": \"\",\n  \"typing_indicator_timeout\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"webhook_filters\": [\n    \"\"\n  ],\n  \"webhook_method\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}

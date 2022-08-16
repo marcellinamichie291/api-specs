@@ -1,0 +1,637 @@
+{
+  "uuid": "ff6e48e9-9014-4bb8-8c10-06c69a55f63c",
+  "lastMigration": 19,
+  "name": "Twilio - Studio",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "c21e3ee6-7c3c-4448-a51f-3522b00a57eb",
+      "documentation": "Retrieve a list of all Flows.",
+      "method": "get",
+      "endpoint": "v1/Flows",
+      "responses": [
+        {
+          "uuid": "ff24be2a-012a-4b55-a138-9756abbae462",
+          "body": "{\n  \"flows\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"links\": {},\n      \"sid\": \"\",\n      \"status\": \"{{oneOf (array 'draft' 'published')}}\",\n      \"url\": \"\",\n      \"version\": {{faker 'random.number'}}\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "bb1b17f7-7cb1-4a8f-b52e-a7152d4783e3",
+      "documentation": "Retrieve a list of all Engagements for the Flow.",
+      "method": "get",
+      "endpoint": "v1/Flows/:FlowSid/Engagements",
+      "responses": [
+        {
+          "uuid": "08709862-aa92-4e47-87f8-8c3ed53e4687",
+          "body": "{\n  \"engagements\": [\n    {\n      \"account_sid\": \"\",\n      \"contact_channel_address\": \"\",\n      \"contact_sid\": \"\",\n      \"context\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"flow_sid\": \"\",\n      \"links\": {},\n      \"sid\": \"\",\n      \"status\": \"{{oneOf (array 'active' 'ended')}}\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b2f1c4fa-c44d-46f8-889e-728012f04477",
+      "documentation": "Triggers a new Engagement for the Flow",
+      "method": "post",
+      "endpoint": "v1/Flows/:FlowSid/Engagements",
+      "responses": [
+        {
+          "uuid": "ce038c44-61a7-4e23-9521-f31d46f8b1a9",
+          "body": "{\n  \"account_sid\": \"\",\n  \"contact_channel_address\": \"\",\n  \"contact_sid\": \"\",\n  \"context\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"flow_sid\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'active' 'ended')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "2c50f2fd-d621-47f7-bc11-f4ee4e1695e3",
+      "documentation": "Retrieve the most recent context for an Engagement.",
+      "method": "get",
+      "endpoint": "v1/Flows/:FlowSid/Engagements/:EngagementSid/Context",
+      "responses": [
+        {
+          "uuid": "3b5a04b0-c18b-4863-9568-bbf2d3a5d6ff",
+          "body": "{\n  \"account_sid\": \"\",\n  \"context\": \"\",\n  \"engagement_sid\": \"\",\n  \"flow_sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "0f0cf214-6013-4399-ae2c-c359668e0e12",
+      "documentation": "Retrieve a list of all Steps for an Engagement.",
+      "method": "get",
+      "endpoint": "v1/Flows/:FlowSid/Engagements/:EngagementSid/Steps",
+      "responses": [
+        {
+          "uuid": "c00f6645-08ab-47c4-a239-0ea8b82586bf",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"steps\": [\n    {\n      \"account_sid\": \"\",\n      \"context\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"engagement_sid\": \"\",\n      \"flow_sid\": \"\",\n      \"links\": {},\n      \"name\": \"\",\n      \"sid\": \"\",\n      \"transitioned_from\": \"\",\n      \"transitioned_to\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "129b6b3d-44e8-4a2a-8951-2b37ba738a23",
+      "documentation": "Retrieve a Step.",
+      "method": "get",
+      "endpoint": "v1/Flows/:FlowSid/Engagements/:EngagementSid/Steps/:Sid",
+      "responses": [
+        {
+          "uuid": "f53705cf-5d60-4e5e-be87-d977c64ba8fa",
+          "body": "{\n  \"account_sid\": \"\",\n  \"context\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"engagement_sid\": \"\",\n  \"flow_sid\": \"\",\n  \"links\": {},\n  \"name\": \"\",\n  \"sid\": \"\",\n  \"transitioned_from\": \"\",\n  \"transitioned_to\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "78bc2202-790d-4baa-9728-806a6f97e615",
+      "documentation": "Retrieve the context for an Engagement Step.",
+      "method": "get",
+      "endpoint": "v1/Flows/:FlowSid/Engagements/:EngagementSid/Steps/:StepSid/Context",
+      "responses": [
+        {
+          "uuid": "b2d2e138-821d-4a38-b38a-f4a02c1389f7",
+          "body": "{\n  \"account_sid\": \"\",\n  \"context\": \"\",\n  \"engagement_sid\": \"\",\n  \"flow_sid\": \"\",\n  \"step_sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "66757cbc-3046-43b8-b66a-d3089bf85a11",
+      "documentation": "Delete this Engagement and all Steps relating to it.",
+      "method": "delete",
+      "endpoint": "v1/Flows/:FlowSid/Engagements/:Sid",
+      "responses": [
+        {
+          "uuid": "32868b27-0a31-49dd-ac73-f2b540c2bb84",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "90c7785a-a19c-4add-84b8-d2a2b7c01e46",
+      "documentation": "Retrieve an Engagement",
+      "method": "get",
+      "endpoint": "v1/Flows/:FlowSid/Engagements/:Sid",
+      "responses": [
+        {
+          "uuid": "e19092cd-04e8-411f-9b8d-fcd7cac2844f",
+          "body": "{\n  \"account_sid\": \"\",\n  \"contact_channel_address\": \"\",\n  \"contact_sid\": \"\",\n  \"context\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"flow_sid\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'active' 'ended')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "89250724-9403-4a8a-95dc-406d2bfd9a6d",
+      "documentation": "Retrieve a list of all Executions for the Flow.",
+      "method": "get",
+      "endpoint": "v1/Flows/:FlowSid/Executions",
+      "responses": [
+        {
+          "uuid": "b239929f-7076-4db3-97ef-9aa0d5aeb109",
+          "body": "{\n  \"executions\": [\n    {\n      \"account_sid\": \"\",\n      \"contact_channel_address\": \"\",\n      \"contact_sid\": \"\",\n      \"context\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"flow_sid\": \"\",\n      \"links\": {},\n      \"sid\": \"\",\n      \"status\": \"{{oneOf (array 'active' 'ended')}}\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3e076711-cc15-4ec3-a53a-16d03756fc1b",
+      "documentation": "Triggers a new Execution for the Flow",
+      "method": "post",
+      "endpoint": "v1/Flows/:FlowSid/Executions",
+      "responses": [
+        {
+          "uuid": "2fe24505-2db3-4c2a-a601-8c540c81b892",
+          "body": "{\n  \"account_sid\": \"\",\n  \"contact_channel_address\": \"\",\n  \"contact_sid\": \"\",\n  \"context\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"flow_sid\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'active' 'ended')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ed293ff9-a6d2-4bb2-ac4f-5e9659994a33",
+      "documentation": "Retrieve the most recent context for an Execution.",
+      "method": "get",
+      "endpoint": "v1/Flows/:FlowSid/Executions/:ExecutionSid/Context",
+      "responses": [
+        {
+          "uuid": "26581457-8d94-4c76-8319-baf7dd56cc80",
+          "body": "{\n  \"account_sid\": \"\",\n  \"context\": \"\",\n  \"execution_sid\": \"\",\n  \"flow_sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "dab8de99-4587-4d10-ba68-d19ec9414d61",
+      "documentation": "Retrieve a list of all Steps for an Execution.",
+      "method": "get",
+      "endpoint": "v1/Flows/:FlowSid/Executions/:ExecutionSid/Steps",
+      "responses": [
+        {
+          "uuid": "1477fec1-ad81-458c-88a0-86c6556a2994",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"steps\": [\n    {\n      \"account_sid\": \"\",\n      \"context\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"execution_sid\": \"\",\n      \"flow_sid\": \"\",\n      \"links\": {},\n      \"name\": \"\",\n      \"sid\": \"\",\n      \"transitioned_from\": \"\",\n      \"transitioned_to\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "6341ee49-388d-45d5-8402-9c1c5c42f8bd",
+      "documentation": "Retrieve a Step.",
+      "method": "get",
+      "endpoint": "v1/Flows/:FlowSid/Executions/:ExecutionSid/Steps/:Sid",
+      "responses": [
+        {
+          "uuid": "27c1e849-4060-4cc5-9135-27dbadff4f0c",
+          "body": "{\n  \"account_sid\": \"\",\n  \"context\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"execution_sid\": \"\",\n  \"flow_sid\": \"\",\n  \"links\": {},\n  \"name\": \"\",\n  \"sid\": \"\",\n  \"transitioned_from\": \"\",\n  \"transitioned_to\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "aec245ba-3853-41ad-9106-f37b132ca666",
+      "documentation": "Retrieve the context for an Execution Step.",
+      "method": "get",
+      "endpoint": "v1/Flows/:FlowSid/Executions/:ExecutionSid/Steps/:StepSid/Context",
+      "responses": [
+        {
+          "uuid": "42738104-8b52-4541-bb8e-bfa52c69d480",
+          "body": "{\n  \"account_sid\": \"\",\n  \"context\": \"\",\n  \"execution_sid\": \"\",\n  \"flow_sid\": \"\",\n  \"step_sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ae3bd2d9-5dc5-4bfc-97df-18c57dacbcfb",
+      "documentation": "Delete the Execution and all Steps relating to it.",
+      "method": "delete",
+      "endpoint": "v1/Flows/:FlowSid/Executions/:Sid",
+      "responses": [
+        {
+          "uuid": "a369d27b-94fb-4db7-8d9e-310ae6ed6249",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "45c85d43-b2aa-4cdc-bb2e-25726e0e8ce7",
+      "documentation": "Retrieve an Execution",
+      "method": "get",
+      "endpoint": "v1/Flows/:FlowSid/Executions/:Sid",
+      "responses": [
+        {
+          "uuid": "09b85b8a-db69-436d-b3fa-9239d9927baf",
+          "body": "{\n  \"account_sid\": \"\",\n  \"contact_channel_address\": \"\",\n  \"contact_sid\": \"\",\n  \"context\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"flow_sid\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'active' 'ended')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "5e5ab533-713d-49e3-ae08-25172fc77942",
+      "documentation": "Update the status of an Execution to `ended`.",
+      "method": "post",
+      "endpoint": "v1/Flows/:FlowSid/Executions/:Sid",
+      "responses": [
+        {
+          "uuid": "6e2bd84c-5dfe-4be1-860e-e2bed9819749",
+          "body": "{\n  \"account_sid\": \"\",\n  \"contact_channel_address\": \"\",\n  \"contact_sid\": \"\",\n  \"context\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"flow_sid\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'active' 'ended')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "994b003c-9110-42ba-8e81-edd4eb83241a",
+      "documentation": "Delete a specific Flow.",
+      "method": "delete",
+      "endpoint": "v1/Flows/:Sid",
+      "responses": [
+        {
+          "uuid": "14a3aee1-e611-47ca-b838-049d79f1fad8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b251958b-43cf-4a78-a12a-b1e8565eba05",
+      "documentation": "Retrieve a specific Flow.",
+      "method": "get",
+      "endpoint": "v1/Flows/:Sid",
+      "responses": [
+        {
+          "uuid": "6aec3bc8-e598-485f-9702-9790a367e511",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'draft' 'published')}}\",\n  \"url\": \"\",\n  \"version\": {{faker 'random.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}

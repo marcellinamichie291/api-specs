@@ -1,0 +1,697 @@
+{
+  "uuid": "493c44e3-cac0-414f-9894-c26cec865197",
+  "lastMigration": 19,
+  "name": "Twilio - Events",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "d91f9c20-b8ad-4b8d-b5e7-a4ae5ac2ac5f",
+      "documentation": "Fetch a specific schema with its nested versions.",
+      "method": "get",
+      "endpoint": "v1/Schemas/:Id",
+      "responses": [
+        {
+          "uuid": "1324f180-aa6a-430f-ae29-8998fb4989dd",
+          "body": "{\n  \"id\": \"\",\n  \"latest_version\": {{faker 'random.number'}},\n  \"latest_version_date_created\": \"{{faker 'date.recent' 365}}\",\n  \"links\": {},\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "6840353b-7625-4152-a013-ae841c8d15a1",
+      "documentation": "Retrieve a paginated list of versions of the schema.",
+      "method": "get",
+      "endpoint": "v1/Schemas/:Id/Versions",
+      "responses": [
+        {
+          "uuid": "79810b55-34e1-4776-a97e-889623d2062f",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"schema_versions\": [\n    {\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"id\": \"\",\n      \"raw\": \"\",\n      \"schema_version\": {{faker 'random.number'}},\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "a85024ef-84cf-4b44-b3bc-effb4b867e6e",
+      "documentation": "Fetch a specific schema and version.",
+      "method": "get",
+      "endpoint": "v1/Schemas/:Id/Versions/:SchemaVersion",
+      "responses": [
+        {
+          "uuid": "2f4d673c-1a7d-410e-9b32-6613ca98395a",
+          "body": "{\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"id\": \"\",\n  \"raw\": \"\",\n  \"schema_version\": {{faker 'random.number'}},\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ddc2b745-fb94-4171-b83e-bf87ef513527",
+      "documentation": "Retrieve a paginated list of Sinks belonging to the account used to make the request.",
+      "method": "get",
+      "endpoint": "v1/Sinks",
+      "responses": [
+        {
+          "uuid": "6aa0bb71-2be2-4ce5-aac4-54fc5cbdff8b",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"sinks\": [\n    {\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"description\": \"\",\n      \"links\": {},\n      \"sid\": \"\",\n      \"sink_configuration\": \"\",\n      \"sink_type\": \"{{oneOf (array 'kinesis' 'webhook' 'segment')}}\",\n      \"status\": \"{{oneOf (array 'initialized' 'validating' 'active' 'failed')}}\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "564cc638-31f2-4cd5-b733-3d949d6f633f",
+      "documentation": "Create a new Sink",
+      "method": "post",
+      "endpoint": "v1/Sinks",
+      "responses": [
+        {
+          "uuid": "e73e2c8e-2a11-4bf5-9f30-75ebbe0da51f",
+          "body": "{\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"description\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"sink_configuration\": \"\",\n  \"sink_type\": \"{{oneOf (array 'kinesis' 'webhook' 'segment')}}\",\n  \"status\": \"{{oneOf (array 'initialized' 'validating' 'active' 'failed')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "0c97cf16-790f-4b18-90e9-d3d2d73849f6",
+      "documentation": "Delete a specific Sink.",
+      "method": "delete",
+      "endpoint": "v1/Sinks/:Sid",
+      "responses": [
+        {
+          "uuid": "f47b71c3-286a-4886-8ff5-c5b5cea72bca",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "fecc9170-f213-4d28-958e-0a1e1e5fa5d9",
+      "documentation": "Fetch a specific Sink.",
+      "method": "get",
+      "endpoint": "v1/Sinks/:Sid",
+      "responses": [
+        {
+          "uuid": "287fc8cf-ce8b-41ba-b5a3-ed8af1d344d2",
+          "body": "{\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"description\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"sink_configuration\": \"\",\n  \"sink_type\": \"{{oneOf (array 'kinesis' 'webhook' 'segment')}}\",\n  \"status\": \"{{oneOf (array 'initialized' 'validating' 'active' 'failed')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "9e6bd279-1748-4c65-8aec-0db99bac4565",
+      "documentation": "Update a specific Sink",
+      "method": "post",
+      "endpoint": "v1/Sinks/:Sid",
+      "responses": [
+        {
+          "uuid": "ef84efd7-b8c6-4c68-bded-45119be0892c",
+          "body": "{\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"description\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"sink_configuration\": \"\",\n  \"sink_type\": \"{{oneOf (array 'kinesis' 'webhook' 'segment')}}\",\n  \"status\": \"{{oneOf (array 'initialized' 'validating' 'active' 'failed')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "a2e8a0d1-d421-4b84-ad9e-bde1f4fb8632",
+      "documentation": "Create a new Sink Test Event for the given Sink.",
+      "method": "post",
+      "endpoint": "v1/Sinks/:Sid/Test",
+      "responses": [
+        {
+          "uuid": "36a3f4ef-3d99-46b1-bd57-e3919ce758b4",
+          "body": "{\n  \"result\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "8d67dd47-ee66-449b-906d-6fc3090645c0",
+      "documentation": "Validate that a test event for a Sink was received.",
+      "method": "post",
+      "endpoint": "v1/Sinks/:Sid/Validate",
+      "responses": [
+        {
+          "uuid": "72306d83-d717-4d08-8ba4-4c9d468b4bcf",
+          "body": "{\n  \"result\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b9dda547-2e23-4ac6-98b7-e75259bddfa4",
+      "documentation": "Retrieve a paginated list of Subscriptions belonging to the account used to make the request.",
+      "method": "get",
+      "endpoint": "v1/Subscriptions",
+      "responses": [
+        {
+          "uuid": "b2079957-8906-400e-aff1-7cd06a29ca58",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"subscriptions\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"description\": \"\",\n      \"links\": {},\n      \"sid\": \"\",\n      \"sink_sid\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "6d4bfc43-2b29-4fbd-b6ef-1eb2363fba04",
+      "documentation": "Create a new Subscription.",
+      "method": "post",
+      "endpoint": "v1/Subscriptions",
+      "responses": [
+        {
+          "uuid": "0f399d10-0645-4ec8-9909-b652553db668",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"description\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"sink_sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "6fd31242-bc99-404e-8277-e0f5f12850ec",
+      "documentation": "Delete a specific Subscription.",
+      "method": "delete",
+      "endpoint": "v1/Subscriptions/:Sid",
+      "responses": [
+        {
+          "uuid": "aa15e37a-0620-4e52-ac03-66005885c0da",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "4731df07-7e68-49f3-b618-4a369e53dadd",
+      "documentation": "Fetch a specific Subscription.",
+      "method": "get",
+      "endpoint": "v1/Subscriptions/:Sid",
+      "responses": [
+        {
+          "uuid": "937845d3-5a04-4465-a97c-4780a3ce3fd7",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"description\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"sink_sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "da9faa94-1737-4ae9-9e1b-487594cf5dc5",
+      "documentation": "Update a Subscription.",
+      "method": "post",
+      "endpoint": "v1/Subscriptions/:Sid",
+      "responses": [
+        {
+          "uuid": "7125895f-334f-4fa4-9f52-ad5c98b04b35",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"description\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"sink_sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b5806b51-2dfc-4cc4-9143-9f192b8ef8d3",
+      "documentation": "Retrieve a list of all Subscribed Event types for a Subscription.",
+      "method": "get",
+      "endpoint": "v1/Subscriptions/:SubscriptionSid/SubscribedEvents",
+      "responses": [
+        {
+          "uuid": "596e2fa4-0df8-4c22-a0d3-d885e90a2b5c",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"types\": [\n    {\n      \"account_sid\": \"\",\n      \"schema_version\": {{faker 'random.number'}},\n      \"subscription_sid\": \"\",\n      \"type\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "42b2ff55-bb64-4c7c-bf1d-e53a926f7727",
+      "documentation": "Create a new Subscribed Event type for the subscription",
+      "method": "post",
+      "endpoint": "v1/Subscriptions/:SubscriptionSid/SubscribedEvents",
+      "responses": [
+        {
+          "uuid": "da57e45c-74a3-46b1-861d-8423bcdddd63",
+          "body": "{\n  \"account_sid\": \"\",\n  \"schema_version\": {{faker 'random.number'}},\n  \"subscription_sid\": \"\",\n  \"type\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "29a2a105-d43c-4990-b146-f9be9884c161",
+      "documentation": "Remove an event type from a subscription.",
+      "method": "delete",
+      "endpoint": "v1/Subscriptions/:SubscriptionSid/SubscribedEvents/:Type",
+      "responses": [
+        {
+          "uuid": "ffea0ade-6bb5-4479-bd05-171d55f0d2e0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "004bdacd-2eda-421a-b9a2-3216f88609b8",
+      "documentation": "Read an Event for a Subscription.",
+      "method": "get",
+      "endpoint": "v1/Subscriptions/:SubscriptionSid/SubscribedEvents/:Type",
+      "responses": [
+        {
+          "uuid": "eb4b6b5b-f22d-4b78-bb87-c04a6a2e4f71",
+          "body": "{\n  \"account_sid\": \"\",\n  \"schema_version\": {{faker 'random.number'}},\n  \"subscription_sid\": \"\",\n  \"type\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3429596c-63d2-400b-b60e-28f39e3b6be5",
+      "documentation": "Update an Event for a Subscription.",
+      "method": "post",
+      "endpoint": "v1/Subscriptions/:SubscriptionSid/SubscribedEvents/:Type",
+      "responses": [
+        {
+          "uuid": "118943a6-18a7-42e5-a7fc-dfaa1a94af63",
+          "body": "{\n  \"account_sid\": \"\",\n  \"schema_version\": {{faker 'random.number'}},\n  \"subscription_sid\": \"\",\n  \"type\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "bceb45b3-36ed-4853-b360-f85b5e8eeea7",
+      "documentation": "Retrieve a paginated list of all the available Event Types.",
+      "method": "get",
+      "endpoint": "v1/Types",
+      "responses": [
+        {
+          "uuid": "c2ff263f-b839-4f5a-ba72-074c9c12bf3f",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"types\": [\n    {\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"description\": \"\",\n      \"links\": {},\n      \"schema_id\": \"\",\n      \"type\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ee5c4b0c-59b0-4bab-88e0-ca5b37730e76",
+      "documentation": "Fetch a specific Event Type.",
+      "method": "get",
+      "endpoint": "v1/Types/:Type",
+      "responses": [
+        {
+          "uuid": "a515ed8e-5ad4-45fc-bc2e-7d84cb55f355",
+          "body": "{\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"description\": \"\",\n  \"links\": {},\n  \"schema_id\": \"\",\n  \"type\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}

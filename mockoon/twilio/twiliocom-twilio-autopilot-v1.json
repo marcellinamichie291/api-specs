@@ -1,0 +1,1597 @@
+{
+  "uuid": "965f3e0a-7886-4ab2-b779-ced0a99b8b43",
+  "lastMigration": 19,
+  "name": "Twilio - Autopilot",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "06372440-396f-41dd-8aa3-458e3a21335b",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants",
+      "responses": [
+        {
+          "uuid": "e10c3881-8e93-4409-9eaf-561d1f553e47",
+          "body": "{\n  \"assistants\": [\n    {\n      \"account_sid\": \"\",\n      \"callback_events\": \"\",\n      \"callback_url\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"development_stage\": \"\",\n      \"friendly_name\": \"\",\n      \"latest_model_build_sid\": \"\",\n      \"links\": {},\n      \"log_queries\": {{faker 'random.boolean'}},\n      \"needs_model_build\": {{faker 'random.boolean'}},\n      \"sid\": \"\",\n      \"unique_name\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "f5ab35a8-db38-42b6-b54e-ff58042d2a16",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Assistants",
+      "responses": [
+        {
+          "uuid": "eda6d69d-4e1a-40ae-8211-c9695b83af68",
+          "body": "{\n  \"account_sid\": \"\",\n  \"callback_events\": \"\",\n  \"callback_url\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"development_stage\": \"\",\n  \"friendly_name\": \"\",\n  \"latest_model_build_sid\": \"\",\n  \"links\": {},\n  \"log_queries\": {{faker 'random.boolean'}},\n  \"needs_model_build\": {{faker 'random.boolean'}},\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "6b6ea384-e9d2-4207-9e25-942223520ec7",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Assistants/Restore",
+      "responses": [
+        {
+          "uuid": "0fa3d02e-b3b9-4f0c-b5f0-56174b49e5ec",
+          "body": "{\n  \"account_sid\": \"\",\n  \"callback_events\": \"\",\n  \"callback_url\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"development_stage\": \"\",\n  \"friendly_name\": \"\",\n  \"latest_model_build_sid\": \"\",\n  \"log_queries\": {{faker 'random.boolean'}},\n  \"needs_model_build\": {{faker 'random.boolean'}},\n  \"sid\": \"\",\n  \"unique_name\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ace0ce61-764c-455d-ac18-d2ca743552ee",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/Defaults",
+      "responses": [
+        {
+          "uuid": "1f840cf7-1de5-4451-bfaf-c8ef730ba8df",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"data\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "f58c1bd0-c8ed-4c97-affa-b2f119e534c5",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Assistants/:AssistantSid/Defaults",
+      "responses": [
+        {
+          "uuid": "db405f93-06ae-4375-bd2b-842c82efc648",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"data\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "f972d3de-76df-46fd-9c05-9523a2538a1b",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/Dialogues/:Sid",
+      "responses": [
+        {
+          "uuid": "19c3f04b-ec27-45c6-aca8-d45a960b61b9",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"data\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "90c98460-bbec-45cf-b075-94362f38479c",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/FieldTypes",
+      "responses": [
+        {
+          "uuid": "c2924809-d5f7-4206-ae26-f628b8c79b69",
+          "body": "{\n  \"field_types\": [\n    {\n      \"account_sid\": \"\",\n      \"assistant_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"links\": {},\n      \"sid\": \"\",\n      \"unique_name\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3cead943-e424-42db-8faa-428f2a41f15b",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Assistants/:AssistantSid/FieldTypes",
+      "responses": [
+        {
+          "uuid": "251afc6b-1377-401f-9d8a-730164f8f704",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "cd58d6b3-a457-420d-bae4-d2580d3c7aa4",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/FieldTypes/:FieldTypeSid/FieldValues",
+      "responses": [
+        {
+          "uuid": "f952086b-133a-4c51-a22d-be48e80be740",
+          "body": "{\n  \"field_values\": [\n    {\n      \"account_sid\": \"\",\n      \"assistant_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"field_type_sid\": \"\",\n      \"language\": \"\",\n      \"sid\": \"\",\n      \"synonym_of\": \"\",\n      \"url\": \"\",\n      \"value\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "c5bed90d-57e7-4a54-803f-32e657de1ef9",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Assistants/:AssistantSid/FieldTypes/:FieldTypeSid/FieldValues",
+      "responses": [
+        {
+          "uuid": "d03be421-801f-49c1-8fac-8d10613f82ef",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"field_type_sid\": \"\",\n  \"language\": \"\",\n  \"sid\": \"\",\n  \"synonym_of\": \"\",\n  \"url\": \"\",\n  \"value\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "d396dda7-7821-4f69-9e94-741462fcf141",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v1/Assistants/:AssistantSid/FieldTypes/:FieldTypeSid/FieldValues/:Sid",
+      "responses": [
+        {
+          "uuid": "b8638d59-f24c-4237-b01e-bd30eb540942",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "208c610d-25f2-435e-8b07-dac4090169b0",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/FieldTypes/:FieldTypeSid/FieldValues/:Sid",
+      "responses": [
+        {
+          "uuid": "94160f97-c8c9-4acd-9053-83b13ad9cb89",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"field_type_sid\": \"\",\n  \"language\": \"\",\n  \"sid\": \"\",\n  \"synonym_of\": \"\",\n  \"url\": \"\",\n  \"value\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "c2d8c84f-cdc2-4cf8-9424-ea77f498ab60",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v1/Assistants/:AssistantSid/FieldTypes/:Sid",
+      "responses": [
+        {
+          "uuid": "595ada2a-268a-4c90-a9ce-cbe81738ba8b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "cd28ffe5-3f54-49e0-b332-4791eeb0b071",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/FieldTypes/:Sid",
+      "responses": [
+        {
+          "uuid": "86e472fa-5715-456f-ba1c-4c6fd0846b04",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "d9f8944d-8318-4245-a6f2-e8064ca1fca7",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Assistants/:AssistantSid/FieldTypes/:Sid",
+      "responses": [
+        {
+          "uuid": "de2db5d1-b7e3-458c-8731-564671db044e",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "4eeb12b5-e700-41f7-8cdf-9608c9082443",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/ModelBuilds",
+      "responses": [
+        {
+          "uuid": "15a481de-38d6-4477-99b3-6f195516214c",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"model_builds\": [\n    {\n      \"account_sid\": \"\",\n      \"assistant_sid\": \"\",\n      \"build_duration\": {{faker 'random.number'}},\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"error_code\": {{faker 'random.number'}},\n      \"sid\": \"\",\n      \"status\": \"{{oneOf (array 'enqueued' 'building' 'completed' 'failed' 'canceled')}}\",\n      \"unique_name\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "dc6b9d0e-f08b-4956-b9af-ba412592c4e4",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Assistants/:AssistantSid/ModelBuilds",
+      "responses": [
+        {
+          "uuid": "f8766745-19cc-4240-843f-e481575f266c",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"build_duration\": {{faker 'random.number'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"error_code\": {{faker 'random.number'}},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'enqueued' 'building' 'completed' 'failed' 'canceled')}}\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "055bee74-8605-4564-afe9-66076f2f2292",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v1/Assistants/:AssistantSid/ModelBuilds/:Sid",
+      "responses": [
+        {
+          "uuid": "356600c5-bffc-47b4-98e7-8e9fc0a8e164",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "63e601bb-d3d7-4af4-9526-5dcc04d74cc3",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/ModelBuilds/:Sid",
+      "responses": [
+        {
+          "uuid": "74e26b26-1df9-403c-9e6d-73d38ab3d0d2",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"build_duration\": {{faker 'random.number'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"error_code\": {{faker 'random.number'}},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'enqueued' 'building' 'completed' 'failed' 'canceled')}}\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "cb54225e-3187-49f7-8b5f-df9364425bf7",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Assistants/:AssistantSid/ModelBuilds/:Sid",
+      "responses": [
+        {
+          "uuid": "7430d3a8-c1b3-4c09-b679-2a54b341b6a2",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"build_duration\": {{faker 'random.number'}},\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"error_code\": {{faker 'random.number'}},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'enqueued' 'building' 'completed' 'failed' 'canceled')}}\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "8634dea2-85b5-40f2-a201-e3eac5dcfb05",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/Queries",
+      "responses": [
+        {
+          "uuid": "d6801c9e-16fa-4eb5-b3d5-72d0a0149110",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"queries\": [\n    {\n      \"account_sid\": \"\",\n      \"assistant_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"dialogue_sid\": \"\",\n      \"language\": \"\",\n      \"model_build_sid\": \"\",\n      \"query\": \"\",\n      \"results\": \"\",\n      \"sample_sid\": \"\",\n      \"sid\": \"\",\n      \"source_channel\": \"\",\n      \"status\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "5db40c60-f4bf-4f2c-842a-9cab5af5f0ba",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Assistants/:AssistantSid/Queries",
+      "responses": [
+        {
+          "uuid": "0f80bf26-4698-4485-a26d-0a904b0c06ec",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"dialogue_sid\": \"\",\n  \"language\": \"\",\n  \"model_build_sid\": \"\",\n  \"query\": \"\",\n  \"results\": \"\",\n  \"sample_sid\": \"\",\n  \"sid\": \"\",\n  \"source_channel\": \"\",\n  \"status\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "7465bc07-4343-4029-8523-0ed8e20ef358",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v1/Assistants/:AssistantSid/Queries/:Sid",
+      "responses": [
+        {
+          "uuid": "66c0c843-0d3b-438e-b2f1-b11898289ee8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "e592e2dd-92b0-4959-af35-fb31fc50231c",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/Queries/:Sid",
+      "responses": [
+        {
+          "uuid": "62a62477-fd48-46d9-aed0-19c93f7b517a",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"dialogue_sid\": \"\",\n  \"language\": \"\",\n  \"model_build_sid\": \"\",\n  \"query\": \"\",\n  \"results\": \"\",\n  \"sample_sid\": \"\",\n  \"sid\": \"\",\n  \"source_channel\": \"\",\n  \"status\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "430d2029-166a-4539-9156-a0d47da7b2a7",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Assistants/:AssistantSid/Queries/:Sid",
+      "responses": [
+        {
+          "uuid": "8beb3ad5-b8a4-4d28-9c6b-b4908ba930b4",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"dialogue_sid\": \"\",\n  \"language\": \"\",\n  \"model_build_sid\": \"\",\n  \"query\": \"\",\n  \"results\": \"\",\n  \"sample_sid\": \"\",\n  \"sid\": \"\",\n  \"source_channel\": \"\",\n  \"status\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "692dcedc-a7cf-408e-ba53-edea23d37ab3",
+      "documentation": "Returns Style sheet JSON object for the Assistant",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/StyleSheet",
+      "responses": [
+        {
+          "uuid": "22118aa5-ca7d-44ae-838b-8643ba35795a",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"data\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "fc46f2c4-b108-43dc-badf-fbd62fbc68f6",
+      "documentation": "Updates the style sheet for an Assistant identified by `assistant_sid`.",
+      "method": "post",
+      "endpoint": "v1/Assistants/:AssistantSid/StyleSheet",
+      "responses": [
+        {
+          "uuid": "0331f2c5-3461-41bd-872c-08490debd774",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"data\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "f3b65a60-3109-444d-af08-abf2f11fc6d7",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/Tasks",
+      "responses": [
+        {
+          "uuid": "dae91210-c605-4074-8d96-2c0003dd2197",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"tasks\": [\n    {\n      \"account_sid\": \"\",\n      \"actions_url\": \"\",\n      \"assistant_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"links\": {},\n      \"sid\": \"\",\n      \"unique_name\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b84e9fb4-ae75-4d69-8c26-93ae536fd987",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Assistants/:AssistantSid/Tasks",
+      "responses": [
+        {
+          "uuid": "06a45696-c08b-453a-a74a-50375f93a411",
+          "body": "{\n  \"account_sid\": \"\",\n  \"actions_url\": \"\",\n  \"assistant_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "68a37446-6e8e-4b95-ad8a-02805c7233bf",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v1/Assistants/:AssistantSid/Tasks/:Sid",
+      "responses": [
+        {
+          "uuid": "e9a7f5c0-c7b5-4aec-96db-f8d47aa259da",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "1c781e50-a594-4700-bc49-d7286e2381ac",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/Tasks/:Sid",
+      "responses": [
+        {
+          "uuid": "91ed3bcc-a8c9-420f-95c7-5623daeb2f65",
+          "body": "{\n  \"account_sid\": \"\",\n  \"actions_url\": \"\",\n  \"assistant_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "38610c66-e37d-421d-ad25-ab2a51c7d879",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Assistants/:AssistantSid/Tasks/:Sid",
+      "responses": [
+        {
+          "uuid": "01f7e5e8-9d14-468c-b589-7442c3cd142a",
+          "body": "{\n  \"account_sid\": \"\",\n  \"actions_url\": \"\",\n  \"assistant_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "cdf7b29e-5b7a-4290-b59d-901602f96a2a",
+      "documentation": "Returns JSON actions for the Task.",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/Tasks/:TaskSid/Actions",
+      "responses": [
+        {
+          "uuid": "72e85f70-ca68-433d-93a9-526d779b50c4",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"data\": \"\",\n  \"task_sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "4bc00156-3a9b-42f7-911b-23c3d629e4ae",
+      "documentation": "Updates the actions of an Task identified by {TaskSid} or {TaskUniqueName}.",
+      "method": "post",
+      "endpoint": "v1/Assistants/:AssistantSid/Tasks/:TaskSid/Actions",
+      "responses": [
+        {
+          "uuid": "5ced7b06-ee49-40de-bfa2-a48642ba5cf5",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"data\": \"\",\n  \"task_sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ea715427-38f8-4468-8854-8e9699620a60",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/Tasks/:TaskSid/Fields",
+      "responses": [
+        {
+          "uuid": "bd158b8d-a511-4460-9e54-b2e60d6a1a73",
+          "body": "{\n  \"fields\": [\n    {\n      \"account_sid\": \"\",\n      \"assistant_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"field_type\": \"\",\n      \"sid\": \"\",\n      \"task_sid\": \"\",\n      \"unique_name\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "dc625630-96a4-4091-829f-9a6e4fb5c740",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Assistants/:AssistantSid/Tasks/:TaskSid/Fields",
+      "responses": [
+        {
+          "uuid": "a0494bab-f9ac-4bbd-a176-b7ff8cc16f44",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"field_type\": \"\",\n  \"sid\": \"\",\n  \"task_sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "584eb7eb-de57-4d33-90dd-fa7f3e8fb895",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v1/Assistants/:AssistantSid/Tasks/:TaskSid/Fields/:Sid",
+      "responses": [
+        {
+          "uuid": "5812969c-e659-444a-a73d-f5b321c1746c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "4a506935-ae32-4ad7-a40e-c0051aeeb0be",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/Tasks/:TaskSid/Fields/:Sid",
+      "responses": [
+        {
+          "uuid": "f593035f-11eb-4936-88ca-e0100a562ea3",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"field_type\": \"\",\n  \"sid\": \"\",\n  \"task_sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3e06725e-2e75-491c-8975-15fb3785b6f4",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/Tasks/:TaskSid/Samples",
+      "responses": [
+        {
+          "uuid": "090b36b3-2504-4f19-969c-1b5d96b8be8a",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"samples\": [\n    {\n      \"account_sid\": \"\",\n      \"assistant_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"language\": \"\",\n      \"sid\": \"\",\n      \"source_channel\": \"\",\n      \"tagged_text\": \"\",\n      \"task_sid\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "f3794ebb-91c5-4c06-ae75-d0cac06beb21",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Assistants/:AssistantSid/Tasks/:TaskSid/Samples",
+      "responses": [
+        {
+          "uuid": "43515366-5636-43e4-b07b-f614937fc2d0",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"language\": \"\",\n  \"sid\": \"\",\n  \"source_channel\": \"\",\n  \"tagged_text\": \"\",\n  \"task_sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "28d802c7-727d-421c-86eb-b720fa743757",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v1/Assistants/:AssistantSid/Tasks/:TaskSid/Samples/:Sid",
+      "responses": [
+        {
+          "uuid": "183c96ff-eaa7-41c8-8e1a-d598b120e26a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "8c5cb462-3632-4880-a71e-8509400d88f9",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/Tasks/:TaskSid/Samples/:Sid",
+      "responses": [
+        {
+          "uuid": "313d99e4-ecf4-4285-a213-ea630538865f",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"language\": \"\",\n  \"sid\": \"\",\n  \"source_channel\": \"\",\n  \"tagged_text\": \"\",\n  \"task_sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "826fb743-4b90-47a9-9815-7a62dd117819",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Assistants/:AssistantSid/Tasks/:TaskSid/Samples/:Sid",
+      "responses": [
+        {
+          "uuid": "64c2993c-b2eb-4101-85da-278bf64b9894",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"language\": \"\",\n  \"sid\": \"\",\n  \"source_channel\": \"\",\n  \"tagged_text\": \"\",\n  \"task_sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "5f168e49-420e-495a-b743-46f3702fb205",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/Tasks/:TaskSid/Statistics",
+      "responses": [
+        {
+          "uuid": "03047dec-f7cf-4082-a38f-50b1dca28404",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"fields_count\": {{faker 'random.number'}},\n  \"samples_count\": {{faker 'random.number'}},\n  \"task_sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "0ba6d4c1-7a77-480d-bc9a-f3760d388b2a",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/Webhooks",
+      "responses": [
+        {
+          "uuid": "040ac8ed-c561-436d-9c06-f31ef20633a2",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"webhooks\": [\n    {\n      \"account_sid\": \"\",\n      \"assistant_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"events\": \"\",\n      \"sid\": \"\",\n      \"unique_name\": \"\",\n      \"url\": \"\",\n      \"webhook_method\": \"\",\n      \"webhook_url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "34dadef5-ed9e-4d3a-b593-0fc90b69e10e",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Assistants/:AssistantSid/Webhooks",
+      "responses": [
+        {
+          "uuid": "5e3ed0f1-ff7b-423f-bd79-ffaa45243878",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"events\": \"\",\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\",\n  \"webhook_method\": \"\",\n  \"webhook_url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b84871a5-d8be-4d93-a16d-45df0d8ea5ff",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v1/Assistants/:AssistantSid/Webhooks/:Sid",
+      "responses": [
+        {
+          "uuid": "0548b51a-a548-4219-a28e-6f658e4c5230",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "37898c49-6751-4e25-a46f-f68b3e3280c5",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:AssistantSid/Webhooks/:Sid",
+      "responses": [
+        {
+          "uuid": "4c9e4019-eb01-4688-8b28-18fb9b9e0544",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"events\": \"\",\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\",\n  \"webhook_method\": \"\",\n  \"webhook_url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "8ee1efd8-6a86-47a8-9330-431b369de734",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Assistants/:AssistantSid/Webhooks/:Sid",
+      "responses": [
+        {
+          "uuid": "6b343ba9-1982-42c2-9a0d-87257283f1c1",
+          "body": "{\n  \"account_sid\": \"\",\n  \"assistant_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"events\": \"\",\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\",\n  \"webhook_method\": \"\",\n  \"webhook_url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "89831847-f365-41f3-83e0-7fcc47c12441",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "v1/Assistants/:Sid",
+      "responses": [
+        {
+          "uuid": "f6d851a5-77a6-4ee4-889f-8fe49935462a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "65d297a2-cabe-4875-bdc6-6eac2e85bb13",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Assistants/:Sid",
+      "responses": [
+        {
+          "uuid": "738d0420-ecae-4c74-ba1c-f84c8bdb2f5e",
+          "body": "{\n  \"account_sid\": \"\",\n  \"callback_events\": \"\",\n  \"callback_url\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"development_stage\": \"\",\n  \"friendly_name\": \"\",\n  \"latest_model_build_sid\": \"\",\n  \"links\": {},\n  \"log_queries\": {{faker 'random.boolean'}},\n  \"needs_model_build\": {{faker 'random.boolean'}},\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "f9a2c12a-66f8-4af4-9a26-1f4ba98d8c31",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Assistants/:Sid",
+      "responses": [
+        {
+          "uuid": "b5337a2c-a94d-490e-b13a-d7da75b68004",
+          "body": "{\n  \"account_sid\": \"\",\n  \"callback_events\": \"\",\n  \"callback_url\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"development_stage\": \"\",\n  \"friendly_name\": \"\",\n  \"latest_model_build_sid\": \"\",\n  \"links\": {},\n  \"log_queries\": {{faker 'random.boolean'}},\n  \"needs_model_build\": {{faker 'random.boolean'}},\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}

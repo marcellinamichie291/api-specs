@@ -1,0 +1,1207 @@
+{
+  "uuid": "4a40498d-aee1-4217-a8a6-9241d83e6924",
+  "lastMigration": 19,
+  "name": "Twilio - Serverless",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "6ea4594c-f68c-43a8-b16b-b6d14ea8ca4a",
+      "documentation": "Retrieve a list of all Services.",
+      "method": "get",
+      "endpoint": "v1/Services",
+      "responses": [
+        {
+          "uuid": "d6accce3-9dd6-4fdd-8546-9062a3922fed",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"services\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"domain_base\": \"\",\n      \"friendly_name\": \"\",\n      \"include_credentials\": {{faker 'random.boolean'}},\n      \"links\": {},\n      \"sid\": \"\",\n      \"ui_editable\": {{faker 'random.boolean'}},\n      \"unique_name\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "c85a5ec7-a865-45de-a56b-5c06816ec48a",
+      "documentation": "Create a new Service resource.",
+      "method": "post",
+      "endpoint": "v1/Services",
+      "responses": [
+        {
+          "uuid": "fca25e7e-1fc1-4392-bf12-922ac9f6415d",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"domain_base\": \"\",\n  \"friendly_name\": \"\",\n  \"include_credentials\": {{faker 'random.boolean'}},\n  \"links\": {},\n  \"sid\": \"\",\n  \"ui_editable\": {{faker 'random.boolean'}},\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "9e56e66c-fe54-4057-8b33-47ec85903fc4",
+      "documentation": "Retrieve a list of all Assets.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Assets",
+      "responses": [
+        {
+          "uuid": "0ae57550-4fde-4931-b64d-28abf0c8e62b",
+          "body": "{\n  \"assets\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"links\": {},\n      \"service_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "61ec893c-5f5d-4aa3-a6b3-4b6c025b0389",
+      "documentation": "Create a new Asset resource.",
+      "method": "post",
+      "endpoint": "v1/Services/:ServiceSid/Assets",
+      "responses": [
+        {
+          "uuid": "891cd6c9-1002-447d-9aa3-ce2157649f8b",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "e07c8326-9d0a-47bc-a3f4-2a1521263709",
+      "documentation": "Retrieve a list of all Asset Versions.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Assets/:AssetSid/Versions",
+      "responses": [
+        {
+          "uuid": "32ad5f8b-c098-436a-ad3a-c5e286be7055",
+          "body": "{\n  \"asset_versions\": [\n    {\n      \"account_sid\": \"\",\n      \"asset_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"path\": \"\",\n      \"service_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\",\n      \"visibility\": \"{{oneOf (array 'public' 'private' 'protected')}}\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ebb871d7-6cd1-4057-b212-80eaeea402b7",
+      "documentation": "Retrieve a specific Asset Version.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Assets/:AssetSid/Versions/:Sid",
+      "responses": [
+        {
+          "uuid": "d9f8e299-f865-4551-a67c-0d5879099cd6",
+          "body": "{\n  \"account_sid\": \"\",\n  \"asset_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"path\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\",\n  \"visibility\": \"{{oneOf (array 'public' 'private' 'protected')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "9984522c-cf38-4d37-86e3-28d6007499c2",
+      "documentation": "Delete an Asset resource.",
+      "method": "delete",
+      "endpoint": "v1/Services/:ServiceSid/Assets/:Sid",
+      "responses": [
+        {
+          "uuid": "96d74b4e-c372-49af-b589-f4f4fd9b0a0e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "bbd21d8e-36e1-4ecf-9d17-9a2d58678eff",
+      "documentation": "Retrieve a specific Asset resource.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Assets/:Sid",
+      "responses": [
+        {
+          "uuid": "335a9959-e6c6-4253-852a-e3b20531e99a",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "c1667b71-8050-471a-b13c-d6d7e1588957",
+      "documentation": "Update a specific Asset resource.",
+      "method": "post",
+      "endpoint": "v1/Services/:ServiceSid/Assets/:Sid",
+      "responses": [
+        {
+          "uuid": "91388de0-32ed-4aa7-8215-74d92dc390ea",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "5b2fdfcd-2cb2-46ad-9061-2a90d070576c",
+      "documentation": "Retrieve a list of all Builds.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Builds",
+      "responses": [
+        {
+          "uuid": "bcf0c8ab-f26b-4868-8b90-e733a431b78c",
+          "body": "{\n  \"builds\": [\n    {\n      \"account_sid\": \"\",\n      \"asset_versions\": [\n        \"\"\n      ],\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"dependencies\": [\n        \"\"\n      ],\n      \"function_versions\": [\n        \"\"\n      ],\n      \"links\": {},\n      \"runtime\": \"{{oneOf (array 'node8' 'node10' 'node12' 'node14')}}\",\n      \"service_sid\": \"\",\n      \"sid\": \"\",\n      \"status\": \"{{oneOf (array 'building' 'completed' 'failed')}}\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "2bcba251-6741-45e1-a2c4-3dea86a7c282",
+      "documentation": "Create a new Build resource. At least one function version or asset version is required.",
+      "method": "post",
+      "endpoint": "v1/Services/:ServiceSid/Builds",
+      "responses": [
+        {
+          "uuid": "19be89a1-d675-4b0d-8282-d8fe2187d64a",
+          "body": "{\n  \"account_sid\": \"\",\n  \"asset_versions\": [\n    \"\"\n  ],\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"dependencies\": [\n    \"\"\n  ],\n  \"function_versions\": [\n    \"\"\n  ],\n  \"links\": {},\n  \"runtime\": \"{{oneOf (array 'node8' 'node10' 'node12' 'node14')}}\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'building' 'completed' 'failed')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "49bc80fc-f818-418b-a2f0-8033c0002a3b",
+      "documentation": "Delete a Build resource.",
+      "method": "delete",
+      "endpoint": "v1/Services/:ServiceSid/Builds/:Sid",
+      "responses": [
+        {
+          "uuid": "b4cfab39-e016-492f-8f5d-d66fda4eee6d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ca30adf9-b311-407b-9661-7836602ed4dc",
+      "documentation": "Retrieve a specific Build resource.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Builds/:Sid",
+      "responses": [
+        {
+          "uuid": "2c41c611-bb72-40a6-b67b-df856ca033b1",
+          "body": "{\n  \"account_sid\": \"\",\n  \"asset_versions\": [\n    \"\"\n  ],\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"dependencies\": [\n    \"\"\n  ],\n  \"function_versions\": [\n    \"\"\n  ],\n  \"links\": {},\n  \"runtime\": \"{{oneOf (array 'node8' 'node10' 'node12' 'node14')}}\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'building' 'completed' 'failed')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3ebfced8-c7f9-431c-8660-b7237b60dc39",
+      "documentation": "Retrieve a specific Build resource.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Builds/:Sid/Status",
+      "responses": [
+        {
+          "uuid": "4f65d4dc-7dc7-4c45-b1be-dc65a6594d40",
+          "body": "{\n  \"account_sid\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'building' 'completed' 'failed')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "2d705ba8-88d9-4fac-99fc-8ce10d0bfc85",
+      "documentation": "Retrieve a list of all environments.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Environments",
+      "responses": [
+        {
+          "uuid": "c6207c17-d312-48b0-b4a3-fb7d706e192d",
+          "body": "{\n  \"environments\": [\n    {\n      \"account_sid\": \"\",\n      \"build_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"domain_name\": \"\",\n      \"domain_suffix\": \"\",\n      \"links\": {},\n      \"service_sid\": \"\",\n      \"sid\": \"\",\n      \"unique_name\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "56e51a63-188c-4377-b435-6c08bf3c4de1",
+      "documentation": "Create a new environment.",
+      "method": "post",
+      "endpoint": "v1/Services/:ServiceSid/Environments",
+      "responses": [
+        {
+          "uuid": "1221923b-7250-4a61-b669-a670c33ef96b",
+          "body": "{\n  \"account_sid\": \"\",\n  \"build_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"domain_name\": \"\",\n  \"domain_suffix\": \"\",\n  \"links\": {},\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ab630386-bd9d-4ea4-a4ac-234d0c51be1c",
+      "documentation": "Retrieve a list of all Deployments.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Environments/:EnvironmentSid/Deployments",
+      "responses": [
+        {
+          "uuid": "deb22b64-28b8-4fe8-aae0-157248e9e3f3",
+          "body": "{\n  \"deployments\": [\n    {\n      \"account_sid\": \"\",\n      \"build_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"environment_sid\": \"\",\n      \"service_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "44f8729e-17d3-4349-9411-18491b336716",
+      "documentation": "Create a new Deployment.",
+      "method": "post",
+      "endpoint": "v1/Services/:ServiceSid/Environments/:EnvironmentSid/Deployments",
+      "responses": [
+        {
+          "uuid": "1debe10b-0fd8-4c8e-959a-9c281e234478",
+          "body": "{\n  \"account_sid\": \"\",\n  \"build_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"environment_sid\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "30483393-603e-403a-813a-600a626071d5",
+      "documentation": "Retrieve a specific Deployment.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Environments/:EnvironmentSid/Deployments/:Sid",
+      "responses": [
+        {
+          "uuid": "66e0a9ff-2219-43d9-b8cd-afb4a782c1c9",
+          "body": "{\n  \"account_sid\": \"\",\n  \"build_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"environment_sid\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "4e3b4ca9-62a1-4ea1-9613-da28eeb157f2",
+      "documentation": "Retrieve a list of all logs.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Environments/:EnvironmentSid/Logs",
+      "responses": [
+        {
+          "uuid": "1e5df157-554f-45bb-835e-a8a7236c5150",
+          "body": "{\n  \"logs\": [\n    {\n      \"account_sid\": \"\",\n      \"build_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"deployment_sid\": \"\",\n      \"environment_sid\": \"\",\n      \"function_sid\": \"\",\n      \"level\": \"{{oneOf (array 'info' 'warn' 'error')}}\",\n      \"message\": \"\",\n      \"request_sid\": \"\",\n      \"service_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "66eb1aa0-601c-4940-bce7-759bf76b09d9",
+      "documentation": "Retrieve a specific log.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Environments/:EnvironmentSid/Logs/:Sid",
+      "responses": [
+        {
+          "uuid": "df35f6fa-99ce-467b-9e44-be79cd7d5141",
+          "body": "{\n  \"account_sid\": \"\",\n  \"build_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"deployment_sid\": \"\",\n  \"environment_sid\": \"\",\n  \"function_sid\": \"\",\n  \"level\": \"{{oneOf (array 'info' 'warn' 'error')}}\",\n  \"message\": \"\",\n  \"request_sid\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "0703709c-a32a-4247-896a-0bd9cd67eb05",
+      "documentation": "Retrieve a list of all Variables.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Environments/:EnvironmentSid/Variables",
+      "responses": [
+        {
+          "uuid": "e5ce7498-7d64-4bd4-ba81-dd22893595c9",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"variables\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"environment_sid\": \"\",\n      \"key\": \"\",\n      \"service_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\",\n      \"value\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "89817d49-4577-4077-b1e9-c1d891474096",
+      "documentation": "Create a new Variable.",
+      "method": "post",
+      "endpoint": "v1/Services/:ServiceSid/Environments/:EnvironmentSid/Variables",
+      "responses": [
+        {
+          "uuid": "83066b10-0786-47a3-ada8-3a6737e438dd",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"environment_sid\": \"\",\n  \"key\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\",\n  \"value\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3de6a91d-b1b2-4cb5-aa34-3f0e82eafa99",
+      "documentation": "Delete a specific Variable.",
+      "method": "delete",
+      "endpoint": "v1/Services/:ServiceSid/Environments/:EnvironmentSid/Variables/:Sid",
+      "responses": [
+        {
+          "uuid": "53082eb7-172f-46a0-9b31-0718955226db",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "03757553-6122-4d3e-ad1d-b9439c171905",
+      "documentation": "Retrieve a specific Variable.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Environments/:EnvironmentSid/Variables/:Sid",
+      "responses": [
+        {
+          "uuid": "d810e4aa-145e-4e04-8cc7-7295aebaca4a",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"environment_sid\": \"\",\n  \"key\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\",\n  \"value\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "c467608a-cc57-4797-8bed-e3cda1ebc239",
+      "documentation": "Update a specific Variable.",
+      "method": "post",
+      "endpoint": "v1/Services/:ServiceSid/Environments/:EnvironmentSid/Variables/:Sid",
+      "responses": [
+        {
+          "uuid": "ef358fbc-a9ef-4456-837f-e2f5e25f4bcf",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"environment_sid\": \"\",\n  \"key\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\",\n  \"value\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "d06bec0b-052b-40f5-97fb-5b3c98db69fa",
+      "documentation": "Delete a specific environment.",
+      "method": "delete",
+      "endpoint": "v1/Services/:ServiceSid/Environments/:Sid",
+      "responses": [
+        {
+          "uuid": "c09ab89b-2935-4c9e-9dbd-326d969f0d82",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "e30d5021-ea71-474e-9622-5df200c86886",
+      "documentation": "Retrieve a specific environment.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Environments/:Sid",
+      "responses": [
+        {
+          "uuid": "82855d39-5ca9-4dac-9998-761e96c53e7a",
+          "body": "{\n  \"account_sid\": \"\",\n  \"build_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"domain_name\": \"\",\n  \"domain_suffix\": \"\",\n  \"links\": {},\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ba952c22-087f-4eaa-8fec-469798815197",
+      "documentation": "Retrieve a list of all Functions.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Functions",
+      "responses": [
+        {
+          "uuid": "4636a0a7-7e7a-4e40-977d-be232c3114f0",
+          "body": "{\n  \"functions\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"links\": {},\n      \"service_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "4ce5f4e5-39ab-48a7-8378-d82e25fc4f50",
+      "documentation": "Create a new Function resource.",
+      "method": "post",
+      "endpoint": "v1/Services/:ServiceSid/Functions",
+      "responses": [
+        {
+          "uuid": "70d77b05-6415-4ee4-b2c0-7711f14482ba",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "c2212a42-2c22-48aa-8eb6-50388311fb90",
+      "documentation": "Retrieve a list of all Function Version resources.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Functions/:FunctionSid/Versions",
+      "responses": [
+        {
+          "uuid": "60a0e85a-951e-4937-9920-cd7a6705b17c",
+          "body": "{\n  \"function_versions\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"function_sid\": \"\",\n      \"links\": {},\n      \"path\": \"\",\n      \"service_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\",\n      \"visibility\": \"{{oneOf (array 'public' 'private' 'protected')}}\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3a41e2a1-c00c-48bf-ac22-46b4e2ecbc18",
+      "documentation": "Retrieve a specific Function Version resource.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Functions/:FunctionSid/Versions/:Sid",
+      "responses": [
+        {
+          "uuid": "22b94777-4a65-47d5-a0a7-03fe7fcf8a1f",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"function_sid\": \"\",\n  \"links\": {},\n  \"path\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\",\n  \"visibility\": \"{{oneOf (array 'public' 'private' 'protected')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "0e7a7ac0-bd29-4020-bd63-8d5e310fd4fc",
+      "documentation": "Retrieve a the content of a specific Function Version resource.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Functions/:FunctionSid/Versions/:Sid/Content",
+      "responses": [
+        {
+          "uuid": "4f79fd4b-f8c0-498b-9243-1502a851c355",
+          "body": "{\n  \"account_sid\": \"\",\n  \"content\": \"\",\n  \"function_sid\": \"\",\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "8a57265a-5110-4f2c-82e6-d7ab2c413d5a",
+      "documentation": "Delete a Function resource.",
+      "method": "delete",
+      "endpoint": "v1/Services/:ServiceSid/Functions/:Sid",
+      "responses": [
+        {
+          "uuid": "2cd12935-583a-4ca9-8569-963e5afcfb05",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ef420fda-620f-4593-8396-0a4e507db46e",
+      "documentation": "Retrieve a specific Function resource.",
+      "method": "get",
+      "endpoint": "v1/Services/:ServiceSid/Functions/:Sid",
+      "responses": [
+        {
+          "uuid": "d0d9707c-aa65-470d-9cdc-8ebc2e105c8a",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "02523a41-7c07-4e5a-bb28-7aac08038988",
+      "documentation": "Update a specific Function resource.",
+      "method": "post",
+      "endpoint": "v1/Services/:ServiceSid/Functions/:Sid",
+      "responses": [
+        {
+          "uuid": "48e7c20a-e2a6-45b2-b894-ed7af2ba570b",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"service_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "c577f7ee-6ad8-45bd-b040-da0f244ea187",
+      "documentation": "Delete a Service resource.",
+      "method": "delete",
+      "endpoint": "v1/Services/:Sid",
+      "responses": [
+        {
+          "uuid": "784ced55-5dbd-4022-89bd-015d98403cb7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "2945d099-f2fd-4239-84e7-a19d1bdd8ff0",
+      "documentation": "Retrieve a specific Service resource.",
+      "method": "get",
+      "endpoint": "v1/Services/:Sid",
+      "responses": [
+        {
+          "uuid": "b1250606-d208-4d16-bc2a-5e919712de8b",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"domain_base\": \"\",\n  \"friendly_name\": \"\",\n  \"include_credentials\": {{faker 'random.boolean'}},\n  \"links\": {},\n  \"sid\": \"\",\n  \"ui_editable\": {{faker 'random.boolean'}},\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b1db868b-5423-4b7f-bd82-a68d43fa70ed",
+      "documentation": "Update a specific Service resource.",
+      "method": "post",
+      "endpoint": "v1/Services/:Sid",
+      "responses": [
+        {
+          "uuid": "d3f1d7c6-2315-4f44-b929-e42759d8f8ee",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"domain_base\": \"\",\n  \"friendly_name\": \"\",\n  \"include_credentials\": {{faker 'random.boolean'}},\n  \"links\": {},\n  \"sid\": \"\",\n  \"ui_editable\": {{faker 'random.boolean'}},\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}

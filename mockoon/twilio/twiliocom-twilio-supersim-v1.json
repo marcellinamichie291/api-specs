@@ -1,0 +1,926 @@
+{
+  "uuid": "d3c545ff-b1de-426a-92aa-684a7c155c59",
+  "lastMigration": 19,
+  "name": "Twilio - Supersim",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "4d049640-8fed-4352-9a9b-35d917ee9313",
+      "documentation": "Retrieve a list of eSIM Profiles.",
+      "method": "get",
+      "endpoint": "v1/ESimProfiles",
+      "responses": [
+        {
+          "uuid": "09b83ced-ea09-4ec0-9aa8-85fe01f37a3f",
+          "body": "{\n  \"esim_profiles\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"eid\": \"\",\n      \"error_code\": \"\",\n      \"error_message\": \"\",\n      \"iccid\": \"\",\n      \"sid\": \"\",\n      \"sim_sid\": \"\",\n      \"smdp_plus_address\": \"\",\n      \"status\": \"{{oneOf (array 'new' 'reserving' 'available' 'downloaded' 'installed' 'failed')}}\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "dc06a522-b106-4582-ae1d-7ae382d89f0c",
+      "documentation": "Order an eSIM Profile.",
+      "method": "post",
+      "endpoint": "v1/ESimProfiles",
+      "responses": [
+        {
+          "uuid": "de5066c6-9548-4e02-8f5d-80f27c72c7c1",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"eid\": \"\",\n  \"error_code\": \"\",\n  \"error_message\": \"\",\n  \"iccid\": \"\",\n  \"sid\": \"\",\n  \"sim_sid\": \"\",\n  \"smdp_plus_address\": \"\",\n  \"status\": \"{{oneOf (array 'new' 'reserving' 'available' 'downloaded' 'installed' 'failed')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "a03796cc-de93-4e4a-811f-f2ae436c4873",
+      "documentation": "Fetch an eSIM Profile.",
+      "method": "get",
+      "endpoint": "v1/ESimProfiles/:Sid",
+      "responses": [
+        {
+          "uuid": "54d2b292-1829-46a8-9bfd-81b9172e684c",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"eid\": \"\",\n  \"error_code\": \"\",\n  \"error_message\": \"\",\n  \"iccid\": \"\",\n  \"sid\": \"\",\n  \"sim_sid\": \"\",\n  \"smdp_plus_address\": \"\",\n  \"status\": \"{{oneOf (array 'new' 'reserving' 'available' 'downloaded' 'installed' 'failed')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "559b5bcb-8e6c-4803-9dfa-ff8d0e20973f",
+      "documentation": "Retrieve a list of Fleets from your account.",
+      "method": "get",
+      "endpoint": "v1/Fleets",
+      "responses": [
+        {
+          "uuid": "4aa0d779-c54a-408e-93c5-a5b0e405854a",
+          "body": "{\n  \"fleets\": [\n    {\n      \"account_sid\": \"\",\n      \"data_enabled\": {{faker 'random.boolean'}},\n      \"data_limit\": {{faker 'random.number'}},\n      \"data_metering\": \"{{oneOf (array 'payg')}}\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"ip_commands_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n      \"ip_commands_url\": \"\",\n      \"network_access_profile_sid\": \"\",\n      \"sid\": \"\",\n      \"sms_commands_enabled\": {{faker 'random.boolean'}},\n      \"sms_commands_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n      \"sms_commands_url\": \"\",\n      \"unique_name\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "c00d3b12-b577-44f5-bdbe-e5521fca9e77",
+      "documentation": "Create a Fleet",
+      "method": "post",
+      "endpoint": "v1/Fleets",
+      "responses": [
+        {
+          "uuid": "20488f2e-4969-488a-820f-be64e886b57e",
+          "body": "{\n  \"account_sid\": \"\",\n  \"data_enabled\": {{faker 'random.boolean'}},\n  \"data_limit\": {{faker 'random.number'}},\n  \"data_metering\": \"{{oneOf (array 'payg')}}\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"ip_commands_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"ip_commands_url\": \"\",\n  \"network_access_profile_sid\": \"\",\n  \"sid\": \"\",\n  \"sms_commands_enabled\": {{faker 'random.boolean'}},\n  \"sms_commands_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"sms_commands_url\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "718fa563-bd35-4072-8130-de4b7de2fa1d",
+      "documentation": "Fetch a Fleet instance from your account.",
+      "method": "get",
+      "endpoint": "v1/Fleets/:Sid",
+      "responses": [
+        {
+          "uuid": "5ee12e80-8839-4f95-b96b-9b2091c77dcf",
+          "body": "{\n  \"account_sid\": \"\",\n  \"data_enabled\": {{faker 'random.boolean'}},\n  \"data_limit\": {{faker 'random.number'}},\n  \"data_metering\": \"{{oneOf (array 'payg')}}\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"ip_commands_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"ip_commands_url\": \"\",\n  \"network_access_profile_sid\": \"\",\n  \"sid\": \"\",\n  \"sms_commands_enabled\": {{faker 'random.boolean'}},\n  \"sms_commands_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"sms_commands_url\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "66eb5a77-2f42-4fea-9b1e-6398d8676abb",
+      "documentation": "Updates the given properties of a Super SIM Fleet instance from your account.",
+      "method": "post",
+      "endpoint": "v1/Fleets/:Sid",
+      "responses": [
+        {
+          "uuid": "7e2fd6ae-7cc5-41a1-bb73-3460e252a5b8",
+          "body": "{\n  \"account_sid\": \"\",\n  \"data_enabled\": {{faker 'random.boolean'}},\n  \"data_limit\": {{faker 'random.number'}},\n  \"data_metering\": \"{{oneOf (array 'payg')}}\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"ip_commands_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"ip_commands_url\": \"\",\n  \"network_access_profile_sid\": \"\",\n  \"sid\": \"\",\n  \"sms_commands_enabled\": {{faker 'random.boolean'}},\n  \"sms_commands_method\": \"{{oneOf (array 'HEAD' 'GET' 'POST' 'PATCH' 'PUT' 'DELETE')}}\",\n  \"sms_commands_url\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b1095d57-3a5c-40a9-aa48-3e9475b58fd9",
+      "documentation": "Retrieve a list of IP Commands from your account.",
+      "method": "get",
+      "endpoint": "v1/IpCommands",
+      "responses": [
+        {
+          "uuid": "1309910d-6b35-4b7a-a909-b3645f27562b",
+          "body": "{\n  \"ip_commands\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"device_ip\": \"\",\n      \"device_port\": {{faker 'random.number'}},\n      \"direction\": \"{{oneOf (array 'to_sim' 'from_sim')}}\",\n      \"payload\": \"\",\n      \"payload_type\": \"{{oneOf (array 'text' 'binary')}}\",\n      \"sid\": \"\",\n      \"sim_iccid\": \"\",\n      \"sim_sid\": \"\",\n      \"status\": \"{{oneOf (array 'queued' 'sent' 'received' 'failed')}}\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "2cc6ecc3-7728-49f3-8ab3-c6bfe8e214ef",
+      "documentation": "Send an IP Command to a Super SIM.",
+      "method": "post",
+      "endpoint": "v1/IpCommands",
+      "responses": [
+        {
+          "uuid": "05a0d8d0-1a06-4e08-b4e7-cb59dfc9a8af",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"device_ip\": \"\",\n  \"device_port\": {{faker 'random.number'}},\n  \"direction\": \"{{oneOf (array 'to_sim' 'from_sim')}}\",\n  \"payload\": \"\",\n  \"payload_type\": \"{{oneOf (array 'text' 'binary')}}\",\n  \"sid\": \"\",\n  \"sim_iccid\": \"\",\n  \"sim_sid\": \"\",\n  \"status\": \"{{oneOf (array 'queued' 'sent' 'received' 'failed')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "bc301207-ed5c-470c-a036-59bb07f58ba7",
+      "documentation": "Fetch IP Command instance from your account.",
+      "method": "get",
+      "endpoint": "v1/IpCommands/:Sid",
+      "responses": [
+        {
+          "uuid": "3b232063-2394-495b-af13-c6648dd073d8",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"device_ip\": \"\",\n  \"device_port\": {{faker 'random.number'}},\n  \"direction\": \"{{oneOf (array 'to_sim' 'from_sim')}}\",\n  \"payload\": \"\",\n  \"payload_type\": \"{{oneOf (array 'text' 'binary')}}\",\n  \"sid\": \"\",\n  \"sim_iccid\": \"\",\n  \"sim_sid\": \"\",\n  \"status\": \"{{oneOf (array 'queued' 'sent' 'received' 'failed')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "6d98f433-ba6d-46bf-bd1e-75db2cc6ae1f",
+      "documentation": "Retrieve a list of Network Access Profiles from your account.",
+      "method": "get",
+      "endpoint": "v1/NetworkAccessProfiles",
+      "responses": [
+        {
+          "uuid": "f207909e-9443-4645-9536-8cc40588e431",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"network_access_profiles\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"links\": {},\n      \"sid\": \"\",\n      \"unique_name\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "16ccac44-87b3-4637-a088-3ad69e562d6a",
+      "documentation": "Create a new Network Access Profile",
+      "method": "post",
+      "endpoint": "v1/NetworkAccessProfiles",
+      "responses": [
+        {
+          "uuid": "f7fb11ca-b819-46a1-8833-c3ceadf6fa77",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "9439bfd3-a969-461a-83a4-116cad413528",
+      "documentation": "Retrieve a list of Network Access Profile resource's Network resource.",
+      "method": "get",
+      "endpoint": "v1/NetworkAccessProfiles/:NetworkAccessProfileSid/Networks",
+      "responses": [
+        {
+          "uuid": "2c3687da-7361-448d-8f9f-28b25d695f77",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"networks\": [\n    {\n      \"friendly_name\": \"\",\n      \"identifiers\": [\n        \"\"\n      ],\n      \"iso_country\": \"\",\n      \"network_access_profile_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "e4efbafe-a15c-4a44-9a3e-50b567107d8c",
+      "documentation": "Add a Network resource to the Network Access Profile resource.",
+      "method": "post",
+      "endpoint": "v1/NetworkAccessProfiles/:NetworkAccessProfileSid/Networks",
+      "responses": [
+        {
+          "uuid": "72af9e7e-9700-4241-a351-e94f1a0763cf",
+          "body": "{\n  \"friendly_name\": \"\",\n  \"identifiers\": [\n    \"\"\n  ],\n  \"iso_country\": \"\",\n  \"network_access_profile_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "9f77ace7-03be-4f81-b078-118d95d05f26",
+      "documentation": "Remove a Network resource from the Network Access Profile resource's.",
+      "method": "delete",
+      "endpoint": "v1/NetworkAccessProfiles/:NetworkAccessProfileSid/Networks/:Sid",
+      "responses": [
+        {
+          "uuid": "0f9b4ecf-94b6-40c2-9400-84fa0416906e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "cab9a6f9-eb96-49df-8034-dbda4485b614",
+      "documentation": "Fetch a Network Access Profile resource's Network resource.",
+      "method": "get",
+      "endpoint": "v1/NetworkAccessProfiles/:NetworkAccessProfileSid/Networks/:Sid",
+      "responses": [
+        {
+          "uuid": "f3dbd107-4c05-447c-9426-d25c7034e1ef",
+          "body": "{\n  \"friendly_name\": \"\",\n  \"identifiers\": [\n    \"\"\n  ],\n  \"iso_country\": \"\",\n  \"network_access_profile_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "4e31569b-381e-43a1-b865-e2b2849442be",
+      "documentation": "Fetch a Network Access Profile instance from your account.",
+      "method": "get",
+      "endpoint": "v1/NetworkAccessProfiles/:Sid",
+      "responses": [
+        {
+          "uuid": "c000c585-810a-46de-95e5-3826d7cb5a8a",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "047518f2-68dd-4ea1-b805-68ca46e59ff4",
+      "documentation": "Updates the given properties of a Network Access Profile in your account.",
+      "method": "post",
+      "endpoint": "v1/NetworkAccessProfiles/:Sid",
+      "responses": [
+        {
+          "uuid": "e44b59f2-391a-413e-93e6-b4cfa3379f52",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "27eb5ca7-65a5-4718-98ce-b8501237ea04",
+      "documentation": "Retrieve a list of Network resources.",
+      "method": "get",
+      "endpoint": "v1/Networks",
+      "responses": [
+        {
+          "uuid": "87356c26-bc17-47af-a68e-99d9cc5cb010",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"networks\": [\n    {\n      \"friendly_name\": \"\",\n      \"identifiers\": [\n        \"\"\n      ],\n      \"iso_country\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "218a32c2-76c1-4b41-8d78-50f26c4a023b",
+      "documentation": "Fetch a Network resource.",
+      "method": "get",
+      "endpoint": "v1/Networks/:Sid",
+      "responses": [
+        {
+          "uuid": "6303c76d-8ff0-4e49-a23f-9387a6f89264",
+          "body": "{\n  \"friendly_name\": \"\",\n  \"identifiers\": [\n    \"\"\n  ],\n  \"iso_country\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "bf0be7ec-02c6-4082-b77f-da8ac22902ab",
+      "documentation": "Retrieve a list of Super SIMs from your account.",
+      "method": "get",
+      "endpoint": "v1/Sims",
+      "responses": [
+        {
+          "uuid": "d2e7803f-407d-44c0-b82f-9228a2c6f995",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"sims\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"fleet_sid\": \"\",\n      \"iccid\": \"\",\n      \"links\": {},\n      \"sid\": \"\",\n      \"status\": \"{{oneOf (array 'new' 'ready' 'active' 'inactive' 'scheduled')}}\",\n      \"unique_name\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "d151af0b-2b48-42f5-be4a-af543957c858",
+      "documentation": "Register a Super SIM to your Account",
+      "method": "post",
+      "endpoint": "v1/Sims",
+      "responses": [
+        {
+          "uuid": "dfc67ebe-c624-44d0-a346-4c2baf1ab313",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"fleet_sid\": \"\",\n  \"iccid\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'new' 'ready' 'active' 'inactive' 'scheduled')}}\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3f78af07-d897-4198-9336-a3f5eec31371",
+      "documentation": "Fetch a Super SIM instance from your account.",
+      "method": "get",
+      "endpoint": "v1/Sims/:Sid",
+      "responses": [
+        {
+          "uuid": "ef8d0df4-ea0e-4026-a4af-597134a42db9",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"fleet_sid\": \"\",\n  \"iccid\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'new' 'ready' 'active' 'inactive' 'scheduled')}}\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "0fd7c25b-adf8-44e2-ae43-19b7fd8d3be0",
+      "documentation": "Updates the given properties of a Super SIM instance from your account.",
+      "method": "post",
+      "endpoint": "v1/Sims/:Sid",
+      "responses": [
+        {
+          "uuid": "3a6183bc-a795-4ab1-a028-63a19605e178",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"fleet_sid\": \"\",\n  \"iccid\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'new' 'ready' 'active' 'inactive' 'scheduled')}}\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "5ae99569-08a8-4328-ad71-23acc136977b",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"fleet_sid\": \"\",\n  \"iccid\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'new' 'ready' 'active' 'inactive' 'scheduled')}}\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Accepted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "8f60010b-4b35-49b6-a6e6-3cf732855f08",
+      "documentation": "Retrieve a list of Billing Periods for a Super SIM.",
+      "method": "get",
+      "endpoint": "v1/Sims/:SimSid/BillingPeriods",
+      "responses": [
+        {
+          "uuid": "af6821e2-fbd7-49fc-8260-a1b2492d3cd4",
+          "body": "{\n  \"billing_periods\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"end_time\": \"{{faker 'date.recent' 365}}\",\n      \"period_type\": \"{{oneOf (array 'ready' 'active')}}\",\n      \"sid\": \"\",\n      \"sim_sid\": \"\",\n      \"start_time\": \"{{faker 'date.recent' 365}}\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "394c58ff-5935-4a65-b7b8-eb0578277422",
+      "documentation": "Retrieve a list of SMS Commands from your account.",
+      "method": "get",
+      "endpoint": "v1/SmsCommands",
+      "responses": [
+        {
+          "uuid": "d5ebe91c-6c18-4efa-b31a-d66143d65974",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"sms_commands\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"direction\": \"{{oneOf (array 'to_sim' 'from_sim')}}\",\n      \"payload\": \"\",\n      \"sid\": \"\",\n      \"sim_sid\": \"\",\n      \"status\": \"{{oneOf (array 'queued' 'sent' 'delivered' 'received' 'failed')}}\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b975d91b-47e5-4087-b279-e7951acfd62f",
+      "documentation": "Send SMS Command to a Sim.",
+      "method": "post",
+      "endpoint": "v1/SmsCommands",
+      "responses": [
+        {
+          "uuid": "946c3e03-2af8-49dc-b10e-a812d0def52a",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"direction\": \"{{oneOf (array 'to_sim' 'from_sim')}}\",\n  \"payload\": \"\",\n  \"sid\": \"\",\n  \"sim_sid\": \"\",\n  \"status\": \"{{oneOf (array 'queued' 'sent' 'delivered' 'received' 'failed')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "483ed70a-1148-4214-ac49-8751595dad86",
+      "documentation": "Fetch SMS Command instance from your account.",
+      "method": "get",
+      "endpoint": "v1/SmsCommands/:Sid",
+      "responses": [
+        {
+          "uuid": "d60bc311-8f34-4125-a7de-94fed02a3860",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"direction\": \"{{oneOf (array 'to_sim' 'from_sim')}}\",\n  \"payload\": \"\",\n  \"sid\": \"\",\n  \"sim_sid\": \"\",\n  \"status\": \"{{oneOf (array 'queued' 'sent' 'delivered' 'received' 'failed')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "d8491cce-0e97-482e-905b-719d6259db59",
+      "documentation": "List UsageRecords",
+      "method": "get",
+      "endpoint": "v1/UsageRecords",
+      "responses": [
+        {
+          "uuid": "91a758c1-ea1e-4f3c-96c0-889e4db68e9b",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"usage_records\": [\n    {\n      \"account_sid\": \"\",\n      \"data_download\": {{faker 'random.number'}},\n      \"data_total\": {{faker 'random.number'}},\n      \"data_upload\": {{faker 'random.number'}},\n      \"fleet_sid\": \"\",\n      \"iso_country\": \"\",\n      \"network_sid\": \"\",\n      \"period\": \"\",\n      \"sim_sid\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}

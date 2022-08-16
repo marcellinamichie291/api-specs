@@ -1,0 +1,67 @@
+{
+  "uuid": "b06f82a6-a597-4853-8f54-6e5c923e046b",
+  "lastMigration": 19,
+  "name": "Twilio - Lookups",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "0e6ecda0-f745-452a-832e-d9974e79ec9b",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/PhoneNumbers/:PhoneNumber",
+      "responses": [
+        {
+          "uuid": "8f633298-0450-4c4c-b1f9-6da29b5d333a",
+          "body": "{\n  \"add_ons\": \"\",\n  \"caller_name\": \"\",\n  \"carrier\": \"\",\n  \"country_code\": \"\",\n  \"national_format\": \"\",\n  \"phone_number\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}

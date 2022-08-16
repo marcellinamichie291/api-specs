@@ -1,0 +1,3067 @@
+{
+  "uuid": "6442cc8a-3b21-4c3d-a33a-cd233124b144",
+  "lastMigration": 19,
+  "name": "Twilio - Conversations",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "f330a327-3a2b-4740-8455-d740a97b772b",
+      "documentation": "Fetch the global configuration of conversations on your account",
+      "method": "get",
+      "endpoint": "v1/Configuration",
+      "responses": [
+        {
+          "uuid": "58ef13bd-c883-4933-b90f-99e59f685ab7",
+          "body": "{\n  \"account_sid\": \"\",\n  \"default_chat_service_sid\": \"\",\n  \"default_closed_timer\": \"\",\n  \"default_inactive_timer\": \"\",\n  \"default_messaging_service_sid\": \"\",\n  \"links\": {},\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "d82b03cc-59f3-4898-a4c3-580f7ef47246",
+      "documentation": "Update the global configuration of conversations on your account",
+      "method": "post",
+      "endpoint": "v1/Configuration",
+      "responses": [
+        {
+          "uuid": "f582797f-5790-4d68-82b5-8e27eff0b705",
+          "body": "{\n  \"account_sid\": \"\",\n  \"default_chat_service_sid\": \"\",\n  \"default_closed_timer\": \"\",\n  \"default_inactive_timer\": \"\",\n  \"default_messaging_service_sid\": \"\",\n  \"links\": {},\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "f29e2740-5226-4003-9fe5-dcee0189b4e2",
+      "documentation": "Retrieve a list of address configurations for an account",
+      "method": "get",
+      "endpoint": "v1/Configuration/Addresses",
+      "responses": [
+        {
+          "uuid": "cd6258e9-95ce-4a2b-93e2-882503689fcf",
+          "body": "{\n  \"address_configurations\": [\n    {\n      \"account_sid\": \"\",\n      \"address\": \"\",\n      \"auto_creation\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"sid\": \"\",\n      \"type\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "56e899c5-6ac6-4c10-9d5a-1edc9c054f6f",
+      "documentation": "Create a new address configuration",
+      "method": "post",
+      "endpoint": "v1/Configuration/Addresses",
+      "responses": [
+        {
+          "uuid": "7840eb2b-4912-4f8f-a1c2-4e56664e8b11",
+          "body": "{\n  \"account_sid\": \"\",\n  \"address\": \"\",\n  \"auto_creation\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"sid\": \"\",\n  \"type\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "53e6c30d-2e0c-4ec7-b557-ff6807698d87",
+      "documentation": "Remove an existing address configuration",
+      "method": "delete",
+      "endpoint": "v1/Configuration/Addresses/:Sid",
+      "responses": [
+        {
+          "uuid": "64682381-3c7a-47a6-902e-ccd8860bb0e3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "352328f6-dda3-438d-8036-9a4f467b4734",
+      "documentation": "Fetch an address configuration ",
+      "method": "get",
+      "endpoint": "v1/Configuration/Addresses/:Sid",
+      "responses": [
+        {
+          "uuid": "3d35219f-06c7-42b0-8b7f-1a14d4baaec1",
+          "body": "{\n  \"account_sid\": \"\",\n  \"address\": \"\",\n  \"auto_creation\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"sid\": \"\",\n  \"type\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "5f20e2ed-d490-4acd-a2ec-2ce1e8f55d46",
+      "documentation": "Update an existing address configuration",
+      "method": "post",
+      "endpoint": "v1/Configuration/Addresses/:Sid",
+      "responses": [
+        {
+          "uuid": "f5a41902-663e-487b-a906-9aaeefb7d0f8",
+          "body": "{\n  \"account_sid\": \"\",\n  \"address\": \"\",\n  \"auto_creation\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"sid\": \"\",\n  \"type\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "323d2758-4f38-4700-b831-998bbd2cbbf9",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/Configuration/Webhooks",
+      "responses": [
+        {
+          "uuid": "30a6658a-0682-4508-b09b-6513078daf88",
+          "body": "{\n  \"account_sid\": \"\",\n  \"filters\": [\n    \"\"\n  ],\n  \"method\": \"{{oneOf (array 'GET' 'POST')}}\",\n  \"post_webhook_url\": \"\",\n  \"pre_webhook_url\": \"\",\n  \"target\": \"{{oneOf (array 'webhook' 'flex')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "033cbfbc-e900-4d40-a08f-de91f92fe42a",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/Configuration/Webhooks",
+      "responses": [
+        {
+          "uuid": "a0b1f459-3471-4427-9d3c-5e4ba0cd4d0b",
+          "body": "{\n  \"account_sid\": \"\",\n  \"filters\": [\n    \"\"\n  ],\n  \"method\": \"{{oneOf (array 'GET' 'POST')}}\",\n  \"post_webhook_url\": \"\",\n  \"pre_webhook_url\": \"\",\n  \"target\": \"{{oneOf (array 'webhook' 'flex')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "749a1085-4893-4a1c-b626-28ba5b1ff091",
+      "documentation": "Retrieve a list of conversations in your account's default service",
+      "method": "get",
+      "endpoint": "v1/Conversations",
+      "responses": [
+        {
+          "uuid": "2149599b-d670-4d2c-b6a7-90da92ceaad9",
+          "body": "{\n  \"conversations\": [\n    {\n      \"account_sid\": \"\",\n      \"attributes\": \"\",\n      \"bindings\": \"\",\n      \"chat_service_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"links\": {},\n      \"messaging_service_sid\": \"\",\n      \"sid\": \"\",\n      \"state\": \"{{oneOf (array 'inactive' 'active' 'closed')}}\",\n      \"timers\": \"\",\n      \"unique_name\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "118fbdb6-cd7e-402f-b348-95843747b795",
+      "documentation": "Create a new conversation in your account's default service",
+      "method": "post",
+      "endpoint": "v1/Conversations",
+      "responses": [
+        {
+          "uuid": "51c98c81-6a29-4f78-b486-d50b45170f9b",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"bindings\": \"\",\n  \"chat_service_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"messaging_service_sid\": \"\",\n  \"sid\": \"\",\n  \"state\": \"{{oneOf (array 'inactive' 'active' 'closed')}}\",\n  \"timers\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "29855237-3d1e-4efb-a5ff-07c80a1cc35e",
+      "documentation": "Retrieve a list of all messages in the conversation",
+      "method": "get",
+      "endpoint": "v1/Conversations/:ConversationSid/Messages",
+      "responses": [
+        {
+          "uuid": "7a876c9a-3076-4b2f-8f29-8e08274e857f",
+          "body": "{\n  \"messages\": [\n    {\n      \"account_sid\": \"\",\n      \"attributes\": \"\",\n      \"author\": \"\",\n      \"body\": \"\",\n      \"conversation_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"delivery\": \"\",\n      \"index\": {{faker 'random.number'}},\n      \"links\": {},\n      \"media\": [\n        \"\"\n      ],\n      \"participant_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "0b2d3491-75d1-4c42-b41b-848bdd1b2a73",
+      "documentation": "Add a new message to the conversation",
+      "method": "post",
+      "endpoint": "v1/Conversations/:ConversationSid/Messages",
+      "responses": [
+        {
+          "uuid": "aa11a04a-fb55-43e2-aacd-0453cdf98dd9",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"author\": \"\",\n  \"body\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"delivery\": \"\",\n  \"index\": {{faker 'random.number'}},\n  \"links\": {},\n  \"media\": [\n    \"\"\n  ],\n  \"participant_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3d2d1a8c-636f-45c9-8a94-a3a43599c89c",
+      "documentation": "Retrieve a list of all delivery and read receipts of the conversation message",
+      "method": "get",
+      "endpoint": "v1/Conversations/:ConversationSid/Messages/:MessageSid/Receipts",
+      "responses": [
+        {
+          "uuid": "868f4f77-8f28-42a9-959f-29fe284c8d48",
+          "body": "{\n  \"delivery_receipts\": [\n    {\n      \"account_sid\": \"\",\n      \"channel_message_sid\": \"\",\n      \"conversation_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"error_code\": {{faker 'random.number'}},\n      \"message_sid\": \"\",\n      \"participant_sid\": \"\",\n      \"sid\": \"\",\n      \"status\": \"{{oneOf (array 'read' 'failed' 'delivered' 'undelivered' 'sent')}}\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "5bb11f1b-d18e-4b34-a7c8-f70fbddd459c",
+      "documentation": "Fetch the delivery and read receipts of the conversation message",
+      "method": "get",
+      "endpoint": "v1/Conversations/:ConversationSid/Messages/:MessageSid/Receipts/:Sid",
+      "responses": [
+        {
+          "uuid": "0411f725-3f32-4dc9-b156-90723e57936f",
+          "body": "{\n  \"account_sid\": \"\",\n  \"channel_message_sid\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"error_code\": {{faker 'random.number'}},\n  \"message_sid\": \"\",\n  \"participant_sid\": \"\",\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'read' 'failed' 'delivered' 'undelivered' 'sent')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "79c045ff-db6d-4716-90bd-df6b7c7ddd1f",
+      "documentation": "Remove a message from the conversation",
+      "method": "delete",
+      "endpoint": "v1/Conversations/:ConversationSid/Messages/:Sid",
+      "responses": [
+        {
+          "uuid": "dee5e1fe-f325-4be3-aaa5-1572304ee1ea",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "801ff2bb-9f2f-469d-ab73-3ee518ac613b",
+      "documentation": "Fetch a message from the conversation",
+      "method": "get",
+      "endpoint": "v1/Conversations/:ConversationSid/Messages/:Sid",
+      "responses": [
+        {
+          "uuid": "3fd55d1d-5976-423e-a5ed-0cda8bd44d24",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"author\": \"\",\n  \"body\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"delivery\": \"\",\n  \"index\": {{faker 'random.number'}},\n  \"links\": {},\n  \"media\": [\n    \"\"\n  ],\n  \"participant_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "890bb4de-3b9d-4359-b1bb-2b8f44abcb47",
+      "documentation": "Update an existing message in the conversation",
+      "method": "post",
+      "endpoint": "v1/Conversations/:ConversationSid/Messages/:Sid",
+      "responses": [
+        {
+          "uuid": "23edfa44-4dc9-4a23-ba1f-0159bf8d53d1",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"author\": \"\",\n  \"body\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"delivery\": \"\",\n  \"index\": {{faker 'random.number'}},\n  \"links\": {},\n  \"media\": [\n    \"\"\n  ],\n  \"participant_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "15e699d7-256b-4573-b89b-56aad42cba76",
+      "documentation": "Retrieve a list of all participants of the conversation",
+      "method": "get",
+      "endpoint": "v1/Conversations/:ConversationSid/Participants",
+      "responses": [
+        {
+          "uuid": "2d8a5210-cd2b-4182-a04b-3e0d081f4a22",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"participants\": [\n    {\n      \"account_sid\": \"\",\n      \"attributes\": \"\",\n      \"conversation_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"identity\": \"\",\n      \"last_read_message_index\": {{faker 'random.number'}},\n      \"last_read_timestamp\": \"\",\n      \"messaging_binding\": \"\",\n      \"role_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "2257613b-7c19-4526-9a74-f3f239c65fea",
+      "documentation": "Add a new participant to the conversation",
+      "method": "post",
+      "endpoint": "v1/Conversations/:ConversationSid/Participants",
+      "responses": [
+        {
+          "uuid": "1558ba19-3bab-4954-8aca-09d8b9a281d5",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"identity\": \"\",\n  \"last_read_message_index\": {{faker 'random.number'}},\n  \"last_read_timestamp\": \"\",\n  \"messaging_binding\": \"\",\n  \"role_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "5da1d5f1-2a74-4646-a5c0-7d01a6ae2f66",
+      "documentation": "Remove a participant from the conversation",
+      "method": "delete",
+      "endpoint": "v1/Conversations/:ConversationSid/Participants/:Sid",
+      "responses": [
+        {
+          "uuid": "ce0509a5-a736-4f87-97b3-e65d1c0dcc21",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b0628cac-921b-4060-bf84-a4c2012da7f2",
+      "documentation": "Fetch a participant of the conversation",
+      "method": "get",
+      "endpoint": "v1/Conversations/:ConversationSid/Participants/:Sid",
+      "responses": [
+        {
+          "uuid": "10fb6f52-c130-4ed2-8fbf-efff21b77fad",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"identity\": \"\",\n  \"last_read_message_index\": {{faker 'random.number'}},\n  \"last_read_timestamp\": \"\",\n  \"messaging_binding\": \"\",\n  \"role_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "e7ba6bc5-fc2b-489c-96ee-916a2ff0ca98",
+      "documentation": "Update an existing participant in the conversation",
+      "method": "post",
+      "endpoint": "v1/Conversations/:ConversationSid/Participants/:Sid",
+      "responses": [
+        {
+          "uuid": "8a1d49a4-a616-4307-b6d1-0281c1324650",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"identity\": \"\",\n  \"last_read_message_index\": {{faker 'random.number'}},\n  \"last_read_timestamp\": \"\",\n  \"messaging_binding\": \"\",\n  \"role_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "e291ed92-3c4c-4d9d-9492-b01bc8054eb5",
+      "documentation": "Retrieve a list of all webhooks scoped to the conversation",
+      "method": "get",
+      "endpoint": "v1/Conversations/:ConversationSid/Webhooks",
+      "responses": [
+        {
+          "uuid": "c4cd1f04-4f47-467d-bf17-b616b557858e",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"webhooks\": [\n    {\n      \"account_sid\": \"\",\n      \"configuration\": \"\",\n      \"conversation_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"sid\": \"\",\n      \"target\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "7d576cf7-3ed6-4c6a-be9d-2d743f93466d",
+      "documentation": "Create a new webhook scoped to the conversation",
+      "method": "post",
+      "endpoint": "v1/Conversations/:ConversationSid/Webhooks",
+      "responses": [
+        {
+          "uuid": "9e35514b-53c5-402c-8518-50ec181d339c",
+          "body": "{\n  \"account_sid\": \"\",\n  \"configuration\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"sid\": \"\",\n  \"target\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "88b4b7c4-4277-4e38-9184-eeac54915c34",
+      "documentation": "Remove an existing webhook scoped to the conversation",
+      "method": "delete",
+      "endpoint": "v1/Conversations/:ConversationSid/Webhooks/:Sid",
+      "responses": [
+        {
+          "uuid": "ed1713f8-7ce1-4164-bed1-72c71e118935",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "16813f55-661b-4e3d-b1f4-79b83bc653d7",
+      "documentation": "Fetch the configuration of a conversation-scoped webhook",
+      "method": "get",
+      "endpoint": "v1/Conversations/:ConversationSid/Webhooks/:Sid",
+      "responses": [
+        {
+          "uuid": "1679c581-d798-4e37-a2d1-c8415052aebb",
+          "body": "{\n  \"account_sid\": \"\",\n  \"configuration\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"sid\": \"\",\n  \"target\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "41996978-9c4c-4850-add0-87c6b4143a19",
+      "documentation": "Update an existing conversation-scoped webhook",
+      "method": "post",
+      "endpoint": "v1/Conversations/:ConversationSid/Webhooks/:Sid",
+      "responses": [
+        {
+          "uuid": "3091bd32-583e-43cc-b000-a0ac9180b648",
+          "body": "{\n  \"account_sid\": \"\",\n  \"configuration\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"sid\": \"\",\n  \"target\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "26d8d342-6d64-4891-bd43-1f37973ef713",
+      "documentation": "Remove a conversation from your account's default service",
+      "method": "delete",
+      "endpoint": "v1/Conversations/:Sid",
+      "responses": [
+        {
+          "uuid": "b0a8c635-90c8-4723-94d3-51aefc38ffdf",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b7d47440-b31c-42ba-94d5-cebd1ac30941",
+      "documentation": "Fetch a conversation from your account's default service",
+      "method": "get",
+      "endpoint": "v1/Conversations/:Sid",
+      "responses": [
+        {
+          "uuid": "c686b15e-dbac-49df-b4d0-4f7f9af5990d",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"bindings\": \"\",\n  \"chat_service_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"messaging_service_sid\": \"\",\n  \"sid\": \"\",\n  \"state\": \"{{oneOf (array 'inactive' 'active' 'closed')}}\",\n  \"timers\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "4f478c47-8490-434f-82c9-9b07a665e559",
+      "documentation": "Update an existing conversation in your account's default service",
+      "method": "post",
+      "endpoint": "v1/Conversations/:Sid",
+      "responses": [
+        {
+          "uuid": "62753036-c733-4046-a0df-f9310c9e4a7e",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"bindings\": \"\",\n  \"chat_service_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"messaging_service_sid\": \"\",\n  \"sid\": \"\",\n  \"state\": \"{{oneOf (array 'inactive' 'active' 'closed')}}\",\n  \"timers\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "05fa0b39-0d2b-4065-aae9-478b59cb1b17",
+      "documentation": "Retrieve a list of all push notification credentials on your account",
+      "method": "get",
+      "endpoint": "v1/Credentials",
+      "responses": [
+        {
+          "uuid": "404f7784-9f64-4fc4-8953-5a2465e16775",
+          "body": "{\n  \"credentials\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"sandbox\": \"\",\n      \"sid\": \"\",\n      \"type\": \"{{oneOf (array 'apn' 'gcm' 'fcm')}}\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "254e59a5-10b8-4550-adfb-c692c052080a",
+      "documentation": "Add a new push notification credential to your account",
+      "method": "post",
+      "endpoint": "v1/Credentials",
+      "responses": [
+        {
+          "uuid": "398a0076-fc1f-4b72-b06e-780cc69f4f7e",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"sandbox\": \"\",\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'apn' 'gcm' 'fcm')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "2e483785-8042-4f9c-864d-afe4414362ad",
+      "documentation": "Remove a push notification credential from your account",
+      "method": "delete",
+      "endpoint": "v1/Credentials/:Sid",
+      "responses": [
+        {
+          "uuid": "19644aaa-c73c-4b04-8146-972a5b825752",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "7e415a50-53c0-4008-909e-23c65ce04ae3",
+      "documentation": "Fetch a push notification credential from your account",
+      "method": "get",
+      "endpoint": "v1/Credentials/:Sid",
+      "responses": [
+        {
+          "uuid": "f0171fac-467e-4cc8-a654-617a50342cd6",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"sandbox\": \"\",\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'apn' 'gcm' 'fcm')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "f7f5358b-bba0-429e-9672-ca2b90e50cd2",
+      "documentation": "Update an existing push notification credential on your account",
+      "method": "post",
+      "endpoint": "v1/Credentials/:Sid",
+      "responses": [
+        {
+          "uuid": "f64c1b1b-e940-4293-8bd6-8999b3b468ce",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"sandbox\": \"\",\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'apn' 'gcm' 'fcm')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "8400ec1d-4464-4e5a-991b-412f5ab3dd77",
+      "documentation": "Retrieve a list of all Conversations that this Participant belongs to by identity or by address. Only one parameter should be specified.",
+      "method": "get",
+      "endpoint": "v1/ParticipantConversations",
+      "responses": [
+        {
+          "uuid": "ebf370c2-2e42-4788-acf8-ee48b942a013",
+          "body": "{\n  \"conversations\": [\n    {\n      \"account_sid\": \"\",\n      \"chat_service_sid\": \"\",\n      \"conversation_attributes\": \"\",\n      \"conversation_created_by\": \"\",\n      \"conversation_date_created\": \"{{faker 'date.recent' 365}}\",\n      \"conversation_date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"conversation_friendly_name\": \"\",\n      \"conversation_sid\": \"\",\n      \"conversation_state\": \"{{oneOf (array 'inactive' 'active' 'closed')}}\",\n      \"conversation_timers\": \"\",\n      \"conversation_unique_name\": \"\",\n      \"links\": {},\n      \"participant_identity\": \"\",\n      \"participant_messaging_binding\": \"\",\n      \"participant_sid\": \"\",\n      \"participant_user_sid\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "d10f79e5-7e61-4e86-9169-4c8c8c404084",
+      "documentation": "Retrieve a list of all user roles in your account's default service",
+      "method": "get",
+      "endpoint": "v1/Roles",
+      "responses": [
+        {
+          "uuid": "eb29c408-1bec-4a7e-8cc5-69f83f655ad1",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"roles\": [\n    {\n      \"account_sid\": \"\",\n      \"chat_service_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"permissions\": [\n        \"\"\n      ],\n      \"sid\": \"\",\n      \"type\": \"{{oneOf (array 'conversation' 'service')}}\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "75163f9d-7001-4a6e-b995-7ebf7d25b613",
+      "documentation": "Create a new user role in your account's default service",
+      "method": "post",
+      "endpoint": "v1/Roles",
+      "responses": [
+        {
+          "uuid": "0ae6c2ec-5f6f-4f33-baf8-dd8d83285f12",
+          "body": "{\n  \"account_sid\": \"\",\n  \"chat_service_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"permissions\": [\n    \"\"\n  ],\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'conversation' 'service')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "05931883-93ee-4356-9306-e43e4575b5d9",
+      "documentation": "Remove a user role from your account's default service",
+      "method": "delete",
+      "endpoint": "v1/Roles/:Sid",
+      "responses": [
+        {
+          "uuid": "c3545217-71c8-44b6-a8ea-cdac8d6afce4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "bc93dfca-29c9-418a-8366-c1b231b360a1",
+      "documentation": "Fetch a user role from your account's default service",
+      "method": "get",
+      "endpoint": "v1/Roles/:Sid",
+      "responses": [
+        {
+          "uuid": "c1b050fc-8865-4615-a948-21a85a6d51aa",
+          "body": "{\n  \"account_sid\": \"\",\n  \"chat_service_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"permissions\": [\n    \"\"\n  ],\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'conversation' 'service')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "bd337811-69bb-4db4-b65d-8853ca52139e",
+      "documentation": "Update an existing user role in your account's default service",
+      "method": "post",
+      "endpoint": "v1/Roles/:Sid",
+      "responses": [
+        {
+          "uuid": "cf5dff7c-fad0-4078-aebf-519e8ee458d6",
+          "body": "{\n  \"account_sid\": \"\",\n  \"chat_service_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"permissions\": [\n    \"\"\n  ],\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'conversation' 'service')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "6ff021ed-0d63-4b96-8c34-25cd4e9546a1",
+      "documentation": "Retrieve a list of all conversation services on your account",
+      "method": "get",
+      "endpoint": "v1/Services",
+      "responses": [
+        {
+          "uuid": "d5954b96-6886-4403-8b64-064262d539e4",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"services\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"links\": {},\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "733077e2-8d47-41f2-9393-3d2c5a22fab7",
+      "documentation": "Create a new conversation service on your account",
+      "method": "post",
+      "endpoint": "v1/Services",
+      "responses": [
+        {
+          "uuid": "0c3658ed-9357-4521-bedd-727303438192",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "5ffcd984-6024-48b1-89ef-eefc7ee1a917",
+      "documentation": "Retrieve a list of all push notification bindings in the conversation service",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Bindings",
+      "responses": [
+        {
+          "uuid": "df4d55f9-20b1-46b6-bbd8-642743faa1ba",
+          "body": "{\n  \"bindings\": [\n    {\n      \"account_sid\": \"\",\n      \"binding_type\": \"{{oneOf (array 'apn' 'gcm' 'fcm')}}\",\n      \"chat_service_sid\": \"\",\n      \"credential_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"endpoint\": \"\",\n      \"identity\": \"\",\n      \"message_types\": [\n        \"\"\n      ],\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "daa6b83b-9ca1-4ef7-8e5b-15e7280de760",
+      "documentation": "Remove a push notification binding from the conversation service",
+      "method": "delete",
+      "endpoint": "v1/Services/:ChatServiceSid/Bindings/:Sid",
+      "responses": [
+        {
+          "uuid": "9fd3dfe2-337b-4030-8adc-404e61956e8d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "42425e33-72bc-4db7-9067-7878de8532d0",
+      "documentation": "Fetch a push notification binding from the conversation service",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Bindings/:Sid",
+      "responses": [
+        {
+          "uuid": "17f212c0-26d1-4fc3-9aea-f983e035f372",
+          "body": "{\n  \"account_sid\": \"\",\n  \"binding_type\": \"{{oneOf (array 'apn' 'gcm' 'fcm')}}\",\n  \"chat_service_sid\": \"\",\n  \"credential_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"endpoint\": \"\",\n  \"identity\": \"\",\n  \"message_types\": [\n    \"\"\n  ],\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "09076988-5291-4738-8311-dc6c04b8269b",
+      "documentation": "Fetch the configuration of a conversation service",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Configuration",
+      "responses": [
+        {
+          "uuid": "323ebb11-c726-4a29-bfcf-e4889941d249",
+          "body": "{\n  \"chat_service_sid\": \"\",\n  \"default_chat_service_role_sid\": \"\",\n  \"default_conversation_creator_role_sid\": \"\",\n  \"default_conversation_role_sid\": \"\",\n  \"links\": {},\n  \"reachability_enabled\": {{faker 'random.boolean'}},\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "a21effd1-0524-43f0-b8a7-45a30fdd5741",
+      "documentation": "Update configuration settings of a conversation service",
+      "method": "post",
+      "endpoint": "v1/Services/:ChatServiceSid/Configuration",
+      "responses": [
+        {
+          "uuid": "8f0090bc-caa1-497a-9dd3-1704c100f14c",
+          "body": "{\n  \"chat_service_sid\": \"\",\n  \"default_chat_service_role_sid\": \"\",\n  \"default_conversation_creator_role_sid\": \"\",\n  \"default_conversation_role_sid\": \"\",\n  \"links\": {},\n  \"reachability_enabled\": {{faker 'random.boolean'}},\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "5d911bff-a4e3-483e-b586-0a573a815857",
+      "documentation": "Fetch push notification service settings",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Configuration/Notifications",
+      "responses": [
+        {
+          "uuid": "545da73a-09a9-47d6-a941-6d753475fd43",
+          "body": "{\n  \"account_sid\": \"\",\n  \"added_to_conversation\": \"\",\n  \"chat_service_sid\": \"\",\n  \"log_enabled\": {{faker 'random.boolean'}},\n  \"new_message\": \"\",\n  \"removed_from_conversation\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "5df4eebb-c66d-4266-800f-a6f3d1a05c0e",
+      "documentation": "Update push notification service settings",
+      "method": "post",
+      "endpoint": "v1/Services/:ChatServiceSid/Configuration/Notifications",
+      "responses": [
+        {
+          "uuid": "faf909d0-6f87-4b08-b7bf-646af11adfed",
+          "body": "{\n  \"account_sid\": \"\",\n  \"added_to_conversation\": \"\",\n  \"chat_service_sid\": \"\",\n  \"log_enabled\": {{faker 'random.boolean'}},\n  \"new_message\": \"\",\n  \"removed_from_conversation\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "37f0a906-b301-4ee4-bc7b-757eb21dc9e6",
+      "documentation": "Fetch a specific service webhook configuration.",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Configuration/Webhooks",
+      "responses": [
+        {
+          "uuid": "b5505673-0b36-4927-8f2f-0766862b1d8b",
+          "body": "{\n  \"account_sid\": \"\",\n  \"chat_service_sid\": \"\",\n  \"filters\": [\n    \"\"\n  ],\n  \"method\": \"{{oneOf (array 'GET' 'POST')}}\",\n  \"post_webhook_url\": \"\",\n  \"pre_webhook_url\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "e29f10fc-2c9d-4eb1-a289-d2c6e7b09db4",
+      "documentation": "Update a specific Webhook.",
+      "method": "post",
+      "endpoint": "v1/Services/:ChatServiceSid/Configuration/Webhooks",
+      "responses": [
+        {
+          "uuid": "254e4589-9ae1-4ea0-a86c-efeffe22fa9b",
+          "body": "{\n  \"account_sid\": \"\",\n  \"chat_service_sid\": \"\",\n  \"filters\": [\n    \"\"\n  ],\n  \"method\": \"{{oneOf (array 'GET' 'POST')}}\",\n  \"post_webhook_url\": \"\",\n  \"pre_webhook_url\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "9e5fde1c-0302-47ec-b849-1ccce6e76df7",
+      "documentation": "Retrieve a list of conversations in your service",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations",
+      "responses": [
+        {
+          "uuid": "bd1035ea-2fda-4f96-b2ef-f09b870cce92",
+          "body": "{\n  \"conversations\": [\n    {\n      \"account_sid\": \"\",\n      \"attributes\": \"\",\n      \"bindings\": \"\",\n      \"chat_service_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"links\": {},\n      \"messaging_service_sid\": \"\",\n      \"sid\": \"\",\n      \"state\": \"{{oneOf (array 'inactive' 'active' 'closed')}}\",\n      \"timers\": \"\",\n      \"unique_name\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "830717b0-2631-431e-8be5-63cbcffa7b76",
+      "documentation": "Create a new conversation in your service",
+      "method": "post",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations",
+      "responses": [
+        {
+          "uuid": "93611d8d-bf4f-4007-bc32-fbc22ab6aa7b",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"bindings\": \"\",\n  \"chat_service_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"messaging_service_sid\": \"\",\n  \"sid\": \"\",\n  \"state\": \"{{oneOf (array 'inactive' 'active' 'closed')}}\",\n  \"timers\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "1b052300-5325-4c5b-a07a-7e8774f267ae",
+      "documentation": "Retrieve a list of all messages in the conversation",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:ConversationSid/Messages",
+      "responses": [
+        {
+          "uuid": "d84730f6-9b68-4ea3-affa-20a4544e444a",
+          "body": "{\n  \"messages\": [\n    {\n      \"account_sid\": \"\",\n      \"attributes\": \"\",\n      \"author\": \"\",\n      \"body\": \"\",\n      \"chat_service_sid\": \"\",\n      \"conversation_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"delivery\": \"\",\n      \"index\": {{faker 'random.number'}},\n      \"links\": {},\n      \"media\": [\n        \"\"\n      ],\n      \"participant_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b36c68a3-05f7-4634-9d79-896bd01d0b61",
+      "documentation": "Add a new message to the conversation in a specific service",
+      "method": "post",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:ConversationSid/Messages",
+      "responses": [
+        {
+          "uuid": "497b193d-2115-49f0-8e33-6b01d726c93f",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"author\": \"\",\n  \"body\": \"\",\n  \"chat_service_sid\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"delivery\": \"\",\n  \"index\": {{faker 'random.number'}},\n  \"links\": {},\n  \"media\": [\n    \"\"\n  ],\n  \"participant_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "1318b41f-4580-4108-917d-c2c912b2863e",
+      "documentation": "Retrieve a list of all delivery and read receipts of the conversation message",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:ConversationSid/Messages/:MessageSid/Receipts",
+      "responses": [
+        {
+          "uuid": "bc4fa1b6-a0b1-4359-8a48-874c45cf0ff8",
+          "body": "{\n  \"delivery_receipts\": [\n    {\n      \"account_sid\": \"\",\n      \"channel_message_sid\": \"\",\n      \"chat_service_sid\": \"\",\n      \"conversation_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"error_code\": {{faker 'random.number'}},\n      \"message_sid\": \"\",\n      \"participant_sid\": \"\",\n      \"sid\": \"\",\n      \"status\": \"{{oneOf (array 'read' 'failed' 'delivered' 'undelivered' 'sent')}}\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "62fe7af5-1b1d-4ca8-80ad-da9dcac955ac",
+      "documentation": "Fetch the delivery and read receipts of the conversation message",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:ConversationSid/Messages/:MessageSid/Receipts/:Sid",
+      "responses": [
+        {
+          "uuid": "09b1d819-689c-4f7b-a5e7-a5a6678891cc",
+          "body": "{\n  \"account_sid\": \"\",\n  \"channel_message_sid\": \"\",\n  \"chat_service_sid\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"error_code\": {{faker 'random.number'}},\n  \"message_sid\": \"\",\n  \"participant_sid\": \"\",\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'read' 'failed' 'delivered' 'undelivered' 'sent')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "ad24511f-9931-46cf-a217-868ca3b48e42",
+      "documentation": "Remove a message from the conversation",
+      "method": "delete",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:ConversationSid/Messages/:Sid",
+      "responses": [
+        {
+          "uuid": "7d3cb87c-bb69-47a8-9c84-9b052879ee0d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "aafcd4f0-4dea-4303-bcf0-43e5db4dc6b0",
+      "documentation": "Fetch a message from the conversation",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:ConversationSid/Messages/:Sid",
+      "responses": [
+        {
+          "uuid": "bfe2e9e5-4f50-4d68-9167-9d7e91216b40",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"author\": \"\",\n  \"body\": \"\",\n  \"chat_service_sid\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"delivery\": \"\",\n  \"index\": {{faker 'random.number'}},\n  \"links\": {},\n  \"media\": [\n    \"\"\n  ],\n  \"participant_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3a1fb4eb-629c-46fb-a52b-afd8c0bab057",
+      "documentation": "Update an existing message in the conversation",
+      "method": "post",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:ConversationSid/Messages/:Sid",
+      "responses": [
+        {
+          "uuid": "9ede5b11-02f6-4582-a4b3-b2d88e053f2e",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"author\": \"\",\n  \"body\": \"\",\n  \"chat_service_sid\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"delivery\": \"\",\n  \"index\": {{faker 'random.number'}},\n  \"links\": {},\n  \"media\": [\n    \"\"\n  ],\n  \"participant_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "64d8cf04-2cc2-4d08-9a38-827fd52e1113",
+      "documentation": "Retrieve a list of all participants of the conversation",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:ConversationSid/Participants",
+      "responses": [
+        {
+          "uuid": "061c700a-909d-4e52-979e-2429103ad6f7",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"participants\": [\n    {\n      \"account_sid\": \"\",\n      \"attributes\": \"\",\n      \"chat_service_sid\": \"\",\n      \"conversation_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"identity\": \"\",\n      \"last_read_message_index\": {{faker 'random.number'}},\n      \"last_read_timestamp\": \"\",\n      \"messaging_binding\": \"\",\n      \"role_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "dbcc3460-7c3c-4937-aa8d-46f6e7dbf97b",
+      "documentation": "Add a new participant to the conversation in a specific service",
+      "method": "post",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:ConversationSid/Participants",
+      "responses": [
+        {
+          "uuid": "076c795d-ce1a-4445-8299-e7c83c79fa72",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"chat_service_sid\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"identity\": \"\",\n  \"last_read_message_index\": {{faker 'random.number'}},\n  \"last_read_timestamp\": \"\",\n  \"messaging_binding\": \"\",\n  \"role_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b3d1657b-0129-480f-8167-556333874660",
+      "documentation": "Remove a participant from the conversation",
+      "method": "delete",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:ConversationSid/Participants/:Sid",
+      "responses": [
+        {
+          "uuid": "951df8ed-f71e-4914-995a-207833028949",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "1a68e8b5-0324-42e9-9c43-2226288506ab",
+      "documentation": "Fetch a participant of the conversation",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:ConversationSid/Participants/:Sid",
+      "responses": [
+        {
+          "uuid": "046ff8a9-252b-40a8-968c-16db2862c5a5",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"chat_service_sid\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"identity\": \"\",\n  \"last_read_message_index\": {{faker 'random.number'}},\n  \"last_read_timestamp\": \"\",\n  \"messaging_binding\": \"\",\n  \"role_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "6c174205-4f82-4b46-855a-ecdbf0094d2b",
+      "documentation": "Update an existing participant in the conversation",
+      "method": "post",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:ConversationSid/Participants/:Sid",
+      "responses": [
+        {
+          "uuid": "366f3746-e88b-4e33-9317-fd6ec1c71331",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"chat_service_sid\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"identity\": \"\",\n  \"last_read_message_index\": {{faker 'random.number'}},\n  \"last_read_timestamp\": \"\",\n  \"messaging_binding\": \"\",\n  \"role_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "8b7a8af2-1925-4827-9867-957180ccb1b3",
+      "documentation": "Retrieve a list of all webhooks scoped to the conversation",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:ConversationSid/Webhooks",
+      "responses": [
+        {
+          "uuid": "dafdb8a9-3e43-4609-8856-c9f992f80eff",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"webhooks\": [\n    {\n      \"account_sid\": \"\",\n      \"chat_service_sid\": \"\",\n      \"configuration\": \"\",\n      \"conversation_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"sid\": \"\",\n      \"target\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "017b112c-a63b-4bf6-ac32-61df04420261",
+      "documentation": "Create a new webhook scoped to the conversation in a specific service",
+      "method": "post",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:ConversationSid/Webhooks",
+      "responses": [
+        {
+          "uuid": "417010c2-0908-486b-8de5-0efa2cb4a3cf",
+          "body": "{\n  \"account_sid\": \"\",\n  \"chat_service_sid\": \"\",\n  \"configuration\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"sid\": \"\",\n  \"target\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "bd546b82-4d27-4528-bae3-5c1c64cd1a70",
+      "documentation": "Remove an existing webhook scoped to the conversation",
+      "method": "delete",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:ConversationSid/Webhooks/:Sid",
+      "responses": [
+        {
+          "uuid": "e1b9fd36-b496-4a84-820a-744a0ec56fdd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "165d19c0-454d-4602-ae1c-2e9b43f41d3c",
+      "documentation": "Fetch the configuration of a conversation-scoped webhook",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:ConversationSid/Webhooks/:Sid",
+      "responses": [
+        {
+          "uuid": "d9e4732c-bf27-454a-a179-3083b81c1eb0",
+          "body": "{\n  \"account_sid\": \"\",\n  \"chat_service_sid\": \"\",\n  \"configuration\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"sid\": \"\",\n  \"target\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "6fe9b5ac-4e4f-435b-8225-7adf60a6b24a",
+      "documentation": "Update an existing conversation-scoped webhook",
+      "method": "post",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:ConversationSid/Webhooks/:Sid",
+      "responses": [
+        {
+          "uuid": "bdce4e73-26c8-466d-b8df-550e88455f87",
+          "body": "{\n  \"account_sid\": \"\",\n  \"chat_service_sid\": \"\",\n  \"configuration\": \"\",\n  \"conversation_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"sid\": \"\",\n  \"target\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "f95d0a5b-a530-4712-a43e-5fc33b3a352f",
+      "documentation": "Remove a conversation from your service",
+      "method": "delete",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:Sid",
+      "responses": [
+        {
+          "uuid": "c0002545-3317-41b1-907f-be1eadb28755",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "0a00998b-d731-49d7-99b2-995a7afe5ee9",
+      "documentation": "Fetch a conversation from your service",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:Sid",
+      "responses": [
+        {
+          "uuid": "a6064bd1-bfa1-48eb-b0f1-e754eaf4c03d",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"bindings\": \"\",\n  \"chat_service_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"messaging_service_sid\": \"\",\n  \"sid\": \"\",\n  \"state\": \"{{oneOf (array 'inactive' 'active' 'closed')}}\",\n  \"timers\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3e3df360-3b91-4486-a952-b1c196795134",
+      "documentation": "Update an existing conversation in your service",
+      "method": "post",
+      "endpoint": "v1/Services/:ChatServiceSid/Conversations/:Sid",
+      "responses": [
+        {
+          "uuid": "63f752ac-3823-418d-817c-3fc9694b0cc4",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"bindings\": \"\",\n  \"chat_service_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"messaging_service_sid\": \"\",\n  \"sid\": \"\",\n  \"state\": \"{{oneOf (array 'inactive' 'active' 'closed')}}\",\n  \"timers\": \"\",\n  \"unique_name\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "e9147df7-0768-481e-b225-2d18b8f69bd7",
+      "documentation": "Retrieve a list of all Conversations that this Participant belongs to by identity or by address. Only one parameter should be specified.",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/ParticipantConversations",
+      "responses": [
+        {
+          "uuid": "1744d64b-0e45-4a1c-a02a-4bf103025634",
+          "body": "{\n  \"conversations\": [\n    {\n      \"account_sid\": \"\",\n      \"chat_service_sid\": \"\",\n      \"conversation_attributes\": \"\",\n      \"conversation_created_by\": \"\",\n      \"conversation_date_created\": \"{{faker 'date.recent' 365}}\",\n      \"conversation_date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"conversation_friendly_name\": \"\",\n      \"conversation_sid\": \"\",\n      \"conversation_state\": \"{{oneOf (array 'inactive' 'active' 'closed')}}\",\n      \"conversation_timers\": \"\",\n      \"conversation_unique_name\": \"\",\n      \"links\": {},\n      \"participant_identity\": \"\",\n      \"participant_messaging_binding\": \"\",\n      \"participant_sid\": \"\",\n      \"participant_user_sid\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "af6259a7-ee3f-4145-a911-e171b962b9f8",
+      "documentation": "Retrieve a list of all user roles in your service",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Roles",
+      "responses": [
+        {
+          "uuid": "c9677981-8d19-46ed-9f47-b827139ca46b",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"roles\": [\n    {\n      \"account_sid\": \"\",\n      \"chat_service_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"permissions\": [\n        \"\"\n      ],\n      \"sid\": \"\",\n      \"type\": \"{{oneOf (array 'conversation' 'service')}}\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "d91e9344-c2b6-4e44-81ac-5b3a81f6ef85",
+      "documentation": "Create a new user role in your service",
+      "method": "post",
+      "endpoint": "v1/Services/:ChatServiceSid/Roles",
+      "responses": [
+        {
+          "uuid": "b77b5997-5486-4f00-9647-216e0542c43e",
+          "body": "{\n  \"account_sid\": \"\",\n  \"chat_service_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"permissions\": [\n    \"\"\n  ],\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'conversation' 'service')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b53f3acd-9a18-4e5a-b5ca-a8c79ead2a61",
+      "documentation": "Remove a user role from your service",
+      "method": "delete",
+      "endpoint": "v1/Services/:ChatServiceSid/Roles/:Sid",
+      "responses": [
+        {
+          "uuid": "ba8b357a-52ea-4adc-bd95-4cf2cc231cc1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "2bca9119-2b3b-4d8f-a281-fc5da460fb9f",
+      "documentation": "Fetch a user role from your service",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Roles/:Sid",
+      "responses": [
+        {
+          "uuid": "d69409b4-1213-4c84-b1f1-5daba7e66932",
+          "body": "{\n  \"account_sid\": \"\",\n  \"chat_service_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"permissions\": [\n    \"\"\n  ],\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'conversation' 'service')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "876b9e32-6ad1-4df2-bc98-9b6b244dc0d7",
+      "documentation": "Update an existing user role in your service",
+      "method": "post",
+      "endpoint": "v1/Services/:ChatServiceSid/Roles/:Sid",
+      "responses": [
+        {
+          "uuid": "d788d71e-39c4-41fc-ab02-4515ca62727b",
+          "body": "{\n  \"account_sid\": \"\",\n  \"chat_service_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"permissions\": [\n    \"\"\n  ],\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'conversation' 'service')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "e26cb3e3-b653-490c-a42d-2dac9159b59f",
+      "documentation": "Retrieve a list of all conversation users in your service",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Users",
+      "responses": [
+        {
+          "uuid": "e71db376-5db8-4ec1-aa2d-efd18535d380",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"users\": [\n    {\n      \"account_sid\": \"\",\n      \"attributes\": \"\",\n      \"chat_service_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"identity\": \"\",\n      \"is_notifiable\": {{faker 'random.boolean'}},\n      \"is_online\": {{faker 'random.boolean'}},\n      \"links\": {},\n      \"role_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3f6b5ae5-6995-4e17-8cf7-b4c70f340a88",
+      "documentation": "Add a new conversation user to your service",
+      "method": "post",
+      "endpoint": "v1/Services/:ChatServiceSid/Users",
+      "responses": [
+        {
+          "uuid": "f5d90fad-7534-46a3-8276-763b246c8732",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"chat_service_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"identity\": \"\",\n  \"is_notifiable\": {{faker 'random.boolean'}},\n  \"is_online\": {{faker 'random.boolean'}},\n  \"links\": {},\n  \"role_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "b040b998-3059-4f5b-8808-4d1296a76a12",
+      "documentation": "Remove a conversation user from your service",
+      "method": "delete",
+      "endpoint": "v1/Services/:ChatServiceSid/Users/:Sid",
+      "responses": [
+        {
+          "uuid": "0ffa544b-a0c6-4bdc-a966-922173f90c9b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3e705106-1748-4365-840d-506f34962c85",
+      "documentation": "Fetch a conversation user from your service",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Users/:Sid",
+      "responses": [
+        {
+          "uuid": "f7d8d143-a5fa-4527-849f-5b4af1f65f6d",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"chat_service_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"identity\": \"\",\n  \"is_notifiable\": {{faker 'random.boolean'}},\n  \"is_online\": {{faker 'random.boolean'}},\n  \"links\": {},\n  \"role_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "64c8abd2-b3f2-4cd6-8020-a620703fe4d6",
+      "documentation": "Update an existing conversation user in your service",
+      "method": "post",
+      "endpoint": "v1/Services/:ChatServiceSid/Users/:Sid",
+      "responses": [
+        {
+          "uuid": "7a794540-1a4e-4522-bd4d-3e083428a8a4",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"chat_service_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"identity\": \"\",\n  \"is_notifiable\": {{faker 'random.boolean'}},\n  \"is_online\": {{faker 'random.boolean'}},\n  \"links\": {},\n  \"role_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "65d4facd-1f01-4ef0-8910-4a8aa484e33b",
+      "documentation": "Retrieve a list of all User Conversations for the User.",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Users/:UserSid/Conversations",
+      "responses": [
+        {
+          "uuid": "f9fb6056-5454-4f6f-a1cf-d196c7b1785f",
+          "body": "{\n  \"conversations\": [\n    {\n      \"account_sid\": \"\",\n      \"attributes\": \"\",\n      \"chat_service_sid\": \"\",\n      \"conversation_sid\": \"\",\n      \"conversation_state\": \"{{oneOf (array 'inactive' 'active' 'closed')}}\",\n      \"created_by\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"last_read_message_index\": {{faker 'random.number'}},\n      \"links\": {},\n      \"notification_level\": \"{{oneOf (array 'default' 'muted')}}\",\n      \"participant_sid\": \"\",\n      \"timers\": \"\",\n      \"unique_name\": \"\",\n      \"unread_messages_count\": {{faker 'random.number'}},\n      \"url\": \"\",\n      \"user_sid\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "70d3d09a-d064-4bd1-a1ea-ce08ff809ca6",
+      "documentation": "Delete a specific User Conversation.",
+      "method": "delete",
+      "endpoint": "v1/Services/:ChatServiceSid/Users/:UserSid/Conversations/:ConversationSid",
+      "responses": [
+        {
+          "uuid": "2d793672-2008-4b9a-8fcf-d4ccb9627ae3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "82225fe1-4059-4253-8340-e8d11627f4d3",
+      "documentation": "Fetch a specific User Conversation.",
+      "method": "get",
+      "endpoint": "v1/Services/:ChatServiceSid/Users/:UserSid/Conversations/:ConversationSid",
+      "responses": [
+        {
+          "uuid": "ed5970fa-084d-46a3-bfbc-60e9d8fa4e02",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"chat_service_sid\": \"\",\n  \"conversation_sid\": \"\",\n  \"conversation_state\": \"{{oneOf (array 'inactive' 'active' 'closed')}}\",\n  \"created_by\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"last_read_message_index\": {{faker 'random.number'}},\n  \"links\": {},\n  \"notification_level\": \"{{oneOf (array 'default' 'muted')}}\",\n  \"participant_sid\": \"\",\n  \"timers\": \"\",\n  \"unique_name\": \"\",\n  \"unread_messages_count\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"user_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "47d2f8db-3b0a-4256-8701-c0515560977d",
+      "documentation": "Update a specific User Conversation.",
+      "method": "post",
+      "endpoint": "v1/Services/:ChatServiceSid/Users/:UserSid/Conversations/:ConversationSid",
+      "responses": [
+        {
+          "uuid": "434e1b70-79f5-45c1-b241-a9ecb382f931",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"chat_service_sid\": \"\",\n  \"conversation_sid\": \"\",\n  \"conversation_state\": \"{{oneOf (array 'inactive' 'active' 'closed')}}\",\n  \"created_by\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"last_read_message_index\": {{faker 'random.number'}},\n  \"links\": {},\n  \"notification_level\": \"{{oneOf (array 'default' 'muted')}}\",\n  \"participant_sid\": \"\",\n  \"timers\": \"\",\n  \"unique_name\": \"\",\n  \"unread_messages_count\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"user_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "479c8507-d598-4194-ac43-b513b8726154",
+      "documentation": "Remove a conversation service with all its nested resources from your account",
+      "method": "delete",
+      "endpoint": "v1/Services/:Sid",
+      "responses": [
+        {
+          "uuid": "f77d05f7-35f5-4456-8096-df5f7c3c477d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "82c155fb-f642-43b5-bb44-6b9c927e4208",
+      "documentation": "Fetch a conversation service from your account",
+      "method": "get",
+      "endpoint": "v1/Services/:Sid",
+      "responses": [
+        {
+          "uuid": "12428ef9-e023-4be6-986a-5f6e3c620d3b",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3608c70a-1565-47cf-939c-60d543454fd0",
+      "documentation": "Retrieve a list of all conversation users in your account's default service",
+      "method": "get",
+      "endpoint": "v1/Users",
+      "responses": [
+        {
+          "uuid": "5c1d7040-a802-452f-ad39-690ec222a99f",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"users\": [\n    {\n      \"account_sid\": \"\",\n      \"attributes\": \"\",\n      \"chat_service_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"identity\": \"\",\n      \"is_notifiable\": {{faker 'random.boolean'}},\n      \"is_online\": {{faker 'random.boolean'}},\n      \"links\": {},\n      \"role_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "cdfb0140-8216-40b3-a0ab-61e891d171c5",
+      "documentation": "Add a new conversation user to your account's default service",
+      "method": "post",
+      "endpoint": "v1/Users",
+      "responses": [
+        {
+          "uuid": "75591b2f-95f2-4f34-9af1-edba6e34f742",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"chat_service_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"identity\": \"\",\n  \"is_notifiable\": {{faker 'random.boolean'}},\n  \"is_online\": {{faker 'random.boolean'}},\n  \"links\": {},\n  \"role_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "99cf6ad4-f94c-4af0-8f18-dbf73244c56d",
+      "documentation": "Remove a conversation user from your account's default service",
+      "method": "delete",
+      "endpoint": "v1/Users/:Sid",
+      "responses": [
+        {
+          "uuid": "31bc38bf-793e-46f7-bb9c-15ca6bab0ffa",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "dc93fbb8-9bc3-4dd0-9398-a3589f764367",
+      "documentation": "Fetch a conversation user from your account's default service",
+      "method": "get",
+      "endpoint": "v1/Users/:Sid",
+      "responses": [
+        {
+          "uuid": "5783852e-3a33-4331-9d31-c599f185cd28",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"chat_service_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"identity\": \"\",\n  \"is_notifiable\": {{faker 'random.boolean'}},\n  \"is_online\": {{faker 'random.boolean'}},\n  \"links\": {},\n  \"role_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "c4f7e6f8-c01a-4c6f-a22d-4bd501913e4b",
+      "documentation": "Update an existing conversation user in your account's default service",
+      "method": "post",
+      "endpoint": "v1/Users/:Sid",
+      "responses": [
+        {
+          "uuid": "3f5946a3-ded5-4259-b310-861bd252620e",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"chat_service_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"identity\": \"\",\n  \"is_notifiable\": {{faker 'random.boolean'}},\n  \"is_online\": {{faker 'random.boolean'}},\n  \"links\": {},\n  \"role_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "7b1eee2e-e7f9-404b-a281-2f451b529a5c",
+      "documentation": "Retrieve a list of all User Conversations for the User.",
+      "method": "get",
+      "endpoint": "v1/Users/:UserSid/Conversations",
+      "responses": [
+        {
+          "uuid": "ccdce9e7-7a9c-4261-bece-0eb83b2df834",
+          "body": "{\n  \"conversations\": [\n    {\n      \"account_sid\": \"\",\n      \"attributes\": \"\",\n      \"chat_service_sid\": \"\",\n      \"conversation_sid\": \"\",\n      \"conversation_state\": \"{{oneOf (array 'inactive' 'active' 'closed')}}\",\n      \"created_by\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"last_read_message_index\": {{faker 'random.number'}},\n      \"links\": {},\n      \"notification_level\": \"{{oneOf (array 'default' 'muted')}}\",\n      \"participant_sid\": \"\",\n      \"timers\": \"\",\n      \"unique_name\": \"\",\n      \"unread_messages_count\": {{faker 'random.number'}},\n      \"url\": \"\",\n      \"user_sid\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'random.number'}},\n    \"page_size\": {{faker 'random.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "32b49187-9ffc-4ef4-ae4d-12e1c715e273",
+      "documentation": "Delete a specific User Conversation.",
+      "method": "delete",
+      "endpoint": "v1/Users/:UserSid/Conversations/:ConversationSid",
+      "responses": [
+        {
+          "uuid": "20ce9315-0a06-496d-8206-0b71642bcbd6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "18207a5e-78cb-4abe-90fa-2e42969075cf",
+      "documentation": "Fetch a specific User Conversation.",
+      "method": "get",
+      "endpoint": "v1/Users/:UserSid/Conversations/:ConversationSid",
+      "responses": [
+        {
+          "uuid": "0abd4bef-b060-45a2-9788-5a6f2548e5c7",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"chat_service_sid\": \"\",\n  \"conversation_sid\": \"\",\n  \"conversation_state\": \"{{oneOf (array 'inactive' 'active' 'closed')}}\",\n  \"created_by\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"last_read_message_index\": {{faker 'random.number'}},\n  \"links\": {},\n  \"notification_level\": \"{{oneOf (array 'default' 'muted')}}\",\n  \"participant_sid\": \"\",\n  \"timers\": \"\",\n  \"unique_name\": \"\",\n  \"unread_messages_count\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"user_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "62375edc-3bb7-43f7-a2d8-b82dbe52f28a",
+      "documentation": "Update a specific User Conversation.",
+      "method": "post",
+      "endpoint": "v1/Users/:UserSid/Conversations/:ConversationSid",
+      "responses": [
+        {
+          "uuid": "f107a9ec-e235-42ba-b39e-51adddf8b34a",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"chat_service_sid\": \"\",\n  \"conversation_sid\": \"\",\n  \"conversation_state\": \"{{oneOf (array 'inactive' 'active' 'closed')}}\",\n  \"created_by\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"last_read_message_index\": {{faker 'random.number'}},\n  \"links\": {},\n  \"notification_level\": \"{{oneOf (array 'default' 'muted')}}\",\n  \"participant_sid\": \"\",\n  \"timers\": \"\",\n  \"unique_name\": \"\",\n  \"unread_messages_count\": {{faker 'random.number'}},\n  \"url\": \"\",\n  \"user_sid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}

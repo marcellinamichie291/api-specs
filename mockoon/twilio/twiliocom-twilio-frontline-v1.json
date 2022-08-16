@@ -1,0 +1,97 @@
+{
+  "uuid": "040a3a63-c09d-4254-a2d4-816999fbbffc",
+  "lastMigration": 19,
+  "name": "Twilio - Frontline",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "7fb726bc-a9bd-456e-acd4-5e336c4e1dbc",
+      "documentation": "Fetch a frontline user",
+      "method": "get",
+      "endpoint": "v1/Users/:Sid",
+      "responses": [
+        {
+          "uuid": "43e25cc7-4c7a-4bb3-be01-ecb07b6ab3e0",
+          "body": "{\n  \"avatar\": \"\",\n  \"friendly_name\": \"\",\n  \"identity\": \"\",\n  \"is_available\": {{faker 'random.boolean'}},\n  \"sid\": \"\",\n  \"state\": \"{{oneOf (array 'active' 'deactivated')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "42dcaf60-4695-4249-855a-87a8822d7514",
+      "documentation": "Update an existing frontline user",
+      "method": "post",
+      "endpoint": "v1/Users/:Sid",
+      "responses": [
+        {
+          "uuid": "95f4dd25-194c-4047-bea7-eb3a05ac5376",
+          "body": "{\n  \"avatar\": \"\",\n  \"friendly_name\": \"\",\n  \"identity\": \"\",\n  \"is_available\": {{faker 'random.boolean'}},\n  \"sid\": \"\",\n  \"state\": \"{{oneOf (array 'active' 'deactivated')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}
