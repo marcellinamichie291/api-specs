@@ -55,7 +55,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Books"
+                $ref: "#/components/schemas/Book"
         default:
           description: Unexpected error
           content:
@@ -130,7 +130,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Movies"
+                $ref: "#/components/schemas/Movie"
         default:
           description: Unexpected error
           content:
@@ -205,7 +205,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Characters"
+                $ref: "#/components/schemas/Character"
         default:
           description: Unexpected error
           content:
@@ -280,7 +280,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Quotes"
+                $ref: "#/components/schemas/Quote"
         default:
           description: Unexpected error
           content:
@@ -327,7 +327,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Chapters"
+                $ref: "#/components/schemas/Chapter"
         default:
           description: Unexpected error
           content:
