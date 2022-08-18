@@ -3,7 +3,7 @@ openapi: "3.0.0"
 info:
   version: 2.0.0
   title: The One API
-  description:
+  description: The One API to rule them all.
   termsOfService: "https://openweathermap.org/terms"
   contact:
     name: The One API
@@ -504,9 +504,9 @@ components:
           type: integer
 
     Error:
-      type: any
+      type: object
 
-  Parameters:
+  parameters:
     limit:
       name: limit
       in: query
