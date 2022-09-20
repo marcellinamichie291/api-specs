@@ -1,0 +1,857 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "ServerTap",
+    "description": "ServerTap is a REST API for Bukkit/Spigot/PaperMC Minecraft servers.",
+    "version": "0.4.1-SNAPSHOT"
+  },
+  "paths": {
+    "/v1/ping": {
+      "get": {
+        "tags": ["Server"],
+        "summary": "pong!",
+        "operationId": "getV1Ping",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Unit" },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/server": {
+      "get": {
+        "tags": ["Server"],
+        "summary": "Get information about the server",
+        "operationId": "getV1Server",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Server" },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/server/exec": {
+      "post": {
+        "tags": ["Server"],
+        "summary": "Executes a command on the server from the console, returning it's output. Be aware that not all command executors will properly send their messages to the CommandSender, though, most do.",
+        "operationId": "postV1ServerExec",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": ["command"],
+                "type": "object",
+                "properties": {
+                  "command": { "type": "string" },
+                  "time": { "type": "integer", "format": "int64" }
+                }
+              },
+              "exampleSetFlag": false
+            }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/v1/server/ops": {
+      "get": {
+        "tags": ["Player"],
+        "summary": "Get all op players",
+        "operationId": "getV1ServerOps",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/OfflinePlayer" }
+                },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Player"],
+        "summary": "Sets a specific player to Op",
+        "operationId": "postV1ServerOps",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": { "type": "object", "properties": { "playerUuid": { "type": "string" } } },
+              "exampleSetFlag": false
+            }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      },
+      "delete": {
+        "tags": ["Player"],
+        "summary": "Removes Op from a specific player",
+        "operationId": "deleteV1ServerOps",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": { "type": "object", "properties": { "playerUuid": { "type": "string" } } },
+              "exampleSetFlag": false
+            }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/v1/server/whitelist": {
+      "get": {
+        "tags": ["Server"],
+        "summary": "Get the whitelist",
+        "operationId": "getV1ServerWhitelist",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Whitelist" }
+                },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Server"],
+        "summary": "Update the whitelist",
+        "description": "Possible responses are: `success`, `failed`, `Error: duplicate entry`, and `No whitelist`.",
+        "operationId": "postV1ServerWhitelist",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": { "uuid": { "type": "string" }, "name": { "type": "string" } }
+              },
+              "exampleSetFlag": false
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Unit" },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/worlds": {
+      "get": {
+        "tags": ["Server"],
+        "summary": "Get information about all worlds",
+        "operationId": "getV1Worlds",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/World" } },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/worlds/save": {
+      "post": {
+        "tags": ["Server"],
+        "summary": "Triggers a world save of all worlds",
+        "operationId": "postV1WorldsSave",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/v1/worlds/download": {
+      "get": {
+        "tags": ["Server"],
+        "summary": "Downloads a ZIP compressed archive of all the worlds' folders",
+        "operationId": "getV1WorldsDownload",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/zip": {
+                "schema": { "$ref": "#/components/schemas/Unit" },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/worlds/{uuid}": {
+      "get": {
+        "tags": ["Server"],
+        "summary": "Get information about a specific world",
+        "operationId": "getV1WorldsWithUuid",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "description": "The uuid of the world",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          { "name": "key", "in": "header", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/World" },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/worlds/{uuid}/save": {
+      "post": {
+        "tags": ["Server"],
+        "summary": "Triggers a world save",
+        "operationId": "postV1WorldsWithUuidSave",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "description": "The UUID of the World to save",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          { "name": "key", "in": "header", "schema": { "type": "string" } }
+        ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/v1/worlds/{uuid}/download": {
+      "get": {
+        "tags": ["Server"],
+        "summary": "Downloads a ZIP compressed archive of the world's folder",
+        "operationId": "getV1WorldsWithUuidDownload",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "description": "The UUID of the World to download",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          { "name": "key", "in": "header", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/zip": {
+                "schema": { "$ref": "#/components/schemas/Unit" },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/scoreboard": {
+      "get": {
+        "tags": ["Server"],
+        "summary": "Get information about the scoreboard objectives",
+        "operationId": "getV1Scoreboard",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Scoreboard" },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/scoreboard/{name}": {
+      "get": {
+        "tags": ["Server"],
+        "summary": "Get information about a specific objective",
+        "operationId": "getV1ScoreboardWithName",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "The name of the objective to get",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          { "name": "key", "in": "header", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Objective" },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/chat/broadcast": {
+      "post": {
+        "tags": ["Chat"],
+        "summary": "Send broadcast visible to those currently online.",
+        "operationId": "postV1ChatBroadcast",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": { "type": "object", "properties": { "message": { "type": "string" } } },
+              "exampleSetFlag": false
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Unit" },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/chat/tell": {
+      "post": {
+        "tags": ["Chat"],
+        "summary": "Send a message to a specific player.",
+        "operationId": "postV1ChatTell",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": { "type": "string" },
+                  "playerUuid": { "type": "string" }
+                }
+              },
+              "exampleSetFlag": false
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Unit" },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/players": {
+      "get": {
+        "tags": ["Player"],
+        "summary": "Gets all currently online players",
+        "operationId": "getV1Players",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Player" } },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/players/all": {
+      "get": {
+        "tags": ["Player"],
+        "summary": "Gets all players that have ever joined the server ",
+        "operationId": "getV1PlayersAll",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/OfflinePlayer" }
+                },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/players/{uuid}": {
+      "get": {
+        "tags": ["Player"],
+        "summary": "Gets a specific online player by their UUID",
+        "operationId": "getV1PlayersWithUuid",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "description": "UUID of the player",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          { "name": "key", "in": "header", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Player" },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/players/{playerUuid}/{worldUuid}/inventory": {
+      "get": {
+        "tags": ["Player"],
+        "summary": "Gets a specific online player's Inventory in the specified world",
+        "operationId": "getV1PlayersWithPlayeruuidWithWorlduuidInventory",
+        "parameters": [
+          {
+            "name": "playerUuid",
+            "in": "path",
+            "description": "UUID of the player",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "worldUuid",
+            "in": "path",
+            "description": "UUID of the world",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          { "name": "key", "in": "header", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ItemStack" }
+                },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/economy/pay": {
+      "post": {
+        "tags": ["Economy"],
+        "summary": "Pay a player",
+        "description": "Deposits the provided amount into the player's Vault",
+        "operationId": "postV1EconomyPay",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": { "uuid": { "type": "string" }, "amount": { "type": "number" } }
+              },
+              "exampleSetFlag": false
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Unit" },
+                "exampleSetFlag": false
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Unit" },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/economy/debit": {
+      "post": {
+        "tags": ["Economy"],
+        "summary": "Debit a player",
+        "description": "Withdraws the provided amount out of the player's Vault",
+        "operationId": "postV1EconomyDebit",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": { "uuid": { "type": "string" }, "amount": { "type": "number" } }
+              },
+              "exampleSetFlag": false
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Unit" },
+                "exampleSetFlag": false
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Unit" },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/economy": {
+      "get": {
+        "tags": ["Economy"],
+        "summary": "Economy plugin information",
+        "operationId": "getV1Economy",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Unit" },
+                "exampleSetFlag": false
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Unit" },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/plugins": {
+      "get": {
+        "tags": ["Plugins"],
+        "summary": "Get a list of installed plugins",
+        "description": "Responds with an array of objects containing keys name and enabled.",
+        "operationId": "getV1Plugins",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Unit" },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Plugins"],
+        "summary": "Download and install a plugin from a URL (URL MUST be urlencoded)",
+        "operationId": "postV1Plugins",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": ["downloadUrl"],
+                "type": "object",
+                "properties": { "downloadUrl": { "type": "string" } }
+              },
+              "exampleSetFlag": false
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Unit" },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/placeholders/replace": {
+      "post": {
+        "tags": ["PlaceholderAPI"],
+        "summary": "Process a string using PlaceholderAPI",
+        "description": "Process a string using PlaceholderAPI",
+        "operationId": "postV1PlaceholdersReplace",
+        "parameters": [{ "name": "key", "in": "header", "schema": { "type": "string" } }],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": ["message"],
+                "type": "object",
+                "properties": { "message": { "type": "string" }, "uuid": { "type": "string" } }
+              },
+              "exampleSetFlag": false
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Unit" },
+                "exampleSetFlag": false
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Unit" },
+                "exampleSetFlag": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/advancements": {
+      "get": {
+        "summary": "Get v1 advancements",
+        "operationId": "getV1Advancements",
+        "responses": { "200": { "description": "Default response" } }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Unit": { "type": "object" },
+      "Server": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "motd": { "type": "string" },
+          "version": { "type": "string" },
+          "bukkitVersion": { "type": "string" },
+          "tps": { "type": "string" },
+          "health": { "$ref": "#/components/schemas/ServerHealth" },
+          "bannedIps": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ServerBan" }
+          },
+          "bannedPlayers": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ServerBan" }
+          },
+          "whitelistedPlayers": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Whitelist" }
+          },
+          "maxPlayers": { "type": "integer", "format": "int32" },
+          "onlinePlayers": { "type": "integer", "format": "int32" }
+        }
+      },
+      "ServerBan": {
+        "type": "object",
+        "properties": {
+          "target": { "type": "string" },
+          "source": { "type": "string" },
+          "reason": { "type": "string" },
+          "expiration": { "type": "string", "format": "date-time" }
+        }
+      },
+      "ServerHealth": {
+        "type": "object",
+        "properties": {
+          "cpus": { "type": "integer", "format": "int32" },
+          "uptime": { "type": "integer", "format": "int64" },
+          "totalMemory": { "type": "integer", "format": "int64" },
+          "maxMemory": { "type": "integer", "format": "int64" },
+          "freeMemory": { "type": "integer", "format": "int64" }
+        }
+      },
+      "Whitelist": {
+        "type": "object",
+        "properties": { "uuid": { "type": "string" }, "name": { "type": "string" } }
+      },
+      "OfflinePlayer": {
+        "type": "object",
+        "properties": {
+          "uuid": { "type": "string" },
+          "whitelisted": { "type": "boolean" },
+          "banned": { "type": "boolean" },
+          "op": { "type": "boolean" },
+          "balance": { "type": "number", "format": "double" },
+          "lastPlayed": { "type": "integer", "format": "int64" },
+          "displayName": { "type": "string" }
+        }
+      },
+      "World": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "uuid": { "type": "string" },
+          "time": { "type": "number" },
+          "storm": { "type": "boolean" },
+          "thundering": { "type": "boolean" },
+          "generateStructures": { "type": "boolean" },
+          "allowAnimals": { "type": "boolean" },
+          "allowMonsters": { "type": "boolean" },
+          "difficulty": { "type": "integer", "format": "int32" },
+          "environment": { "type": "integer", "format": "int32" },
+          "seed": { "type": "number" }
+        }
+      },
+      "Scoreboard": {
+        "type": "object",
+        "properties": {
+          "objectives": { "uniqueItems": true, "type": "array", "items": { "type": "string" } },
+          "entries": { "uniqueItems": true, "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "Objective": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "displayName": { "type": "string" },
+          "displaySlot": { "type": "string" },
+          "criterion": { "type": "string" },
+          "scores": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Score" }
+          }
+        }
+      },
+      "Score": {
+        "type": "object",
+        "properties": {
+          "entry": { "type": "string" },
+          "value": { "type": "integer", "format": "int32" }
+        }
+      },
+      "Player": {
+        "type": "object",
+        "properties": {
+          "uuid": { "type": "string" },
+          "displayName": { "type": "string" },
+          "address": { "type": "string" },
+          "port": { "type": "integer", "format": "int32" },
+          "exhaustion": { "type": "number", "format": "float" },
+          "exp": { "type": "number", "format": "float" },
+          "whitelisted": { "type": "boolean" },
+          "banned": { "type": "boolean" },
+          "op": { "type": "boolean" },
+          "balance": { "type": "number", "format": "double" },
+          "location": { "type": "array", "items": { "type": "number", "format": "double" } },
+          "dimension": { "type": "string" },
+          "health": { "type": "number", "format": "double" },
+          "hunger": { "type": "integer", "format": "int32" },
+          "saturation": { "type": "number", "format": "float" },
+          "gamemode": { "type": "string" },
+          "lastPlayed": { "type": "integer", "format": "int64" }
+        }
+      },
+      "ItemStack": {
+        "type": "object",
+        "properties": {
+          "count": { "type": "integer", "format": "int32" },
+          "slot": { "type": "integer", "format": "int32" },
+          "id": { "type": "string" }
+        }
+      }
+    }
+  }
+}
