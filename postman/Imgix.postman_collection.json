@@ -1,0 +1,1451 @@
+{
+	"info": {
+		"_postman_id": "a4256c99-d364-40e3-82bf-845d4590bac8",
+		"name": "imgix API examples",
+		"description": "A collection of examples for calls that can be made from the imgix Management API. Respective folders will contain different calls for different end points.\n\nAll calls to the imgix Management API require an API key. To create a key, navigate to the API Keys view in your Dashboard. Any user can create an API key, but a user will only be able to create a key that has permissions equal to or less than the user’s own permissions. Account Admins can update user permissions on the Users page.\n\nThe Purging folder contains examples of how to purge images at your origin and sub-images (images used as marks, blends, and masks).\n\nThe Reporting folder contains examples of ways to pull different reports for your account and sources. The Reporting API is available for Enterprise accounts (typically around $500/month spend). If this is something you are interested in, please reach out to our Sales team at sales@imgix.com.\n\nThe Image Manager folder contains examples of calls that can be made to the Image Manager. When using the Image Manager for the first time on one of your Sources, you will need to provide new Upload Credentials in order for calls to be made. Examples on how to do that are included for AWS, GCS, and Azure. The Image Manager is not supported for Web Folder sources.\n\nThe Creating Sources folder allows you to create sources directly from API calls. Please note that there is a cap of 100 sources per account. If you believe that you need more than 100 sources, please reach out to sales@imgix.com.\n\nOur Management API documentation can be found here: https://docs.imgix.com/apis/management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21447502"
+	},
+	"item": [
+		{
+			"name": "Purging",
+			"item": [
+				{
+					"name": "Purging Master Image",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"url\": \"{{purged_image_url}}\"\n    },\n    \"type\": \"purges\"\n  }\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.imgix.com/api/{{api_version}}/purge",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgix",
+								"com"
+							],
+							"path": [
+								"api",
+								"{{api_version}}",
+								"purge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Purging Sub-Image",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"url\": \"{{purged_image_url}}?{{purged_sub_image_url}}\",\n      \"sub_image\": true,\n      \"source_id\": \"{{source_id}}\"\n    },\n    \"type\": \"purges\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.imgix.com/api/{{api_version}}/purge",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgix",
+								"com"
+							],
+							"path": [
+								"api",
+								"{{api_version}}",
+								"purge"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "For performance reasons, imgix will try to cache your origin images for as long as possible, but if your image changes at the origin you may want to purge it so that imgix will fetch the newest version.\n\nImages with a mark or a blend do not need to be purged in any special way unless the image that is being used as the mark or the blend (also called the \"sub-image\") needs to be updated.\n\nSee our documentation here for more information: https://docs.imgix.com/apis/management#api-updating-objects",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Reporting",
+			"item": [
+				{
+					"name": "Get List of Reports",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.imgix.com/api/{{api_version}}/reports",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgix",
+								"com"
+							],
+							"path": [
+								"api",
+								"{{api_version}}",
+								"reports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Individual Report",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.imgix.com/api/{{api_version}}/reports/{{source_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgix",
+								"com"
+							],
+							"path": [
+								"api",
+								"{{api_version}}",
+								"reports",
+								"{{source_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Filtered Reports",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.imgix.com/api/{{api_version}}/reports?sort=-period_end&fields[reports]=report_key,files&filter[report_type]=mild_errors",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgix",
+								"com"
+							],
+							"path": [
+								"api",
+								"{{api_version}}",
+								"reports"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "-period_end"
+								},
+								{
+									"key": "fields[reports]",
+									"value": "report_key,files"
+								},
+								{
+									"key": "filter[report_type]",
+									"value": "mild_errors"
+								}
+							]
+						},
+						"description": "Can replace [mild_errors] with [cdn_logs], [image_analytics], or [source_analytics]"
+					},
+					"response": []
+				}
+			],
+			"description": "Reports are a premium feature and may not be enabled for all accounts. Contact Support or your Account Manager to find out more.\n\nReports are updated once per day. They are finalized at 00:00 UTC and are available via API by 01:00 UTC.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Image Manager",
+			"item": [
+				{
+					"name": "Sources",
+					"item": [
+						{
+							"name": "Providing Upload Credentials for S3",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_key}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.api+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"upload_credentials\": {\n        \"s3_access_key\": \"{{s3_access_key}}\",\n        \"s3_secret_key\": \"{{s3_secret_key}}\",\n        \"type\": \"s3\"\n      }\n    },\n  \"id\": \"{{source_id}}\",\n  \"type\": \"sources\"\n  }\n}"
+								},
+								"url": {
+									"raw": "https://api.imgix.com/api/{{api_version}}/sources/{{source_id}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"imgix",
+										"com"
+									],
+									"path": [
+										"api",
+										"{{api_version}}",
+										"sources",
+										"{{source_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Providing Upload Credentials for GCS",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ak_5b7144a26d7e496f40cdd1ad4a12d4dad911134ca133417c4e58954fabb2b484",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.api+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"upload_credentials\": {\n        \"gcs_access_key\": \"GOOGB7KMRI33E7CYQ7D7OKLS\",\n        \"gcs_secret_key\": \"IPSEvP9DRQDLCpLoedT+5fUgpYzqOzriUCb8R2jw\",\n        \"type\": \"gcs\"\n      }\n    },\n  \"id\": \"5dc46cefd596f100014078fb\",\n  \"type\": \"sources\"\n  }\n}"
+								},
+								"url": {
+									"raw": "https://api.imgix.com/api/{{api_version}}/sources/{{source_id}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"imgix",
+										"com"
+									],
+									"path": [
+										"api",
+										"{{api_version}}",
+										"sources",
+										"{{source_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Providing Upload Credentials for Azure",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_key}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.api+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"upload_credentials\": {\n        \"azure_sas_string\": \"{{azure_sas_string}}\",\n        \"type\": \"azure\"\n      }\n    },\n  \"id\": \"{{source_id}}\",\n  \"type\": \"sources\"\n  }\n}"
+								},
+								"url": {
+									"raw": "https://api.imgix.com/api/{{api_version}}/sources/{{source_id}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"imgix",
+										"com"
+									],
+									"path": [
+										"api",
+										"{{api_version}}",
+										"sources",
+										"{{source_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Assets",
+					"item": [
+						{
+							"name": "Refreshing Asset",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ak_fcb8524883d71fa1ea5ba6febfabac8ee3256d432ee0c2e470fb8c1685aa2baf",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{{{public_api_key}}}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.api+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}"
+								},
+								"url": {
+									"raw": "https://api.imgix.com/api/{{api_version}}/sources/{{source_id}}/assets/refresh/{{image_file_path}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"imgix",
+										"com"
+									],
+									"path": [
+										"api",
+										"{{api_version}}",
+										"sources",
+										"{{source_id}}",
+										"assets",
+										"refresh",
+										"{{image_file_path}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Uploading Assets to Source",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ak_fcb8524883d71fa1ea5ba6febfabac8ee3256d432ee0c2e470fb8c1685aa2baf",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{{{public_api_key}}}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.api+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "file",
+									"file": {
+										"src": "/Users/Ryan/Desktop/colorSwatches.JPG"
+									}
+								},
+								"url": {
+									"raw": "https://api.imgix.com/api/{{api_version}}/sources/{{source_id}}/upload/image01.jpg",
+									"protocol": "https",
+									"host": [
+										"api",
+										"imgix",
+										"com"
+									],
+									"path": [
+										"api",
+										"{{api_version}}",
+										"sources",
+										"{{source_id}}",
+										"upload",
+										"image01.jpg"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Details for Single Asset",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_key}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{{{public_api_key}}}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.api+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://api.imgix.com/api/{{api_version}}/assets/{{source_id}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"imgix",
+										"com"
+									],
+									"path": [
+										"api",
+										"{{api_version}}",
+										"assets",
+										"{{source_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get List of Objects",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_key}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.api+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://api.imgix.com/api/{{api_version}}/assets/{{source_id}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"imgix",
+										"com"
+									],
+									"path": [
+										"api",
+										"{{api_version}}",
+										"assets",
+										"{{source_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Updating Categories and Custom Fields of an Asset",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_key}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{{{public_api_key}}}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.api+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"categories\": [\n        \"Summer Photos\",\n        \"Pet Photos\"\n       ],\n       \"custom_fields\": {\n         \"Date taken\": \"August 2020\",\n         \"Photographer\": \"Molly\"\n       }\n    },\n    \"type\": \"assets\",\n     \"id\": \"5b81e81539ddc50001a5d955/luke.jpg\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api.imgix.com/api/{{api_version}}/assets/{{source_id}}/{{image_file_path}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"imgix",
+										"com"
+									],
+									"path": [
+										"api",
+										"{{api_version}}",
+										"assets",
+										"{{source_id}}",
+										"{{image_file_path}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Managing Sources",
+			"item": [
+				{
+					"name": "Creating a New Web Proxy Source",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{{{public_api_key}}}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/vnd.api+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"attributes\": {\n            \"name\": \"{{new_source_name}}\",\n            \"deployment\": {\n                \"type\": \"webproxy\",\n                \"imgix_subdomains\": [\n                    \"{{imgix_subdomain}}\"\n                ]\n            }\n        },\n        \"type\": \"sources\"\n    },\n    \"jsonapi\": {\n        \"version\": \"1.0\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.imgix.com/api/{{api_version}}/sources",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgix",
+								"com"
+							],
+							"path": [
+								"api",
+								"{{api_version}}",
+								"sources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creating a New Web Folder Source",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{{{public_api_key}}}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"attributes\": {\n            \"name\": \"{{new_source_name}}\",\n            \"deployment\": {\n                \"type\": \"webfolder\",\n                \"webfolder_base_url\": \"{{web_folder_base_url}}\",\n                \"imgix_subdomains\": [\n                    \"{{imgix_subdomain}}\"\n                ]\n            }\n        },\n        \"type\": \"sources\"\n    },\n    \"jsonapi\": {\n        \"version\": \"1.0\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.imgix.com/api/{{api_version}}/sources",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgix",
+								"com"
+							],
+							"path": [
+								"api",
+								"{{api_version}}",
+								"sources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creating a New S3 Source",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{{{public_api_key}}}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"attributes\": {\n            \"name\": \"{{new_source_name}}\",\n            \"deployment\": {\n                \"type\": \"s3\",\n                \"s3_access_key\": \"{{s3_access_key}}\",\n                \"s3_bucket\": \"{{s3_bucket_name}}\",\n                \"s3_secret_key\": \"{{s3_secret_key}}\",\n                \"imgix_subdomains\": [\n                    \"{{imgix_subdomain}}\"\n                ]\n            }\n        },\n        \"type\": \"sources\"\n    },\n    \"jsonapi\": {\n        \"version\": \"1.0\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.imgix.com/api/{{api_version}}/sources",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgix",
+								"com"
+							],
+							"path": [
+								"api",
+								"{{api_version}}",
+								"sources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creating a New GCS Source",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{{{public_api_key}}}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"attributes\": {\n            \"name\": \"{{new_source_name}}\",\n            \"deployment\": {\n                \"type\": \"gcs\",\n                \"gcs_access_key\": \"{{gcs_access_key}}\",\n                \"gcs_bucket\": \"{{gcs_bucket_name}}\",\n                \"gcs_secret_key\": \"{{gcs_secret_key}}\",\n                \"imgix_subdomains\": [\n                    \"{{imgix_subdomain}}\"\n                ]\n            }\n        },\n        \"type\": \"sources\"\n    },\n    \"jsonapi\": {\n        \"version\": \"1.0\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.imgix.com/api/{{api_version}}/sources",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgix",
+								"com"
+							],
+							"path": [
+								"api",
+								"{{api_version}}",
+								"sources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creating a New Azure Source",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{{{public_api_key}}}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"attributes\": {\n            \"name\": \"{{new_source_name}}\",\n            \"deployment\": {\n                \"type\": \"azure\",\n                \"azure_account\": \"{{azure_account}}\",\n                \"azure_bucket\": \"{{azure_bucket_name}}\",\n                \"azure_sas_string\": \"{{azure_sas_string}}\",\n                \"azure_service_type\": \"blob\",\n                \"imgix_subdomains\": [\n                    \"{{imgix_subdomain}}\"\n                ]\n            }\n        },\n        \"type\": \"sources\"\n    },\n    \"jsonapi\": {\n        \"version\": \"1.0\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.imgix.com/api/{{api_version}}/sources",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgix",
+								"com"
+							],
+							"path": [
+								"api",
+								"{{api_version}}",
+								"sources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filtering List of Objects",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{{{public_api_key}}}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.imgix.com/api/{{api_version}}/sources?filter[name]=staging&filter[deployment.type]=s3",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgix",
+								"com"
+							],
+							"path": [
+								"api",
+								"{{api_version}}",
+								"sources"
+							],
+							"query": [
+								{
+									"key": "filter[name]",
+									"value": "staging"
+								},
+								{
+									"key": "filter[deployment.type]",
+									"value": "s3"
+								}
+							]
+						},
+						"description": "Developers can filter down their lists of objects by using the filter parameter. The filter parameter is an indexed parameter with the index being the name of the field to be filtered by and the value is what to filter. Multiple filter values will be AND’ed together.\n\nUnless noted otherwise, filter fields that take in String values will do substring matching. For example, if filter[name] is set to test, the API will return objects that have name values of test, my test, testing, etc.\n\nObjects can define their own supported filter fields and what the values that they capture actually represent in the filter. Read the object-level documentation to learn more about which fields can be filtered and what the behavior of the values are. Unrecognized filter fields will be ignored.\n\nFor example, if a developer wanted to filter a list of Source objects to only include Sources with type s3 and with a name containing staging.\n\nFor more information, check out the documentation here: https://docs.imgix.com/apis/management#api-filtering-objects"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Object",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.imgix.com/api/{{api_version}}/sources",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgix",
+								"com"
+							],
+							"path": [
+								"api",
+								"{{api_version}}",
+								"sources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Fields Returned",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/vnd.api+json"
+							}
+						],
+						"url": {
+							"raw": "https://api.imgix.com/api/{{api_version}}/sources/{{source_id}}?fields[sources]=name,deployment_status,deployment.default_params",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgix",
+								"com"
+							],
+							"path": [
+								"api",
+								"{{api_version}}",
+								"sources",
+								"{{source_id}}"
+							],
+							"query": [
+								{
+									"key": "fields[sources]",
+									"value": "name,deployment_status,deployment.default_params"
+								}
+							]
+						},
+						"description": "By default, all available object fields are returned in a response. The developer can control which specific fields are returned on a per-object basis using the fields parameter. The value of this parameter is a comma-delimited list of fields to include. Any unrecognized field names will be ignored. To request a deeply-nested field, use dot notation.\n\nSee link here for more information: https://docs.imgix.com/apis/management#api-specifying-fields"
+					},
+					"response": []
+				},
+				{
+					"name": "Paging by Page Number and Size",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/vnd.api+json"
+							}
+						],
+						"url": {
+							"raw": "https://api.imgix.com/api/{{api_version}}/sources?page[number]=0&page[size]=1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgix",
+								"com"
+							],
+							"path": [
+								"api",
+								"{{api_version}}",
+								"sources"
+							],
+							"query": [
+								{
+									"key": "page[number]",
+									"value": "0"
+								},
+								{
+									"key": "page[size]",
+									"value": "1"
+								}
+							]
+						},
+						"description": "The vast majority of objects support paging by page number and size. This is the default behavior when the size of the dataset is easily determined behind the scenes. To request a specific page, developers provide the page[number] and page[size] parameters. Page numbers are zero-indexed. Page sizes must be greater than or equal to 1.\n\nFor more information, you can check out the documentation here: https://docs.imgix.com/apis/management#api-paging-by-number-size\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Sorting Sources by Alphabetical Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/vnd.api+json"
+							}
+						],
+						"url": {
+							"raw": "https://api.imgix.com/api/{{api_version}}/sources?sort=name&fields[sources]=name",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgix",
+								"com"
+							],
+							"path": [
+								"api",
+								"{{api_version}}",
+								"sources"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "name"
+								},
+								{
+									"key": "fields[sources]",
+									"value": "name"
+								}
+							]
+						},
+						"description": "Lists of objects may be sorted by a defined subset of their object fields. To sort a list by a specific field or set of fields, developers should provide the sort parameter in the request. The value should be set to a comma-separated list of valid fields of the object type. Fields are sorted ascending by default. To sort a field in descending order, prepend a dash “-” to the field name. When sorting on a Boolean type field, the default sort order is false first, then true. To reverse this order prepend a dash “-” to the field name.\n\nNote that sorting by nested fields (e.g. deployment.type) is not currently supported.\n\nFor more information, you can check the documentation here: https://docs.imgix.com/apis/management#api-sorting-lists-of-objects"
+					},
+					"response": []
+				},
+				{
+					"name": "Updating Source",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{{{public_api_key}}}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/vnd.api+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"name\": \"{{new_source_name}}\"\n    },\n    \"id\": \"{{source_id}}\",\n    \"type\": \"sources\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.imgix.com/api/{{api_version}}/sources/{{source_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgix",
+								"com"
+							],
+							"path": [
+								"api",
+								"{{api_version}}",
+								"sources",
+								"{{source_id}}"
+							]
+						},
+						"description": "To update the fields on an existing object, developers should execute an HTTP PATCH request against that object. Fields not included in the provided document will not be updated and will keep their existing values.\n\nThe id of the object and the type of the object are always required as part of PATCH requests, as per the JSON:API spec.\n\nNote that when updating fields with values that of types List or Object, an update will replace that entire List or Object. If you would like to keep any previous values you will need to include them in the PATCH request.\n\nYou can check out the documentation here for more information: https://docs.imgix.com/apis/management#api-updating-objects"
+					},
+					"response": []
+				}
+			],
+			"description": "To create an object, developers should make an HTTP POST request to the list endpoint of the object. The document posted should include all required attributes and the object type. Optional attributes will be filled with default values. Unless otherwise specified in the object-level documentation, the id field should be left unset as it will be populated during object creation.\n\nFor more information about creating an object, check out the documentation here: https://docs.imgix.com/apis/management#api-creating-objects",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{public_api_key}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_key",
+			"value": ""
+		},
+		{
+			"key": "source_id",
+			"value": "0000000000000000000000"
+		},
+		{
+			"key": "s3_access_key",
+			"value": ""
+		},
+		{
+			"key": "s3_secret_key",
+			"value": " "
+		},
+		{
+			"key": "gcs_access_key",
+			"value": ""
+		},
+		{
+			"key": "gcs_secret_key",
+			"value": ""
+		},
+		{
+			"key": "azure_sas_string",
+			"value": ""
+		},
+		{
+			"key": "api_version",
+			"value": "v1"
+		},
+		{
+			"key": "purged_image_url",
+			"value": ""
+		},
+		{
+			"key": "purged_sub_image_url",
+			"value": ""
+		},
+		{
+			"key": "image_file_path",
+			"value": "image01.jpg"
+		},
+		{
+			"key": "web_folder_base_url",
+			"value": "https://my-domain.com/images"
+		},
+		{
+			"key": "imgix_subdomain",
+			"value": "my-super-unique-imgix-subdomain"
+		},
+		{
+			"key": "new_source_name",
+			"value": "New Source"
+		},
+		{
+			"key": "s3_bucket_name",
+			"value": "your_s3_bucket_name"
+		},
+		{
+			"key": "gcs_bucket_name",
+			"value": "your_gcs_bucket_name"
+		},
+		{
+			"key": "azure_account",
+			"value": "your_azure_account"
+		},
+		{
+			"key": "azure_bucket_name",
+			"value": "your_azure_bucket_name"
+		}
+	]
+}
