@@ -949,7 +949,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/unspentInputsData'
+                  $ref: '#/components/schemas/UnspentInputsResponse'
         default:
           $ref: '#/components/responses/Error'
   '/vault/public_key_info/':
@@ -2165,8 +2165,7 @@ paths:
         - in: query
           name: status
           description: >-
-            Comma-separated list of statuses. Returns only transactions with
-            one of the specified statuses
+            You can filter by one of the statuses.
           required: false
           schema:
             type: string
@@ -3530,80 +3529,6 @@ paths:
                 $ref: '#/components/schemas/Payout'
         default:
           $ref: '#/components/responses/Error'
-  # FEE PAYER
-  '/fee_payer/{baseAsset}':
-    get:
-      summary: Get fee payer settings
-      description: Gets the fee payer settings.
-      tags:
-        - Fee payer
-      parameters:
-        - in: path
-          name: baseAsset
-          required: true
-          description: The ID of the base asset for fee payer configruation
-          schema:
-            type: string
-            minimum: 1
-      responses:
-        '200':
-          description: Fee Payer Configuration
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/FeePayerResponse'
-        default:
-          $ref: '#/components/responses/Error'
-    post:
-      summary: Configure fee payer settings
-      description: Sets the fee payer settings.
-      tags:
-        - Fee payer
-      parameters:
-        - in: path
-          name: baseAsset
-          required: true
-          description: The ID of the base asset for fee payer configruation
-          schema:
-            type: string
-            minimum: 1
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SetFeePayerConfiguration'
-      responses:
-        '200':
-          description: Fee Payer Configuration
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/FeePayerResponse'
-        default:
-          $ref: '#/components/responses/Error'
-    delete:
-      summary: Remove fee payer settings
-      description: Removes the fee payer settings.
-      tags:
-        - Fee payer
-      parameters:
-        - in: path
-          name: baseAsset
-          required: true
-          description: The ID of the base asset for fee payer configruation
-          schema:
-            type: string
-            minimum: 1
-      responses:
-        '200':
-          description: Fee Payer Configuration
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/RemoveFeePayerResponse'
-        default:
-          $ref: '#/components/responses/Error'
 
 security:
   - bearerTokenAuth: [ ]
@@ -3980,6 +3905,7 @@ components:
       allOf:
         - $ref: '#/components/schemas/TransferPeerPath'
         - type: object
+        - description: (optional) Destination address. You will only be able to provide this parameter if the type is enabled for OneTimeAddress.
           properties:
             oneTimeAddress:
               $ref: '#/components/schemas/OneTimeAddress'
@@ -4083,6 +4009,7 @@ components:
               type: string
             subType:
               type: string
+              description: The specific exchange, fiat account or unmanaged wallet (either INTERNAL / EXTERNAL)
             virtualType:
               type: string
               enum:
@@ -4602,14 +4529,13 @@ components:
     TransactionOperation:
       type: string
       enum:
-        - TRANSFER
-        - MINT
         - BURN
-        - SUPPLY_TO_COMPOUND
-        - REDEEM_FROM_COMPOUND
-        - RAW
         - CONTRACT_CALL
-        - INTERNAL_LEDGER_TRANSFER
+        - MINT
+        - RAW
+        - REDEEM_FROM_COMPOUND
+        - SUPPLY_TO_COMPOUND
+        - TRANSFER
         - TYPED_MESSAGE
       default: TRANSFER
     Error:
@@ -5025,7 +4951,7 @@ components:
     ResendWebhooksResponse:
       type: object
       properties:
-        webhooksCount:
+        messagesCount:
           type: number
     OffExchangeEntityResponse:
       type: object
@@ -5049,11 +4975,11 @@ components:
                 type: string
               frozen:
                 type: string
-    unspentInputsData:
+    UnspentInputsResponse:
       type: object
       properties:
-        input:
-          type: string
+        input: 
+          $ref: '#/components/schemas/UnspentInput'        
         address:
           type: string
         amount:
@@ -5062,6 +4988,13 @@ components:
           type: number
         status:
           type: string
+    UnspentInput:
+      type: object
+      properties:
+        txHash:
+          type: string
+        index:
+          type: number  
     GetUsersResponse:
       type: object
       properties:
@@ -5258,20 +5191,3 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Payout'
-
-    FeePayerResponse:
-      type: object
-      properties:
-        feePayerAccountId:
-          type: string
-    SetFeePayerConfiguration:
-      type: object
-      properties:
-        feePayerAccountId:
-          type: string
-    RemoveFeePayerResponse:
-      type: object
-      properties:
-        baseAssetId:
-          type: string
-          x-fb-entity: asset
