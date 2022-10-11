@@ -1,0 +1,3222 @@
+{
+	"info": {
+		"_postman_id": "447dae16-0022-444a-bf5d-c7017ce55419",
+		"name": "Modern Treasury",
+		"description": "A collection of all the Modern Treasury API endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21447502"
+	},
+	"item": [
+		{
+			"name": "Counterparties",
+			"item": [
+				{
+					"name": "Create a counterparty",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('response should have an id', () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.all.keys(\"id\", \"object\")",
+									"    pm.expect(jsonData[\"object\"]).to.equal(\"counterparty\")",
+									"});",
+									"",
+									"if (pm.response.code === 201) {",
+									"    var id = pm.response.json()[\"id\"];",
+									"    pm.environment.set(\"last_counterparty\", id);",
+									"    console.log(\"last_counterparty\" + \":\" + id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Counterparty {{$timestamp}}\",\n\t\"accounts\": [\n      {\n        \"account_type\": \"checking\",\n        \"routing_details\": [\n          {\n            \"routing_number_type\": \"aba\",\n            \"routing_number\": \"121141822\"\n          }\n        ],\n        \"account_details\": [\n          {\n            \"account_number\": \"123456789\"\n          }\n        ]\n      }\n     ]\n}"
+						},
+						"url": {
+							"raw": "{{api_url}}/counterparties",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"counterparties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a counterparty",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('response should have an id', () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.all.keys(\"id\", \"object\")",
+									"    pm.expect(jsonData[\"object\"]).to.equal(\"counterparty\")",
+									"});",
+									"",
+									"if (pm.response.code === 200) {",
+									"    var id = pm.response.json()[\"id\"];",
+									"    pm.environment.set(\"last_counterparty\", id);",
+									"    console.log(\"last_counterparty\" + \":\" + id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/counterparties/{{last_counterparty}}",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"counterparties",
+								"{{last_counterparty}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a counterparty",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('response should have an id', () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.all.keys(\"id\", \"object\")",
+									"    pm.expect(jsonData[\"object\"]).to.equal(\"counterparty\")",
+									"});",
+									"",
+									"if (pm.response.code === 200) {",
+									"    var id = pm.response.json()[\"id\"];",
+									"    pm.environment.set(\"last_counterparty\", id);",
+									"    console.log(\"last_counterparty\" + \":\" + id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"New Counterparty Name {{$timestamp}}\"\n}"
+						},
+						"url": {
+							"raw": "{{api_url}}/counterparties/{{last_counterparty}}",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"counterparties",
+								"{{last_counterparty}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Virtual Accounts",
+			"item": [
+				{
+					"name": "Create an Increase Virtual Account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Demo Virtual Account\",\n    \"internal_account\": \"12b14fca-7365-4e64-89fa-9c22df582c29\",\n    \"counterparty_id\": \"1f92e4bd-f4e7-4561-8ea3-eec55bae9d37\"\n}"
+						},
+						"url": {
+							"raw": "{{api_url}}/virtual_accounts",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"virtual_accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all virtual accounts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('response should have an id', () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.all.keys(\"id\", \"object\")",
+									"    pm.expect(jsonData[\"object\"]).to.equal(\"counterparty\")",
+									"});",
+									"",
+									"if (pm.response.code === 200) {",
+									"    var id = pm.response.json()[\"id\"];",
+									"    pm.environment.set(\"last_counterparty\", id);",
+									"    console.log(\"last_counterparty\" + \":\" + id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/virtual_accounts",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"virtual_accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a counterparty",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('response should have an id', () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.all.keys(\"id\", \"object\")",
+									"    pm.expect(jsonData[\"object\"]).to.equal(\"counterparty\")",
+									"});",
+									"",
+									"if (pm.response.code === 200) {",
+									"    var id = pm.response.json()[\"id\"];",
+									"    pm.environment.set(\"last_counterparty\", id);",
+									"    console.log(\"last_counterparty\" + \":\" + id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"New Counterparty Name {{$timestamp}}\"\n}"
+						},
+						"url": {
+							"raw": "{{api_url}}/counterparties/{{last_counterparty}}",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"counterparties",
+								"{{last_counterparty}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Routing Number API",
+			"item": [
+				{
+					"name": "Get ABA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('response should be a list of internal accounts', () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length > 0).to.be.true;",
+									"    pm.expect(jsonData[0]).to.have.all.keys(\"id\", \"object\");",
+									"    pm.expect(jsonData[0][\"object\"]).to.equal(\"internal_account\");",
+									"});",
+									"",
+									"if (pm.response.code === 200) {",
+									"    pm.environment.set(\"last_internal_account\", id);",
+									"    console.log(\"last_internal_account\" + \":\" + id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/validations/routing_numbers?routing_number=322286188&routing_number_type=aba",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"validations",
+								"routing_numbers"
+							],
+							"query": [
+								{
+									"key": "routing_number",
+									"value": "322286188"
+								},
+								{
+									"key": "routing_number_type",
+									"value": "aba"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get ABA Example 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('response should be a list of internal accounts', () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length > 0).to.be.true;",
+									"    pm.expect(jsonData[0]).to.have.all.keys(\"id\", \"object\");",
+									"    pm.expect(jsonData[0][\"object\"]).to.equal(\"internal_account\");",
+									"});",
+									"",
+									"if (pm.response.code === 200) {",
+									"    pm.environment.set(\"last_internal_account\", id);",
+									"    console.log(\"last_internal_account\" + \":\" + id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/validations/routing_numbers?routing_number=021000021&routing_number_type=aba",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"validations",
+								"routing_numbers"
+							],
+							"query": [
+								{
+									"key": "routing_number",
+									"value": "021000021"
+								},
+								{
+									"key": "routing_number_type",
+									"value": "aba"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get SWIFT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('response should be a list of internal accounts', () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length > 0).to.be.true;",
+									"    pm.expect(jsonData[0]).to.have.all.keys(\"id\", \"object\");",
+									"    pm.expect(jsonData[0][\"object\"]).to.equal(\"internal_account\");",
+									"});",
+									"",
+									"if (pm.response.code === 200) {",
+									"    pm.environment.set(\"last_internal_account\", id);",
+									"    console.log(\"last_internal_account\" + \":\" + id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/validations/routing_numbers?routing_number=LOYDGB2L&routing_number_type=swift",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"validations",
+								"routing_numbers"
+							],
+							"query": [
+								{
+									"key": "routing_number",
+									"value": "LOYDGB2L"
+								},
+								{
+									"key": "routing_number_type",
+									"value": "swift"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid ABA Routing Number Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('response should be a list of internal accounts', () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length > 0).to.be.true;",
+									"    pm.expect(jsonData[0]).to.have.all.keys(\"id\", \"object\");",
+									"    pm.expect(jsonData[0][\"object\"]).to.equal(\"internal_account\");",
+									"});",
+									"",
+									"if (pm.response.code === 200) {",
+									"    pm.environment.set(\"last_internal_account\", id);",
+									"    console.log(\"last_internal_account\" + \":\" + id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/validations/routing_numbers?routing_number=021000022&routing_number_type=aba",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"validations",
+								"routing_numbers"
+							],
+							"query": [
+								{
+									"key": "routing_number",
+									"value": "021000022"
+								},
+								{
+									"key": "routing_number_type",
+									"value": "aba"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Swift Routing Number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('response should be a list of internal accounts', () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length > 0).to.be.true;",
+									"    pm.expect(jsonData[0]).to.have.all.keys(\"id\", \"object\");",
+									"    pm.expect(jsonData[0][\"object\"]).to.equal(\"internal_account\");",
+									"});",
+									"",
+									"if (pm.response.code === 200) {",
+									"    pm.environment.set(\"last_internal_account\", id);",
+									"    console.log(\"last_internal_account\" + \":\" + id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/validations/routing_numbers?routing_number=LOYDUK2L&routing_number_type=swift",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"validations",
+								"routing_numbers"
+							],
+							"query": [
+								{
+									"key": "routing_number",
+									"value": "LOYDUK2L"
+								},
+								{
+									"key": "routing_number_type",
+									"value": "swift"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid ABA Format Routing Number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('response should be a list of internal accounts', () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length > 0).to.be.true;",
+									"    pm.expect(jsonData[0]).to.have.all.keys(\"id\", \"object\");",
+									"    pm.expect(jsonData[0][\"object\"]).to.equal(\"internal_account\");",
+									"});",
+									"",
+									"if (pm.response.code === 200) {",
+									"    pm.environment.set(\"last_internal_account\", id);",
+									"    console.log(\"last_internal_account\" + \":\" + id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/validations/routing_numbers?routing_number=12345678&routing_number_type=aba",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"validations",
+								"routing_numbers"
+							],
+							"query": [
+								{
+									"key": "routing_number",
+									"value": "12345678"
+								},
+								{
+									"key": "routing_number_type",
+									"value": "aba"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Swift Format Routing Number Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('response should be a list of internal accounts', () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length > 0).to.be.true;",
+									"    pm.expect(jsonData[0]).to.have.all.keys(\"id\", \"object\");",
+									"    pm.expect(jsonData[0][\"object\"]).to.equal(\"internal_account\");",
+									"});",
+									"",
+									"if (pm.response.code === 200) {",
+									"    pm.environment.set(\"last_internal_account\", id);",
+									"    console.log(\"last_internal_account\" + \":\" + id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/validations/routing_numbers?routing_number=1234567&routing_number_type=swift",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"validations",
+								"routing_numbers"
+							],
+							"query": [
+								{
+									"key": "routing_number",
+									"value": "1234567"
+								},
+								{
+									"key": "routing_number_type",
+									"value": "swift"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sandbox API KEY",
+			"item": [
+				{
+					"name": "Creating a Virtual Account",
+					"item": [
+						{
+							"name": "Get Internal Accounts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/internal_accounts",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"internal_accounts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a Virtual Account",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"\",\n    \"internal_account\": \"\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/virtual_accounts",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"virtual_accounts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Virtual Accounts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/virtual_accounts",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"virtual_accounts"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Simulations",
+					"item": [
+						{
+							"name": "Errors",
+							"item": [
+								{
+									"name": "No Amount Webhook",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"direction\": \"credit\",\n    \"type\": \"ach\",\n    \"as_of_date\": \"2021-05-07\",\n    \"internal_account_id\": \"387f5eec-9689-4132-88df-29960c36804c\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api_url}}/simulations/incoming_payment_details/create_async",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"simulations",
+												"incoming_payment_details",
+												"create_async"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "No Direction Webhook",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"amount\": 1000,\n    \"type\": \"ach\",\n    \"as_of_date\": \"2021-05-07\",\n    \"internal_account_id\": \"45f6262d-365a-45f7-bf3f-407ace97357f\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api_url}}/simulations/incoming_payment_details/create_async",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"simulations",
+												"incoming_payment_details",
+												"create_async"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bad Virtual Account",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"amount\": 1000,\n    \"type\": \"ach\",\n    \"direction\": \"credit\",\n    \"as_of_date\": \"2021-05-07\",\n    \"internal_account_id\": \"45f6262d-365a-45f7-bf3f-407ace97357f\",\n    \"virtual_account_id\": \"bad\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api_url}}/simulations/incoming_payment_details/create_async",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"simulations",
+												"incoming_payment_details",
+												"create_async"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Incoming Payment Detail Create Async",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"amount\": 1000,\n    \"direction\": \"credit\",\n    \"type\": \"ach\",\n    \"as_of_date\": \"2021-05-07\",\n    \"internal_account_id\": \"45f6262d-365a-45f7-bf3f-407ace97357f\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/simulations/incoming_payment_details/create_async",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"simulations",
+										"incoming_payment_details",
+										"create_async"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Incoming Payment Detail Create Async w/ Virtual Account",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"amount\": 1000,\n    \"direction\": \"debit\",\n    \"type\": \"ach\",\n    \"as_of_date\": \"2021-05-07\",\n    \"internal_account_id\": \"ee03a46d-baf0-4d85-bab6-a3f2ebb8f0a9\",\n    \"virtual_account_id\": \"59d23ec3-44b0-42b3-9b67-991222900498\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/simulations/incoming_payment_details/create_async",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"simulations",
+										"incoming_payment_details",
+										"create_async"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get IPD by Virtual Account",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/incoming_payment_details?virtual_account=e32d3468-f398-4d11-a236-d118dcecde27",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"incoming_payment_details"
+									],
+									"query": [
+										{
+											"key": "virtual_account",
+											"value": "e32d3468-f398-4d11-a236-d118dcecde27"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "password",
+						"value": "{{sandbox_api_key}}",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "{{organization_id}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Ledgers",
+			"item": [
+				{
+					"name": "Ledgers",
+					"item": [
+						{
+							"name": "create_ledger",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{api_key}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{organization_id}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Example Ledger Name\",\n    \"description\": null, // optional\n    \"currency\": \"USD\",\n    \"metadata\": null // optional\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/ledgers",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledgers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list_ledgers",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {},
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{api_key}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{organization_id}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/ledgers",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledgers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_ledger",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {},
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{api_key}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{organization_id}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/ledgers/{{ledger_id}}",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledgers",
+										"{{ledger_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete_ledger",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{api_key}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{organization_id}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/ledgers/{{ledger_id}}",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledgers",
+										"{{ledger_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update_ledger",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"New ledger name\",\n    \"description\": \"New ledger description\",\n    \"metadata\": null\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/ledgers/{{ledger_id}}",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledgers",
+										"{{ledger_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ledger Accounts",
+					"item": [
+						{
+							"name": "create_ledger_account",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{api_key}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{organization_id}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Example Ledger Account Name\",\n    \"description\": \"Example Ledger Account Description\", //optional\n    \"currency\": \"USD\",\n    \"currency_exponent\": null, //optional\n    \"normal_balance\": \"debit\", // debit or credit\n    \"ledger_id\": \"{{ledger_id}}\",\n    \"metadata\": null //optional\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/ledger_accounts",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_accounts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list_ledger_accounts",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {},
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{api_key}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{organization_id}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/ledger_accounts",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_accounts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_ledger_account",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {},
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{api_key}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{organization_id}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/ledger_accounts/{{ledger_account_id}}",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_accounts",
+										"{{ledger_account_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete_ledger_account",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{api_key}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{organization_id}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/ledger_accounts/{{ledger_account_id}}",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_accounts",
+										"{{ledger_account_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update_ledger_account",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"New Ledger Account name\",\n    \"description\": \"New Ledger Account description\",\n    \"normal_balance\": \"debit\", // debit or credit\n    \"metadata\": null\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/ledger_accounts/{{ledger_account_id}}",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_accounts",
+										"{{ledger_account_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ledger Transactions",
+					"item": [
+						{
+							"name": "create_ledger_transaction",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{api_key}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{organization_id}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Example description\", // optional\n    \"effective_date\": \"2022-01-06\",\n    \"status\": \"pending\", // optional\n    \"external_id\": \"1232\", // Example external id\n    \"metadata\": null, // optional\n    \"ledgerable_type\": null, // optional - links to other MT objects\n    \"ledgerable_id\": null, // optional - links to other MT objects\n    \"ledger_entries\": [\n      {\n        \"amount\": 5000,\n        \"direction\": \"debit\", // debit or credit\n        \"ledger_account_id\": \"{{ledger_account_id}}\"\n      },\n      {\n        \"amount\": 5000,\n        \"direction\": \"credit\", // debit or credit\n        \"ledger_account_id\": \"{{ledger_account_id}}\"\n      }\n    ]\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/ledger_transactions",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_transactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list_ledger_transactions",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {},
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{api_key}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{organization_id}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/ledger_transactions",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_transactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_ledger_transaction",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {},
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{api_key}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{organization_id}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/ledger_transactions/{{ledger_transaction_id}}",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_transactions",
+										"{{ledger_transaction_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update_ledger_transaction",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{api_key}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{organization_id}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    // Add values that should be updated\n    \"description\": \"description updated\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/ledger_transactions/{{ledger_transaction_id}}",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_transactions",
+										"{{ledger_transaction_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ledger Entries",
+					"item": [
+						{
+							"name": "list_ledger_entries",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {},
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{api_key}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{organization_id}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/ledger_entries",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_entries"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_ledger_entry",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {},
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{api_key}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{organization_id}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/ledger_entries/{{ledger_entry_id}}",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_entries",
+										"{{ledger_entry_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ledger Account Categories",
+					"item": [
+						{
+							"name": "create_ledger_account_category",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Example Ledger Account Category name\", // optional\n    \"description\": \"Example description\", // optional\n    \"normal_balance\": \"debit\", // optional\n    \"currency\": \"USD\", \n    \"currency_exponent\": null, // optional\n    \"ledger_id\": null, // optional - links to other MT objects\n    \"metadata\": null \n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/ledger_account_categories",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_account_categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list_ledger_account_categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/ledger_account_categories",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_account_categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_ledger_account_category",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/ledger_account_categories/{{ledger_account_category_id}}",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_account_categories",
+										"{{ledger_account_category_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update_ledger_account_category",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    // Add values that should be updated\n    \"name\": \"Updated Ledger Account Category name\",\n    \"description\": \"Updated Ledger Account Category description\",\n    \"metadata\": null\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/ledger_account_categories/{{ledger_account_category_id}}",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_account_categories",
+										"{{ledger_account_category_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete_ledger_account_category",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/ledger_account_categories/{{ledger_account_category_id}}",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_account_categories",
+										"{{ledger_account_category_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add_ledger_account_to_category",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/ledger_account_categories/{{ledger_account_category_id}}/ledger_accounts/{{ledger_account_id}}",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_account_categories",
+										"{{ledger_account_category_id}}",
+										"ledger_accounts",
+										"{{ledger_account_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove_ledger_account_from_category",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/ledger_account_categories/{{ledger_account_category_id}}/ledger_accounts/{{ledger_account_id}}",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_account_categories",
+										"{{ledger_account_category_id}}",
+										"ledger_accounts",
+										"{{ledger_account_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add_ledger_account_category_to_category",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/ledger_account_categories/{{ledger_account_category_id}}/ledger_account_categories/{{sub_ledger_account_category_id}}",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_account_categories",
+										"{{ledger_account_category_id}}",
+										"ledger_account_categories",
+										"{{sub_ledger_account_category_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove_ledger_account_category_from_category",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/ledger_account_categories/{{ledger_account_category_id}}/ledger_account_categories/{{sub_ledger_account_category_id}}",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"ledger_account_categories",
+										"{{ledger_account_category_id}}",
+										"ledger_account_categories",
+										"{{sub_ledger_account_category_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Incoming Payment Details",
+			"item": [
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{organization_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"metadata\": {\n    \"foo\": \"bar\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/incoming_payment_details/20952b6f-1a4e-45bb-b071-f4cf698861a9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"incoming_payment_details",
+								"20952b6f-1a4e-45bb-b071-f4cf698861a9"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "422",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"metadata\": {\n    \"foo\": 123\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/incoming_payment_details/20952b6f-1a4e-45bb-b071-f4cf698861a9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"incoming_payment_details",
+										"20952b6f-1a4e-45bb-b071-f4cf698861a9"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-Live-Mode",
+									"value": "true"
+								},
+								{
+									"key": "X-Rate-Limit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-Rate-Limit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_modern_treasury_session=6404c8db1f0ac20635e0aa3030f24a8d; path=/; expires=Fri, 05 Nov 2021 17:32:34 GMT; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "77af608b-a663-4a6a-899b-b3722e583c1f"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.278249"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": {\n        \"code\": \"parameter_invalid\",\n        \"message\": \"Metadata may only be Key-Value pairs of UTF Strings\",\n        \"parameter\": \"metadata\"\n    }\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"metadata\": {\n    \"foo\": \"bar\"\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/incoming_payment_details/20952b6f-1a4e-45bb-b071-f4cf698861a9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"incoming_payment_details",
+										"20952b6f-1a4e-45bb-b071-f4cf698861a9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-Live-Mode",
+									"value": "true"
+								},
+								{
+									"key": "X-Rate-Limit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-Rate-Limit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"0459262e91570f56c631968bf99c181d\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_modern_treasury_session=6404c8db1f0ac20635e0aa3030f24a8d; path=/; expires=Fri, 05 Nov 2021 17:33:57 GMT; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "eb3c84c6-c416-418e-ad51-bb4cdbcc20d2"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.026319"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"20952b6f-1a4e-45bb-b071-f4cf698861a9\",\n    \"object\": \"incoming_payment_detail\",\n    \"live_mode\": true,\n    \"internal_account_id\": \"0186a991-809a-4696-a47a-fe7db5013eee\",\n    \"virtual_account_id\": null,\n    \"virtual_account\": null,\n    \"transaction_line_item_id\": null,\n    \"transaction_id\": null,\n    \"type\": \"ach\",\n    \"data\": {},\n    \"amount\": 10000,\n    \"currency\": \"USD\",\n    \"direction\": \"debit\",\n    \"status\": \"pending\",\n    \"metadata\": {\n        \"foo\": \"bar\"\n    },\n    \"as_of_date\": \"2021-11-05\",\n    \"vendor_id\": null,\n    \"created_at\": \"2021-11-05T03:21:59Z\",\n    \"updated_at\": \"2021-11-05T16:27:48Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Index",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{organization_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/incoming_payment_details",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"incoming_payment_details"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/incoming_payment_details",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"incoming_payment_details"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-Live-Mode",
+									"value": "true"
+								},
+								{
+									"key": "X-Rate-Limit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-Rate-Limit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Link",
+									"value": "<http://localhost:3000/api/incoming_payment_details?page=1&per_page=25>; rel=\"first\", <http://localhost:3000/api/incoming_payment_details?page=1&per_page=25>; rel=\"last\""
+								},
+								{
+									"key": "X-Page",
+									"value": "1"
+								},
+								{
+									"key": "X-Per-Page",
+									"value": "25"
+								},
+								{
+									"key": "X-Total-Count",
+									"value": "5"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6c68d1c0f1dddc522afc6e9821adc545\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_modern_treasury_session=6404c8db1f0ac20635e0aa3030f24a8d; path=/; expires=Fri, 05 Nov 2021 17:34:06 GMT; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "23e3c39d-1073-46a1-8fbb-d0bb4364f751"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.050694"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"20952b6f-1a4e-45bb-b071-f4cf698861a9\",\n        \"object\": \"incoming_payment_detail\",\n        \"live_mode\": true,\n        \"internal_account_id\": \"0186a991-809a-4696-a47a-fe7db5013eee\",\n        \"virtual_account_id\": null,\n        \"virtual_account\": null,\n        \"transaction_line_item_id\": null,\n        \"transaction_id\": null,\n        \"type\": \"ach\",\n        \"data\": {},\n        \"amount\": 10000,\n        \"currency\": \"USD\",\n        \"direction\": \"debit\",\n        \"status\": \"pending\",\n        \"metadata\": {\n            \"foo\": \"bar\"\n        },\n        \"as_of_date\": \"2021-11-05\",\n        \"vendor_id\": null,\n        \"created_at\": \"2021-11-05T03:21:59Z\",\n        \"updated_at\": \"2021-11-05T16:27:48Z\"\n    },\n    {\n        \"id\": \"8ae7996c-ad8b-4f33-96df-e4423cc9e461\",\n        \"object\": \"incoming_payment_detail\",\n        \"live_mode\": true,\n        \"internal_account_id\": \"0186a991-809a-4696-a47a-fe7db5013eee\",\n        \"virtual_account_id\": null,\n        \"virtual_account\": null,\n        \"transaction_line_item_id\": null,\n        \"transaction_id\": null,\n        \"type\": \"ach\",\n        \"data\": {},\n        \"amount\": 10000,\n        \"currency\": \"USD\",\n        \"direction\": \"debit\",\n        \"status\": \"pending\",\n        \"metadata\": {},\n        \"as_of_date\": \"2021-11-05\",\n        \"vendor_id\": null,\n        \"created_at\": \"2021-11-05T03:21:58Z\",\n        \"updated_at\": \"2021-11-05T03:21:58Z\"\n    },\n    {\n        \"id\": \"00c59073-b7fd-4df3-802a-cc8336f78124\",\n        \"object\": \"incoming_payment_detail\",\n        \"live_mode\": true,\n        \"internal_account_id\": \"0186a991-809a-4696-a47a-fe7db5013eee\",\n        \"virtual_account_id\": null,\n        \"virtual_account\": null,\n        \"transaction_line_item_id\": null,\n        \"transaction_id\": null,\n        \"type\": \"ach\",\n        \"data\": {},\n        \"amount\": 10000,\n        \"currency\": \"USD\",\n        \"direction\": \"debit\",\n        \"status\": \"pending\",\n        \"metadata\": {},\n        \"as_of_date\": \"2021-11-05\",\n        \"vendor_id\": null,\n        \"created_at\": \"2021-11-05T03:21:57Z\",\n        \"updated_at\": \"2021-11-05T03:21:57Z\"\n    },\n    {\n        \"id\": \"512fc10d-6bbb-4ffd-b964-a43580d424a1\",\n        \"object\": \"incoming_payment_detail\",\n        \"live_mode\": true,\n        \"internal_account_id\": \"0186a991-809a-4696-a47a-fe7db5013eee\",\n        \"virtual_account_id\": null,\n        \"virtual_account\": null,\n        \"transaction_line_item_id\": null,\n        \"transaction_id\": null,\n        \"type\": \"ach\",\n        \"data\": {},\n        \"amount\": 10000,\n        \"currency\": \"USD\",\n        \"direction\": \"debit\",\n        \"status\": \"pending\",\n        \"metadata\": {},\n        \"as_of_date\": \"2021-11-05\",\n        \"vendor_id\": null,\n        \"created_at\": \"2021-11-05T02:26:59Z\",\n        \"updated_at\": \"2021-11-05T02:26:59Z\"\n    },\n    {\n        \"id\": \"8a3cc095-30a0-48d3-ace9-e8dce4eedeb2\",\n        \"object\": \"incoming_payment_detail\",\n        \"live_mode\": true,\n        \"internal_account_id\": \"0186a991-809a-4696-a47a-fe7db5013eee\",\n        \"virtual_account_id\": null,\n        \"virtual_account\": null,\n        \"transaction_line_item_id\": null,\n        \"transaction_id\": null,\n        \"type\": \"ach\",\n        \"data\": {},\n        \"amount\": 10000,\n        \"currency\": \"USD\",\n        \"direction\": \"debit\",\n        \"status\": \"pending\",\n        \"metadata\": {},\n        \"as_of_date\": \"2021-11-05\",\n        \"vendor_id\": null,\n        \"created_at\": \"2021-11-05T02:18:31Z\",\n        \"updated_at\": \"2021-11-05T02:18:31Z\"\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Internal Accounts",
+			"item": [
+				{
+					"name": "Fetch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/internal_accounts",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"internal_accounts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 21 Dec 2021 15:00:57 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-Live-Mode",
+									"value": "false"
+								},
+								{
+									"key": "X-Rate-Limit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-Rate-Limit-Remaining",
+									"value": "24"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Link",
+									"value": "<https://app.moderntreasury.com/api/internal_accounts?page=1&per_page=25>; rel=\"first\", <https://app.moderntreasury.com/api/internal_accounts?page=1&per_page=25>; rel=\"last\""
+								},
+								{
+									"key": "X-Page",
+									"value": "1"
+								},
+								{
+									"key": "X-Per-Page",
+									"value": "25"
+								},
+								{
+									"key": "X-Total-Count",
+									"value": "14"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a672cf384bf36577ea46e6928626cd48\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "1540d3ed-d3d0-4448-8678-1feb45ec3793"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.084832"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"387f5eec-9689-4132-88df-29960c36804c\",\n        \"object\": \"internal_account\",\n        \"live_mode\": false,\n        \"account_type\": null,\n        \"party_name\": \"Modern Treasury\",\n        \"party_type\": null,\n        \"party_address\": {\n            \"id\": \"3ef49b5a-4c87-45bb-bcdc-f5d63485da27\",\n            \"object\": \"address\",\n            \"live_mode\": false,\n            \"line1\": \"48515 Kendall Drive\",\n            \"line2\": \"Apt. 109\",\n            \"locality\": \"Port Borisberg\",\n            \"region\": \"AZ\",\n            \"postal_code\": \"49026\",\n            \"country\": \"US\",\n            \"created_at\": \"2019-02-27T01:16:06Z\",\n            \"updated_at\": \"2019-02-27T01:16:06Z\"\n        },\n        \"account_details\": [\n            {\n                \"id\": \"5fb22a46-2235-42c4-8ee0-7bba7ac0ac25\",\n                \"object\": \"account_detail\",\n                \"live_mode\": false,\n                \"account_number\": \"23174905882992971\",\n                \"account_number_type\": null,\n                \"discarded_at\": null,\n                \"created_at\": \"2018-07-24T23:43:49Z\",\n                \"updated_at\": \"2018-07-24T23:43:49Z\"\n            }\n        ],\n        \"routing_details\": [\n            {\n                \"id\": \"ba393fa4-935b-48d7-a78f-4f2df9c90adb\",\n                \"object\": \"routing_detail\",\n                \"live_mode\": false,\n                \"payment_type\": null,\n                \"routing_number\": \"021000021\",\n                \"routing_number_type\": \"aba\",\n                \"bank_name\": \"JPMORGAN CHASE BANK, NA\",\n                \"bank_address\": {\n                    \"id\": \"f4c1d395-3e76-4150-9859-5476829f7d3c\",\n                    \"object\": \"address\",\n                    \"live_mode\": false,\n                    \"line1\": \"3RD FLOOR\",\n                    \"line2\": null,\n                    \"locality\": \"TAMPA\",\n                    \"region\": \"FL\",\n                    \"postal_code\": \"33610\",\n                    \"country\": \"US\",\n                    \"created_at\": \"2019-02-27T01:16:06Z\",\n                    \"updated_at\": \"2019-02-27T01:16:06Z\"\n                },\n                \"discarded_at\": null,\n                \"created_at\": \"2018-11-09T00:11:55Z\",\n                \"updated_at\": \"2018-12-05T23:48:45Z\"\n            }\n        ],\n        \"name\": \"Revenue\",\n        \"metadata\": {},\n        \"connection\": {\n            \"id\": \"dac94e63-9f4a-46b9-ba6b-412acfbf4cc1\",\n            \"object\": \"connection\",\n            \"live_mode\": false,\n            \"vendor_id\": \"example1\",\n            \"vendor\": {\n                \"id\": \"example1\",\n                \"name\": \"Gringotts Wizarding Bank\"\n            },\n            \"vendor_customer_id\": null,\n            \"discarded_at\": null,\n            \"created_at\": \"2018-07-24T23:43:49Z\",\n            \"updated_at\": \"2018-07-24T23:43:49Z\"\n        },\n        \"currency\": \"USD\",\n        \"created_at\": \"2018-07-24T23:43:49Z\",\n        \"updated_at\": \"2018-12-12T00:10:36Z\"\n    },\n    {\n        \"id\": \"964dcf35-c177-4516-b491-a9aed0613cef\",\n        \"object\": \"internal_account\",\n        \"live_mode\": false,\n        \"account_type\": null,\n        \"party_name\": \"Modern Treasury\",\n        \"party_type\": null,\n        \"party_address\": {\n            \"id\": \"d192f3fe-facd-4a40-8b6c-612c581a97d3\",\n            \"object\": \"address\",\n            \"live_mode\": false,\n            \"line1\": \"990 Aurelio Pike\",\n            \"line2\": \"Suite 310\",\n            \"locality\": \"Busterview\",\n            \"region\": \"CO\",\n            \"postal_code\": \"96020\",\n            \"country\": \"US\",\n            \"created_at\": \"2019-02-27T01:16:06Z\",\n            \"updated_at\": \"2019-02-27T01:16:06Z\"\n        },\n        \"account_details\": [\n            {\n                \"id\": \"6351ca41-122c-475a-810d-a2a5660e6d46\",\n                \"object\": \"account_detail\",\n                \"live_mode\": false,\n                \"account_number\": \"55108011135700476\",\n                \"account_number_type\": null,\n                \"discarded_at\": null,\n                \"created_at\": \"2018-07-24T23:43:49Z\",\n                \"updated_at\": \"2018-07-24T23:43:49Z\"\n            }\n        ],\n        \"routing_details\": [\n            {\n                \"id\": \"8f2d2941-5b1f-41bf-ad68-734af72489b0\",\n                \"object\": \"routing_detail\",\n                \"live_mode\": false,\n                \"payment_type\": null,\n                \"routing_number\": \"064105734\",\n                \"routing_number_type\": \"aba\",\n                \"bank_name\": \"WAYNE COUNTY BANK\",\n                \"bank_address\": {\n                    \"id\": \"131bf453-df31-482b-ad61-c9997c1bec70\",\n                    \"object\": \"address\",\n                    \"live_mode\": false,\n                    \"line1\": \"216 SOUTH HIGH STREET\",\n                    \"line2\": null,\n                    \"locality\": \"WAYNESBORO\",\n                    \"region\": \"TN\",\n                    \"postal_code\": \"38485\",\n                    \"country\": \"US\",\n                    \"created_at\": \"2019-02-27T01:16:06Z\",\n                    \"updated_at\": \"2019-02-27T01:16:06Z\"\n                },\n                \"discarded_at\": null,\n                \"created_at\": \"2019-01-31T05:26:47Z\",\n                \"updated_at\": \"2019-01-31T05:26:47Z\"\n            }\n        ],\n        \"name\": \"Revenue\",\n        \"metadata\": {},\n        \"connection\": {\n            \"id\": \"b5a4144f-c66b-44b4-b98e-75c984ef02e8\",\n            \"object\": \"connection\",\n            \"live_mode\": false,\n            \"vendor_id\": \"example2\",\n            \"vendor\": {\n                \"id\": \"example2\",\n                \"name\": \"Iron Bank of Braavos\"\n            },\n            \"vendor_customer_id\": null,\n            \"discarded_at\": null,\n            \"created_at\": \"2018-07-24T23:43:49Z\",\n            \"updated_at\": \"2018-07-24T23:43:49Z\"\n        },\n        \"currency\": \"USD\",\n        \"created_at\": \"2018-07-24T23:43:49Z\",\n        \"updated_at\": \"2018-12-12T00:10:37Z\"\n    },\n    {\n        \"id\": \"f60cb7e6-de8f-4f6d-833c-ba1000f8492b\",\n        \"object\": \"internal_account\",\n        \"live_mode\": false,\n        \"account_type\": null,\n        \"party_name\": \"Modern Treasury\",\n        \"party_type\": null,\n        \"party_address\": {\n            \"id\": \"d432d253-5461-42da-ac2f-b93d4074a32d\",\n            \"object\": \"address\",\n            \"live_mode\": false,\n            \"line1\": \"12764 Corie Ranch\",\n            \"line2\": \"Apt. 890\",\n            \"locality\": \"Blandabury\",\n            \"region\": \"WY\",\n            \"postal_code\": \"56880-9080\",\n            \"country\": \"US\",\n            \"created_at\": \"2019-02-27T01:16:06Z\",\n            \"updated_at\": \"2019-02-27T01:16:06Z\"\n        },\n        \"account_details\": [\n            {\n                \"id\": \"c7187dac-13fd-4be1-ad40-849c77698bd8\",\n                \"object\": \"account_detail\",\n                \"live_mode\": false,\n                \"account_number\": \"15899725450197297\",\n                \"account_number_type\": null,\n                \"discarded_at\": null,\n                \"created_at\": \"2018-07-24T23:43:49Z\",\n                \"updated_at\": \"2018-07-24T23:43:49Z\"\n            }\n        ],\n        \"routing_details\": [\n            {\n                \"id\": \"f2c0fa66-e70d-47d0-966e-094574639071\",\n                \"object\": \"routing_detail\",\n                \"live_mode\": false,\n                \"payment_type\": null,\n                \"routing_number\": \"021000021\",\n                \"routing_number_type\": \"aba\",\n                \"bank_name\": \"JPMORGAN CHASE BANK, NA\",\n                \"bank_address\": {\n                    \"id\": \"f4c1d395-3e76-4150-9859-5476829f7d3c\",\n                    \"object\": \"address\",\n                    \"live_mode\": false,\n                    \"line1\": \"3RD FLOOR\",\n                    \"line2\": null,\n                    \"locality\": \"TAMPA\",\n                    \"region\": \"FL\",\n                    \"postal_code\": \"33610\",\n                    \"country\": \"US\",\n                    \"created_at\": \"2019-02-27T01:16:06Z\",\n                    \"updated_at\": \"2019-02-27T01:16:06Z\"\n                },\n                \"discarded_at\": null,\n                \"created_at\": \"2018-11-09T00:11:56Z\",\n                \"updated_at\": \"2018-12-05T23:48:46Z\"\n            }\n        ],\n        \"name\": \"Expenses\",\n        \"metadata\": {},\n        \"connection\": {\n            \"id\": \"dac94e63-9f4a-46b9-ba6b-412acfbf4cc1\",\n            \"object\": \"connection\",\n            \"live_mode\": false,\n            \"vendor_id\": \"example1\",\n            \"vendor\": {\n                \"id\": \"example1\",\n                \"name\": \"Gringotts Wizarding Bank\"\n            },\n            \"vendor_customer_id\": null,\n            \"discarded_at\": null,\n            \"created_at\": \"2018-07-24T23:43:49Z\",\n            \"updated_at\": \"2018-07-24T23:43:49Z\"\n        },\n        \"currency\": \"USD\",\n        \"created_at\": \"2018-07-24T23:43:49Z\",\n        \"updated_at\": \"2018-12-12T00:10:37Z\"\n    },\n    {\n        \"id\": \"b8224753-85dd-432c-a70c-a0bde421e376\",\n        \"object\": \"internal_account\",\n        \"live_mode\": false,\n        \"account_type\": null,\n        \"party_name\": \"Modern Treasury\",\n        \"party_type\": null,\n        \"party_address\": {\n            \"id\": \"a3c8aa29-55e5-4e5c-b8b9-0f2bd57f7caf\",\n            \"object\": \"address\",\n            \"live_mode\": false,\n            \"line1\": \"1335 Kertzmann View\",\n            \"line2\": \"Apt. 573\",\n            \"locality\": \"South Guillermo\",\n            \"region\": \"NY\",\n            \"postal_code\": \"79064\",\n            \"country\": \"US\",\n            \"created_at\": \"2019-02-27T01:16:06Z\",\n            \"updated_at\": \"2019-02-27T01:16:06Z\"\n        },\n        \"account_details\": [\n            {\n                \"id\": \"69ad301e-057c-4212-87e6-3f7485810712\",\n                \"object\": \"account_detail\",\n                \"live_mode\": false,\n                \"account_number\": \"42941524689852352\",\n                \"account_number_type\": null,\n                \"discarded_at\": null,\n                \"created_at\": \"2018-07-24T23:43:49Z\",\n                \"updated_at\": \"2018-07-24T23:43:49Z\"\n            }\n        ],\n        \"routing_details\": [\n            {\n                \"id\": \"39307ab5-ddcd-4e54-88dc-d90b3c96b50a\",\n                \"object\": \"routing_detail\",\n                \"live_mode\": false,\n                \"payment_type\": null,\n                \"routing_number\": \"064105734\",\n                \"routing_number_type\": \"aba\",\n                \"bank_name\": \"WAYNE COUNTY BANK\",\n                \"bank_address\": {\n                    \"id\": \"131bf453-df31-482b-ad61-c9997c1bec70\",\n                    \"object\": \"address\",\n                    \"live_mode\": false,\n                    \"line1\": \"216 SOUTH HIGH STREET\",\n                    \"line2\": null,\n                    \"locality\": \"WAYNESBORO\",\n                    \"region\": \"TN\",\n                    \"postal_code\": \"38485\",\n                    \"country\": \"US\",\n                    \"created_at\": \"2019-02-27T01:16:06Z\",\n                    \"updated_at\": \"2019-02-27T01:16:06Z\"\n                },\n                \"discarded_at\": null,\n                \"created_at\": \"2019-01-31T05:26:47Z\",\n                \"updated_at\": \"2019-01-31T05:26:47Z\"\n            }\n        ],\n        \"name\": \"Expenses\",\n        \"metadata\": {},\n        \"connection\": {\n            \"id\": \"b5a4144f-c66b-44b4-b98e-75c984ef02e8\",\n            \"object\": \"connection\",\n            \"live_mode\": false,\n            \"vendor_id\": \"example2\",\n            \"vendor\": {\n                \"id\": \"example2\",\n                \"name\": \"Iron Bank of Braavos\"\n            },\n            \"vendor_customer_id\": null,\n            \"discarded_at\": null,\n            \"created_at\": \"2018-07-24T23:43:49Z\",\n            \"updated_at\": \"2018-07-24T23:43:49Z\"\n        },\n        \"currency\": \"USD\",\n        \"created_at\": \"2018-07-24T23:43:49Z\",\n        \"updated_at\": \"2018-12-12T00:10:37Z\"\n    },\n    {\n        \"id\": \"45df25b5-23f9-40d5-b74b-93cc8f6c6712\",\n        \"object\": \"internal_account\",\n        \"live_mode\": false,\n        \"account_type\": null,\n        \"party_name\": \"Modern Treasury\",\n        \"party_type\": null,\n        \"party_address\": {\n            \"id\": \"7f715c70-3fdf-4429-a759-7f231bb90e20\",\n            \"object\": \"address\",\n            \"live_mode\": false,\n            \"line1\": \"6269 Warren Junction\",\n            \"line2\": \"Apt. 920\",\n            \"locality\": \"West Adalineview\",\n            \"region\": \"RI\",\n            \"postal_code\": \"23560-0768\",\n            \"country\": \"US\",\n            \"created_at\": \"2019-02-27T01:16:06Z\",\n            \"updated_at\": \"2019-02-27T01:16:06Z\"\n        },\n        \"account_details\": [\n            {\n                \"id\": \"c8d05e8a-2aec-4613-9b0a-d1033f04770c\",\n                \"object\": \"account_detail\",\n                \"live_mode\": false,\n                \"account_number\": \"93902736611003131\",\n                \"account_number_type\": null,\n                \"discarded_at\": null,\n                \"created_at\": \"2018-07-24T23:43:49Z\",\n                \"updated_at\": \"2018-07-24T23:43:49Z\"\n            }\n        ],\n        \"routing_details\": [\n            {\n                \"id\": \"831e7715-85bf-4ff9-9df9-c86b824459b0\",\n                \"object\": \"routing_detail\",\n                \"live_mode\": false,\n                \"payment_type\": null,\n                \"routing_number\": \"021000021\",\n                \"routing_number_type\": \"aba\",\n                \"bank_name\": \"JPMORGAN CHASE BANK, NA\",\n                \"bank_address\": {\n                    \"id\": \"f4c1d395-3e76-4150-9859-5476829f7d3c\",\n                    \"object\": \"address\",\n                    \"live_mode\": false,\n                    \"line1\": \"3RD FLOOR\",\n                    \"line2\": null,\n                    \"locality\": \"TAMPA\",\n                    \"region\": \"FL\",\n                    \"postal_code\": \"33610\",\n                    \"country\": \"US\",\n                    \"created_at\": \"2019-02-27T01:16:06Z\",\n                    \"updated_at\": \"2019-02-27T01:16:06Z\"\n                },\n                \"discarded_at\": null,\n                \"created_at\": \"2018-11-09T00:11:56Z\",\n                \"updated_at\": \"2018-12-05T23:48:45Z\"\n            }\n        ],\n        \"name\": \"Corporate\",\n        \"metadata\": {},\n        \"connection\": {\n            \"id\": \"dac94e63-9f4a-46b9-ba6b-412acfbf4cc1\",\n            \"object\": \"connection\",\n            \"live_mode\": false,\n            \"vendor_id\": \"example1\",\n            \"vendor\": {\n                \"id\": \"example1\",\n                \"name\": \"Gringotts Wizarding Bank\"\n            },\n            \"vendor_customer_id\": null,\n            \"discarded_at\": null,\n            \"created_at\": \"2018-07-24T23:43:49Z\",\n            \"updated_at\": \"2018-07-24T23:43:49Z\"\n        },\n        \"currency\": \"USD\",\n        \"created_at\": \"2018-07-24T23:43:49Z\",\n        \"updated_at\": \"2018-12-12T00:10:36Z\"\n    },\n    {\n        \"id\": \"45f6262d-365a-45f7-bf3f-407ace97357f\",\n        \"object\": \"internal_account\",\n        \"live_mode\": false,\n        \"account_type\": null,\n        \"party_name\": \"Modern Treasury\",\n        \"party_type\": null,\n        \"party_address\": {\n            \"id\": \"cc94a4bc-01db-4db6-8725-d6cea63b7043\",\n            \"object\": \"address\",\n            \"live_mode\": false,\n            \"line1\": \"8770 Hong Club\",\n            \"line2\": \"Apt. 750\",\n            \"locality\": \"Roseannamouth\",\n            \"region\": \"TX\",\n            \"postal_code\": \"65657-2089\",\n            \"country\": \"US\",\n            \"created_at\": \"2019-02-27T01:16:06Z\",\n            \"updated_at\": \"2019-02-27T01:16:06Z\"\n        },\n        \"account_details\": [\n            {\n                \"id\": \"37abe44b-0a28-4270-b557-c1c3adb8e833\",\n                \"object\": \"account_detail\",\n                \"live_mode\": false,\n                \"account_number\": \"51603983800141190\",\n                \"account_number_type\": null,\n                \"discarded_at\": null,\n                \"created_at\": \"2018-07-24T23:43:49Z\",\n                \"updated_at\": \"2018-07-24T23:43:49Z\"\n            }\n        ],\n        \"routing_details\": [\n            {\n                \"id\": \"60e17b70-fbd4-49a6-a23d-2347cdc2fdcb\",\n                \"object\": \"routing_detail\",\n                \"live_mode\": false,\n                \"payment_type\": null,\n                \"routing_number\": \"064105734\",\n                \"routing_number_type\": \"aba\",\n                \"bank_name\": \"WAYNE COUNTY BANK\",\n                \"bank_address\": {\n                    \"id\": \"131bf453-df31-482b-ad61-c9997c1bec70\",\n                    \"object\": \"address\",\n                    \"live_mode\": false,\n                    \"line1\": \"216 SOUTH HIGH STREET\",\n                    \"line2\": null,\n                    \"locality\": \"WAYNESBORO\",\n                    \"region\": \"TN\",\n                    \"postal_code\": \"38485\",\n                    \"country\": \"US\",\n                    \"created_at\": \"2019-02-27T01:16:06Z\",\n                    \"updated_at\": \"2019-02-27T01:16:06Z\"\n                },\n                \"discarded_at\": null,\n                \"created_at\": \"2019-01-31T05:26:47Z\",\n                \"updated_at\": \"2019-01-31T05:26:47Z\"\n            }\n        ],\n        \"name\": \"Corporate\",\n        \"metadata\": {},\n        \"connection\": {\n            \"id\": \"b5a4144f-c66b-44b4-b98e-75c984ef02e8\",\n            \"object\": \"connection\",\n            \"live_mode\": false,\n            \"vendor_id\": \"example2\",\n            \"vendor\": {\n                \"id\": \"example2\",\n                \"name\": \"Iron Bank of Braavos\"\n            },\n            \"vendor_customer_id\": null,\n            \"discarded_at\": null,\n            \"created_at\": \"2018-07-24T23:43:49Z\",\n            \"updated_at\": \"2018-07-24T23:43:49Z\"\n        },\n        \"currency\": \"USD\",\n        \"created_at\": \"2018-07-24T23:43:49Z\",\n        \"updated_at\": \"2018-12-12T00:10:36Z\"\n    },\n    {\n        \"id\": \"c7290ddb-6fbd-49b8-a6a7-e9b4999ff8ff\",\n        \"object\": \"internal_account\",\n        \"live_mode\": false,\n        \"account_type\": null,\n        \"party_name\": \"Modern Treasury\",\n        \"party_type\": null,\n        \"party_address\": {\n            \"id\": \"fc5b4c4f-7017-40bf-a06f-be36cc5d5583\",\n            \"object\": \"address\",\n            \"live_mode\": true,\n            \"line1\": \"1324 Beahan Land\",\n            \"line2\": null,\n            \"locality\": \"East Alberto\",\n            \"region\": \"SC\",\n            \"postal_code\": \"28043\",\n            \"country\": \"US\",\n            \"created_at\": \"2021-02-03T10:41:17Z\",\n            \"updated_at\": \"2021-02-03T10:41:17Z\"\n        },\n        \"account_details\": [\n            {\n                \"id\": \"25161a56-e81e-4ad7-951f-fefde81deaf3\",\n                \"object\": \"account_detail\",\n                \"live_mode\": false,\n                \"account_number\": \"111111112\",\n                \"account_number_type\": \"other\",\n                \"discarded_at\": null,\n                \"created_at\": \"2021-02-03T10:41:17Z\",\n                \"updated_at\": \"2021-02-03T10:41:17Z\"\n            }\n        ],\n        \"routing_details\": [\n            {\n                \"id\": \"4666ae00-1348-45d2-96a2-eeb4b9af805a\",\n                \"object\": \"routing_detail\",\n                \"live_mode\": false,\n                \"payment_type\": null,\n                \"routing_number\": \"021000021\",\n                \"routing_number_type\": \"aba\",\n                \"bank_name\": \"GOLIATH NATIONAL BANK\",\n                \"bank_address\": {\n                    \"id\": \"278e5e7e-d03f-44c2-b738-3a28f04d72e5\",\n                    \"object\": \"address\",\n                    \"live_mode\": true,\n                    \"line1\": \"6376 Johns Curve\",\n                    \"line2\": null,\n                    \"locality\": \"Johnstonmouth\",\n                    \"region\": \"NY\",\n                    \"postal_code\": \"60125-0229\",\n                    \"country\": \"US\",\n                    \"created_at\": \"2021-02-03T10:41:17Z\",\n                    \"updated_at\": \"2021-02-03T10:41:17Z\"\n                },\n                \"discarded_at\": null,\n                \"created_at\": \"2021-02-03T10:41:17Z\",\n                \"updated_at\": \"2021-02-03T10:41:17Z\"\n            }\n        ],\n        \"name\": \"Stress Testing 1\",\n        \"metadata\": {},\n        \"connection\": {\n            \"id\": \"cbaf7e05-6802-4b5d-aa35-31bdb43699e4\",\n            \"object\": \"connection\",\n            \"live_mode\": false,\n            \"vendor_id\": \"svb\",\n            \"vendor\": {\n                \"id\": \"svb\",\n                \"name\": \"Silicon Valley Bank\"\n            },\n            \"vendor_customer_id\": null,\n            \"discarded_at\": null,\n            \"created_at\": \"2021-02-03T10:41:17Z\",\n            \"updated_at\": \"2021-06-02T16:15:27Z\"\n        },\n        \"currency\": \"USD\",\n        \"created_at\": \"2021-02-03T10:41:17Z\",\n        \"updated_at\": \"2021-02-03T10:41:17Z\"\n    },\n    {\n        \"id\": \"9f8d8573-d3a7-4240-a3ff-afc31ad0f423\",\n        \"object\": \"internal_account\",\n        \"live_mode\": false,\n        \"account_type\": \"other\",\n        \"party_name\": \"National Phonograph Company\",\n        \"party_type\": null,\n        \"party_address\": {\n            \"id\": \"311e0dc3-529a-429e-97a2-902970fa3393\",\n            \"object\": \"address\",\n            \"live_mode\": false,\n            \"line1\": \"1001 SW Emkay Drive\",\n            \"line2\": null,\n            \"locality\": \"New York\",\n            \"region\": \"NY\",\n            \"postal_code\": \"20252\",\n            \"country\": \"US\",\n            \"created_at\": \"2021-06-29T04:57:28Z\",\n            \"updated_at\": \"2021-06-29T04:57:28Z\"\n        },\n        \"account_details\": [\n            {\n                \"id\": \"c9de02ce-e12a-4f86-b242-fb7f29658319\",\n                \"object\": \"account_detail\",\n                \"live_mode\": false,\n                \"account_number\": \"6621015666\",\n                \"account_number_type\": \"other\",\n                \"discarded_at\": null,\n                \"created_at\": \"2021-06-29T04:57:28Z\",\n                \"updated_at\": \"2021-06-29T04:57:28Z\"\n            }\n        ],\n        \"routing_details\": [\n            {\n                \"id\": \"609514b6-d207-4a02-a72e-39d373ecc8f6\",\n                \"object\": \"routing_detail\",\n                \"live_mode\": false,\n                \"payment_type\": null,\n                \"routing_number\": \"053112929\",\n                \"routing_number_type\": \"aba\",\n                \"bank_name\": \"BLUE RIDGE BANK, NATIONAL ASSOCIATIO\",\n                \"bank_address\": {\n                    \"id\": \"5c56b536-aa5b-4fe3-961d-b454f0d864a1\",\n                    \"object\": \"address\",\n                    \"live_mode\": false,\n                    \"line1\": \"17 W MAIN ST\",\n                    \"line2\": null,\n                    \"locality\": \"LURAY\",\n                    \"region\": \"VA\",\n                    \"postal_code\": \"22835\",\n                    \"country\": \"US\",\n                    \"created_at\": \"2021-05-05T21:50:05Z\",\n                    \"updated_at\": \"2021-05-05T21:50:05Z\"\n                },\n                \"discarded_at\": null,\n                \"created_at\": \"2021-06-29T04:57:28Z\",\n                \"updated_at\": \"2021-06-29T04:57:28Z\"\n            }\n        ],\n        \"name\": \"Ariel's Income\",\n        \"metadata\": {},\n        \"connection\": {\n            \"id\": \"d92d173d-2812-4b38-8767-48044161df5d\",\n            \"object\": \"connection\",\n            \"live_mode\": false,\n            \"vendor_id\": \"bnk_dev\",\n            \"vendor\": {\n                \"id\": \"bnk_dev\",\n                \"name\": \"Increase\"\n            },\n            \"vendor_customer_id\": \"group_zvot9c6c01awo5xzhkev\",\n            \"discarded_at\": null,\n            \"created_at\": \"2021-06-29T04:57:26Z\",\n            \"updated_at\": \"2021-06-29T04:57:29Z\"\n        },\n        \"currency\": \"USD\",\n        \"created_at\": \"2021-06-29T04:57:28Z\",\n        \"updated_at\": \"2021-06-29T04:57:28Z\"\n    },\n    {\n        \"id\": \"8fc44163-6ef9-4af3-b3d5-1858940aa249\",\n        \"object\": \"internal_account\",\n        \"live_mode\": false,\n        \"account_type\": \"other\",\n        \"party_name\": \"Modern Treausry\",\n        \"party_type\": null,\n        \"party_address\": {\n            \"id\": \"326a1417-700e-4938-898c-4f0c5ef15df3\",\n            \"object\": \"address\",\n            \"live_mode\": false,\n            \"line1\": \"315 Montgomery St\",\n            \"line2\": \"10th Floor\",\n            \"locality\": \"San Francisco\",\n            \"region\": \"CA\",\n            \"postal_code\": \"94104\",\n            \"country\": \"US\",\n            \"created_at\": \"2021-06-29T04:57:28Z\",\n            \"updated_at\": \"2021-06-29T04:57:28Z\"\n        },\n        \"account_details\": [\n            {\n                \"id\": \"b00d8c7a-a5e7-44b1-9d8c-a682f5825048\",\n                \"object\": \"account_detail\",\n                \"live_mode\": false,\n                \"account_number\": \"6190335332\",\n                \"account_number_type\": \"other\",\n                \"discarded_at\": null,\n                \"created_at\": \"2021-06-29T04:57:28Z\",\n                \"updated_at\": \"2021-06-29T04:57:28Z\"\n            }\n        ],\n        \"routing_details\": [\n            {\n                \"id\": \"7a6b825c-d569-465f-925c-93ecc8c6a3d6\",\n                \"object\": \"routing_detail\",\n                \"live_mode\": false,\n                \"payment_type\": null,\n                \"routing_number\": \"053112929\",\n                \"routing_number_type\": \"aba\",\n                \"bank_name\": \"BLUE RIDGE BANK, NATIONAL ASSOCIATIO\",\n                \"bank_address\": {\n                    \"id\": \"5c56b536-aa5b-4fe3-961d-b454f0d864a1\",\n                    \"object\": \"address\",\n                    \"live_mode\": false,\n                    \"line1\": \"17 W MAIN ST\",\n                    \"line2\": null,\n                    \"locality\": \"LURAY\",\n                    \"region\": \"VA\",\n                    \"postal_code\": \"22835\",\n                    \"country\": \"US\",\n                    \"created_at\": \"2021-05-05T21:50:05Z\",\n                    \"updated_at\": \"2021-05-05T21:50:05Z\"\n                },\n                \"discarded_at\": null,\n                \"created_at\": \"2021-06-29T04:57:28Z\",\n                \"updated_at\": \"2021-06-29T04:57:28Z\"\n            }\n        ],\n        \"name\": \"Bookings\",\n        \"metadata\": {},\n        \"connection\": {\n            \"id\": \"d92d173d-2812-4b38-8767-48044161df5d\",\n            \"object\": \"connection\",\n            \"live_mode\": false,\n            \"vendor_id\": \"bnk_dev\",\n            \"vendor\": {\n                \"id\": \"bnk_dev\",\n                \"name\": \"Increase\"\n            },\n            \"vendor_customer_id\": \"group_zvot9c6c01awo5xzhkev\",\n            \"discarded_at\": null,\n            \"created_at\": \"2021-06-29T04:57:26Z\",\n            \"updated_at\": \"2021-06-29T04:57:29Z\"\n        },\n        \"currency\": \"USD\",\n        \"created_at\": \"2021-06-29T04:57:28Z\",\n        \"updated_at\": \"2021-06-29T04:57:28Z\"\n    },\n    {\n        \"id\": \"ca0b9aab-a6a9-438f-be9b-5501c30864b7\",\n        \"object\": \"internal_account\",\n        \"live_mode\": false,\n        \"account_type\": \"other\",\n        \"party_name\": \"National Phonograph Company\",\n        \"party_type\": null,\n        \"party_address\": {\n            \"id\": \"b2d7d2ff-3d7d-4845-9e83-af86d2e70b74\",\n            \"object\": \"address\",\n            \"live_mode\": false,\n            \"line1\": \"1001 SW Emkay Drive\",\n            \"line2\": null,\n            \"locality\": \"New York\",\n            \"region\": \"NY\",\n            \"postal_code\": \"20252\",\n            \"country\": \"US\",\n            \"created_at\": \"2021-06-29T04:57:28Z\",\n            \"updated_at\": \"2021-06-29T04:57:28Z\"\n        },\n        \"account_details\": [\n            {\n                \"id\": \"1ef24924-804a-4dc6-881f-8ada966bf180\",\n                \"object\": \"account_detail\",\n                \"live_mode\": false,\n                \"account_number\": \"5593107005\",\n                \"account_number_type\": \"other\",\n                \"discarded_at\": null,\n                \"created_at\": \"2021-06-29T04:57:28Z\",\n                \"updated_at\": \"2021-06-29T04:57:28Z\"\n            }\n        ],\n        \"routing_details\": [\n            {\n                \"id\": \"4dac86c5-13a3-4cf8-b457-6ac1eda284b4\",\n                \"object\": \"routing_detail\",\n                \"live_mode\": false,\n                \"payment_type\": null,\n                \"routing_number\": \"053112929\",\n                \"routing_number_type\": \"aba\",\n                \"bank_name\": \"BLUE RIDGE BANK, NATIONAL ASSOCIATIO\",\n                \"bank_address\": {\n                    \"id\": \"5c56b536-aa5b-4fe3-961d-b454f0d864a1\",\n                    \"object\": \"address\",\n                    \"live_mode\": false,\n                    \"line1\": \"17 W MAIN ST\",\n                    \"line2\": null,\n                    \"locality\": \"LURAY\",\n                    \"region\": \"VA\",\n                    \"postal_code\": \"22835\",\n                    \"country\": \"US\",\n                    \"created_at\": \"2021-05-05T21:50:05Z\",\n                    \"updated_at\": \"2021-05-05T21:50:05Z\"\n                },\n                \"discarded_at\": null,\n                \"created_at\": \"2021-06-29T04:57:28Z\",\n                \"updated_at\": \"2021-06-29T04:57:28Z\"\n            }\n        ],\n        \"name\": \"Savings\",\n        \"metadata\": {},\n        \"connection\": {\n            \"id\": \"d92d173d-2812-4b38-8767-48044161df5d\",\n            \"object\": \"connection\",\n            \"live_mode\": false,\n            \"vendor_id\": \"bnk_dev\",\n            \"vendor\": {\n                \"id\": \"bnk_dev\",\n                \"name\": \"Increase\"\n            },\n            \"vendor_customer_id\": \"group_zvot9c6c01awo5xzhkev\",\n            \"discarded_at\": null,\n            \"created_at\": \"2021-06-29T04:57:26Z\",\n            \"updated_at\": \"2021-06-29T04:57:29Z\"\n        },\n        \"currency\": \"USD\",\n        \"created_at\": \"2021-06-29T04:57:28Z\",\n        \"updated_at\": \"2021-06-29T04:57:28Z\"\n    },\n    {\n        \"id\": \"c91e7df2-d395-4fbd-ba9e-3446e03bf6e5\",\n        \"object\": \"internal_account\",\n        \"live_mode\": false,\n        \"account_type\": \"other\",\n        \"party_name\": \"Modern Treausry\",\n        \"party_type\": null,\n        \"party_address\": {\n            \"id\": \"5c407d69-41a0-4308-ab73-a1fdd68d2ba5\",\n            \"object\": \"address\",\n            \"live_mode\": false,\n            \"line1\": \"315 Montgomery St\",\n            \"line2\": \"10th Floor\",\n            \"locality\": \"San Francisco\",\n            \"region\": \"CA\",\n            \"postal_code\": \"94104\",\n            \"country\": \"US\",\n            \"created_at\": \"2021-06-29T04:57:29Z\",\n            \"updated_at\": \"2021-06-29T04:57:29Z\"\n        },\n        \"account_details\": [\n            {\n                \"id\": \"ba205231-2789-4009-a8ba-95cc0772dc7d\",\n                \"object\": \"account_detail\",\n                \"live_mode\": false,\n                \"account_number\": \"1483013477\",\n                \"account_number_type\": \"other\",\n                \"discarded_at\": null,\n                \"created_at\": \"2021-06-29T04:57:29Z\",\n                \"updated_at\": \"2021-06-29T04:57:29Z\"\n            }\n        ],\n        \"routing_details\": [\n            {\n                \"id\": \"3715e23c-4a6c-429f-a990-ea3da4e8f285\",\n                \"object\": \"routing_detail\",\n                \"live_mode\": false,\n                \"payment_type\": null,\n                \"routing_number\": \"053112929\",\n                \"routing_number_type\": \"aba\",\n                \"bank_name\": \"BLUE RIDGE BANK, NATIONAL ASSOCIATIO\",\n                \"bank_address\": {\n                    \"id\": \"5c56b536-aa5b-4fe3-961d-b454f0d864a1\",\n                    \"object\": \"address\",\n                    \"live_mode\": false,\n                    \"line1\": \"17 W MAIN ST\",\n                    \"line2\": null,\n                    \"locality\": \"LURAY\",\n                    \"region\": \"VA\",\n                    \"postal_code\": \"22835\",\n                    \"country\": \"US\",\n                    \"created_at\": \"2021-05-05T21:50:05Z\",\n                    \"updated_at\": \"2021-05-05T21:50:05Z\"\n                },\n                \"discarded_at\": null,\n                \"created_at\": \"2021-06-29T04:57:29Z\",\n                \"updated_at\": \"2021-06-29T04:57:29Z\"\n            }\n        ],\n        \"name\": \"Second main\",\n        \"metadata\": {},\n        \"connection\": {\n            \"id\": \"d92d173d-2812-4b38-8767-48044161df5d\",\n            \"object\": \"connection\",\n            \"live_mode\": false,\n            \"vendor_id\": \"bnk_dev\",\n            \"vendor\": {\n                \"id\": \"bnk_dev\",\n                \"name\": \"Increase\"\n            },\n            \"vendor_customer_id\": \"group_zvot9c6c01awo5xzhkev\",\n            \"discarded_at\": null,\n            \"created_at\": \"2021-06-29T04:57:26Z\",\n            \"updated_at\": \"2021-06-29T04:57:29Z\"\n        },\n        \"currency\": \"USD\",\n        \"created_at\": \"2021-06-29T04:57:29Z\",\n        \"updated_at\": \"2021-06-29T04:57:29Z\"\n    },\n    {\n        \"id\": \"7a88e851-9ef8-4d2f-8293-a23fe3f786cf\",\n        \"object\": \"internal_account\",\n        \"live_mode\": false,\n        \"account_type\": \"other\",\n        \"party_name\": \"Modern Treausry\",\n        \"party_type\": null,\n        \"party_address\": {\n            \"id\": \"4f3d01e2-3c2b-4b31-bd22-d7e9c2f69b16\",\n            \"object\": \"address\",\n            \"live_mode\": false,\n            \"line1\": \"315 Montgomery St\",\n            \"line2\": \"10th Floor\",\n            \"locality\": \"San Francisco\",\n            \"region\": \"CA\",\n            \"postal_code\": \"94104\",\n            \"country\": \"US\",\n            \"created_at\": \"2021-06-29T04:57:29Z\",\n            \"updated_at\": \"2021-06-29T04:57:29Z\"\n        },\n        \"account_details\": [\n            {\n                \"id\": \"5888cbbc-397c-41f2-a1d2-7351db79d267\",\n                \"object\": \"account_detail\",\n                \"live_mode\": false,\n                \"account_number\": \"4283381834\",\n                \"account_number_type\": \"other\",\n                \"discarded_at\": null,\n                \"created_at\": \"2021-06-29T04:57:29Z\",\n                \"updated_at\": \"2021-06-29T04:57:29Z\"\n            }\n        ],\n        \"routing_details\": [\n            {\n                \"id\": \"834e4b0b-7bf2-4b78-a9e7-0a25e991ae67\",\n                \"object\": \"routing_detail\",\n                \"live_mode\": false,\n                \"payment_type\": null,\n                \"routing_number\": \"053112929\",\n                \"routing_number_type\": \"aba\",\n                \"bank_name\": \"BLUE RIDGE BANK, NATIONAL ASSOCIATIO\",\n                \"bank_address\": {\n                    \"id\": \"5c56b536-aa5b-4fe3-961d-b454f0d864a1\",\n                    \"object\": \"address\",\n                    \"live_mode\": false,\n                    \"line1\": \"17 W MAIN ST\",\n                    \"line2\": null,\n                    \"locality\": \"LURAY\",\n                    \"region\": \"VA\",\n                    \"postal_code\": \"22835\",\n                    \"country\": \"US\",\n                    \"created_at\": \"2021-05-05T21:50:05Z\",\n                    \"updated_at\": \"2021-05-05T21:50:05Z\"\n                },\n                \"discarded_at\": null,\n                \"created_at\": \"2021-06-29T04:57:29Z\",\n                \"updated_at\": \"2021-06-29T04:57:29Z\"\n            }\n        ],\n        \"name\": \"Test Main\",\n        \"metadata\": {},\n        \"connection\": {\n            \"id\": \"d92d173d-2812-4b38-8767-48044161df5d\",\n            \"object\": \"connection\",\n            \"live_mode\": false,\n            \"vendor_id\": \"bnk_dev\",\n            \"vendor\": {\n                \"id\": \"bnk_dev\",\n                \"name\": \"Increase\"\n            },\n            \"vendor_customer_id\": \"group_zvot9c6c01awo5xzhkev\",\n            \"discarded_at\": null,\n            \"created_at\": \"2021-06-29T04:57:26Z\",\n            \"updated_at\": \"2021-06-29T04:57:29Z\"\n        },\n        \"currency\": \"USD\",\n        \"created_at\": \"2021-06-29T04:57:29Z\",\n        \"updated_at\": \"2021-06-29T04:57:29Z\"\n    },\n    {\n        \"id\": \"4de031ff-50a3-4f63-86b9-5cc07a14000b\",\n        \"object\": \"internal_account\",\n        \"live_mode\": false,\n        \"account_type\": \"other\",\n        \"party_name\": \"Modern Treasury\",\n        \"party_type\": null,\n        \"party_address\": {\n            \"id\": \"84db42c3-0191-4a55-ad0f-3365f6a8bb85\",\n            \"object\": \"address\",\n            \"live_mode\": false,\n            \"line1\": \"77 Geary St\",\n            \"line2\": null,\n            \"locality\": \"San Francisco\",\n            \"region\": \"CA\",\n            \"postal_code\": \"94107\",\n            \"country\": \"US\",\n            \"created_at\": \"2021-10-20T21:04:52Z\",\n            \"updated_at\": \"2021-10-20T21:04:52Z\"\n        },\n        \"account_details\": [\n            {\n                \"id\": \"558614d1-58bc-4965-8b13-c21b8464ca28\",\n                \"object\": \"account_detail\",\n                \"live_mode\": false,\n                \"account_number\": \"3302434532\",\n                \"account_number_type\": \"other\",\n                \"discarded_at\": null,\n                \"created_at\": \"2021-10-20T21:04:52Z\",\n                \"updated_at\": \"2021-10-20T21:04:52Z\"\n            }\n        ],\n        \"routing_details\": [\n            {\n                \"id\": \"b278ee53-269e-408f-b105-4f52561c1b4f\",\n                \"object\": \"routing_detail\",\n                \"live_mode\": false,\n                \"payment_type\": null,\n                \"routing_number\": \"121140399\",\n                \"routing_number_type\": \"aba\",\n                \"bank_name\": \"Silicon Valley Bank\",\n                \"bank_address\": {\n                    \"id\": \"4e92b5dd-4b7c-4a69-adcd-fec1b6f4a9fd\",\n                    \"object\": \"address\",\n                    \"live_mode\": false,\n                    \"line1\": \"3003 Tasman Dr\",\n                    \"line2\": null,\n                    \"locality\": \"Santa Clara\",\n                    \"region\": \"CA\",\n                    \"postal_code\": \"95054\",\n                    \"country\": \"US\",\n                    \"created_at\": \"2020-04-18T04:23:08Z\",\n                    \"updated_at\": \"2020-04-18T04:23:08Z\"\n                },\n                \"discarded_at\": null,\n                \"created_at\": \"2021-10-20T21:04:52Z\",\n                \"updated_at\": \"2021-10-20T21:04:52Z\"\n            }\n        ],\n        \"name\": \"Sean's Test Onboarding Account\",\n        \"metadata\": {},\n        \"connection\": {\n            \"id\": \"e280326c-ab62-4c15-aa23-a80628daf04e\",\n            \"object\": \"connection\",\n            \"live_mode\": false,\n            \"vendor_id\": \"svb\",\n            \"vendor\": {\n                \"id\": \"svb\",\n                \"name\": \"Silicon Valley Bank\"\n            },\n            \"vendor_customer_id\": null,\n            \"discarded_at\": null,\n            \"created_at\": \"2021-10-20T21:03:34Z\",\n            \"updated_at\": \"2021-10-20T21:03:34Z\"\n        },\n        \"currency\": \"USD\",\n        \"created_at\": \"2021-10-20T21:04:52Z\",\n        \"updated_at\": \"2021-10-20T21:04:52Z\"\n    },\n    {\n        \"id\": \"4f9e9549-0d1a-4a9a-bdc5-4c1aa282d589\",\n        \"object\": \"internal_account\",\n        \"live_mode\": false,\n        \"account_type\": null,\n        \"party_name\": \"Modern Treasury\",\n        \"party_type\": null,\n        \"party_address\": {\n            \"id\": \"3ef49b5a-4c87-45bb-bcdc-f5d63485da27\",\n            \"object\": \"address\",\n            \"live_mode\": false,\n            \"line1\": \"48515 Kendall Drive\",\n            \"line2\": \"Apt. 109\",\n            \"locality\": \"Port Borisberg\",\n            \"region\": \"AZ\",\n            \"postal_code\": \"49026\",\n            \"country\": \"US\",\n            \"created_at\": \"2019-02-27T01:16:06Z\",\n            \"updated_at\": \"2019-02-27T01:16:06Z\"\n        },\n        \"account_details\": [\n            {\n                \"id\": \"e1108ce8-5b4b-4fce-a02b-4b3c1f3458fd\",\n                \"object\": \"account_detail\",\n                \"live_mode\": false,\n                \"account_number\": \"8005794746\",\n                \"account_number_type\": \"other\",\n                \"discarded_at\": null,\n                \"created_at\": \"2021-10-21T01:25:23Z\",\n                \"updated_at\": \"2021-10-21T01:25:23Z\"\n            }\n        ],\n        \"routing_details\": [\n            {\n                \"id\": \"afbf6599-14a2-4baa-8c72-480bb8773b14\",\n                \"object\": \"routing_detail\",\n                \"live_mode\": false,\n                \"payment_type\": null,\n                \"routing_number\": \"000494480\",\n                \"routing_number_type\": \"ca_cpa\",\n                \"bank_name\": \"Toronto Dominion Bank\",\n                \"bank_address\": {\n                    \"id\": \"59587986-551b-466d-ae92-7ceb9a535eff\",\n                    \"object\": \"address\",\n                    \"live_mode\": false,\n                    \"line1\": \"Toronto Dominion Tower\",\n                    \"line2\": null,\n                    \"locality\": \"Toronto\",\n                    \"region\": \"ON\",\n                    \"postal_code\": \"M5K 1A2\",\n                    \"country\": \"CA\",\n                    \"created_at\": \"2021-10-21T01:25:23Z\",\n                    \"updated_at\": \"2021-10-21T01:25:23Z\"\n                },\n                \"discarded_at\": null,\n                \"created_at\": \"2021-10-21T01:25:23Z\",\n                \"updated_at\": \"2021-10-21T01:25:23Z\"\n            }\n        ],\n        \"name\": \"Subsidiary (CA)\",\n        \"metadata\": {},\n        \"connection\": {\n            \"id\": \"dac94e63-9f4a-46b9-ba6b-412acfbf4cc1\",\n            \"object\": \"connection\",\n            \"live_mode\": false,\n            \"vendor_id\": \"example1\",\n            \"vendor\": {\n                \"id\": \"example1\",\n                \"name\": \"Gringotts Wizarding Bank\"\n            },\n            \"vendor_customer_id\": null,\n            \"discarded_at\": null,\n            \"created_at\": \"2018-07-24T23:43:49Z\",\n            \"updated_at\": \"2018-07-24T23:43:49Z\"\n        },\n        \"currency\": \"CAD\",\n        \"created_at\": \"2021-10-21T01:25:23Z\",\n        \"updated_at\": \"2021-10-21T01:25:23Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Create Example 1 Account",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "Missing Party Name",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"connection_id\": \"dac94e63-9f4a-46b9-ba6b-412acfbf4cc1\",\n    \"name\": \"\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/internal_accounts",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"internal_accounts"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 21 Dec 2021 15:04:59 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-Live-Mode",
+									"value": "false"
+								},
+								{
+									"key": "X-Rate-Limit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-Rate-Limit-Remaining",
+									"value": "24"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_modern_treasury_session=db8e7f9353f5757b07f46425ee9b56d9; path=/; expires=Tue, 21 Dec 2021 16:04:59 GMT; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "8214a2b4-b144-4418-8ed3-88a3ae52399c"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.016777"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": {\n        \"code\": \"parameter_missing\",\n        \"message\": \"Party name is required\",\n        \"parameter\": \"party_name\"\n    }\n}"
+						},
+						{
+							"name": "Missing Currency",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"connection_id\": \"dac94e63-9f4a-46b9-ba6b-412acfbf4cc1\",\n    \"name\": \"\",\n    \"party_name\": \"Modern Treasury\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/internal_accounts",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"internal_accounts"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 21 Dec 2021 15:05:42 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-Live-Mode",
+									"value": "false"
+								},
+								{
+									"key": "X-Rate-Limit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-Rate-Limit-Remaining",
+									"value": "24"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_modern_treasury_session=db8e7f9353f5757b07f46425ee9b56d9; path=/; expires=Tue, 21 Dec 2021 16:05:42 GMT; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "d00a2b3e-3495-4891-86a7-dfdeb2638fea"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.024539"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": {\n        \"code\": \"parameter_missing\",\n        \"message\": \"Currency is required\",\n        \"parameter\": \"currency\"\n    }\n}"
+						},
+						{
+							"name": "Blank Name",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"connection_id\": \"dac94e63-9f4a-46b9-ba6b-412acfbf4cc1\",\n    \"name\": \"\",\n    \"party_name\": \"Modern Treasury\",\n    \"currency\": \"USD\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/internal_accounts",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"internal_accounts"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 21 Dec 2021 15:06:13 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-Live-Mode",
+									"value": "false"
+								},
+								{
+									"key": "X-Rate-Limit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-Rate-Limit-Remaining",
+									"value": "24"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_modern_treasury_session=db8e7f9353f5757b07f46425ee9b56d9; path=/; expires=Tue, 21 Dec 2021 16:06:13 GMT; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "8d2e1473-1caa-4e7f-b40f-0a4256532b5d"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.027035"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": {\n        \"code\": \"parameter_invalid\",\n        \"message\": \"Name can't be blank\",\n        \"parameter\": \"name\"\n    }\n}"
+						},
+						{
+							"name": "Happy Path",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"connection_id\": \"dac94e63-9f4a-46b9-ba6b-412acfbf4cc1\",\n    \"name\": \"Bookings\",\n    \"party_name\": \"Modern Treasury\",\n    \"currency\": \"USD\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/internal_accounts",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"internal_accounts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 21 Dec 2021 15:06:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-Live-Mode",
+									"value": "false"
+								},
+								{
+									"key": "X-Rate-Limit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-Rate-Limit-Remaining",
+									"value": "24"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6e50fc95081746590ad3706f11911331\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_modern_treasury_session=db8e7f9353f5757b07f46425ee9b56d9; path=/; expires=Tue, 21 Dec 2021 16:06:39 GMT; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "b46f76b5-b754-4059-8be4-99b43389cf28"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.116174"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"3389fcaa-78ad-4656-988a-e3b6f2b05529\",\n    \"object\": \"internal_account\",\n    \"live_mode\": false,\n    \"account_type\": null,\n    \"party_name\": \"Modern Treasury\",\n    \"party_type\": null,\n    \"party_address\": {\n        \"id\": \"d71521e9-6c54-41e3-97fb-5e43bdba7e5a\",\n        \"object\": \"address\",\n        \"live_mode\": false,\n        \"line1\": \"3450 Tremblay Shoal\",\n        \"line2\": \"Suite 155\",\n        \"locality\": \"North Shantae\",\n        \"region\": \"OR\",\n        \"postal_code\": \"13671\",\n        \"country\": \"US\",\n        \"created_at\": \"2021-12-21T15:06:39Z\",\n        \"updated_at\": \"2021-12-21T15:06:39Z\"\n    },\n    \"account_details\": [\n        {\n            \"id\": \"14758ea7-4082-4760-8c82-ad88964869e2\",\n            \"object\": \"account_detail\",\n            \"live_mode\": false,\n            \"account_number\": \"0201816418\",\n            \"account_number_type\": \"other\",\n            \"discarded_at\": null,\n            \"created_at\": \"2021-12-21T15:06:39Z\",\n            \"updated_at\": \"2021-12-21T15:06:39Z\"\n        }\n    ],\n    \"routing_details\": [\n        {\n            \"id\": \"4860c76a-752d-43ac-ae4f-a1cdb5e8078f\",\n            \"object\": \"routing_detail\",\n            \"live_mode\": false,\n            \"payment_type\": null,\n            \"routing_number\": \"021000021\",\n            \"routing_number_type\": \"aba\",\n            \"bank_name\": \"JPMorgan Chase Bank, National Association\",\n            \"bank_address\": {\n                \"id\": \"8fd2389e-0678-4a42-8ec0-27919c894a85\",\n                \"object\": \"address\",\n                \"live_mode\": false,\n                \"line1\": \"1111 Polaris Pkwy\",\n                \"line2\": null,\n                \"locality\": \"Columbus\",\n                \"region\": \"OH\",\n                \"postal_code\": \"43240\",\n                \"country\": \"US\",\n                \"created_at\": \"2021-12-21T15:06:39Z\",\n                \"updated_at\": \"2021-12-21T15:06:39Z\"\n            },\n            \"discarded_at\": null,\n            \"created_at\": \"2021-12-21T15:06:39Z\",\n            \"updated_at\": \"2021-12-21T15:06:39Z\"\n        }\n    ],\n    \"name\": \"Bookings\",\n    \"metadata\": {},\n    \"connection\": {\n        \"id\": \"dac94e63-9f4a-46b9-ba6b-412acfbf4cc1\",\n        \"object\": \"connection\",\n        \"live_mode\": false,\n        \"vendor_id\": \"example1\",\n        \"vendor\": {\n            \"id\": \"example1\",\n            \"name\": \"Gringotts Wizarding Bank\"\n        },\n        \"vendor_customer_id\": null,\n        \"discarded_at\": null,\n        \"created_at\": \"2018-07-24T23:43:49Z\",\n        \"updated_at\": \"2018-07-24T23:43:49Z\"\n    },\n    \"currency\": \"USD\",\n    \"created_at\": \"2021-12-21T15:06:39Z\",\n    \"updated_at\": \"2021-12-21T15:06:39Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Increase Account",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "Happy Path",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"connection_id\": \"d92d173d-2812-4b38-8767-48044161df5d\",\n    \"name\": \"Revenue\",\n    \"party_name\": \"Modern Treasury\",\n    \"currency\": \"USD\",\n    \"entity_id\": \"entity_8cbopigqyoqgm3rtp3xs\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/internal_accounts",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"internal_accounts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 03 Jan 2022 16:21:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-Live-Mode",
+									"value": "false"
+								},
+								{
+									"key": "X-Rate-Limit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-Rate-Limit-Remaining",
+									"value": "24"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a0781c534385bdabfe80aebb26f9105\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_modern_treasury_session=6c02ab1dd71d307ac60b53164ed0f6d4; path=/; expires=Mon, 03 Jan 2022 17:21:40 GMT; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "57359b94-677f-4697-bbfd-65b27669f062"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "3.273237"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"e54a9ca8-973e-439b-8255-9cb6bc15c3d5\",\n    \"object\": \"internal_account\",\n    \"live_mode\": false,\n    \"account_type\": \"other\",\n    \"party_name\": \"Modern Treasury\",\n    \"party_type\": null,\n    \"party_address\": {\n        \"id\": \"b42d2dc5-6978-4d56-a4fa-1d8e97c19660\",\n        \"object\": \"address\",\n        \"live_mode\": false,\n        \"line1\": \"315 Montgomery St\",\n        \"line2\": \"10th Floor\",\n        \"locality\": \"San Francisco\",\n        \"region\": \"CA\",\n        \"postal_code\": \"94104\",\n        \"country\": \"US\",\n        \"created_at\": \"2022-01-03T16:21:40Z\",\n        \"updated_at\": \"2022-01-03T16:21:40Z\"\n    },\n    \"account_details\": [\n        {\n            \"id\": \"10842849-a70b-401e-b16c-7a853e2d54d4\",\n            \"object\": \"account_detail\",\n            \"live_mode\": false,\n            \"account_number\": \"7016993115\",\n            \"account_number_type\": \"other\",\n            \"discarded_at\": null,\n            \"created_at\": \"2022-01-03T16:21:40Z\",\n            \"updated_at\": \"2022-01-03T16:21:40Z\"\n        }\n    ],\n    \"routing_details\": [\n        {\n            \"id\": \"87b889d8-c5f8-497b-bd4b-c5088aa38c78\",\n            \"object\": \"routing_detail\",\n            \"live_mode\": false,\n            \"payment_type\": null,\n            \"routing_number\": \"053112929\",\n            \"routing_number_type\": \"aba\",\n            \"bank_name\": \"Blue Ridge Bank, National Association\",\n            \"bank_address\": {\n                \"id\": \"ab02d5b5-c141-449c-bf8f-ddcc4246540b\",\n                \"object\": \"address\",\n                \"live_mode\": false,\n                \"line1\": \"17 W Main St\",\n                \"line2\": null,\n                \"locality\": \"Luray\",\n                \"region\": \"VA\",\n                \"postal_code\": \"22835\",\n                \"country\": \"US\",\n                \"created_at\": \"2022-01-03T16:21:40Z\",\n                \"updated_at\": \"2022-01-03T16:21:40Z\"\n            },\n            \"discarded_at\": null,\n            \"created_at\": \"2022-01-03T16:21:40Z\",\n            \"updated_at\": \"2022-01-03T16:21:40Z\"\n        }\n    ],\n    \"name\": \"Revenue\",\n    \"metadata\": {},\n    \"connection\": {\n        \"id\": \"d92d173d-2812-4b38-8767-48044161df5d\",\n        \"object\": \"connection\",\n        \"live_mode\": false,\n        \"vendor_id\": \"bnk_dev\",\n        \"vendor_name\": \"Increase\",\n        \"vendor_customer_id\": \"group_zvot9c6c01awo5xzhkev\",\n        \"discarded_at\": null,\n        \"created_at\": \"2021-06-29T04:57:26Z\",\n        \"updated_at\": \"2021-06-29T04:57:29Z\"\n    },\n    \"currency\": \"USD\",\n    \"created_at\": \"2022-01-03T16:21:40Z\",\n    \"updated_at\": \"2022-01-03T16:21:40Z\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Connections",
+			"item": [
+				{
+					"name": "Fetch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/connections",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"connections"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 21 Dec 2021 14:54:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-Live-Mode",
+									"value": "false"
+								},
+								{
+									"key": "X-Rate-Limit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-Rate-Limit-Remaining",
+									"value": "24"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Link",
+									"value": "<https://app.moderntreasury.com/api/connections?page=1&per_page=25>; rel=\"first\", <https://app.moderntreasury.com/api/connections?page=1&per_page=25>; rel=\"last\""
+								},
+								{
+									"key": "X-Page",
+									"value": "1"
+								},
+								{
+									"key": "X-Per-Page",
+									"value": "25"
+								},
+								{
+									"key": "X-Total-Count",
+									"value": "6"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"32da3e8284f0e052731309c47543b1a8\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "d07b2742-aecd-44f8-ae09-b12e0684983e"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.024781"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"b5a4144f-c66b-44b4-b98e-75c984ef02e8\",\n        \"object\": \"connection\",\n        \"live_mode\": false,\n        \"vendor_id\": \"example2\",\n        \"vendor\": {\n            \"id\": \"example2\",\n            \"name\": \"Iron Bank of Braavos\"\n        },\n        \"vendor_customer_id\": null,\n        \"discarded_at\": null,\n        \"created_at\": \"2018-07-24T23:43:49Z\",\n        \"updated_at\": \"2018-07-24T23:43:49Z\"\n    },\n    {\n        \"id\": \"cbaf7e05-6802-4b5d-aa35-31bdb43699e4\",\n        \"object\": \"connection\",\n        \"live_mode\": false,\n        \"vendor_id\": \"svb\",\n        \"vendor\": {\n            \"id\": \"svb\",\n            \"name\": \"Silicon Valley Bank\"\n        },\n        \"vendor_customer_id\": null,\n        \"discarded_at\": null,\n        \"created_at\": \"2021-02-03T10:41:17Z\",\n        \"updated_at\": \"2021-06-02T16:15:27Z\"\n    },\n    {\n        \"id\": \"d92d173d-2812-4b38-8767-48044161df5d\",\n        \"object\": \"connection\",\n        \"live_mode\": false,\n        \"vendor_id\": \"bnk_dev\",\n        \"vendor\": {\n            \"id\": \"bnk_dev\",\n            \"name\": \"Increase\"\n        },\n        \"vendor_customer_id\": \"group_zvot9c6c01awo5xzhkev\",\n        \"discarded_at\": null,\n        \"created_at\": \"2021-06-29T04:57:26Z\",\n        \"updated_at\": \"2021-06-29T04:57:29Z\"\n    },\n    {\n        \"id\": \"dac94e63-9f4a-46b9-ba6b-412acfbf4cc1\",\n        \"object\": \"connection\",\n        \"live_mode\": false,\n        \"vendor_id\": \"example1\",\n        \"vendor\": {\n            \"id\": \"example1\",\n            \"name\": \"Gringotts Wizarding Bank\"\n        },\n        \"vendor_customer_id\": null,\n        \"discarded_at\": null,\n        \"created_at\": \"2018-07-24T23:43:49Z\",\n        \"updated_at\": \"2018-07-24T23:43:49Z\"\n    },\n    {\n        \"id\": \"dcb4e46b-6241-43c7-8f56-26d16571a7cd\",\n        \"object\": \"connection\",\n        \"live_mode\": false,\n        \"vendor_id\": \"wells_fargo\",\n        \"vendor\": {\n            \"id\": \"wells_fargo\",\n            \"name\": \"Wells Fargo\"\n        },\n        \"vendor_customer_id\": \"\",\n        \"discarded_at\": null,\n        \"created_at\": \"2021-07-23T15:54:05Z\",\n        \"updated_at\": \"2021-07-23T19:41:36Z\"\n    },\n    {\n        \"id\": \"e280326c-ab62-4c15-aa23-a80628daf04e\",\n        \"object\": \"connection\",\n        \"live_mode\": false,\n        \"vendor_id\": \"svb\",\n        \"vendor\": {\n            \"id\": \"svb\",\n            \"name\": \"Silicon Valley Bank\"\n        },\n        \"vendor_customer_id\": null,\n        \"discarded_at\": null,\n        \"created_at\": \"2021-10-20T21:03:34Z\",\n        \"updated_at\": \"2021-10-20T21:03:34Z\"\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Developers",
+			"item": [
+				{
+					"name": "Webhook Events",
+					"item": [
+						{
+							"name": "get_webhook_event",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/webhook_events/{{webhook_event_id}}",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"webhook_events",
+										"{{webhook_event_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create_webhook_event",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"event_id\": \"{{event_id}}\",\n    \"webhook_endpoint_id\": \"{{webhook_endpoint_id}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/webhook_events",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"webhook_events"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Webhook Endpoints",
+					"item": [
+						{
+							"name": "list_webhook_events",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/webhook_endpoints",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"webhook_endpoints"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_webhook_event",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/webhook_endpoints/{{webhook_endpoint_id}}",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"webhook_endpoints",
+										"{{webhook_endpoint_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_url}}/ping",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{api_key}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{organization_id}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "c7a73f3d-4690-44ba-a553-c3b8e248021f",
+			"value": ""
+		}
+	]
+}
