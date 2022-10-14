@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "6a010248-6028-4364-9870-b4278b0a6f65",
-		"name": "3Scribe",
+		"name": "ThreeScribe",
 		"description": "# 3Scribe Postman Collection\r\n\r\nUse this collection to communicate with [3Scribe](https://3scri.be), the worlds most accurate automated speech transcription service.  Sign up [here](https://3scri.be/register) to get an API key along with 30 minutes free credit to test us out.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
