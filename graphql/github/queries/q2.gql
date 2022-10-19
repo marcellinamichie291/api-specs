@@ -1,0 +1,9 @@
+query getRepositories($last: Int, $isFork: Boolean) {
+  viewer {
+    repositories(last: $last, isFork: $isFork) {
+      nodes {
+        name
+      }
+    }
+  }
+}
