@@ -15,7 +15,7 @@
     }
   },
   "paths" : {
-    "/2/compliance/jobs" : {
+    "/compliance/jobs" : {
       "get" : {
         "security" : [
           {
@@ -149,7 +149,7 @@
         }
       }
     },
-    "/2/compliance/jobs/{id}" : {
+    "/compliance/jobs/{id}" : {
       "get" : {
         "security" : [
           {
@@ -209,7 +209,7 @@
         }
       }
     },
-    "/2/lists" : {
+    "/lists" : {
       "post" : {
         "security" : [
           {
@@ -272,7 +272,7 @@
         }
       }
     },
-    "/2/lists/{id}" : {
+    "/lists/{id}" : {
       "delete" : {
         "security" : [
           {
@@ -481,7 +481,7 @@
         }
       }
     },
-    "/2/lists/{id}/followers" : {
+    "/lists/{id}/followers" : {
       "get" : {
         "security" : [
           {
@@ -581,7 +581,7 @@
         }
       }
     },
-    "/2/lists/{id}/members" : {
+    "/lists/{id}/members" : {
       "get" : {
         "security" : [
           {
@@ -752,7 +752,7 @@
         }
       }
     },
-    "/2/lists/{id}/members/{user_id}" : {
+    "/lists/{id}/members/{user_id}" : {
       "delete" : {
         "security" : [
           {
@@ -826,7 +826,7 @@
         }
       }
     },
-    "/2/lists/{id}/tweets" : {
+    "/lists/{id}/tweets" : {
       "get" : {
         "security" : [
           {
@@ -935,7 +935,7 @@
         }
       }
     },
-    "/2/openapi.json" : {
+    "/openapi.json" : {
       "get" : {
         "tags" : [
           "General"
@@ -958,7 +958,7 @@
         }
       }
     },
-    "/2/spaces" : {
+    "/spaces" : {
       "get" : {
         "security" : [
           {
@@ -1042,7 +1042,7 @@
         }
       }
     },
-    "/2/spaces/by/creator_ids" : {
+    "/spaces/by/creator_ids" : {
       "get" : {
         "security" : [
           {
@@ -1123,7 +1123,7 @@
         }
       }
     },
-    "/2/spaces/search" : {
+    "/spaces/search" : {
       "get" : {
         "security" : [
           {
@@ -1233,7 +1233,7 @@
         }
       }
     },
-    "/2/spaces/{id}" : {
+    "/spaces/{id}" : {
       "get" : {
         "security" : [
           {
@@ -1313,7 +1313,7 @@
         }
       }
     },
-    "/2/spaces/{id}/buyers" : {
+    "/spaces/{id}/buyers" : {
       "get" : {
         "security" : [
           {
@@ -1412,7 +1412,7 @@
         }
       }
     },
-    "/2/spaces/{id}/tweets" : {
+    "/spaces/{id}/tweets" : {
       "get" : {
         "security" : [
           {
@@ -1514,7 +1514,7 @@
         }
       }
     },
-    "/2/tweets" : {
+    "/tweets" : {
       "get" : {
         "security" : [
           {
@@ -1665,7 +1665,7 @@
         }
       }
     },
-    "/2/tweets/compliance/stream" : {
+    "/tweets/compliance/stream" : {
       "get" : {
         "security" : [
           {
@@ -1760,7 +1760,7 @@
         "x-twitter-streaming" : true
       }
     },
-    "/2/tweets/counts/all" : {
+    "/tweets/counts/all" : {
       "get" : {
         "security" : [
           {
@@ -1901,7 +1901,7 @@
         }
       }
     },
-    "/2/tweets/counts/recent" : {
+    "/tweets/counts/recent" : {
       "get" : {
         "security" : [
           {
@@ -2042,7 +2042,7 @@
         }
       }
     },
-    "/2/tweets/firehose/stream" : {
+    "/tweets/firehose/stream" : {
       "get" : {
         "security" : [
           {
@@ -2155,7 +2155,7 @@
         "x-twitter-streaming" : true
       }
     },
-    "/2/tweets/label/stream" : {
+    "/tweets/label/stream" : {
       "get" : {
         "security" : [
           {
@@ -2237,7 +2237,7 @@
         "x-twitter-streaming" : true
       }
     },
-    "/2/tweets/sample/stream" : {
+    "/tweets/sample/stream" : {
       "get" : {
         "security" : [
           {
@@ -2316,7 +2316,7 @@
         "x-twitter-streaming" : true
       }
     },
-    "/2/tweets/sample10/stream" : {
+    "/tweets/sample10/stream" : {
       "get" : {
         "security" : [
           {
@@ -2429,7 +2429,7 @@
         "x-twitter-streaming" : true
       }
     },
-    "/2/tweets/search/all" : {
+    "/tweets/search/all" : {
       "get" : {
         "security" : [
           {
@@ -2597,7 +2597,7 @@
         }
       }
     },
-    "/2/tweets/search/recent" : {
+    "/tweets/search/recent" : {
       "get" : {
         "security" : [
           {
@@ -2774,7 +2774,7 @@
         }
       }
     },
-    "/2/tweets/search/stream" : {
+    "/tweets/search/stream" : {
       "get" : {
         "security" : [
           {
@@ -2877,7 +2877,7 @@
         "x-twitter-streaming" : true
       }
     },
-    "/2/tweets/search/stream/rules" : {
+    "/tweets/search/stream/rules" : {
       "get" : {
         "security" : [
           {
@@ -3028,7 +3028,7 @@
         }
       }
     },
-    "/2/tweets/{id}" : {
+    "/tweets/{id}" : {
       "delete" : {
         "security" : [
           {
@@ -3174,7 +3174,7 @@
         }
       }
     },
-    "/2/tweets/{id}/liking_users" : {
+    "/tweets/{id}/liking_users" : {
       "get" : {
         "security" : [
           {
@@ -3274,7 +3274,7 @@
         }
       }
     },
-    "/2/tweets/{id}/quote_tweets" : {
+    "/tweets/{id}/quote_tweets" : {
       "get" : {
         "security" : [
           {
@@ -3406,7 +3406,7 @@
         }
       }
     },
-    "/2/tweets/{id}/retweeted_by" : {
+    "/tweets/{id}/retweeted_by" : {
       "get" : {
         "security" : [
           {
@@ -3505,7 +3505,7 @@
         }
       }
     },
-    "/2/tweets/{tweet_id}/hidden" : {
+    "/tweets/{tweet_id}/hidden" : {
       "put" : {
         "security" : [
           {
@@ -3578,7 +3578,7 @@
         }
       }
     },
-    "/2/users" : {
+    "/users" : {
       "get" : {
         "security" : [
           {
@@ -3660,7 +3660,7 @@
         }
       }
     },
-    "/2/users/by" : {
+    "/users/by" : {
       "get" : {
         "security" : [
           {
@@ -3744,7 +3744,7 @@
         }
       }
     },
-    "/2/users/by/username/{username}" : {
+    "/users/by/username/{username}" : {
       "get" : {
         "security" : [
           {
@@ -3821,7 +3821,7 @@
         }
       }
     },
-    "/2/users/compliance/stream" : {
+    "/users/compliance/stream" : {
       "get" : {
         "security" : [
           {
@@ -3916,7 +3916,7 @@
         "x-twitter-streaming" : true
       }
     },
-    "/2/users/me" : {
+    "/users/me" : {
       "get" : {
         "security" : [
           {
@@ -3978,7 +3978,7 @@
         }
       }
     },
-    "/2/users/{id}" : {
+    "/users/{id}" : {
       "get" : {
         "security" : [
           {
@@ -4054,7 +4054,7 @@
         }
       }
     },
-    "/2/users/{id}/blocking" : {
+    "/users/{id}/blocking" : {
       "get" : {
         "security" : [
           {
@@ -4222,7 +4222,7 @@
         }
       }
     },
-    "/2/users/{id}/bookmarks" : {
+    "/users/{id}/bookmarks" : {
       "get" : {
         "security" : [
           {
@@ -4393,7 +4393,7 @@
         }
       }
     },
-    "/2/users/{id}/bookmarks/{tweet_id}" : {
+    "/users/{id}/bookmarks/{tweet_id}" : {
       "delete" : {
         "security" : [
           {
@@ -4464,7 +4464,7 @@
         }
       }
     },
-    "/2/users/{id}/followed_lists" : {
+    "/users/{id}/followed_lists" : {
       "get" : {
         "security" : [
           {
@@ -4636,7 +4636,7 @@
         }
       }
     },
-    "/2/users/{id}/followed_lists/{list_id}" : {
+    "/users/{id}/followed_lists/{list_id}" : {
       "delete" : {
         "security" : [
           {
@@ -4710,7 +4710,7 @@
         }
       }
     },
-    "/2/users/{id}/followers" : {
+    "/users/{id}/followers" : {
       "get" : {
         "security" : [
           {
@@ -4810,7 +4810,7 @@
         }
       }
     },
-    "/2/users/{id}/following" : {
+    "/users/{id}/following" : {
       "get" : {
         "security" : [
           {
@@ -4981,7 +4981,7 @@
         }
       }
     },
-    "/2/users/{id}/liked_tweets" : {
+    "/users/{id}/liked_tweets" : {
       "get" : {
         "security" : [
           {
@@ -5090,7 +5090,7 @@
         }
       }
     },
-    "/2/users/{id}/likes" : {
+    "/users/{id}/likes" : {
       "post" : {
         "security" : [
           {
@@ -5163,7 +5163,7 @@
         }
       }
     },
-    "/2/users/{id}/likes/{tweet_id}" : {
+    "/users/{id}/likes/{tweet_id}" : {
       "delete" : {
         "security" : [
           {
@@ -5237,7 +5237,7 @@
         }
       }
     },
-    "/2/users/{id}/list_memberships" : {
+    "/users/{id}/list_memberships" : {
       "get" : {
         "security" : [
           {
@@ -5338,7 +5338,7 @@
         }
       }
     },
-    "/2/users/{id}/mentions" : {
+    "/users/{id}/mentions" : {
       "get" : {
         "security" : [
           {
@@ -5491,7 +5491,7 @@
         }
       }
     },
-    "/2/users/{id}/muting" : {
+    "/users/{id}/muting" : {
       "get" : {
         "security" : [
           {
@@ -5659,7 +5659,7 @@
         }
       }
     },
-    "/2/users/{id}/owned_lists" : {
+    "/users/{id}/owned_lists" : {
       "get" : {
         "security" : [
           {
@@ -5760,7 +5760,7 @@
         }
       }
     },
-    "/2/users/{id}/pinned_lists" : {
+    "/users/{id}/pinned_lists" : {
       "get" : {
         "security" : [
           {
@@ -5905,7 +5905,7 @@
         }
       }
     },
-    "/2/users/{id}/pinned_lists/{list_id}" : {
+    "/users/{id}/pinned_lists/{list_id}" : {
       "delete" : {
         "security" : [
           {
@@ -5979,7 +5979,7 @@
         }
       }
     },
-    "/2/users/{id}/retweets" : {
+    "/users/{id}/retweets" : {
       "post" : {
         "security" : [
           {
@@ -6052,7 +6052,7 @@
         }
       }
     },
-    "/2/users/{id}/retweets/{source_tweet_id}" : {
+    "/users/{id}/retweets/{source_tweet_id}" : {
       "delete" : {
         "security" : [
           {
@@ -6126,7 +6126,7 @@
         }
       }
     },
-    "/2/users/{id}/timelines/reverse_chronological" : {
+    "/users/{id}/timelines/reverse_chronological" : {
       "get" : {
         "security" : [
           {
@@ -6299,7 +6299,7 @@
         }
       }
     },
-    "/2/users/{id}/tweets" : {
+    "/users/{id}/tweets" : {
       "get" : {
         "security" : [
           {
@@ -6477,7 +6477,7 @@
         }
       }
     },
-    "/2/users/{source_user_id}/blocking/{target_user_id}" : {
+    "/users/{source_user_id}/blocking/{target_user_id}" : {
       "delete" : {
         "security" : [
           {
@@ -6551,7 +6551,7 @@
         }
       }
     },
-    "/2/users/{source_user_id}/following/{target_user_id}" : {
+    "/users/{source_user_id}/following/{target_user_id}" : {
       "delete" : {
         "security" : [
           {
@@ -6625,7 +6625,7 @@
         }
       }
     },
-    "/2/users/{source_user_id}/muting/{target_user_id}" : {
+    "/users/{source_user_id}/muting/{target_user_id}" : {
       "delete" : {
         "security" : [
           {
@@ -6703,7 +6703,7 @@
   "servers" : [
     {
       "description" : "Twitter API",
-      "url" : "https://api.twitter.com"
+      "url" : "https://api.twitter.com/2"
     }
   ],
   "tags" : [
