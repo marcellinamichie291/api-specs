@@ -1,0 +1,14 @@
+query RemoteNetworks($first: Int!){
+  remoteNetworks(after: null, first: $first) {
+    edges {
+      node {
+        id
+        name
+      }
+    }
+    pageInfo {
+      startCursor
+      hasNextPage
+    }
+  }
+}
