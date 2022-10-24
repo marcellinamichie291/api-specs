@@ -1,0 +1,984 @@
+---
+openapi: 3.0.0
+info:
+  title: payment method API
+  description: This is a payment method
+  contact:
+    email: rapyd_support@rapyd.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: /
+tags:
+- name: Rapyd collect
+  description: Payments collect funds into one or more Rapyd wallets
+- name: Rapyd disburse
+  description: Rapyd Disburse provides methods for transferring money from a Rapyd Wallet to a beneficiary outside the Rapyd system
+paths:
+  /addresses:
+    post:
+      tags:
+      - Rapyd collect
+      summary: Create an address
+      description: Adds an address to merchant
+      externalDocs:
+        description: Learn more about address operations provided by this API
+        url: https://docs.rapyd.net/build-with-rapyd/reference/addresses#address-object
+      operationId: addAddress
+      requestBody:
+        description: address to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddressRequired'
+      responses:
+        "200":
+          description: address was created successfuly
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Address'
+        "400":
+          description: bad input parameter
+  /addresses/{id}:
+    get:
+      tags:
+      - Rapyd collect
+      summary: Retrieve an address
+      description: |
+        Retrieve an address
+      externalDocs:
+        description: Learn more about address operations provided by this API
+        url: https://docs.rapyd.net/build-with-rapyd/reference/addresses#address-object
+      operationId: getAddressById
+      parameters:
+      - name: id
+        in: path
+        description: address Id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: get Address details By address Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
+        "400":
+          description: bad input parameter
+    post:
+      tags:
+      - Rapyd collect
+      summary: Update an address
+      description: update an address with address Id in Path
+      operationId: updateAddress
+      parameters:
+      - name: id
+        in: path
+        description: address Id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: address to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Address'
+      responses:
+        "200":
+          description: address was updated successfuly
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
+        "400":
+          description: bad input parameter
+  /coupons:
+    get:
+      tags:
+      - Rapyd collect
+      summary: Retrieve list of coupons
+      description: |
+        Retrieve a list of all coupons
+      externalDocs:
+        description: Defines a discount on charges to the customer
+        url: https://docs.rapyd.net/build-with-rapyd/reference/coupons
+      operationId: getCoupons
+      parameters:
+      - name: starting_after
+        in: query
+        description: The ID of the coupon created before the first coupon you want to retrieve
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: ending_before
+        in: query
+        description: The ID of the coupon created after the last coupon you want to retrieve
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        description: The maximum number of coupons to return. Range is 1-100. Default is 10
+        required: false
+        style: form
+        explode: true
+        schema:
+          pattern: ([1-9]|[1-9]\d|100)
+          type: integer
+      responses:
+        "200":
+          description: get coupons details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Coupon'
+        "400":
+          description: bad input parameter
+    post:
+      tags:
+      - Rapyd collect
+      summary: Update an address
+      description: update an address with address Id in Path
+      externalDocs:
+        description: Defines a discount on charges to the customer
+        url: https://docs.rapyd.net/build-with-rapyd/reference/coupons
+      operationId: updateCoupon
+      requestBody:
+        description: address to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Coupon'
+      responses:
+        "200":
+          description: Coupon was created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Coupon'
+        "400":
+          description: bad input parameter
+  /coupons/{id}:
+    get:
+      tags:
+      - Rapyd collect
+      summary: Retrieve an coupon
+      description: |
+        Retrieve a coupon
+      externalDocs:
+        description: Learn more about coupon operations provided by this API
+        url: https://docs.rapyd.net/build-with-rapyd/reference/coupons#retrieve-coupon
+      operationId: getCouponById
+      parameters:
+      - name: id
+        in: path
+        description: coupon Id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: get Coupon details By coupon Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Coupon'
+        "400":
+          description: bad input parameter
+    post:
+      tags:
+      - Rapyd collect
+      summary: Update a coupon
+      description: Modify the metadata of a coupon with coupon Id in Path
+      operationId: updateCoupon???
+      parameters:
+      - name: id
+        in: path
+        description: coupon Id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: coupon to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Coupon'
+      responses:
+        "200":
+          description: coupon was updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Coupon'
+        "400":
+          description: bad input parameter
+    delete:
+      tags:
+      - Rapyd collect
+      summary: Delete a coupon from the Rapyd platform
+      description: |
+        Delete a coupon from the Rapyd platform. Deleting a coupon removes it from all customers and subscriptions, but does not affect invoices and payment authorizations that have already been calculated
+      operationId: deleteCoupon
+      parameters:
+      - name: id
+        in: path
+        description: coupon Id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: coupon was deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Coupon'
+        "400":
+          description: bad input parameter
+  /customers:
+    get:
+      tags:
+      - Rapyd collect
+      summary: Retrieve list of customers
+      description: |
+        Retrieve a list of all customers
+      externalDocs:
+        description: GET list of customers
+        url: https://docs.rapyd.net/build-with-rapyd/reference/customers#list-customers
+      operationId: getCustomers
+      parameters:
+      - name: starting_after
+        in: query
+        description: The ID of the customer created before the first customer you want to retrieve
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: ending_before
+        in: query
+        description: The ID of the customer created after the last customer you want to retrieve
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        description: The maximum number of customers to return. Range is 1-100. Default is 10
+        required: false
+        style: form
+        explode: true
+        schema:
+          pattern: ([1-9]|[1-9]\d|100)
+          type: integer
+      responses:
+        "200":
+          description: get customers details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        "400":
+          description: bad input parameter
+    post:
+      tags:
+      - Rapyd collect
+      summary: Create a customer
+      description: Adds a customer to merchant
+      externalDocs:
+        description: Learn more about customer operations provided by this API
+        url: https://docs.rapyd.net/build-with-rapyd/reference/customers#create-customer
+      operationId: addCustomer
+      requestBody:
+        description: customer to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerRequired'
+      responses:
+        "200":
+          description: customer was created successfuly
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+        "400":
+          description: bad input parameter
+  /customers/{id}:
+    get:
+      tags:
+      - Rapyd collect
+      summary: Retrieve a customer details
+      description: |
+        Retrieve a customer
+      externalDocs:
+        description: Learn more about Retrieve a customer details provided by this API
+        url: https://docs.rapyd.net/build-with-rapyd/reference/customers#retrieve-customer
+      operationId: getCustomerById
+      parameters:
+      - name: id
+        in: path
+        description: customer Id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: get customer details By customer Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        "400":
+          description: bad input parameter
+    post:
+      tags:
+      - Rapyd collect
+      summary: Update customer
+      description: Update a customer with customer Id in Path
+      externalDocs:
+        description: Learn more about customer operations provided by this API
+        url: https://docs.rapyd.net/build-with-rapyd/reference/customers#update-customer
+      operationId: updateCustomer
+      parameters:
+      - name: id
+        in: path
+        description: customer Id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: customer to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        "200":
+          description: customer was updated successfuly
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+        "400":
+          description: bad input parameter
+    delete:
+      tags:
+      - Rapyd collect
+      summary: Delete a customer from the Rapyd platform
+      description: |
+        This method triggers the Customer Deleted webhook. This webhook contains the same information as the response
+      externalDocs:
+        description: delete an existing customer
+        url: https://docs.rapyd.net/build-with-rapyd/reference/customers#delete-customer
+      operationId: deleteCustomer
+      parameters:
+      - name: id
+        in: path
+        description: customer Id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: customer was deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        "400":
+          description: customer cannot be deleted???
+  /customers/discount/{id}:
+    get:
+      tags:
+      - Rapyd collect
+      summary: Retrieve an discount
+      description: |
+        Retrieve a discount
+      externalDocs:
+        description: Learn more about discount operations provided by this API
+        url: https://docs.rapyd.net/build-with-rapyd/reference/discounts#retrieve-discount-customer
+      operationId: getDiscountById
+      parameters:
+      - name: id
+        in: path
+        description: discount Id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: get Discount details By Discount Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discount'
+        "400":
+          description: bad input parameter
+  /subscriptions/discount/{id}:
+    get:
+      tags:
+      - Rapyd collect
+      summary: Retrieve an discount
+      description: |
+        Retrieve a discount
+      externalDocs:
+        description: Learn more about discount operations provided by this API
+        url: https://docs.rapyd.net/build-with-rapyd/reference/discounts#retrieve-discount-subscription
+      operationId: getSubscriptionDiscountById
+      parameters:
+      - name: id
+        in: path
+        description: discount Id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: get Discount details By Discount Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discount'
+        "400":
+          description: bad input parameter
+components:
+  schemas:
+    Address:
+      required:
+      - line_1
+      - name
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the Address object. String starting with address_
+        canton:
+          type: string
+          description: Name of the canton administrative subdivision, as used in banking
+        city:
+          type: string
+          description: City name portion of the address. Required for issuance of a card to an eWallet contact
+        country:
+          $ref: '#/components/schemas/Country'
+        created_at:
+          type: number
+        district:
+          type: string
+          description: Name of the district administrative subdivision, as used in banking
+        line_1:
+          type: string
+          description: Line 1 of the address, such as a building number and street name
+        line_2:
+          type: string
+          description: Line 2 of the address, such as a suite or apartment number, or the name of a named building
+        line_3:
+          type: string
+          description: Line 3 of the address
+        metadata:
+          type: object
+          description: A JSON object defined by the client
+        name:
+          type: string
+          description: The name of a contact person or an "in care of" person at this address
+        phone_number:
+          type: string
+          description: Phone number associated with this specific address in E.164 format. Must be unique
+        state:
+          type: string
+        updated_at:
+          type: integer
+        zip:
+          type: string
+          description: Postal code portion of the address
+    Amount_range_per_currency:
+      type: array
+      description: |
+        Indicates the amount range for the payment method's currencies. Each object contains the following fields:\
+        * currency - Three-letter ISO 4217 format of currency\
+        * maximum_amount - The maximum payment amount\
+        * minimum_amount - The minimum payment amount
+      items:
+        type: string
+        enum:
+        - currency
+        - maximum_amount
+        - minimum_amount
+    Category:
+      type: string
+      enum:
+      - bank_redirect
+      - bank_transfer
+      - card
+      - cardtocard
+      - cash
+      - ewallet
+      - rapyd_ewallet
+    Customer_Payment_Method:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the Payment Method object. String starting with card_ or other_
+        account_last4:
+          type: string
+          description: Last four digits of the bank account or IBAN (International Bank Account Number). Response only
+        address:
+          $ref: '#/components/schemas/Address'
+        bic_swift:
+          type: string
+          description: BIC (Bank Identifier Code)/SWIFT code. Response only
+        category:
+          $ref: '#/components/schemas/Category'
+        customer:
+          $ref: '#/components/schemas/Customer'
+        deleted:
+          type: boolean
+          description: Indicates whether the payment method is deleted. Response only
+        ending_before:
+          type: string
+          description: The ID of the payment method created after the last payment method you want to retrieve
+        error_code:
+          description: Relevant error message (with an underscore between words) and ID number of the error
+          oneOf:
+          - type: string
+          - type: integer
+        image:
+          type: string
+          description: A URL to the image of the icon for the type of payment method. Response only
+        limit:
+          pattern: ([1-9]|[1-9]\d|100)
+          type: integer
+          description: The maximum number of coupons to return. Range is 1-100. Default is 10
+        metadata:
+          type: object
+          description: A JSON object defined by the client
+        network_reference_id:
+          type: string
+          description: "Identifier for use in a recurring card payment. In recurring payments, use the network reference ID you got from the response or webhook when adding the payment method to the customer. \nIn the payment_method.fields object, use it in place of the cvv field, along with the other required fields for the card payment method. This field cannot be used together with a payment method ID or a customer ID.\nNote: For all payments, you must use the network reference ID from adding the payment method to the customer. The response in each subsequent payment contains a different network reference ID, which is not for use in requests.\nRelevant to clients with PCI certification who have been authorized to use this feature  \n"
+        next_action:
+          type: string
+          description: |
+            Indicates the next action for completing the payment. Response only. One of the following values:
+            * 3d_verification - The next action is 3DS authentication. To simulate 3DS authentication in the sandbox, see Simulating 3DS Authentication. Relevant only to card payments.
+            * pending_capture - The next action is pending the capture of the amount. Relevant only to card payments when the amount is not zero.
+            * pending_confirmation - The next action is pending the confirmation for the payment. Relevant to all payment methods excluding card payment.
+            * not_applicable - The payment has completed or the next action is not relevant.
+        redirect_url:
+          type: string
+          description: |
+            URL where the customer is redirected for additional steps required for the payment. Response only.
+            To simulate 3DS authentication in the sandbox, see Simulating 3DS Authentication:
+            https://docs.rapyd.net/build-with-rapyd/reference-link/simulating-3ds-authentication
+        starting_after:
+          type: string
+          description: The ID of the payment method created before the first payment method you want to retrieve.
+        supporting_documentation:
+          type: string
+          description: Reserved. Response only.
+        token:
+          type: string
+          description: "ID of the token that represents the card. String starting with card_. Relevant to cards. Relevant if the value of is_tokenizable is true for the payment method in the response to List Payment Methods by Country. \nSee Payment Method Type Object: https://docs.rapyd.net/build-with-rapyd/reference-link/payment-method-type-object\n"
+        type:
+          type: string
+          description: |
+            Name of the payment method type. For example, us_mastercard_card.
+            To get a list of payment methods for a country, use List Payment Methods by Country.
+        webhook_url:
+          type: string
+          description: Reserved. Response only
+      description: |
+        Describes the fields contained in REST messages and webhooks for payment methods saved to a customer profile
+    Funding:
+      type: string
+      enum:
+      - credit
+      - debit
+      - prepaid
+      - unknown
+      - bank
+    Country:
+      pattern: ^(A(D|E|F|G|I|L|M|N|O|R|S|T|Q|U|W|X|Z)|B(A|B|D|E|F|G|H|I|J|L|M|N|O|R|S|T|V|W|Y|Z)|C(A|C|D|F|G|H|I|K|L|M|N|O|R|U|V|X|Y|Z)|D(E|J|K|M|O|Z)|E(C|E|G|H|R|S|T)|F(I|J|K|M|O|R)|G(A|B|D|E|F|G|H|I|L|M|N|P|Q|R|S|T|U|W|Y)|H(K|M|N|R|T|U)|I(D|E|Q|L|M|N|O|R|S|T)|J(E|M|O|P)|K(E|G|H|I|M|N|P|R|W|Y|Z)|L(A|B|C|I|K|R|S|T|U|V|Y)|M(A|C|D|E|F|G|H|K|L|M|N|O|Q|P|R|S|T|U|V|W|X|Y|Z)|N(A|C|E|F|G|I|L|O|P|R|U|Z)|OM|P(A|E|F|G|H|K|L|M|N|R|S|T|W|Y)|QA|R(E|O|S|U|W)|S(A|B|C|D|E|G|H|I|J|K|L|M|N|O|R|T|V|Y|Z)|T(C|D|F|G|H|J|K|L|M|N|O|R|T|V|W|Z)|U(A|G|M|S|Y|Z)|V(A|C|E|G|I|N|U)|W(F|S)|Y(E|T)|Z(A|M|W))$
+      type: string
+    Currency:
+      pattern: /^AED|AFN|ALL|AMD|ANG|AOA|ARS|AUD|AWG|AZN|BAM|BBD|BDT|BGN|BHD|BIF|BMD|BND|BOB|BRL|BSD|BTN|BWP|BYR|BZD|CAD|CDF|CHF|CLP|CNY|COP|CRC|CUC|CUP|CVE|CZK|DJF|DKK|DOP|DZD|EGP|ERN|ETB|EUR|FJD|FKP|GBP|GEL|GGP|GHS|GIP|GMD|GNF|GTQ|GYD|HKD|HNL|HRK|HTG|HUF|IDR|ILS|IMP|INR|IQD|IRR|ISK|JEP|JMD|JOD|JPY|KES|KGS|KHR|KMF|KPW|KRW|KWD|KYD|KZT|LAK|LBP|LKR|LRD|LSL|LYD|MAD|MDL|MGA|MKD|MMK|MNT|MOP|MRO|MUR|MVR|MWK|MXN|MYR|MZN|NAD|NGN|NIO|NOK|NPR|NZD|OMR|PAB|PEN|PGK|PHP|PKR|PLN|PYG|QAR|RON|RSD|RUB|RWF|SAR|SBD|SCR|SDG|SEK|SGD|SHP|SLL|SOS|SPL|SRD|STD|SVC|SYP|SZL|THB|TJS|TMT|TND|TOP|TRY|TTD|TVD|TWD|TZS|UAH|UGX|USD|UYU|UZS|VEF|VND|VUV|WST|XAF|XCD|XDR|XOF|XPF|YER|ZAR|ZMW|ZWD$/
+      type: string
+    Bin_details:
+      type: object
+      properties:
+        bin_number:
+          type: integer
+        country:
+          $ref: '#/components/schemas/Country'
+        funding:
+          $ref: '#/components/schemas/Funding'
+        bank:
+          type: string
+      description: |
+        Bank Identification Number (BIN) details. Read-only. Object containing the following fields:
+        * bin_number - BIN number
+        * country - The two-letter ISO 3166-1 ALPHA-2 code for the country. Uppercase.
+        * funding - Type of card funding. One of the following: [credit, debit, prepaid, unknown]
+        * bank - Name of the issuing bank.
+        Relevant to cards
+    Coupon:
+      type: object
+      properties:
+        id:
+          type: string
+          description: |
+            Unique ID for this coupon. English alphanumeric characters with no special characters except underscore. If the merchant does not define an ID, Rapyd generates a string starting with coupon_
+        amount_off:
+          description: |
+            The amount of money to subtract from the payment. Decimal. Range: Positive decimal number, including the correct number of decimal places for the currency exponent, as defined in ISO 2417:2015
+        created:
+          type: integer
+          description: "When the coupon was created, in Unix time. Response only \n"
+        currency:
+          $ref: '#/components/schemas/Currency'
+        deleted:
+          type: boolean
+          description: Indicates whether the coupon has been deleted
+        description:
+          type: string
+          description: Description of the coupon
+        discount_duration_in_uses:
+          type: integer
+          description: |
+            The number of times that the coupon can be redeemed by a specific customer or subscription. Relevant when duration is repeating and redeem_by is not set
+        discount_validity_in_months:
+          type: integer
+          description: |
+            The number of months after the discount is created that it can be used. Relevant when discount_valid_until is not set
+        discount_valid_until:
+          type: integer
+          description: |
+            The final date that a discount can be used, in Unix time. Relevant when discount_validity_in_months is not set
+        duration:
+          type: string
+          enum:
+          - forever
+          - once
+          - repeating
+        duration_in_months:
+          type: integer
+          description: |
+            Determines the number of months that the coupon remains in effect after its creation. Integer. Required when duration is repeating
+        max_redemptions:
+          type: integer
+          description: |
+            Determines the number of times the coupon can be redeemed. The number of customers, subscriptions or orders that the coupon is applied to cannot exceed this number
+        metadata:
+          type: object
+          description: A JSON object defined by the client
+        percent_off:
+          pattern: ([1-9]|[1-9]\d|100)
+          type: integer
+          description: Determines the size of the discount, measured in percent. Integer
+        redeem_by:
+          type: integer
+          description: |
+            The last time at which the coupon can be redeemed, in Unix time. After the redeem_by date, the coupon can no longer be applied to new customers. 'redeem_by' takes precedence over the setting of discount_duration_in_uses and duration_in_months
+        times_redeemed:
+          type: integer
+          description: |
+            Indicates the number of times the coupon has been applied to a customer, subscription or invoice. If the discount has been used more than one time by a customer, subscription or invoice, the number of redemptions after the first is also added to this value. Integer.
+              When this value equals max_redemptions, the coupon becomes no longer valid. Response only
+        valid:
+          type: boolean
+          description: Indicates whether the coupon can be redeemed
+      description: |
+        The coupon can be applied to the following objects:
+        * Subscription - All charges in the subscription are subject to the discount described in the coupon. To add a coupon to a subscription, first use Create Coupon. Then add the coupon ID to the coupon field of the subscription with Create Subscription or Update Subscription.
+        * Customer - The discount applies to all charges to the customer. To add a coupon to a customer, first use Create Coupon. Then add the coupon ID to the coupon field of the customer with Create Customer or Update Customer.
+        * Order - The discount applies to a single order. To add a coupon to an order, first use Create Coupon. The duration field of the coupon must be set to repeating, and the duration_in_months and discount_duration_in_uses fields must be set to 1. Then add the coupon ID to the coupon field of the order with Create an Order or Update Order.
+        A coupon can be applied to one or more customers or subscriptions. However, a subscription can have only one coupon, and the only way to assign two or more coupons to a customer is to assign them to separate subscriptions.
+        If there is a coupon for the customer and another coupon for the customer's subscription, the subscription coupon takes precedence.
+    Customer:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the Customer object. String starting with cus_
+        address:
+          $ref: '#/components/schemas/Address'
+        business_vat_id:
+          type: string
+          description: The tax ID number of the customer. Relevant when the customer is a business
+        category:
+          $ref: '#/components/schemas/Category'
+        coupon:
+          $ref: '#/components/schemas/Coupon'
+        created_at:
+          type: integer
+          description: Time of creation of this customer, in Unix time. Response only
+        delinquent:
+          type: boolean
+          description: |
+            Indicates whether there is currently a failure of an automatic payment that is part of a subscription, or an invoice that was not paid when due. Response only.
+              true: The account is delinquent
+              false: The account is current
+        description:
+          type: string
+          description: A text description of the customer
+        discount:
+          $ref: '#/components/schemas/Discount'
+        email:
+          type: string
+          description: Customer's email address. Maximum 512 characters
+        ewallet:
+          type: string
+          description: "ID of the wallet that is linked to the customer. String starting with ewallet_. Each wallet can be associated with only one customer        \n"
+        fields:
+          type: object
+          description: "Contains the fields that are required for the specific payment method.\nTo determine what fields are required for the payment method:\n???    \n"
+        invoice_prefix:
+          type: string
+          description: "A custom string that is prefixed to all invoices for this customer. For more information see Invoice Object at https://docs.rapyd.net/build-with-rapyd/reference/invoices#invoice-object???add this object???        \n"
+      description: customer
+    AddressRequired:
+      allOf:
+      - $ref: '#/components/schemas/Address'
+      - required:
+        - line1
+        - name
+    CustomerRequired:
+      allOf:
+      - $ref: '#/components/schemas/Customer'
+      - required:
+        - name
+    Condition:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Description of the condition
+        element_name:
+          type: string
+          description: |
+            The name of a field, including the path. The field is the first operand of the condition.
+            The path starts with one of the following:
+            * payment - The field is a Create Payment body parameter.
+            Not relevant to the payment_method and payment_method_options objects.
+            * payment.payment_method_type - The field appears in the current Get Payment Method Required Fields response under fields or payment_method_options.
+            * organization - The field relates to your organization, such as your merchant type category. Your organization specifies the field when activating your account. See Activating Your Account (KYB)
+        operator:
+          type: string
+          description: |
+            A symbol representing the operator of the condition. String starting with $. The operator determines the relationship between the operands
+            See: https://docs.rapyd.net/build-with-rapyd/reference/payment-method-types#operators-for-conditions
+        threshold_value:
+          description: |
+            One or more possible values of the element_name field.
+            The second operand of the condition
+            https://docs.rapyd.net/build-with-rapyd/reference/payment-method-types#operators-for-conditions
+          oneOf:
+          - type: string
+          - type: integer
+    Discount:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the Customer object. String starting with cus_
+        coupon:
+          $ref: '#/components/schemas/Coupon'
+        customer:
+          $ref: '#/components/schemas/Customer'
+        discount:
+          type: string
+          description: ID of the Discount object. String starting with dis_
+        end:
+          type: integer
+          description: |
+            The final time that a discount can be used, in Unix time. When the value is -1, the discount never expires. Response only
+        number_of_uses:
+          type: integer
+          description: |
+            The number of times that the discount was used for a specific customer or subscription. The initial value is 0. The value is incremented by 1 each time that the discount is used. Response only
+        start:
+          type: integer
+          description: "The time that a discount was created, in Unix time. Response only  \n"
+        subscription:
+          type: string
+          description: ID of the Subscription object that the discount applies to. String starting with sub_. Response only
+        valid:
+          type: boolean
+          description: |
+            Indicates whether the discount can be used. Response only
+      description: |
+        Describes the fields relating to discounts in REST messages and webhooks for customer profiles and subscriptions
+        Contains information about the coupon that applies to the customer. Read-only field. Adding a discount is a 2-step process:
+        1. Create Coupon, which returns a coupon ID.
+        2. Add the coupon ID to the coupon field of the customer with Create Customer or Update Customer.
+    Payment_method_options:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the field
+        type:
+          type: string
+          enum:
+          - boolean
+          - number
+          - string
+        regex:
+          type: string
+          description: |
+            A regular expression that defines the format when type is string. Note: Rapyd uses a unique variant of the regex standard
+            https://docs.rapyd.net/build-with-rapyd/reference/payment-method-types#rapyd-regex
+        description:
+          type: string
+          description: Description of the field
+        is_required:
+          type: boolean
+          description: "Whether the field is always required for using the payment method       \n"
+        is_updatable:
+          type: boolean
+          description: |
+            Indicates whether the field can be updated with Update Payment Method
+            https://docs.rapyd.net/build-with-rapyd/reference/customer-payment-methods#update-payment-method
+    Payment_method_type:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the Payment Method Type object
+        address:
+          $ref: '#/components/schemas/Address'
+        amount_range_per_currency:
+          type: array
+          items:
+            $ref: '#/components/schemas/Amount_range_per_currency'
+        bin_details:
+          $ref: '#/components/schemas/Bin_details'
+        category:
+          $ref: '#/components/schemas/Category'
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Condition'
+        country:
+          $ref: '#/components/schemas/Country'
+        currencies:
+          type: array
+          items:
+            $ref: '#/components/schemas/Currency'
+        customer:
+          $ref: '#/components/schemas/Customer'
+        fingerprint:
+          type: string
+          description: |
+            Hash of the card number, expiration date and CVV. Read-only. Relevant to cards
+        image:
+          type: string
+          description: |
+            A URL to the image of the icon for the type of payment method. Response only
+        instructions:
+          type: string
+          description: |
+            Instructions for the field. Response only
+        is_cancelable:
+          type: boolean
+          description: |
+            Indicates whether a payment made with this payment method can be canceled. Response only
+        is_expirable:
+          type: boolean
+          description: |
+            Indicates whether the merchant can set an expiration time for the customer to complete the payment. Response only
+        is_online:
+          type: boolean
+          description: |
+            Indicates whether the payment is completed immediately online. Response only
+        is_refundable:
+          type: boolean
+          description: |
+            Indicates whether the payment method type supports refunds
+        is_required:
+          type: boolean
+          description: |
+            Whether the field is required for using the payment method.
+            When the conditions defined by conditions are met, the field is required even though the value of is_required is false.
+            Response only
+        is_tokenizable:
+          type: boolean
+          description: |
+            Indicates whether the token of the payment method can be used in a collect operation
+        is_virtual:
+          type: boolean
+          description: |
+            Indicates whether a Web-based version of the payment method type exists
+        last4:
+          type: string
+          description: |
+            Last four digits of the card number. Read-only. Relevant to cards
+        maximum_expiration_seconds:
+          type: integer
+          description: |
+            The maximum time (in seconds) that the merchant can set for completing the payment. Relevant when is_expirable is true. Response only
+        minimum_expiration_seconds:
+          type: integer
+          description: |
+            The minimum time (in seconds) that the merchant can set for completing the payment. Relevant when is_expirable is true. Response only
+        multiple_overage_allowed:
+          type: boolean
+          description: |
+            Indicates whether multiple overage charges are allowed for this payment method type
+        name:
+          type: string
+          description: |
+            The name of the payment method, in user-friendly terms. For example, 'Ireland Visa card'. Response only
+        payment_flow_type:
+          $ref: '#/components/schemas/Category'
+        payment_method_options:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payment_method_options'
+        payment_options:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payment_method_options'
+    "200":
+      title: Successful response
+      type: object
+    "400response":
+      title: Failure response
+      type: object
