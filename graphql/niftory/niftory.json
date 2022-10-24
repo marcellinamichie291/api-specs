@@ -172,6 +172,95 @@
         "possibleTypes": null
       },
       {
+        "kind": "OBJECT",
+        "name": "AppUserList",
+        "description": "Represents a list of [AppUser]({{Types.AppUser}})s of a particular Niftory [App]({{Types.App}}). Read more [here](https://docs.niftory.com/home/v/api/core-concepts/app-and-appuser).",
+        "fields": [
+          {
+            "name": "cursor",
+            "description": "The cursor to use to fetch the next page of results, if any.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "items",
+            "description": "The AppUsers in this list.",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "AppUser",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "Pageable",
+            "ofType": null
+          }
+        ],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "Attributable",
+        "description": "An interface representing objects that have attributes property for non-blockchain property storage.",
+        "fields": [
+          {
+            "name": "attributes",
+            "description": "A mapping of attributes for this object. These will be stored in the Niftory API but will not be added to the blockchain.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "JSONObject",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": [
+          {
+            "kind": "OBJECT",
+            "name": "NFTListing",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "NFTModel",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "NFTSet",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "Wallet",
+            "ofType": null
+          }
+        ]
+      },
+      {
         "kind": "ENUM",
         "name": "Blockchain",
         "description": "The blockchains supported by Niftory.",
@@ -223,7 +312,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "JSON",
+              "name": "JSONObject",
               "ofType": null
             },
             "isDeprecated": false,
@@ -257,6 +346,18 @@
         "description": "An interface representing properties common to all objects that exist on the blockchain",
         "fields": [
           {
+            "name": "attributes",
+            "description": "A mapping of attributes for this object. These will be stored in the Niftory API but will not be added to the blockchain.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "JSONObject",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "blockchainId",
             "description": "The ID of this resource on the blockchain.",
             "args": [],
@@ -269,12 +370,28 @@
             "deprecationReason": null
           },
           {
+            "name": "id",
+            "description": "A unique identifier for this object in the Niftory API.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "metadata",
             "description": "A mapping of properties that will be added to the blockchain.",
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "JSON",
+              "name": "JSONObject",
               "ofType": null
             },
             "isDeprecated": false,
@@ -291,25 +408,23 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
-          },
-          {
-            "name": "tags",
-            "description": "A mapping of tags for this resource. These will be stored in the Niftory API but will not be added to the blockchain.",
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "JSON",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
           }
         ],
         "inputFields": null,
         "interfaces": [
           {
             "kind": "INTERFACE",
+            "name": "Attributable",
+            "ofType": null
+          },
+          {
+            "kind": "INTERFACE",
             "name": "BlockchainEntity",
+            "ofType": null
+          },
+          {
+            "kind": "INTERFACE",
+            "name": "Identifiable",
             "ofType": null
           },
           {
@@ -402,6 +517,95 @@
         "possibleTypes": null
       },
       {
+        "kind": "INPUT_OBJECT",
+        "name": "CreateFileOptionsInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "contentType",
+            "description": "The Content-Type (MIME type) of the file to be uploaded. This must match the Content-Type header you will use to upload the file to the returned URL. If this is left empty, your Content-Type header must also be empty.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "posterFileId",
+            "description": "Required if the file to be uploaded is a video, and uploadToIPFS=true. In that case a poster must have already been uploaded (so it can be used as the image on IPFS).",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "uploadToIPFS",
+            "description": "Whether to asynchronously trigger an IPFS upload after the file has been uploaded to the returned cloud storage URL.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": "true"
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Boolean",
+        "description": "The `Boolean` scalar type represents `true` or `false`.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "CreateWalletInput",
+        "description": "The input to create wallet data [Wallet]({{Types.Wallet}}).",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "attributes",
+            "description": "A mapping of attributes for this resource. These will be stored in the Niftory API but will not be added to the blockchain.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "JSONObject",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "Currency",
+        "description": "A currency that can be accepted for payment.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "USD",
+            "description": "The United States dollar.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
         "kind": "SCALAR",
         "name": "EmailAddress",
         "description": "A field whose value conforms to the standard internet email address format as specified in RFC822: https://www.w3.org/Protocols/rfc822/.",
@@ -421,6 +625,46 @@
             "description": "The MIME content type for this file.",
             "args": [],
             "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "id",
+            "description": "A unique identifier for this file in the Niftory API.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "md5",
+            "description": "The MD5 hash of this file.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
+            "description": "A friendly name for the file.",
+            "args": [],
+            "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
@@ -433,8 +677,24 @@
             "deprecationReason": null
           },
           {
+            "name": "state",
+            "description": "The upload state of the file.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "FileState",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "url",
-            "description": "The main URL for this file.",
+            "description": "The cloud storage URL for this file. If state is GENERATED_UPLOAD_URL, then this url is the presigned URL to upload to.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -464,6 +724,96 @@
             "ofType": null
           }
         ]
+      },
+      {
+        "kind": "ENUM",
+        "name": "FileState",
+        "description": "The upload state of a File.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "ERROR",
+            "description": "The file failed to ready.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "GENERATED_UPLOAD_URL",
+            "description": "Niftory has created a pre-signed URL where the file can be uploaded.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "PENDING",
+            "description": "Niftory has created a file entry in the database table.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "READY",
+            "description": "The file is ready for use.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "UPLOADED_TO_CLOUD_STORAGE",
+            "description": "The file has been uploaded to a cloud storage for fast retrieval.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "UPLOADED_TO_IPFS",
+            "description": "The file (and potentially its corresponding metadata) have been uploaded to IPFS.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "FixedPricing",
+        "description": "A simple pricing strategy for listings with fixed prices.",
+        "fields": [
+          {
+            "name": "currency",
+            "description": "The currency at which this price is set.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "Currency",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "price",
+            "description": "The price in the specified currency at which this item is for sale.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "PositiveFloat",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
       },
       {
         "kind": "INTERFACE",
@@ -508,7 +858,22 @@
           },
           {
             "kind": "OBJECT",
+            "name": "Invoice",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
             "name": "NFT",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "NFTContent",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "NFTListing",
             "ofType": null
           },
           {
@@ -529,6 +894,167 @@
         ]
       },
       {
+        "kind": "OBJECT",
+        "name": "Invoice",
+        "description": "A purchase invoice for an NFT. The invoice is created when an NFT is reserved using reserve, and updated when a payment is initiated with checkout",
+        "fields": [
+          {
+            "name": "id",
+            "description": "The ID of the Niftory invoice for an NFT purchase",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "listingId",
+            "description": "The listing associated with this invoice",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "state",
+            "description": "The state of this invoice",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "InvoiceState",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "total",
+            "description": "The total spent in USD in this invoice",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "PositiveFloat",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "userId",
+            "description": "The user id associated with this invoice",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "Identifiable",
+            "ofType": null
+          }
+        ],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "InvoiceList",
+        "description": "A list of completed invoices for this app",
+        "fields": [
+          {
+            "name": "cursor",
+            "description": "The cursor to use to fetch the next page of results, if any.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "items",
+            "description": "The invoices in this list.",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Invoice",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "Pageable",
+            "ofType": null
+          }
+        ],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "InvoiceState",
+        "description": "The state of an invoice.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "COMPLETED",
+            "description": "This invoice is completed.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "CREATED",
+            "description": "This invoice was created and ready for payment.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ERROR",
+            "description": "An error was encountered while performing this payment.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "PENDING",
+            "description": "This invoice is pending payment.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
         "kind": "SCALAR",
         "name": "JSON",
         "description": "The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).",
@@ -539,10 +1065,234 @@
         "possibleTypes": null
       },
       {
+        "kind": "SCALAR",
+        "name": "JSONObject",
+        "description": "The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "ListingState",
+        "description": "The state of a listing.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "ACTIVE",
+            "description": "The listing is active and available for sale.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "INACTIVE",
+            "description": "The listing is inactive, so it's not open for sale.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SOLD",
+            "description": "All NFTs in this listing have been sold.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
         "kind": "OBJECT",
         "name": "Mutation",
         "description": null,
         "fields": [
+          {
+            "name": "createFileUploadUrl",
+            "description": "Generates a pre-signed URL that can then be used to upload a file. Once the file has been uploaded to the URL, it will automatically be uploaded to IPFS (if desired). Use the returned [File]({{Types.SimpleFile}}).state to track the upload.",
+            "args": [
+              {
+                "name": "description",
+                "description": "Description about the file. If specified, and uploadToIpfs=true, this description will be added to the IPFS file metadata.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "name",
+                "description": "A friendly name for the file.",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "options",
+                "description": "File upload options, such as whether to upload to IPFS.",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "CreateFileOptionsInput",
+                  "ofType": null
+                },
+                "defaultValue": "{uploadToIPFS: true}"
+              }
+            ],
+            "type": {
+              "kind": "INTERFACE",
+              "name": "File",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "createNFTModel",
+            "description": "Creates a new [NFTModel]({{Types.NFTModel}}).",
+            "args": [
+              {
+                "name": "data",
+                "description": "The data to create the NFTModel.",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "NFTModelCreateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "setId",
+                "description": "The ID of the [NFTSet]({{Types.NFTSet}}) that this model should belong to. This can be created using [createNFTSet]({{Mutations.createSet}}) or retrieved using This can be created using [sets]({{Queries.sets}}).",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "NFTModel",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "createNFTSet",
+            "description": "Creates a new [NFTSet]({{Types.NFTSet}}).",
+            "args": [
+              {
+                "name": "data",
+                "description": "The input data for the NFTSet.",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "NFTSetCreateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "NFTSet",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "createNiftoryWallet",
+            "description": "Provisions a custodial Niftory [Wallet]({{Types.Wallet}}) and, if specified, associates it with the given [AppUser]({{Types.AppUser}}). Note: The call fails if the user already has a wallet.",
+            "args": [
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "CreateWalletInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "userId",
+                "description": "The ID of the [AppUser]({{Types.AppUser}}) to associate with the created Wallet. If unspecified, the caller is responsible for mapping the Wallet to their user.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Wallet",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "mintNFTModel",
+            "description": "Initiates minting for a given [NFTModel]({{Types.NFTmodel}}).",
+            "args": [
+              {
+                "name": "id",
+                "description": "The ID of the [NFTModel]({{Types.NFTmodel}}) to mint [NFT]({{Types.NFT}})s from.",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "quantity",
+                "description": "The number of NFTs to mint. Defaults to minting all NFTs in the model. If quantity exceeds the quantity defined in the model, the latter is used.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "PositiveInt",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "NFTModel",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "readyWallet",
             "description": "Marks a [Wallet]({{Types.Wallet}}) as ready, indicating that the wallet is ready to receive [NFT]({{Types.NFT}})s from the app's [Contract]({{Types.Contract}}). The wallet must be verified before this succeeds. Read more [here](https://docs.niftory.com/home/v/api/core-concepts/wallets/set-up-wallets).",
@@ -587,6 +1337,16 @@
                   }
                 },
                 "defaultValue": null
+              },
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "CreateWalletInput",
+                  "ofType": null
+                },
+                "defaultValue": null
               }
             ],
             "type": {
@@ -601,6 +1361,16 @@
             "name": "transfer",
             "description": "Initiates the transfer of an [NFT]({{Types.NFT}}) to the currently-logged in [AppUser]({{Types.AppUser}}). The NFT is reserved for the user in database, and you can use the NFT.status field to check on the transfer progress.",
             "args": [
+              {
+                "name": "address",
+                "description": "The address of the [Wallet]({{Types.Wallet}}) to filter by. This mutation requires the `userId`, `walletId' or the wallet `address` to be specified.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
               {
                 "name": "id",
                 "description": "The ID of the [NFT]({{Types.NFT}}) to send.",
@@ -623,7 +1393,54 @@
               },
               {
                 "name": "userId",
-                "description": "The ID of the [AppUser]({{Types.AppUser}}) to send the NFT to.",
+                "description": "The ID of the [AppUser]({{Types.AppUser}}) to send the NFT to. This mutation requires the `userId`, `walletId' or the wallet `address` to be specified.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "walletId",
+                "description": "The database ID of the [Wallet]({{Types.Wallet}}) to filter by. This mutation requires the `userId`, `walletId' or the wallet `address` to be specified.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "NFT",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updateNFTModel",
+            "description": "Updates an existing [NFTModel]({{Types.NFTModel}}). Note that if this NFTModel has already been used to mint an NFT, the update operation will fail for any properties that affect the blockchain (such as 'quantity', 'title', 'metadata', etc.), whereas updating 'attributes' will succeed.",
+            "args": [
+              {
+                "name": "data",
+                "description": "The data to update the NFTModel.",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "NFTModelUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "id",
+                "description": "The ID of the NFT model to update.",
                 "type": {
                   "kind": "NON_NULL",
                   "name": null,
@@ -638,7 +1455,138 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "NFT",
+              "name": "NFTModel",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updateNFTSet",
+            "description": "Updates an existing [NFTSet]({{Types.NFTSet}}).",
+            "args": [
+              {
+                "name": "data",
+                "description": "The input data for the NFTSet.",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "NFTSetUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "id",
+                "description": "The ID of the NFTSet to update.",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "NFTSet",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updateWallet",
+            "description": "Update a [Wallet]({{Types.Wallet}}) of the currently signed-in user. Read more [here](https://docs.niftory.com/home/v/api/core-concepts/wallets/set-up-wallets).",
+            "args": [
+              {
+                "name": "address",
+                "description": "The address of the wallet.",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "UpdateWalletInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Wallet",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "uploadNFTContent",
+            "description": "Creates an [NFTContent]({{Types.NFTContent}}) object containing pre-signed URLs that can then be used to upload a file and poster. The primary file will automatically be uploaded to IPFS once it's been uploaded to the pre-signed URL. Each returned [File]({{Types.SimpleFile}}) has a 'state' property to track the upload.",
+            "args": [
+              {
+                "name": "contentType",
+                "description": "The Content-Type (MIME type) of the file to be uploaded. This must match the Content-Type header you will use to upload the file to the returned URL. If this is left empty, your Content-Type header must also be empty.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "description",
+                "description": "Description about the file. If specified, this description will be added to the IPFS file metadata.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "name",
+                "description": "A friendly name for the file.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "posterContentType",
+                "description": "The Content-Type (MIME type) of the poster file to be uploaded. This must match the Content-Type header you will use to upload the poster to the returned URL. If this is left empty, your Content-Type header must also be empty.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "NFTContent",
               "ofType": null
             },
             "isDeprecated": false,
@@ -709,6 +1657,22 @@
             "deprecationReason": null
           },
           {
+            "name": "blockchainState",
+            "description": "The state of this NFT on the blockchain",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "NFTBlockchainState",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "id",
             "description": "A unique identifier for this object in the Niftory API.",
             "args": [],
@@ -730,7 +1694,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "JSON",
+              "name": "JSONObject",
               "ofType": null
             },
             "isDeprecated": false,
@@ -743,6 +1707,18 @@
             "type": {
               "kind": "OBJECT",
               "name": "NFTModel",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "saleState",
+            "description": "This state of this object's sale.",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "SaleState",
               "ofType": null
             },
             "isDeprecated": false,
@@ -769,8 +1745,8 @@
               "name": "TransferState",
               "ofType": null
             },
-            "isDeprecated": false,
-            "deprecationReason": null
+            "isDeprecated": true,
+            "deprecationReason": "Use blockchainState or saleState instead."
           },
           {
             "name": "wallet",
@@ -796,6 +1772,11 @@
             "kind": "INTERFACE",
             "name": "Identifiable",
             "ofType": null
+          },
+          {
+            "kind": "INTERFACE",
+            "name": "SellableEntity",
+            "ofType": null
           }
         ],
         "enumValues": null,
@@ -812,6 +1793,53 @@
         "possibleTypes": null
       },
       {
+        "kind": "ENUM",
+        "name": "NFTBlockchainState",
+        "description": "The state of an NFT on the blockchain.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "ERROR",
+            "description": "An error occurred with this item's last blockchain operation.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "MINTED",
+            "description": "The item is minted, and are no pending operations on it.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "MINTING",
+            "description": "The item is being minted.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "TRANSFERRED",
+            "description": "The item has already been transferred to a user's wallet.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "TRANSFERRING",
+            "description": "The item is being transferred.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "UNMINTED",
+            "description": "The item hasn't been minted yet.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
         "kind": "OBJECT",
         "name": "NFTContent",
         "description": "The content for an NFT.",
@@ -825,7 +1853,23 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "NFTMedia",
+                "name": "NFTFile",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "id",
+            "description": "A unique identifier for this object in the Niftory API.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
                 "ofType": null
               }
             },
@@ -838,7 +1882,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "NFTFile",
+              "name": "SimpleFile",
               "ofType": null
             },
             "isDeprecated": false,
@@ -846,7 +1890,48 @@
           }
         ],
         "inputFields": null,
-        "interfaces": [],
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "Identifiable",
+            "ofType": null
+          }
+        ],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "NFTContentInput",
+        "description": "The input to create or update [NFTContent]({{Types.NFTContent}}).",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "fileId",
+            "description": "The ID of the [NFTFile]({{Types.NFTFile}}) content. This can be created using [createFileUploadUrl]({{Mutations.createFileUploadUrl}}).",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "posterId",
+            "description": "The ID of the poster [File]({{Types.File}}). This can be created using [createFileUploadUrl]({{Mutations.createFileUploadUrl}}).",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
         "enumValues": null,
         "possibleTypes": null
       },
@@ -860,11 +1945,23 @@
             "description": "The MIME content type for this file.",
             "args": [],
             "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "id",
+            "description": "A unique identifier for this file in the Niftory API.",
+            "args": [],
+            "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "String",
+                "name": "ID",
                 "ofType": null
               }
             },
@@ -904,8 +2001,52 @@
             "deprecationReason": null
           },
           {
+            "name": "md5",
+            "description": "The MD5 hash of this file.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
+            "description": "A friendly name for the file.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "state",
+            "description": "The upload state of the file.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "FileState",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "url",
-            "description": "The main URL for this file.",
+            "description": "The cloud storage URL for this file. If state is GENERATED_UPLOAD_URL, then this url is the presigned URL to upload to.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -952,6 +2093,20 @@
             "defaultValue": null
           },
           {
+            "name": "blockchainStates",
+            "description": "Blockchain states of the [NFT]({{Types.NFT}})s to find. Defaults to all.",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "NFTBlockchainState",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
             "name": "ids",
             "description": "Database IDs of the [NFT]({{Types.NFT}})s to find.",
             "type": {
@@ -974,6 +2129,20 @@
               "ofType": {
                 "kind": "SCALAR",
                 "name": "ID",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "saleStates",
+            "description": "Sale states of the [NFT]({{Types.NFT}})s to find. Defaults to all.",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "SaleState",
                 "ofType": null
               }
             },
@@ -1045,19 +2214,19 @@
       },
       {
         "kind": "OBJECT",
-        "name": "NFTMedia",
-        "description": "Media content to be included in an NFT.",
+        "name": "NFTListing",
+        "description": "A listing of NFTs for sale.",
         "fields": [
           {
-            "name": "media",
-            "description": "The content of this NFT.",
+            "name": "appId",
+            "description": "The appId of the app this NFTListing belongs to.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "OBJECT",
-                "name": "NFTFile",
+                "kind": "SCALAR",
+                "name": "ID",
                 "ofType": null
               }
             },
@@ -1065,12 +2234,100 @@
             "deprecationReason": null
           },
           {
-            "name": "thumbnail",
-            "description": "A thumbnail for this content.",
+            "name": "attributes",
+            "description": "A mapping of attributes for this object. These will be stored in the Niftory API but will not be added to the blockchain.",
             "args": [],
             "type": {
-              "kind": "INTERFACE",
-              "name": "File",
+              "kind": "SCALAR",
+              "name": "JSONObject",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "description",
+            "description": "The description of the listing.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "id",
+            "description": "A unique identifier for this object in the Niftory API.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "nftModel",
+            "description": "The NFT Model for this listing, NFTs from this model will be sold when a user checks out with this listing",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "NFTModel",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "pricing",
+            "description": "The pricing for this listing",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "FixedPricing",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "state",
+            "description": "The state of this listing.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "ListingState",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "title",
+            "description": "The title of the listing.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1078,7 +2335,108 @@
           }
         ],
         "inputFields": null,
-        "interfaces": [],
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "Attributable",
+            "ofType": null
+          },
+          {
+            "kind": "INTERFACE",
+            "name": "Identifiable",
+            "ofType": null
+          }
+        ],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "NFTListingFilterInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "ids",
+            "description": "The IDs of the NFTListing.",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "state",
+            "description": "The ID of the NFTModel that the NFTListing should belong to.",
+            "type": {
+              "kind": "ENUM",
+              "name": "ListingState",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "title",
+            "description": "The title of the NFTListing.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "NFTListingList",
+        "description": "A list of NFTListings.",
+        "fields": [
+          {
+            "name": "cursor",
+            "description": "The cursor to use to fetch the next page of results, if any.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "items",
+            "description": "The NFTListings in this list.",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "NFTListing",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "Pageable",
+            "ofType": null
+          }
+        ],
         "enumValues": null,
         "possibleTypes": null
       },
@@ -1087,6 +2445,18 @@
         "name": "NFTModel",
         "description": "The blueprint for an NFT, containing everything needed to mint one -- file content, blockchain metadata, etc. Read more [here](https://docs.niftory.com/home/v/api/core-concepts/nfts).",
         "fields": [
+          {
+            "name": "attributes",
+            "description": "A mapping of attributes for this object. These will be stored in the Niftory API but will not be added to the blockchain.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "JSONObject",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "blockchainId",
             "description": "The ID of this resource on the blockchain.",
@@ -1149,7 +2519,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "JSON",
+              "name": "JSONObject",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1212,24 +2582,28 @@
             "deprecationReason": null
           },
           {
+            "name": "state",
+            "description": "The state of this NFT Model on the blockchain",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "NFTModelBlockchainState",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "status",
             "description": "The status of this resource. Can be used to track progress in designing and creating resources.",
             "args": [],
             "type": {
               "kind": "ENUM",
               "name": "Status",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "tags",
-            "description": "A mapping of tags for this resource. These will be stored in the Niftory API but will not be added to the blockchain.",
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "JSON",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1256,6 +2630,11 @@
         "interfaces": [
           {
             "kind": "INTERFACE",
+            "name": "Attributable",
+            "ofType": null
+          },
+          {
+            "kind": "INTERFACE",
             "name": "BlockchainEntity",
             "ofType": null
           },
@@ -1275,6 +2654,152 @@
             "ofType": null
           }
         ],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "NFTModelBlockchainState",
+        "description": "The state of an NFT Model on the blockchain.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "COMPLETED",
+            "description": "All NFTs in this model have been transferred to users.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ERROR",
+            "description": "An error occurred with this item's last blockchain operation.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "MINTED",
+            "description": "The item is minted, and are no pending operations on it.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "MINTING",
+            "description": "The item is being minted.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "UNMINTED",
+            "description": "The item hasn't been minted yet.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "NFTModelCreateInput",
+        "description": "The input to create an [NFTModel]({{Types.NFTModel}}).",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "attributes",
+            "description": "A mapping of attributes for this resource. These will be stored in the Niftory API but will not be added to the blockchain.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "JSONObject",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content",
+            "description": "The file content for this model. Either 'content' or 'contentId' must be specified.",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "NFTContentInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "contentId",
+            "description": "The ID of the [NFTContent]({{Types.NFTContent}}) for this model. Either 'content' or 'contentId' must be specified.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "description",
+            "description": "The user-friendly details about this model. This will be added to the blockchain metadata when an NFT is minted.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "metadata",
+            "description": "Metadata that will be added to the blockchain for any NFTs minted from this model.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "JSONObject",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "quantity",
+            "description": "The total supply of NFTs that can be available for this model. This can be updated until the NFTModel is minted.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "PositiveInt",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": "The status of the model.",
+            "type": {
+              "kind": "ENUM",
+              "name": "Status",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "subtitle",
+            "description": "The user-friendly subtitle for this model. This will be added to the blockchain metadata when an NFT is minted.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "title",
+            "description": "The user-friendly title for this model. This will be added to the blockchain metadata when an NFT is minted.",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
         "enumValues": null,
         "possibleTypes": null
       },
@@ -1387,6 +2912,107 @@
         "possibleTypes": null
       },
       {
+        "kind": "INPUT_OBJECT",
+        "name": "NFTModelUpdateInput",
+        "description": "The input to update an NFT model.",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "attributes",
+            "description": "A mapping of attributes for this resource. These will be stored in the Niftory API but will not be added to the blockchain.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "JSONObject",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content",
+            "description": "The file content for this model. This can be updated until the NFTModel is minted.",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "NFTContentInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "contentId",
+            "description": "The ID of the [NFTContent]({{Types.NFTContent}}) for this model.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "description",
+            "description": "The user-friendly details about this model. This will be added to the blockchain metadata when an NFT is minted.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "metadata",
+            "description": "Metadata that will be added to the blockchain for any NFTs minted from this model. This can be updated until the NFTModel is minted",
+            "type": {
+              "kind": "SCALAR",
+              "name": "JSONObject",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "quantity",
+            "description": "The total supply of NFTs that can be available for this model. This can be updated until the NFTModel is minted.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "PositiveInt",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "status",
+            "description": "The status of the model.",
+            "type": {
+              "kind": "ENUM",
+              "name": "Status",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "subtitle",
+            "description": "The user-friendly subtitle for this model. This will be added to the blockchain metadata when an NFT is minted.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "title",
+            "description": "The user-friendly title for this model. This will be added to the blockchain metadata when an NFT is minted.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
         "kind": "OBJECT",
         "name": "NFTSet",
         "description": "A set of NFTModels, to help you organize your NFTs. Read more [here](https://docs.niftory.com/home/v/api/core-concepts/nfts).",
@@ -1398,6 +3024,18 @@
             "type": {
               "kind": "OBJECT",
               "name": "App",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "attributes",
+            "description": "A mapping of attributes for this object. These will be stored in the Niftory API but will not be added to the blockchain.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "JSONObject",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1449,7 +3087,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "JSON",
+              "name": "JSONObject",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1472,24 +3110,28 @@
             "deprecationReason": null
           },
           {
+            "name": "state",
+            "description": "The state of this NFT Set on the blockchain",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "NFTSetBlockchainState",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "status",
             "description": "The status of this resource. Can be used to track progress in designing and creating resources.",
             "args": [],
             "type": {
               "kind": "ENUM",
               "name": "Status",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "tags",
-            "description": "A mapping of tags for this resource. These will be stored in the Niftory API but will not be added to the blockchain.",
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "JSON",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1516,6 +3158,11 @@
         "interfaces": [
           {
             "kind": "INTERFACE",
+            "name": "Attributable",
+            "ofType": null
+          },
+          {
+            "kind": "INTERFACE",
             "name": "BlockchainEntity",
             "ofType": null
           },
@@ -1535,6 +3182,76 @@
             "ofType": null
           }
         ],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "NFTSetBlockchainState",
+        "description": "The state of an NFT Set on the blockchain.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "ERROR",
+            "description": "An error occurred with this item's last blockchain operation.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "MINTED",
+            "description": "The item is minted, and are no pending operations on it.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "MINTING",
+            "description": "The item is being minted.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "UNMINTED",
+            "description": "The item hasn't been minted yet.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "NFTSetCreateInput",
+        "description": "The input to create an [NFTSet]({{Types.NFTSet}}).",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "attributes",
+            "description": "A mapping of attributes for this resource. These will be stored in the Niftory API but will not be added to the blockchain.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "JSONObject",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "title",
+            "description": "The user-friendly title for this model.",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
         "enumValues": null,
         "possibleTypes": null
       },
@@ -1588,6 +3305,37 @@
         "possibleTypes": null
       },
       {
+        "kind": "INPUT_OBJECT",
+        "name": "NFTSetUpdateInput",
+        "description": "The input to update an [NFTSet]({{Types.NFTSet}}).",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "attributes",
+            "description": "A mapping of attributes for this resource. These will be stored in the Niftory API but will not be added to the blockchain.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "JSONObject",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "title",
+            "description": "The user-friendly title for this set.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
         "kind": "INTERFACE",
         "name": "Pageable",
         "description": "An interface representing lists that can be paginated with a cursor.",
@@ -1611,12 +3359,32 @@
         "possibleTypes": [
           {
             "kind": "OBJECT",
+            "name": "AppUserList",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "InvoiceList",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
             "name": "NFTList",
             "ofType": null
           },
           {
             "kind": "OBJECT",
+            "name": "NFTListingList",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
             "name": "NFTModelList",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "WalletList",
             "ofType": null
           }
         ]
@@ -1667,7 +3435,7 @@
                 "description": "The ID of the App to retrieve. If unspecified, then 'name' must be specified.",
                 "type": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "ID",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -1715,7 +3483,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "SCALAR",
-                    "name": "String",
+                    "name": "ID",
                     "ofType": null
                   }
                 },
@@ -1725,6 +3493,49 @@
             "type": {
               "kind": "OBJECT",
               "name": "AppUser",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "appUsers",
+            "description": "Gets the list of users for your app. Read more [here](https://docs.niftory.com/home/v/api/core-concepts/app-and-appuser).",
+            "args": [
+              {
+                "name": "appId",
+                "description": "The ID of the client app.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "cursor",
+                "description": "The pagination cursor returned by your last call to appUsers",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "maxResults",
+                "description": "The maximum number of results to return. Defaults to 50, max is 100.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "PositiveInt",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "AppUserList",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1743,6 +3554,76 @@
             "deprecationReason": null
           },
           {
+            "name": "file",
+            "description": "Gets a [File]({{Types.File}}) by its ID.",
+            "args": [
+              {
+                "name": "id",
+                "description": "The database ID of the NFTFile to retrieve.",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "SimpleFile",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "invoices",
+            "description": "Gets the list of invoices for your app.",
+            "args": [
+              {
+                "name": "appId",
+                "description": "The ID of the client app.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "cursor",
+                "description": "The pagination cursor returned by your last call to appUsers",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "maxResults",
+                "description": "The maximum number of results to return. Defaults to 50, max is 100.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "PositiveInt",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "InvoiceList",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "nft",
             "description": "Gets an [NFT]({{Types.NFT}}) by database ID. Read more [here](https://docs.niftory.com/home/v/api/core-concepts/nfts/querying-nfts).",
             "args": [
@@ -1754,7 +3635,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "SCALAR",
-                    "name": "String",
+                    "name": "ID",
                     "ofType": null
                   }
                 },
@@ -1764,6 +3645,76 @@
             "type": {
               "kind": "OBJECT",
               "name": "NFT",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "nftListing",
+            "description": "Gets an [NFTListing]({{Types.NFTListing}}) by ID.",
+            "args": [
+              {
+                "name": "id",
+                "description": "The ID of the NFTListing to retrieve.",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "NFTListing",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "nftListings",
+            "description": "Gets [NFTListing]({{Types.NFTListing}})s for the current [App]({{Types.App}}) context",
+            "args": [
+              {
+                "name": "cursor",
+                "description": "The pagination cursor returned by your last call to NFTListings",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "filter",
+                "description": "Properties to filter NFTListings by.",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "NFTListingFilterInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "maxResults",
+                "description": "The maximum number of results to return. Defaults to 50, max is 100.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "PositiveInt",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "NFTListingList",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1781,7 +3732,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "SCALAR",
-                    "name": "String",
+                    "name": "ID",
                     "ofType": null
                   }
                 },
@@ -1800,6 +3751,16 @@
             "name": "nftModels",
             "description": "Gets [NFTModel]({{Types.NFTModel}})s for the current [App]({{Types.App}}) context. Read more [here](https://docs.niftory.com/home/v/api/core-concepts/nfts/querying-nfts).",
             "args": [
+              {
+                "name": "appId",
+                "description": "The ID of the client app.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
               {
                 "name": "cursor",
                 "description": "The pagination cursor returned by your last call to nftModels",
@@ -1844,6 +3805,16 @@
             "description": "Gets [NFT]({{Types.NFT}})s associated with the current [AppUser]({{Types.AppUser}}) context, including those that are transferring or failed to transfer. Read more [here](https://docs.niftory.com/home/v/api/core-concepts/nfts/querying-nfts).",
             "args": [
               {
+                "name": "appId",
+                "description": "The ID of the client app.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
                 "name": "cursor",
                 "description": "The pagination cursor returned by your last call to nfts",
                 "type": {
@@ -1875,7 +3846,80 @@
               },
               {
                 "name": "userId",
-                "description": "The ID of the [AppUser]({{Types.AppUser}}) to filter by. Requires privileged authentication.",
+                "description": "The ID of the [AppUser]({{Types.AppUser}}) to filter by. Can only be the currently logged in user without privileged token.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "NFTList",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "nftsByWallet",
+            "description": "Gets [NFT]({{Types.NFT}})s associated with the current wallet, including those that are transferring or failed to transfer. Read more [here](https://docs.niftory.com/home/v/api/core-concepts/nfts/querying-nfts).",
+            "args": [
+              {
+                "name": "address",
+                "description": "The address of the [Wallet]({{Types.Wallet}}) to filter by. This query requires the ID or the Wallet Address.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "appId",
+                "description": "The ID of the client app.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "cursor",
+                "description": "The pagination cursor returned by your last call to nfts",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "filter",
+                "description": "Properties to filter NFT's by.",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "NFTFilterInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "maxResults",
+                "description": "The maximum number of results to return. Defaults to 50, max is 100.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "PositiveInt",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "walletId",
+                "description": "The database ID of the [Wallet]({{Types.Wallet}}) to filter by. This query requires the ID or the Wallet Address.",
                 "type": {
                   "kind": "SCALAR",
                   "name": "ID",
@@ -1904,7 +3948,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "SCALAR",
-                    "name": "String",
+                    "name": "ID",
                     "ofType": null
                   }
                 },
@@ -1925,7 +3969,7 @@
             "args": [
               {
                 "name": "filter",
-                "description": "Properties to filter NFTSet's by.",
+                "description": "Properties to filter NFTSets by.",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "NFTSetFilterInput",
@@ -1975,26 +4019,6 @@
                   }
                 },
                 "defaultValue": null
-              },
-              {
-                "name": "appId",
-                "description": "The ID of the app the wallet is associated with. Either appId or userId must be specified.",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "userId",
-                "description": "The ID of the AppUser the wallet is associated with. Either appId or userId must be specified.",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
               }
             ],
             "type": {
@@ -2017,7 +4041,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "SCALAR",
-                    "name": "String",
+                    "name": "ID",
                     "ofType": null
                   }
                 },
@@ -2037,14 +4061,14 @@
             "description": "Gets a [Wallet]({{Types.Wallet}}) for a given [AppUser]({{Types.AppUser}}). Read more [here](https://docs.niftory.com/home/v/api/core-concepts/wallets/query-wallets).",
             "args": [
               {
-                "name": "id",
+                "name": "userId",
                 "description": "The ID of the AppUser to retrieve the wallet for.",
                 "type": {
                   "kind": "NON_NULL",
                   "name": null,
                   "ofType": {
                     "kind": "SCALAR",
-                    "name": "String",
+                    "name": "ID",
                     "ofType": null
                   }
                 },
@@ -2054,6 +4078,53 @@
             "type": {
               "kind": "OBJECT",
               "name": "Wallet",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "wallets",
+            "description": "Gets all [Wallet]({{Types.Wallet}})s for a given app. Read more [here](https://docs.niftory.com/home/v/api/core-concepts/wallets/query-wallets).",
+            "args": [
+              {
+                "name": "appId",
+                "description": "The ID of the AppUser to retrieve the wallet for.",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "cursor",
+                "description": "The pagination cursor returned by your last call to nftModels",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "maxResults",
+                "description": "The maximum number of results to return. Defaults to 50, max is 100.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "PositiveInt",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "WalletList",
               "ofType": null
             },
             "isDeprecated": false,
@@ -2071,6 +4142,34 @@
         "description": "An interface representing properties common to all user-managed resources in the Niftory API.",
         "fields": [
           {
+            "name": "attributes",
+            "description": "A mapping of attributes for this object. These will be stored in the Niftory API but will not be added to the blockchain.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "JSONObject",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "id",
+            "description": "A unique identifier for this object in the Niftory API.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "status",
             "description": "The status of this resource. Can be used to track progress in designing and creating resources.",
             "args": [],
@@ -2081,22 +4180,21 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
-          },
-          {
-            "name": "tags",
-            "description": "A mapping of tags for this resource. These will be stored in the Niftory API but will not be added to the blockchain.",
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "JSON",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
           }
         ],
         "inputFields": null,
-        "interfaces": [],
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "Attributable",
+            "ofType": null
+          },
+          {
+            "kind": "INTERFACE",
+            "name": "Identifiable",
+            "ofType": null
+          }
+        ],
         "enumValues": null,
         "possibleTypes": [
           {
@@ -2112,6 +4210,70 @@
         ]
       },
       {
+        "kind": "ENUM",
+        "name": "SaleState",
+        "description": "The state of an item being sold.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "AVAILABLE",
+            "description": "The item has not been reserved or purchased yet.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "FULFILLED",
+            "description": "The item has been delivered.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "PAID",
+            "description": "The item has been paid for and is being fulfilled.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "RESERVED",
+            "description": "The item is reserved for a future purchase.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "SellableEntity",
+        "description": "An interface representing properties common to all objects that can be bought and sold",
+        "fields": [
+          {
+            "name": "saleState",
+            "description": "This state of this object's sale.",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "SaleState",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": [
+          {
+            "kind": "OBJECT",
+            "name": "NFT",
+            "ofType": null
+          }
+        ]
+      },
+      {
         "kind": "OBJECT",
         "name": "SimpleFile",
         "description": "A file uploaded to the Niftory API.",
@@ -2119,6 +4281,46 @@
           {
             "name": "contentType",
             "description": "The MIME content type for this file.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "id",
+            "description": "A unique identifier for this file in the Niftory API.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "md5",
+            "description": "The MD5 hash of this file.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
+            "description": "A friendly name for the file.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -2133,8 +4335,24 @@
             "deprecationReason": null
           },
           {
+            "name": "state",
+            "description": "The upload state of the file.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "FileState",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "url",
-            "description": "The main URL for this file.",
+            "description": "The cloud storage URL for this file. If state is GENERATED_UPLOAD_URL, then this url is the presigned URL to upload to.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -2266,6 +4484,27 @@
         "possibleTypes": null
       },
       {
+        "kind": "INPUT_OBJECT",
+        "name": "UpdateWalletInput",
+        "description": "The input to create wallet data [Wallet]({{Types.Wallet}}).",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "attributes",
+            "description": "A mapping of attributes for this resource. These will be stored in the Niftory API but will not be added to the blockchain.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "JSONObject",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
         "kind": "SCALAR",
         "name": "Upload",
         "description": "The `Upload` scalar type represents a file upload.",
@@ -2360,6 +4599,30 @@
             "deprecationReason": null
           },
           {
+            "name": "appUser",
+            "description": "The User who owns the wallet",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "AppUser",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "attributes",
+            "description": "A mapping of attributes for this object. These will be stored in the Niftory API but will not be added to the blockchain.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "JSONObject",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "id",
             "description": "A unique identifier for this object in the Niftory API.",
             "args": [],
@@ -2424,7 +4687,57 @@
         "interfaces": [
           {
             "kind": "INTERFACE",
+            "name": "Attributable",
+            "ofType": null
+          },
+          {
+            "kind": "INTERFACE",
             "name": "Identifiable",
+            "ofType": null
+          }
+        ],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "WalletList",
+        "description": "A list of Wallets.",
+        "fields": [
+          {
+            "name": "cursor",
+            "description": "The cursor to use to fetch the next page of results, if any.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "items",
+            "description": "The Wallets in this list.",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Wallet",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "Pageable",
             "ofType": null
           }
         ],
@@ -2440,6 +4753,18 @@
         "interfaces": null,
         "enumValues": [
           {
+            "name": "CREATION_FAILED",
+            "description": "(Custodial Wallet Only) The Niftory custodial wallet failed to be created on the blockchain.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "PENDING_CREATION",
+            "description": "(Custodial Wallet Only) The Niftory custodial wallet is in the process of being created on-chain. The address and state of the Wallet object will be updated once complete.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "READY",
             "description": "The wallet is ready to receive NFTs from this app's contract.",
             "isDeprecated": false,
@@ -2447,7 +4772,7 @@
           },
           {
             "name": "UNVERIFIED",
-            "description": "The wallet has been created, but not yet verified to belong to the signed-in user.",
+            "description": "The wallet has been registered with Niftory, but not yet verified to belong to the signed-in user.",
             "isDeprecated": false,
             "deprecationReason": null
           },
@@ -2458,16 +4783,6 @@
             "deprecationReason": null
           }
         ],
-        "possibleTypes": null
-      },
-      {
-        "kind": "SCALAR",
-        "name": "Boolean",
-        "description": "The `Boolean` scalar type represents `true` or `false`.",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": null,
         "possibleTypes": null
       },
       {

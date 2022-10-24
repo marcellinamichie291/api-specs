@@ -1,0 +1,15 @@
+query getgroup($id:ID!, $usersFirst: Int){
+    group(id: $id){
+          id
+          name
+          users(first: $usersFirst){
+            edges{
+              node{ 
+                id
+                firstName
+                state
+              }
+            }
+        }
+    }
+}
