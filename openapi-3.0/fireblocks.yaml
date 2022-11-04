@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Fireblocks API
-  version: "1.5.1"
+  version: "1.5.2"
   contact:
     email: support@fireblocks.com
 servers:
@@ -2688,7 +2688,7 @@ paths:
       summary: List network connections
       description: Returns all network connections.
       tags:
-        - Network connections
+        - Network connection
       x-readme:
         code-samples:
         - language: python
@@ -2767,7 +2767,7 @@ paths:
       summary: Get a network connection
       description: Gets a network connection by ID.
       tags:
-        - Network connections
+        - Network connection
       x-readme:
         code-samples:
         - language: python
@@ -3408,131 +3408,342 @@ paths:
           description: Audit logs from requested time period
         default:
           $ref: '#/components/responses/Error'
-  '/payments/payout/{payoutId}':
-    get:
-      summary: Get a specific payout
-      description: Gets a payout by ID.
+  # Payments
+  '/payments/xb-settlements/configs':
+    post:
       tags:
         - Payments
-      parameters:
-        - in: path
-          name: payoutId
-          required: true
-          description: The ID of the payout
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Returns a payout
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/Payout'
-        default:
-          $ref: '#/components/responses/Error'
-    put:
-      summary: Update payout status
-      description: Updates payout status by ID.
-      tags:
-        - Payments
-      parameters:
-        - in: path
-          name: payoutId
-          required: true
-          description: The ID of the payout request
-          schema:
-            type: string
+      summary: Create a new cross-border (XB) settlement configuration
       requestBody:
-        required: true
         content:
           application/json:
             schema:
-              properties:
-                status:
-                  description: Payout request status
-                  type: string
-                  enum:
-                  - SUBMITTED
-                  - PROCESSING
-                  - REJECTED
-                  - COMPLETED
-              required:
-                - status
+              $ref: '#/components/schemas/XBSettlementConfigCreationRequestBody'
       responses:
-        '200':
-          description: Returns a payout
+        200:
+          description: XB settlement configuration created successfully
           content:
-            'application/json':
+            application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    enum:
-                      - SUBMITTED
-                      - PROCESSING
-                      - REJECTED
-                      - COMPLETED
-                  payoutId:
-                    type: string
-                required:
-                  - status
-                  - payoutId
-        default:
-          $ref: '#/components/responses/Error'
-  '/payments/payout':
+                $ref: '#/components/schemas/XBSettlementConfigCreationResponse'
+        401:
+          description: Unauthorized. Missing / invalid JWT token in Authorization header.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        5XX:
+          description: Internal error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
     get:
-      summary: List payouts
-      description: Gets a list of payouts.
+      tags:
+        - Payments
+      summary: Get all the cross-border (XB) settlement configurations of a tenant
+      responses:
+        200:
+          description: Returns all the XB settlement configurations of a tenant
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllXBSettlementConfigsResponse'
+        401:
+          description: Unauthorized. Missing / invalid JWT token in Authorization header.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        5XX:
+          description: Internal error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/payments/xb-settlements/configs/{configId}':
+    get:
       tags:
         - Payments
       parameters:
-        - in: query
-          name: status
-          required: false
+        - in: path
+          name: configId
+          required: true
+          description: The cross-border (XB) settlement configuration ID. 
           schema:
             type: string
-            enum: ["SUBMITTED", "PROCESSING", "REJECTED", "COMPLETED"]
+      summary: Get a specific XB settlement configuration
       responses:
-        '200':
-          description: Returns a list of payouts
+        200:
+          description: Returns a XB settlement configuration
           content:
-            'application/json':
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetXBSettlementConfigResponse'
+        401:
+          description: Unauthorized. Missing / invalid JWT token in Authorization header.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        5XX:
+          description: Internal error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      tags:
+        - Payments
+      parameters:
+        - in: path
+          name: configId
+          required: true
+          description: The cross-border (XB) settlement configuration ID. 
+          schema:
+            type: string
+      summary: Edit a cross-border (XB) settlement configuration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XBSettlementConfigEditRequestBody'
+      responses:
+        200:
+          description: XB settlement configuration edited successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XBSettlementConfigEditResponse'
+        401:
+          description: Unauthorized. Missing / invalid JWT token in Authorization header.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        5XX:
+          description: Internal error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+        - Payments
+      parameters:
+        - in: path
+          name: configId
+          required: true
+          description: The cross-border (XB) settlement configuration ID. 
+          schema:
+            type: string
+      summary: Delete a cross-border (XB) settlement configuration
+      responses:
+        200:
+          description: XB settlement configuration deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XBSettlementConfigDeletionResponse'
+        401:
+          description: Unauthorized. Missing / invalid JWT token in Authorization header.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        5XX:
+          description: Internal error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/payments/xb-settlements/flows':
+    post:
+      tags:
+        - Payments
+      summary: Create a new cross-border (XB) settlement flow
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XBCreateSettlementFlowRequestBody'
+      responses:
+        200:
+          description: XB settlement flow created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XBCreateSettlementFlowResponse'
+        401:
+          description: Unauthorized. Missing / invalid JWT token in Authorization header.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        5XX:
+          description: Internal error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/payments/xb-settlements/flows/{flowId}':
+    get:
+      tags:
+        - Payments
+      parameters:
+        - in: path
+          name: flowId
+          required: true
+          description: The ID of the cross-border (XB) settlement flow. 
+          schema:
+            type: string
+      summary: Get a specific cross-border (XB) settlement flow
+      responses:
+        200:
+          description: Returns XB settlement flow
+          content:
+            application/json:
               schema:
                 type: object
                 properties:
-                  payouts:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Payout'
-                required:
-                  - payouts
+                  setup:
+                    $ref: '#/components/schemas/XBSettlementFlowSetupModel'
+                  execution:
+                    $ref: '#/components/schemas/XBSettlementFlowExecutionModel'
+        401:
+          description: Unauthorized. Missing / invalid JWT token in Authorization header.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        5XX:
+          description: Internal error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/payments/xb-settlements/flows/{flowId}/actions/execute':
+    post:
+      tags:
+        - Payments
+      parameters:
+        - in: path
+          name: flowId
+          required: true
+          description: The ID of the cross-border (XB) settlement flow. 
+          schema:
+            type: string
+      summary: Execute cross-border (XB) settlement flow
+      responses:
+        200:
+          description: XB settlement flow executed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XBSettlementFlowExecutionResponse'
+        401:
+          description: Unauthorized. Missing / invalid JWT token in Authorization header.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        5XX:
+          description: Internal error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+ 
+ # SIGNER CONNECTIONS
+  '/connections':
+    get:
+      summary: 'Get all connections'
+      description: 'Get all the connections of the user'
+      tags:
+        - Signer Connections - Coming Soon
+      responses:
+        '200':
+          description: 'Successfully received all connections'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SessionDTO'
         default:
           $ref: '#/components/responses/Error'
     post:
-      summary: Create a payout
-      description: Creates a payout.
+      summary: Create new connection
+      description: Initiate a new signer connection (Payload varies by type of connection)
       tags:
-        - Payments
+        - Signer Connections - Coming Soon
       requestBody:
         required: true
         content:
-          application/json:
+          'application/json':
             schema:
-              $ref: '#/components/schemas/PayoutResponse'
+              $ref: '#/components/schemas/CreateConnectionRequest'
       responses:
-        '200':
-          description: Returns a payout
+        '201':
+          description: Successfully initiated a connection
           content:
-            'application/json':
+            application/json:
               schema:
-                $ref: '#/components/schemas/Payout'
+                $ref: '#/components/schemas/CreateConnectionResponse'
+        '400':
+          description: The payload sent was invalid
         default:
           $ref: '#/components/responses/Error'
-
-security:
-  - bearerTokenAuth: [ ]
-  - ApiKeyAuth: [ ]
+  '/connections/{sessionId}':
+    put:
+      summary: Respond to pending connection
+      description: Approve or reject a pending connection (after you have initiated a session by calling /create)
+      tags:
+        - Signer Connections - Coming Soon
+      parameters:
+        - in: path
+          name: sessionId
+          required: true
+          description: The id of the connection
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          'application/json':
+            schema:
+              type: object
+              properties:
+                approve:
+                  type: boolean
+      responses:
+        '200':
+          description: Successfully approved/rejected a connection
+        '400':
+          description: The payload sent was invalid
+        '404':
+          description: The session wasn't found
+        default:
+          $ref: '#/components/responses/Error'
+    delete:
+      summary: Remove a connection
+      description: Remove an existing connection
+      tags:
+        - Signer Connections - Coming Soon
+      parameters:
+        - in: path
+          name: sessionId
+          required: true
+          description: The id of the connection
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully removed a connection
+        '404':
+          description: The session wasn't found
+        default:
+          $ref: '#/components/responses/Error'
 components:
   responses:
     Error:
@@ -3905,7 +4116,7 @@ components:
       allOf:
         - $ref: '#/components/schemas/TransferPeerPath'
         - type: object
-        - description: (optional) Destination address. You will only be able to provide this parameter if the type is enabled for OneTimeAddress.
+          description: (optional) Destination address. You will only be able to provide this parameter if the type is enabled for OneTimeAddress.
           properties:
             oneTimeAddress:
               $ref: '#/components/schemas/OneTimeAddress'
@@ -5009,20 +5220,25 @@ components:
           oneOf:
            - $ref: '#/components/schemas/CustomCryptoRoutingDest'
            - $ref: '#/components/schemas/AutoNetworkRoutingDest'
+           - $ref: '#/components/schemas/NoneNetworkRoutingDest'
         sen:
           oneOf:
            - $ref: '#/components/schemas/CustomFiatRoutingDest'
            - $ref: '#/components/schemas/AutoNetworkRoutingDest'
+           - $ref: '#/components/schemas/NoneNetworkRoutingDest'
         signet:
           oneOf:
            - $ref: '#/components/schemas/AutoNetworkRoutingDest'
            - $ref: '#/components/schemas/CustomFiatRoutingDest'
+           - $ref: '#/components/schemas/NoneNetworkRoutingDest'
         sen_test:
           oneOf:
            - $ref: '#/components/schemas/AutoNetworkRoutingDest'
+           - $ref: '#/components/schemas/NoneNetworkRoutingDest'
            - $ref: '#/components/schemas/CustomFiatRoutingDest'
         signet_test:
           oneOf:
+           - $ref: '#/components/schemas/NoneNetworkRoutingDest'
            - $ref: '#/components/schemas/CustomFiatRoutingDest'
            - $ref: '#/components/schemas/AutoNetworkRoutingDest'
     NetworkConnectionRoutingPolicy:
@@ -5032,20 +5248,25 @@ components:
           oneOf:
            - $ref: '#/components/schemas/CustomCryptoRoutingDest'
            - $ref: '#/components/schemas/DefaultNetworkRoutingDest'
+           - $ref: '#/components/schemas/NoneNetworkRoutingDest'
         sen:
           oneOf:
            - $ref: '#/components/schemas/CustomFiatRoutingDest'
            - $ref: '#/components/schemas/DefaultNetworkRoutingDest'
+           - $ref: '#/components/schemas/NoneNetworkRoutingDest'
         signet:
           oneOf:
            - $ref: '#/components/schemas/DefaultNetworkRoutingDest'
            - $ref: '#/components/schemas/CustomFiatRoutingDest'
+           - $ref: '#/components/schemas/NoneNetworkRoutingDest'
         sen_test:
           oneOf:
            - $ref: '#/components/schemas/DefaultNetworkRoutingDest'
+           - $ref: '#/components/schemas/NoneNetworkRoutingDest'
            - $ref: '#/components/schemas/CustomFiatRoutingDest'
         signet_test:
           oneOf:
+           - $ref: '#/components/schemas/NoneNetworkRoutingDest'
            - $ref: '#/components/schemas/CustomFiatRoutingDest'
            - $ref: '#/components/schemas/DefaultNetworkRoutingDest'
     CustomFiatRoutingDest:
@@ -5089,6 +5310,13 @@ components:
           type: string
           enum:
             - DEFAULT
+    NoneNetworkRoutingDest:
+      type: object
+      properties:
+        scheme:
+          type: string
+          enum:
+            - NONE
     UserResponse:
       type: object
       properties:
@@ -5104,90 +5332,385 @@ components:
           type: string
         enabled:
           type: boolean
-    Payout:
+    SessionMetadata:
+      type: object
+      properties:
+        appIcon:
+          type: string
+        appId:
+          type: string
+        appName:
+          type: string
+        appUrl:
+          type: string
+        appDescription:
+          type: string
+    SessionDTO:
       type: object
       properties:
         id:
           type: string
-        asset:
+          description: Id of the connection
+          example: 4e9e7051-f3b2-48e9-8ee6-b12492552657
+        sessionMetadata:
+          description: |-
+            Metadata of the connection (provided by the dapp)
+
+            CURRENTLY UNAVAILABLE
+          allOf:
+            - $ref: '#/components/schemas/SessionMetadata'
+        vaultAccountId:
+          type: number
+          description: The vault to connect
+          example: 1
+        feeLevel:
           type: string
-        status:
-          type: string
+          description: The default fee level
+          example: MEDIUM
           enum:
-          - SUBMITTED
-          - PROCESSING
-          - REJECTED
-          - COMPLETED
-        instructions:
+            - MEDIUM
+            - HIGH
+        chainIds:
+          description: |-
+            The chains approved for the connection
+
+            CURRENTLY UNAVAILABLE
+          example: '[ETH, ETH_TEST, SOL]'
           type: array
           items:
-            $ref: '#/components/schemas/PayoutInstruction'
+            type: string
+        connectionType:
+          type: string
+          description: The connection's type
+          example: WalletConnect
+          enum:
+            - WalletConnect
+        connectionMethod:
+          type: string
+          description: |-
+            The method through which the connection was established
+
+            CURRENTLY UNAVAILABLE
+          example: API
+          enum:
+            - DESKTOP
+            - MOBILE
+            - API
+        creationDate:
+          format: date-time
+          type: string
+          description: Timestamp of the session's creation
       required:
-        - asset
-        - instructions
-    PayoutInstruction:
+        - id
+        - vaultAccountId
+        - feeLevel
+        - connectionType
+        - creationDate
+    CreateConnectionRequest:
+      type: object
+      properties:
+        vaultAccountId:
+          type: number
+        feeLevel:
+          type: string
+          enum:
+            - MEDIUM
+            - HIGH
+        connectionType:
+          type: string
+          enum:
+            - WalletConnect
+        uri:
+          type: string
+        chainIds:
+          type: array
+          items:
+            type: string
+      required:
+        - vaultAccountId
+        - feeLevel
+        - connectionType  
+    CreateConnectionResponse:
       type: object
       properties:
         id:
           type: string
+          description: Id of the connection initiated
+          example: 4e9e7051-f3b2-48e9-8ee6-b12492552657
+        sessionMetadata:
+          description: Metadata of the connection (provided by the dapp)
+          allOf:
+            - $ref: '#/components/schemas/SessionMetadata'
+      required:
+        - id
+        - sessionMetadata
+    XBSettlementConfigCreationRequestBody:
+      type: object
+      properties:
+        name:
+          type: string
+        corridorId:
+          type: string
+        steps:
+          $ref: '#/components/schemas/XBSettlementConfigStepsRecord'
+
+      required:
+        - name
+        - corridorId
+        - steps
+    XBSettlementConfigCreationResponse:
+      $ref: '#/components/schemas/XBSettlementConfigModel'
+    XBSettlementConfigEditRequestBody:
+      type: object
+      properties:
+        name:
+          type: string
+        steps:
+          $ref: '#/components/schemas/XBSettlementConfigStepsRecord'
+    XBSettlementConfigEditResponse:
+      $ref: '#/components/schemas/XBSettlementConfigModel'
+    XBSettlementConfigDeletionResponse:
+      type: object
+      properties:
+        configId:
+          type: string
+          format: uuid
+      required:
+        - configId
+    GetXBSettlementConfigResponse:
+      $ref: '#/components/schemas/XBSettlementConfigModel'
+    GetAllXBSettlementConfigsResponse:
+      type: object
+      properties:
+        configurations:
+          type: array
+          items:
+            $ref: '#/components/schemas/XBSettlementConfigModel'
+      required:
+        - configurations
+    XBCreateSettlementFlowRequestBody:
+      type: object
+      properties:
+        configId:
+          type: string
+          format: uuid
+        amount:
+          $ref: '#/components/schemas/XBSettlementAsset'
+      required:
+        - configId
+        - amount
+    XBCreateSettlementFlowResponse:
+      $ref: '#/components/schemas/XBSettlementFlowSetupModel'
+    XBSettlementFlowExecutionResponse:
+      $ref: '#/components/schemas/XBSettlementFlowExecutionModel'
+    XBSettlementFlowExecutionStep:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
         status:
+          $ref: '#/components/schemas/XBSettlementFlowExecutionStepStatus'
+        inputAmount:
+          $ref: '#/components/schemas/XBSettlementAsset'
+        outputAmount:
+          $ref: '#/components/schemas/XBSettlementAsset'
+        fee:
+          $ref: '#/components/schemas/XBSettlementAsset'
+        startedAt:
+          type: number
+      required:
+        - id
+        - accountId
+        - status
+        - inputAmount
+        - outputAmount
+        - fee
+        - startedAt
+    XBSettlementFlowExecutionStepStatus:
+      type: string
+      enum:
+        - NOT_STARTED
+        - PROCESSING
+        - COMPLETED
+        - FAILED
+    XBSettlementFlowExecutionStatus:
+      type: string
+      enum:
+        - NOT_LAUNCHED
+        - PROCESSING
+        - COMPLETED
+        - FAILED
+    XBSettlementConfigModel:
+      type: object
+      properties:
+        tenantId:
           type: string
-          enum:
-            - SUBMITTED
-            - PROCESSING
-            - REJECTED
-            - COMPLETED
-        displayName:
+        configId:
           type: string
-        legalName:
+          format: uuid
+        corridorId:
           type: string
-        legalEntityId:
+        name:
           type: string
-        mcc:
+        steps:
+          $ref: '#/components/schemas/XBSettlementConfigStepsRecord'
+      required:
+        - tenantId
+        - configId
+        - name
+        - corridorId
+        - steps
+    XBSettlementConfigStep:
+      type: object
+      properties:
+        stepType:
+          $ref: '#/components/schemas/XBSettlementStepType'
+        accountId:
           type: string
-        address1:
+      required:
+        - stepType
+        - accountId
+    XBSettlementStepType:
+      type: string
+      enum:
+        - ON_RAMP
+        - VAULT_ACCOUNT
+        - OFF_RAMP
+        - FIAT_DESTINATION
+    XBSettlementFlowSetupStep:
+      type: object
+      properties:
+        accountId:
           type: string
-        address2:
+        inputAmount:
+          $ref: '#/components/schemas/XBSettlementAsset'
+        outputAmount:
+          $ref: '#/components/schemas/XBSettlementAsset'
+        estimatedFeeAmount:
+          $ref: '#/components/schemas/XBSettlementAsset'
+        estimatedTime:
+          type: number
+      required:
+        - accountId
+        - inputAmount
+        - outputAmount
+        - estimatedFeeAmount
+        - estimatedTime
+    XBSettlementFlowSetupModel:
+      type: object
+      properties:
+        tenantId:
           type: string
-        country:
+        flowId:
+          type: string
+        configId:
+          type: string
+        steps:
+          $ref: '#/components/schemas/XBSettlementFlowStepsRecord'
+        inputAmount:
+          $ref: '#/components/schemas/XBSettlementAsset'
+        outputAmount:
+          $ref: '#/components/schemas/XBSettlementAsset'
+        totalEstimatedFees:
+          $ref: '#/components/schemas/XBSettlementAsset'
+        totalEstimatedTime:
+          type: number
+      required:
+        - tenantId
+        - configId
+        - steps
+        - inputAmount
+        - outputAmount
+        - totalEstimatedFees
+        - totalEstimatedTime
+    XBSettlementFlowExecutionModel:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        flowId:
+          type: string
+        configId:
+          type: string
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/XBSettlementFlowExecutionStep'
+        inputAmount:
+          $ref: '#/components/schemas/XBSettlementAsset'
+        outputAmount:
+          $ref: '#/components/schemas/XBSettlementAsset'
+        totalFees:
+          $ref: '#/components/schemas/XBSettlementAsset'
+        initiatedAt:
+          type: number
+        initiatedBy:
+          description: 'id of the user which launched the flow'
           type: string
         state:
-          type: string
-        zipCode:
-          type: string
-        email:
-          type: string
-        phoneNumber:
-          type: string
-        bankName:
-          type: string
-        bankCountry:
-          type: string
-        bankState:
-          type: string
-        bankAccountNumber:
-          type: string
-        bankSecondaryNumber:
-          type: string
-        amount:
-          type: string
-        description:
-          type: string
+          $ref: '#/components/schemas/XBSettlementFlowExecutionStatus'
       required:
-        - displayName
-        - legalName
-        - legalEntityId
-        - bankName
-        - bankCountry
-        - bankState
-        - bankAccountNumber
-        - bankSecondaryNumber
-        - amount
-        - description
-    PayoutResponse:
+        - tenantId
+        - flowId
+        - configId
+        - steps
+        - inputAmount
+        - outputAmount
+        - totalFees
+        - initiatedAt
+        - initiatedBy
+        - state
+    XBSettlementConfigStepsRecord:
       type: object
       properties:
-        payouts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Payout'
+        stepType:
+          $ref: '#/components/schemas/XBSettlementStepType'
+      additionalProperties:
+        type: object
+        properties:
+          accountId:
+            type: string
+        required:
+          - accountId
+    XBSettlementFlowStepsRecord:
+      type: object
+      properties:
+        stepType:
+          $ref: '#/components/schemas/XBSettlementStepType'
+      additionalProperties:
+        $ref: '#/components/schemas/XBSettlementFlowSetupStep'
+    XBSettlementAsset:
+      type: object
+      properties:
+        amount:
+          type: string
+        assetId:
+          type: string
+      required:
+        - amount
+        - assetId
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - INTERNAL
+                - AUTHENTICATION
+                - AUTHORIZATION
+                - VALIDATION
+                - NOT_FOUND
+                - UNPROCESSABLE_ENTITY
+                - FORBIDDEN
+            message:
+              type: string
+          required:
+            - type
+            - message
+      required:
+        - error

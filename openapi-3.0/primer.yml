@@ -3202,7 +3202,7 @@ components:
           description: Your reference for the payment.
         processor:
           title: Processor
-          type: string
+          type: object
           description: The payment processor used for this payment.
           allOf:
             - $ref: "#/components/schemas/PaymentSummaryProcessorAPISchema"
@@ -3701,7 +3701,8 @@ components:
       title: VerifiedMerchantPaymentMethodTokenAPIResponse
       allOf:
         - $ref: "#/components/schemas/MerchantPaymentMethodTokenAPIResponse"
-        - properties:
+        - type: object
+          properties:
             isVerified:
               title: Payment method verified
               type: boolean
